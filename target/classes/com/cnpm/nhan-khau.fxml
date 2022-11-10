@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.cnpm.NhanKhauController">
+    <Button fx:id="chinh_sua_nhan_khau" layoutX="85.0" layoutY="125.0" mnemonicParsing="false"
+            onAction="#chinhSuaNhanKhau" text="Chinh sua nhan khau"/>
+    <Button fx:id="them_nhan_khau" layoutX="85.0" layoutY="206.0" mnemonicParsing="false" onAction="#themNhanKhau"
+            text="Them nhan khau"/>
+    <Button fx:id="thong_ke_nhan_khau" layoutX="86.0" layoutY="288.0" mnemonicParsing="false"
+            onAction="#thongKeNhanKhau" text="Thong ke nhan khau"/>
+    <Label layoutX="209.0" layoutY="33.0" text="Quan ly nhan khau">
+        <font>
+          <Font size="22.0"/>
+        </font>
+    </Label>
+</AnchorPane>
