@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,8 +25,8 @@ public class NhanKhauController implements Initializable {
     }
 
     @FXML
-    public void themNhanKhau(ActionEvent event) {
-
+    public void themNhanKhau(ActionEvent event) throws IOException {
+        Utilities.changeScene(event, "them-nhan-khau.fxml", "Them nhan khau");
     }
 
     @FXML

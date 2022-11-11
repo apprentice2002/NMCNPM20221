@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-    public Connection connection;
+    public static Connection connection;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         String dbName = "cnpm";
         String dbUser = "root";
         String dbPassword = "Sh1n1G@m1";
