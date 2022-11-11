@@ -1,4 +1,4 @@
-package com.cnpm;
+package com.cnpm.utilities;
 
 import java.util.Set;
 

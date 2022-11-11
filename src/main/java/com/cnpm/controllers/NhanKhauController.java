@@ -1,5 +1,6 @@
-package com.cnpm;
+package com.cnpm.controllers;
 
+import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +27,7 @@ public class NhanKhauController implements Initializable {
 
     @FXML
     public void themNhanKhau(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "them-nhan-khau.fxml", "Them nhan khau");
+        Utilities.changeScene(event, "/com/cnpm/scenes/them-nhan-khau.fxml", "Them nhan khau");
     }
 
     @FXML

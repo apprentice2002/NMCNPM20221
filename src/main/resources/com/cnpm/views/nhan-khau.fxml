@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.cnpm.NhanKhauController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.cnpm.controllers.NhanKhauController">
     <Button fx:id="chinh_sua_nhan_khau" layoutX="85.0" layoutY="125.0" mnemonicParsing="false" onAction="#chinhSuaNhanKhau" text="Chỉnh sửa nhân khẩu" />
     <Button fx:id="them_nhan_khau" layoutX="85.0" layoutY="206.0" mnemonicParsing="false" onAction="#themNhanKhau" text="Thêm nhân khẩu" />
     <Button fx:id="thong_ke_nhan_khau" layoutX="86.0" layoutY="288.0" mnemonicParsing="false" onAction="#thongKeNhanKhau" text="Thống kê nhân khẩu" />

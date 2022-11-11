@@ -1,4 +1,4 @@
-package com.cnpm;
+package com.cnpm.entities;
 
 import lombok.Getter;
 import lombok.Setter;

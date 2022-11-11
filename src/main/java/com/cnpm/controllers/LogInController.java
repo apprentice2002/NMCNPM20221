@@ -1,5 +1,8 @@
-package com.cnpm;
+package com.cnpm.controllers;
 
+import com.cnpm.utilities.DBConnection;
+import com.cnpm.utilities.UserSession;
+import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,8 +35,7 @@ public class LogInController implements Initializable {
         if (username.getText().isBlank() || password.getText().isBlank()) {
             logInMessage.setText("Please enter admin name and password");
         } else {
-            DBConnection dbConnection = new DBConnection();
-            Connection connection = dbConnection.getConnection();
+            Connection connection = DBConnection.getConnection();
             String verify = "SELECT * FROM administrators WHERE admin_name='" + username.getText() + "' AND password='" + password.getText() + "'";
 
             try {
@@ -42,7 +44,7 @@ public class LogInController implements Initializable {
 
                 if (queryResult.next()) {
                     String user = username.getText();
-                    Set<String> privileges = new HashSet<String>();
+                    Set<String> privileges = new HashSet<>();
                     switch (user) {
                         case "admin1" -> privileges.add("admin1");
                         case "admin2" -> privileges.add("admin2");
@@ -52,7 +54,7 @@ public class LogInController implements Initializable {
                     }
                     UserSession.setUsername(user);
                     UserSession.setPrivileges(privileges);
-                    Utilities.changeScene(event, "home.fxml", "Quan Ly");
+                    Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", "Quan Ly");
                 } else {
                     logInMessage.setText("fail");
                 }

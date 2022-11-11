@@ -1,5 +1,7 @@
-package com.cnpm;
+package com.cnpm.controllers;
 
+import com.cnpm.utilities.UserSession;
+import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,29 +38,29 @@ public class HomeController implements Initializable {
 
     @FXML
     public void logout(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "log-in.fxml", "Dang nhap");
+        Utilities.changeScene(event, "/com/cnpm/scenes/log-in.fxml", "Dang nhap");
         UserSession.setUsername(null);
         UserSession.setPrivileges(null);
     }
 
     @FXML
     public void quanLyHoKhau(ActionEvent event) {
-        changeDisplay(main_display, "ho-khau.fxml");
+        changeDisplay(main_display, "/com/cnpm/views/ho-khau.fxml");
     }
 
     @FXML
     public void quanLyNhanKhau(ActionEvent event) {
-        changeDisplay(main_display, "nhan-khau.fxml");
+        changeDisplay(main_display, "/com/cnpm/views/nhan-khau.fxml");
     }
 
     @FXML
     public void trangChu(ActionEvent event) {
-        changeDisplay(main_display, "base-display.fxml");
+        changeDisplay(main_display, "/com/cnpm/views/base-display.fxml");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        changeDisplay(main_display, "base-display.fxml");
+        changeDisplay(main_display, "/com/cnpm/views/base-display.fxml");
         String user_string = UserSession.getUsername();
         user.setText(user_string);
     }

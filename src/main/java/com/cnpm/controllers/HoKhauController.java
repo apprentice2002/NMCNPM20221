@@ -1,4 +1,4 @@
-package com.cnpm;
+package com.cnpm.controllers;
 
 import javafx.fxml.Initializable;
 

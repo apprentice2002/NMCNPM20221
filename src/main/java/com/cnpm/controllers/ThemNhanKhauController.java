@@ -1,5 +1,8 @@
-package com.cnpm;
+package com.cnpm.controllers;
 
+import com.cnpm.utilities.DBConnection;
+import com.cnpm.entities.NhanKhau;
+import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,12 +11,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ThemNhanKhauController implements Initializable {
@@ -89,7 +90,7 @@ public class ThemNhanKhauController implements Initializable {
 
     @FXML
     public void huy(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "home.fxml", "Trang chu");
+        Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", "Trang chu");
     }
 
     @FXML
@@ -142,7 +143,7 @@ public class ThemNhanKhauController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            Utilities.changeScene(event, "home.fxml", "Trang chu");
+            Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", "Trang chu");
         }
     }
 

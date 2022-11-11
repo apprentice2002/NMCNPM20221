@@ -1,4 +1,4 @@
-package com.cnpm;
+package com.cnpm.utilities;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

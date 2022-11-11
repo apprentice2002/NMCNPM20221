@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.ThemNhanKhauController">
+<AnchorPane prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.ThemNhanKhauController">
    <Label layoutX="234.0" layoutY="14.0" text="Thêm nhân khẩu">
       <font>
          <Font size="18.0" />
