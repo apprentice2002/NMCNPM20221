@@ -44,6 +44,11 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>nl.jiankai</groupId>
+            <artifactId>resultset-mapper</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -36,7 +36,7 @@ public class LogInController implements Initializable {
             logInMessage.setText("Please enter admin name and password");
         } else {
             Connection connection = DBConnection.getConnection();
-            String verify = "SELECT * FROM administrators WHERE admin_name='" + username.getText() + "' AND password='" + password.getText() + "'";
+            String verify = "SELECT * FROM admin WHERE tai_khoan='" + username.getText() + "' AND mat_khau='" + password.getText() + "'";
 
             try {
                 Statement statement = connection.createStatement();
@@ -54,7 +54,7 @@ public class LogInController implements Initializable {
                     }
                     UserSession.setUsername(user);
                     UserSession.setPrivileges(privileges);
-                    Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", "Quan Ly");
+                    Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", "Quan Ly",720, 600);
                 } else {
                     logInMessage.setText("fail");
                 }

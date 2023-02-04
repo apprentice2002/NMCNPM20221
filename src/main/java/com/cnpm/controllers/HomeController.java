@@ -32,13 +32,14 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button trang_chu;
-
+    @FXML
+    private Button dang_ky_tam_vang;
     @FXML
     private Label user;
 
     @FXML
     public void logout(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/log-in.fxml", "Dang nhap");
+        Utilities.changeScene(event, "/com/cnpm/scenes/log-in.fxml", "Dang nhap",720, 600);
         UserSession.setUsername(null);
         UserSession.setPrivileges(null);
     }
@@ -58,11 +59,18 @@ public class HomeController implements Initializable {
         changeDisplay(main_display, "/com/cnpm/views/base-display.fxml");
     }
 
+    @FXML public void LichSuThayDoi(ActionEvent event) {
+        changeDisplay(main_display,"/com/cnpm/scenes/lich-su-thay-doi.fxml");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         changeDisplay(main_display, "/com/cnpm/views/base-display.fxml");
         String user_string = UserSession.getUsername();
         user.setText(user_string);
+//        dang_ky_tam_vang.setOnAction(event -> {
+//            changeDisplay(main_display, "/com/cnpm/views/xin-cap-giay.fxml");
+//        });
     }
 
     public void changeDisplay(StackPane pane, String fxmlFile) {
@@ -74,4 +82,5 @@ public class HomeController implements Initializable {
             e.printStackTrace();
         }
     }
+
 }
