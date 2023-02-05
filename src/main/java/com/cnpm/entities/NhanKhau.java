@@ -1,37 +1,29 @@
 package com.cnpm.entities;
 
+import com.cnpm.utilities.DBConnection;
+import javafx.scene.control.Button;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 @Getter
 @Setter
 public class NhanKhau {
-    private int ma_nhan_khau;
+    private int id;
     private String ho_ten;
-    private String bi_danh;
-    private Date ngay_sinh;
-    private String noi_sinh;
+    private String ngay_sinh;
     private String gioi_tinh;
-    private String nguyen_quan;
-    private String dan_toc;
-    private String ton_giao;
-    private String quoc_tich;
-    private String nghe_nghiep;
-    private String noi_lam_viec;
-    private String so_dien_thoai;
-    private String CMND;
-    private Date ngay_cap;
-    private Date ngay_chuyen_den;
-    private String noi_thuong_tru_truoc;
-    private String trang_thai;
+    private String dia_chi_hien_nay;
 
-    public NhanKhau(int ma_nhan_khau, String ho_ten, Date ngay_sinh, String noi_sinh, String gioi_tinh) {
-        this.ma_nhan_khau = ma_nhan_khau;
+    public NhanKhau(int id, String ho_ten, String ngay_sinh, String gioi_tinh, String dia_chi_hien_nay) {
+        this.id = id;
         this.ho_ten = ho_ten;
         this.ngay_sinh = ngay_sinh;
-        this.noi_sinh = noi_sinh;
         this.gioi_tinh = gioi_tinh;
+        this.dia_chi_hien_nay = dia_chi_hien_nay;
     }
 }
