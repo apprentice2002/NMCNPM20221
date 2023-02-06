@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CNPM" target="0" />
+      <module name="CNPM" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>

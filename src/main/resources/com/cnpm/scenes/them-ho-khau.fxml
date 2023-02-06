@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.cnpm.controllers.ThemHoKhauController"
+            prefHeight="640.0" prefWidth="780.0">
+
+    <Label layoutX="15.0" layoutY="10.0" text="Thêm hộ khẩu" >
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    <Label layoutX="200.0" layoutY="66.0" text="Thêm thành viên" >
+        <font>
+            <Font size="12.0" />
+        </font>
+    </Label>
+    <Button fx:id="them_thanh_vien" layoutX="343.0" layoutY="55.0" mnemonicParsing="false" onAction="#themthanhvien" text="+" prefHeight="40.0" prefWidth="40.0">
+        <font>
+            <Font size="40.0" />
+        </font>
+    </Button>
+
+    <TableView fx:id="table" layoutX="33.0" layoutY="100.0" prefHeight="470.0" prefWidth="350.0">
+        <columns>
+            <TableColumn fx:id="maNhanKhau" prefWidth="98.0" text="Mã nhân khẩu" />
+            <TableColumn fx:id="hoTen" prefWidth="126.0" text="Họ tên" />
+            <TableColumn fx:id="quanHeVoiChuHo" prefWidth="126.0" text="Quan hệ với chủ hộ" />
+        </columns>
+    </TableView>
+
+    <Label layoutX="445.0" layoutY="106.0" text="Mã hộ khẩu" />
+    <TextField fx:id="ma_ho_khau" layoutX="550.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0"/>
+
+    <Label layoutX="445.0" layoutY="166.0" text="Mã chủ Hộ" />
+    <TextField fx:id="ma_chu_ho" layoutX="550.0" layoutY="160.0" prefHeight="30.0" prefWidth="200.0"/>
+
+    <Label layoutX="445.0" layoutY="231.0" text="Tên chủ Hộ" />
+    <Label layoutX="445.0" layoutY="284.0" text="Ngày sinh chủ Hộ" />
+    <Label layoutX="445.0" layoutY="346.0" text="CTM/CCCD chủ Hộ" />
+
+    <Label layoutX="445.0" layoutY="406.0" text="Mã khu vực" />
+    <TextField fx:id="ma_khu_vuc" layoutX="550.0" layoutY="400.0" prefHeight="30.0" prefWidth="200.0"/>
+
+    <Label layoutX="445.0" layoutY="466.0" text="Địa chỉ" />
+    <TextField fx:id="dia_chi" layoutX="550.0" layoutY="460.0" prefHeight="30.0" prefWidth="200.0"/>
+
+    <Button fx:id="xac_nhan" layoutX="445.0" layoutY="530.0" mnemonicParsing="false" onAction="#xacnhan" text="Xác nhận" prefHeight="100.0" prefWidth="40.0"/>
+    <Button fx:id="huy" layoutX="620.0" layoutY="530.0" mnemonicParsing="false" onAction="#huy" text="Hủy" prefHeight="100.0" prefWidth="40.0"/>
+
+</AnchorPane>
