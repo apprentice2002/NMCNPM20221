@@ -16,6 +16,11 @@ public class HoKhau {
         this.diaChiHoKhau = diaChi;
         this.maChuHo = maChuHo;
     }
+    public HoKhau(String maHoKhau, String diaChiHoKhau, String soThanhVien) {
+        this.maHoKhau = maHoKhau;
+        this.diaChiHoKhau = diaChiHoKhau;
+        this.soThanhVien = soThanhVien;
+    }
 
     public void setSoThanhVien(String soThanhVien) {
         this.soThanhVien = soThanhVien;

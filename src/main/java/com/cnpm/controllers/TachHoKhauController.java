@@ -2,8 +2,8 @@ package com.cnpm.controllers;
 
 import com.cnpm.entities.NhanKhau;
 import com.cnpm.utilities.DBConnection;
+import com.cnpm.utilities.HoKhauTableModel;
 import com.cnpm.utilities.NhanKhauTableModel;
-import com.cnpm.utilities.TableModel;
 import com.cnpm.utilities.Utilities;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -39,14 +39,14 @@ public class TachHoKhauController implements Initializable {
     @FXML
     private Label hoTenChuHoMoi;
     @FXML
-    private TableColumn<TableModel, String> maHoKhauCol;
+    private TableColumn<HoKhauTableModel, String> maHoKhauCol;
     @FXML
-    private TableColumn<TableModel, String> hoTenChuHoCol;
+    private TableColumn<HoKhauTableModel, String> hoTenChuHoCol;
     @FXML
-    private TableColumn<TableModel, String> diaChiCol;
+    private TableColumn<HoKhauTableModel, String> diaChiCol;
     @FXML
-    private TableView<TableModel> hoKhauTable;
-    ObservableList<TableModel> hoKhauView = FXCollections.observableArrayList();
+    private TableView<HoKhauTableModel> hoKhauTable;
+    ObservableList<HoKhauTableModel> hoKhauView = FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<NhanKhauTableModel, String> maNhanKhauOldCol;
@@ -110,14 +110,14 @@ public class TachHoKhauController implements Initializable {
             ResultSet queryResult = statement.executeQuery(hoKhauSql);
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
-                hoKhauView.add(new TableModel(
+                hoKhauView.add(new HoKhauTableModel(
                         queryResult.getString("MaHoKhau"),
                         queryResult.getString("TenChuHo"),
                         queryResult.getString("DiaChiHoKhau")));
             }
             hoKhauTable.setItems(hoKhauView);
             //Lọc theo TextField
-            FilteredList<TableModel> filteredData = new FilteredList<>(hoKhauView, b->true);
+            FilteredList<HoKhauTableModel> filteredData = new FilteredList<>(hoKhauView, b->true);
             maHoKhauTim.textProperty().addListener(((observable, oldValue, newValue)->{
                 filteredData.setPredicate(tableModel->{
                     if(newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -131,7 +131,7 @@ public class TachHoKhauController implements Initializable {
                 });
             } ));
             // Sắp xếp thứ tự hộ khẩu
-            SortedList<TableModel> sortedData = new SortedList<>(filteredData);
+            SortedList<HoKhauTableModel> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(hoKhauTable.comparatorProperty());
             hoKhauTable.setItems(sortedData);
         } catch (Exception e) {
@@ -144,7 +144,7 @@ public class TachHoKhauController implements Initializable {
                 if (event.getButton().equals(MouseButton.PRIMARY)) {
                     nhanKhauOldTable.getItems().clear();
                     nhanKhauNewTable.getItems().clear();
-                    TableModel selectedRow = hoKhauTable.getSelectionModel().getSelectedItem();
+                    HoKhauTableModel selectedRow = hoKhauTable.getSelectionModel().getSelectedItem();
                     if (selectedRow != null) {
                         String maHoKhau = selectedRow.getMaHoKhau();
                         nhanKhauSql = "SELECT nhan_khau.MaNhanKhau, nhan_khau.HoTen, QuanHeVoiChuHo FROM nhan_khau, thanh_vien_cua_ho " +
@@ -256,7 +256,7 @@ public class TachHoKhauController implements Initializable {
 
 
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", "Hộ khẩu",720, 600);
+        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", 720, 600);
     }
 
     public void submit(ActionEvent event) {

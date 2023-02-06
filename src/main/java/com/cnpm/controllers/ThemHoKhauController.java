@@ -262,11 +262,11 @@ public class ThemHoKhauController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", "Hộ Khẩu",720, 600);
+        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", 720, 600);
     }
 
     @FXML
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", "Hộ khẩu",720, 600);
+        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", 720, 600);
     }
 }

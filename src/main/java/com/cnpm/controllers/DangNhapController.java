@@ -29,7 +29,7 @@ public class DangNhapController implements Initializable {
             Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
         } else {
             Connection connection = DBConnection.getConnection();
-            String verify = "SELECT * FROM admin WHERE username='" + username.getText() + "' AND password='" + password.getText() + "'";
+            String verify = "SELECT * FROM users WHERE userName='" + username.getText() + "' AND passwd='" + password.getText() + "'";
 
             try {
                 Statement statement = connection.createStatement();
@@ -47,7 +47,7 @@ public class DangNhapController implements Initializable {
                     }
                     UserSession.setUsername(user);
                     UserSession.setPrivileges(privileges);
-                    Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml");
+                    Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml" , 720 , 640);
                 } else {
                     Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
                 }

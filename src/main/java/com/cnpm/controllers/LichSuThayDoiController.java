@@ -106,7 +106,7 @@ public class LichSuThayDoiController implements Initializable {
     }
     @FXML
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", "Hộ khẩu",720, 600);
+        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", 720, 600);
     }
 
 }
