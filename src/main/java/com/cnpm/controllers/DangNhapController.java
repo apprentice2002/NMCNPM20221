@@ -6,7 +6,6 @@ import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -17,26 +16,20 @@ import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class LogInController implements Initializable {
+public class DangNhapController implements Initializable {
     @FXML
     private TextField username;
-
-    @FXML
-    private Button btn_login;
 
     @FXML
     private PasswordField password;
 
     @FXML
-    private Label logInMessage;
-
-    @FXML
-    public void login(ActionEvent event) {
+    public void dangNhap(ActionEvent event) {
         if (username.getText().isBlank() || password.getText().isBlank()) {
-            logInMessage.setText("Please enter admin name and password");
+            Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
         } else {
             Connection connection = DBConnection.getConnection();
-            String verify = "SELECT * FROM admin WHERE tai_khoan='" + username.getText() + "' AND mat_khau='" + password.getText() + "'";
+            String verify = "SELECT * FROM admin WHERE username='" + username.getText() + "' AND password='" + password.getText() + "'";
 
             try {
                 Statement statement = connection.createStatement();
@@ -46,17 +39,17 @@ public class LogInController implements Initializable {
                     String user = username.getText();
                     Set<String> privileges = new HashSet<>();
                     switch (user) {
-                        case "admin1" -> privileges.add("admin1");
-                        case "admin2" -> privileges.add("admin2");
-                        case "admin3" -> privileges.add("admin3");
+                        case "1" -> privileges.add("admin1");
+                        case "2" -> privileges.add("admin2");
+                        case "3" -> privileges.add("admin3");
                         default -> {
                         }
                     }
                     UserSession.setUsername(user);
                     UserSession.setPrivileges(privileges);
-                    Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", "Quan Ly",720, 600);
+                    Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml");
                 } else {
-                    logInMessage.setText("fail");
+                    Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
