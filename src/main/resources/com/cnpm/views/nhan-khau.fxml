@@ -1,57 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.skin.ColorPalette.ColorSquare?>
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.cnpm.controllers.NhanKhauController" prefHeight="640.0" prefWidth="780.0">
-    <Label layoutX="0.0" layoutY="0.0" text="Quản lý Nhân khẩu" style="-fx-background-color: d9d9d9;" prefHeight="50.0" prefWidth="780.0" >
+<AnchorPane prefHeight="640.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.NhanKhauController">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="780.0" />
+    <Label layoutX="14.0" layoutY="14.0" style="-fx-text-fill: #f5f5f5;" text="Quản lý nhân khẩu">
         <font>
-            <Font size="24.0" />
+          <Font name="System Bold" size="22.0" />
         </font>
     </Label>
-    <Label layoutX="25.0" layoutY="83.0" text="Tìm kiếm hộ khẩu:" >
-        <font>
-            <Font size="12.0" />
-        </font>
-    </Label>
-    <TextField fx:id="thong_tin_tim_kiem" layoutX="30.0" layoutY="112.0" prefHeight="40.0" prefWidth="127.0"/>
 
-<!--    <ChoiceBox fx:id="loc" layoutX="225.0" layoutY="112.0" prefHeight="40.0" prefWidth="80.0" contextMenu="Lọc">-->
-<!--        <items>-->
-<!--            <FXCollections fx:factory="observableArrayList">-->
-<!--                <String fx:value="ID" />-->
-<!--                <String fx:value="Tên" />-->
-<!--            </FXCollections>-->
-<!--        </items>-->
-<!--    </ChoiceBox>-->
-
-    <Button fx:id="them_ho_khau" layoutX="519.0" layoutY="121.0" mnemonicParsing="false" onAction="#themNhanKhau" text="+" prefHeight="40.0" prefWidth="40.0"/>
-    <Button fx:id="dang_ky_tam_vang" layoutX="622.0" layoutY="64.0" mnemonicParsing="false" onAction="#dangKyTamVang" text="Đăng ký tạm vắng" prefHeight="40.0" prefWidth="128.0">
-        <font>
-            <Font size="12.0" />
-        </font>
-    </Button>
-    <Button fx:id="dang_ky_tam_tru" layoutX="622.0" layoutY="121.0" mnemonicParsing="false" onAction="#dangKyTamTru" text="Đăng ký tạm trú" prefHeight="40.0" prefWidth="128.0">
-        <font>
-            <Font size="12.0" />
-        </font>
-    </Button>
-
-
-    <TableView fx:id="table" layoutX="30.0" layoutY="179.0" prefHeight="400.0" prefWidth="720.0">
-        <columns>
-            <TableColumn fx:id="maNhanKhau" prefWidth="173.33" text="Mã Nhân khẩu" />
-            <TableColumn fx:id="hoTen" prefWidth="173.33" text="Họ Tên" />
-            <TableColumn fx:id="gioiTinh" prefWidth="173.33" text="Giới Tính" />
-            <TableColumn fx:id="sua" prefWidth="100.0" text="Sửa" />
-            <TableColumn fx:id="xoa" minWidth="100.0" prefWidth="111.0" text="Xóa" />
-        </columns>
-    </TableView>
-
+   <Button fx:id="them_nhan_khau" layoutX="348.0" layoutY="122.0" mnemonicParsing="false" onAction="#themNhanKhau" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="+">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Button>
+   <Button layoutX="600.0" layoutY="74.0" mnemonicParsing="false" onAction="#dangKyTamTru" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đăng ký tạm trú" fx:id="dang_ky_tam_tru">
+      <font>
+         <Font size="13.0" />
+      </font>
+   </Button>
+   <Button layoutX="600.0" layoutY="134.0" mnemonicParsing="false" onAction="#dangKyTamVang" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đăng ký tạm vắng" fx:id="dang_ky_tam_vang">
+      <font>
+         <Font size="13.0" />
+      </font>
+   </Button>
+   <TableView fx:id="table" layoutX="40.0" layoutY="198.0" prefHeight="400.0" prefWidth="720.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+      <columns>
+         <TableColumn fx:id="maHoKhauCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Mã Nhân Khẩu" />
+         <TableColumn fx:id="hoTenCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
+         <TableColumn fx:id="tuoiCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Tuổi" />
+         <TableColumn fx:id="suaCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Sửa" />
+         <TableColumn fx:id="deleteCol" prefWidth="117.5999755859375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Xóa" />
+      </columns>
+   </TableView>
+   <TextField fx:id="keywordTextField" layoutX="40.0" layoutY="74.0" prefHeight="40.0" prefWidth="127.0" promptText="Tìm kiếm" />
+   <Button layoutX="208.0" layoutY="76.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #00305b;" text="Tìm">
+      <font>
+         <Font size="13.0" />
+      </font>
+   </Button>
+   <Button layoutX="40.0" layoutY="127.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 30; -fx-border-color: #00305b; -fx-border-radius: 30;" text="Tùy chọn">
+      <font>
+         <Font size="13.0" />
+      </font>
+   </Button>
 </AnchorPane>

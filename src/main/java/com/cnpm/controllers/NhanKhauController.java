@@ -39,7 +39,7 @@ public class NhanKhauController implements Initializable {
 
     @FXML
     public void themNhanKhau(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/them-nhan-khau.fxml");
+        Utilities.changeScene(event, "/com/cnpm/scenes/them-nhan-khau.fxml", 780, 640);
     }
 
     @FXML

@@ -42,7 +42,7 @@
    <TextField fx:id="them_nguyen_quan" layoutX="125.63" layoutY="455.97" />
 
    <Label layoutX="16.0" layoutY="524.8" text="Note:" />
-   <TextField fx:id="note" layoutX="74.73" layoutY="520.05" prefHeight="261.02" prefWidth="94.95" />
+   <TextField fx:id="note" layoutX="74.73" layoutY="520.05" prefHeight="94.95" prefWidth="261.02"/>
 
    <Label layoutX="395.79" layoutY="79.75" text="Nghề nghiệp" />
    <TextField fx:id="them_nghe_nghiep" layoutX="566.76" layoutY="75.0" />
@@ -57,10 +57,10 @@
    <TextField fx:id="them_cmnd" layoutX="566.76" layoutY="219.79" />
 
    <Label layoutX="395.79" layoutY="273.2" text="Ngày cấp" />
-   <DatePicker fx:id="them_ngay_cap" layoutX="566.76" layoutY="268.45" />
+   <DatePicker fx:id="them_ngay_cap" layoutX="566.76" layoutY="268.45" prefWidth="149.0"/>
 
    <Label layoutX="395.79" layoutY="320.67" text="Ngày chuyển đến" />
-   <DatePicker fx:id="them_ngay_chuyen_den" layoutX="566.76" layoutY="315.92" />
+   <DatePicker fx:id="them_ngay_chuyen_den" layoutX="566.76" layoutY="315.92" prefWidth="149.0"/>
 
    <Label layoutX="395.79" layoutY="366.96" text="Nơi thường trú trước" />
    <TextField fx:id="them_noi_thuong_tru_truoc" layoutX="566.76" layoutY="362.21" />

@@ -2,7 +2,6 @@ module com.cnpm {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires mysql.connector.j;
     requires lombok;
 
 

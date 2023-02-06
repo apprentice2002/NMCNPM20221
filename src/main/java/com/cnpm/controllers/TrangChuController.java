@@ -20,7 +20,7 @@ public class TrangChuController implements Initializable {
 
     @FXML
     public void dangXuat(ActionEvent event) {
-        Utilities.changeScene(event, "/com/cnpm/scenes/dang-nhap.fxml");
+        Utilities.changeScene(event, "/com/cnpm/scenes/dang-nhap.fxml", 720,640);
         UserSession.setUsername(null);
         UserSession.setPrivileges(null);
     }

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="640.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.DoiChuHoController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="54.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="782.0" />
+      <Label layoutX="17.0" layoutY="17.0" style="-fx-text-fill: #f5f5f5;" text="Thay đổi chủ hộ">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="tach_ho_khau" layoutX="593.0" layoutY="551.0" mnemonicParsing="false" onAction="#tachHoKhau" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xác nhận">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="chuyen_ho_khau" layoutX="429.0" layoutY="551.0" mnemonicParsing="false" onAction="#chuyenHoKhau" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Hủy">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="31.0" layoutY="162.0" prefHeight="18.0" prefWidth="88.0" style="-fx-text-fill: #00305b;" text="Mã hộ khẩu :" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="255.0" prefHeight="18.0" prefWidth="101.0" style="-fx-text-fill: #00305b;" text="Họ tên chủ hộ :" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt" editable="false" layoutX="156.0" layoutY="158.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label layoutX="31.0" layoutY="397.0" prefHeight="18.0" prefWidth="82.0" style="-fx-text-fill: #00305b;" text="Mã khu vực :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="445.0" prefHeight="18.0" prefWidth="74.0" style="-fx-text-fill: #00305b;" text="Địa chỉ :" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="304.0" style="-fx-text-fill: #00305b;" text="Ngày sinh chủ hộ :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="352.0" style="-fx-text-fill: #00305b;" text="Số CMT/CCCD chủ hộ :" />
+      <TextField id="ma_ho_khau" fx:id="maKhuVucTxt" editable="false" layoutX="156.0" layoutY="393.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: #00305b; -fx-background-color: #EBEBE4; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="diaChiTxt" editable="false" layoutX="156.0" layoutY="441.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: #00305b; -fx-background-color: #EBEBE4; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label layoutX="31.0" layoutY="208.0" prefHeight="19.0" prefWidth="122.0" style="-fx-text-fill: #00305b;" text="Mã chủ hộ hiện tại:" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField id="dia_chi" fx:id="maChuHoTxt" editable="false" layoutX="156.0" layoutY="204.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt1" editable="false" layoutX="156.0" layoutY="251.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt11" editable="false" layoutX="156.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt12" editable="false" layoutX="156.0" layoutY="347.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label layoutX="429.0" layoutY="158.0" prefHeight="18.0" prefWidth="88.0" style="-fx-text-fill: #00305b;" text="Mã hộ khẩu :" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="429.0" layoutY="251.0" prefHeight="18.0" prefWidth="101.0" style="-fx-text-fill: #00305b;" text="Họ tên chủ hộ :" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt2" editable="false" layoutX="554.0" layoutY="154.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label layoutX="429.0" layoutY="393.0" prefHeight="18.0" prefWidth="82.0" style="-fx-text-fill: #00305b;" text="Mã khu vực :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="429.0" layoutY="441.0" prefHeight="18.0" prefWidth="74.0" style="-fx-text-fill: #00305b;" text="Địa chỉ :" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="429.0" layoutY="304.0" style="-fx-text-fill: #00305b;" text="Ngày sinh chủ hộ :">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="429.0" layoutY="348.0" style="-fx-text-fill: #00305b;" text="Số CMT/CCCD chủ hộ :" />
+      <TextField id="ma_ho_khau" fx:id="maKhuVucTxt1" editable="false" layoutX="554.0" layoutY="389.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: #00305b; -fx-background-color: #EBEBE4; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="diaChiTxt1" editable="false" layoutX="554.0" layoutY="437.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: #00305b; -fx-background-color: #EBEBE4; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label layoutX="429.0" layoutY="204.0" prefHeight="19.0" prefWidth="107.0" style="-fx-text-fill: #00305b;" text="Mã chủ hộ mới :" textAlignment="JUSTIFY">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField id="dia_chi" fx:id="maChuHoTxt1" editable="false" layoutX="554.0" layoutY="200.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt13" editable="false" layoutX="554.0" layoutY="247.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt111" editable="false" layoutX="554.0" layoutY="296.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="ma_ho_khau" fx:id="maHoKhauTxt121" editable="false" layoutX="554.0" layoutY="343.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Button fx:id="chuyen_ho_khau1" layoutX="651.0" layoutY="79.0" mnemonicParsing="false" onAction="#chuyenHoKhau" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Chọn chủ hộ">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Separator layoutX="388.0" layoutY="53.0" opacity="0.38" orientation="VERTICAL" prefHeight="586.0" prefWidth="2.0" style="-fx-background-color: #00305b;" />
+      <Label layoutX="21.0" layoutY="84.0" style="-fx-text-fill: #00305b;" text="Chủ hộ hiện tại">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="419.0" layoutY="84.0" style="-fx-text-fill: #00305b;" text="Chủ hộ mới">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
