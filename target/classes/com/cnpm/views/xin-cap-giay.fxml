@@ -101,12 +101,12 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0">
                            <children>
-                              <Button fx:id="cancleBtn" mnemonicParsing="false" onAction="#cancle" prefWidth="72.0" text="Hủy" />
+                              <Button fx:id="cancleBtn" mnemonicParsing="false"  prefWidth="72.0" text="Hủy" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0">
                            <children>
-                              <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" prefWidth="72.0" text="Xác nhận" />
+                              <Button fx:id="submitBtn" mnemonicParsing="false"  prefWidth="72.0" text="Xác nhận" />
                            </children>
                         </HBox>
                      </children>

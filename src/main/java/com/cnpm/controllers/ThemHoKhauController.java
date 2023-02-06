@@ -224,7 +224,37 @@ public class ThemHoKhauController implements Initializable {
                     preparedStmtUpdateQuanHeThanhVien.setString(2,nhanKhau.getMaNhanKhau());
                     preparedStmtUpdateQuanHeThanhVien.setString(3,maHoKhau);
                     preparedStmtUpdateQuanHeThanhVien.execute();
+
+                    // Cập nhật lịch sử thay đổi hộ khẩu
+                    String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
+                    String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, MaHoKhau, MaNhanKhau, MaLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
+                    PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
+
+
+                    preparedStmtUpdateLS.setDate(1,ngayTao);
+                    preparedStmtUpdateLS.setString(2,"Thêm hộ khẩu");
+                    preparedStmtUpdateLS.execute();
+
+                    String selectLastId = "SELECT LAST_INSERT_ID()";
+                    int lastId = 0;
+                    try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
+                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                            while (resultSet.next()) {
+                                lastId = resultSet.getInt(1);
+                            }
+                        }
+                    }
+
+                    preparedStmtUpdateLSHK.setString(1,"0");
+                    preparedStmtUpdateLSHK.setString(2, "1");
+                    preparedStmtUpdateLSHK.setString(3, "0");
+                    preparedStmtUpdateLSHK.setString(4, maHoKhau);
+                    preparedStmtUpdateLSHK.setString(5, nhanKhau.getMaNhanKhau());
+                    preparedStmtUpdateLSHK.setInt(6,lastId );
+                    preparedStmtUpdateLSHK.execute();
                 }
+
                 memberTable.getItems().clear();
             } catch (SQLException e) {
                 e.printStackTrace();

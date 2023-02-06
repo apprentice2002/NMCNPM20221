@@ -119,7 +119,7 @@ public class HoKhauController implements Initializable {
 
 
     public void xoaHoKhau(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/them-ho-khau.fxml", "Xóa hộ khẩu",720, 600);
+        Utilities.changeScene(event, "/com/cnpm/scenes/xoa-ho-khau.fxml", "Xóa hộ khẩu",720, 600);
     }
 
     public void chuyenHoKhau(ActionEvent event) throws IOException {

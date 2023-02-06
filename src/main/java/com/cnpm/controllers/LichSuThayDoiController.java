@@ -56,8 +56,7 @@ public class LichSuThayDoiController implements Initializable {
                 "                lich_su_thay_doi_ho_khau.ThemNhanKhau, lich_su_thay_doi_ho_khau.XoaNhanKhau, lich_su_thay_doi.GhiChu FROM " +
                 "                lich_su_thay_doi, lich_su_thay_doi_ho_khau, ho_khau, nhan_khau WHERE" +
                 "                ho_khau.MaHoKhau = nhan_khau.MaHo AND lich_su_thay_doi.MaLSTD = lich_su_thay_doi_ho_khau.MaLSTD AND" +
-                "               nhan_khau.MaNhanKhau = lich_su_thay_doi_ho_khau.MaNhanKhau AND ho_khau.MaHoKhau = lich_su_thay_doi_ho_khau.MaHoKhau" +
-                "               ";
+                "               nhan_khau.MaNhanKhau = lich_su_thay_doi_ho_khau.MaNhanKhau";
 
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
         ngayThayDoiCol.setCellValueFactory(new PropertyValueFactory<>("ngayThayDoi"));

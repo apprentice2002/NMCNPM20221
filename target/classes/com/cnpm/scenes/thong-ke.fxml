@@ -112,6 +112,6 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="cancleBtn" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#cancle" text="Quay Lại" />
+      <Button fx:id="cancleBtn" layoutX="25.0" layoutY="25.0" mnemonicParsing="false"  text="Quay Lại" />
    </children>
 </AnchorPane>
