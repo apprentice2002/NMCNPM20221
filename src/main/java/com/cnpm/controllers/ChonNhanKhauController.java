@@ -6,11 +6,13 @@ import com.cnpm.utilities.themHoKhauNhanKhauTableModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -27,7 +29,7 @@ public class ChonNhanKhauController implements Initializable {
     @FXML
     private TableColumn maNhanKhauCol;
     @FXML
-    private TableColumn ngaySinhCol;
+    private TableColumn hoTenCol;
     @FXML
     private TableColumn quanHeVoiChuHoCol;
     @FXML
@@ -39,14 +41,15 @@ public class ChonNhanKhauController implements Initializable {
 
     private SharedDataModel sharedDataModel = new SharedDataModel();
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         maNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("maNhanKhau"));
-        ngaySinhCol.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
+        hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
 
         try {
-            String nhanKhauSql = "SELECT DISTINCT nhan_khau.MaNhanKhau, NgaySinh FROM nhan_khau";
+            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, hoTen FROM nhan_khau";
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
             ResultSet queryResult = statement.executeQuery(nhanKhauSql);
@@ -54,7 +57,7 @@ public class ChonNhanKhauController implements Initializable {
             while (queryResult.next()) {
                 themHoKhauNhanKhauTableModel nhanKhau = new themHoKhauNhanKhauTableModel();
                 nhanKhau.setMaNhanKhau(queryResult.getString("MaNhanKhau"));
-                nhanKhau.setNgaySinh(queryResult.getDate("NgaySinh"));
+                nhanKhau.setNgaySinh(queryResult.getDate("hoTen"));
                 nhanKhau.setQuanHeVoiChuHo("");
                 nhanKhauTable.getItems().add(nhanKhau);
             }

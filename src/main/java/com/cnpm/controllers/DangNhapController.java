@@ -47,7 +47,7 @@ public class DangNhapController implements Initializable {
                     }
                     UserSession.setUsername(user);
                     UserSession.setPrivileges(privileges);
-                    Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml" , 720 , 640);
+                    Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml");
                 } else {
                     Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
                 }
