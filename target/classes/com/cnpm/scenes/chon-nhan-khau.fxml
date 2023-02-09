@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.ChonNhanKhauController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="6.0" prefHeight="34.0" prefWidth="203.0" text="Chọn Nhân Khẩu">
@@ -21,7 +20,7 @@
       <TableView fx:id="nhanKhauTable" layoutX="135.0" layoutY="60.0" prefHeight="319.0" prefWidth="450.0">
         <columns>
           <TableColumn fx:id="maNhanKhauCol" prefWidth="150.0" text="Mã Nhân Khẩu" />
-          <TableColumn fx:id="ngaySinhCol" prefWidth="150.0" text="Ngày Sinh" />
+          <TableColumn fx:id="hoTenCol" prefWidth="150.0" text="Họ Tên" />
             <TableColumn fx:id="quanHeVoiChuHoCol" prefWidth="150.0" text="Quan hệ với chủ hộ" />
         </columns>
       </TableView>

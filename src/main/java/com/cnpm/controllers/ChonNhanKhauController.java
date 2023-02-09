@@ -1,5 +1,6 @@
 package com.cnpm.controllers;
 
+import com.cnpm.entities.NhanKhau;
 import com.cnpm.utilities.NhanKhauTableModel;
 import com.cnpm.utilities.SharedDataModel;
 import com.cnpm.utilities.themHoKhauNhanKhauTableModel;
@@ -45,20 +46,18 @@ public class ChonNhanKhauController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         maNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("maNhanKhau"));
-        hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
+        hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTenNhanKhau"));
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
 
         try {
-            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, hoTen FROM nhan_khau";
+            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau EXCEPT SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau,thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.IdNhanKhau ";
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
             ResultSet queryResult = statement.executeQuery(nhanKhauSql);
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
-                themHoKhauNhanKhauTableModel nhanKhau = new themHoKhauNhanKhauTableModel();
-                nhanKhau.setMaNhanKhau(queryResult.getString("MaNhanKhau"));
-                nhanKhau.setNgaySinh(queryResult.getDate("hoTen"));
-                nhanKhau.setQuanHeVoiChuHo("");
+                NhanKhauTableModel nhanKhau = new NhanKhauTableModel(queryResult.getString("MaNhanKhau"),
+                        queryResult.getString("hoTen"),"");
                 nhanKhauTable.getItems().add(nhanKhau);
             }
             maNhanKhauCol.setSortType(TableColumn.SortType.ASCENDING);
@@ -70,8 +69,8 @@ public class ChonNhanKhauController implements Initializable {
         }
 
         addNhanKhauBtn.setOnAction(event -> {
-            ObservableList<themHoKhauNhanKhauTableModel> selectedRows = nhanKhauTable.getSelectionModel().getSelectedItems();
-            for (themHoKhauNhanKhauTableModel selectedRow : selectedRows) {
+            ObservableList<NhanKhauTableModel> selectedRows = nhanKhauTable.getSelectionModel().getSelectedItems();
+            for (NhanKhauTableModel selectedRow : selectedRows) {
                 if(sharedDataModel.getSelectedRows().contains(selectedRow)) break;
                 sharedDataModel.addSelectedRow(selectedRow);
             }
@@ -79,7 +78,7 @@ public class ChonNhanKhauController implements Initializable {
         });
 
         deleteNhanKhauBtn.setOnAction(event -> {
-            ObservableList<themHoKhauNhanKhauTableModel> selectedItems = nhanKhauTable.getSelectionModel().getSelectedItems();
+            ObservableList<NhanKhauTableModel> selectedItems = nhanKhauTable.getSelectionModel().getSelectedItems();
             for (int i = 0 ; i < sharedDataModel.getSelectedRows().size(); i++) {
                 if(sharedDataModel.getSelectedRows().get(i).getMaNhanKhau().equals(selectedItems.get(0).getMaNhanKhau()))
                     sharedDataModel.getSelectedRows().remove(i);

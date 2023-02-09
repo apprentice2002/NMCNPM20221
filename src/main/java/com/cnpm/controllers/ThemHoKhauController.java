@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,11 +39,11 @@ public class ThemHoKhauController implements Initializable {
     @FXML
     private TextField diaChiTxt;
     @FXML
-    private Label hoTenChuHoLab;
+    private TextField hoTenChuHoTxt;
     @FXML
-    private Label ngaySinhChuHoLab;
+    private TextField ngaySinhChuHoTxt;
     @FXML
-    private Label cmndChuHoLab;
+    private TextField cccdChuHoTxt;
     @FXML
     private Button pickChuHoBtn;
     @FXML
@@ -52,29 +53,45 @@ public class ThemHoKhauController implements Initializable {
     @FXML
     private Button pickMemberBtn;
     @FXML
-    private Label noticeLab;
+    private Label errorLab;
     @FXML
-    private TableView<themHoKhauNhanKhauTableModel> memberTable;
+    private TableView<NhanKhauTableModel> nhanKhauTable;
     @FXML
-    private  TableColumn<themHoKhauNhanKhauTableModel, String> maNhanKhauCol;
+    private  TableColumn<NhanKhauTableModel, String> maNhanKhauCol;
     @FXML
-    private  TableColumn<themHoKhauNhanKhauTableModel, Date> ngaySinhCol;
+    private  TableColumn<NhanKhauTableModel, Date> hoTenCol;
     @FXML
-    private  TableColumn<themHoKhauNhanKhauTableModel, String> quanHeVoiChuHoCol;
+    private  TableColumn<NhanKhauTableModel, String> quanHeVoiChuHoCol;
 
     private SharedDataModel sharedDataModel = new SharedDataModel();
 
     private ChoiceBox<String> choiceBox;
-
+    public void chonChuHo() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/cnpm/scenes/chon-chu-ho.fxml"));
+            ChonChuHoController controller = fxmlLoader.getController();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.showAndWait();
+            NhanKhauTableModel selectedItem = controller.getSelectedItem();
+            // use the selected item here
+            System.out.println(selectedItem);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         maNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("maNhanKhau"));
-        ngaySinhCol.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
+        hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTenNhanKhau"));
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
 
+        errorLab.setText("");
+
         quanHeVoiChuHoCol.setCellFactory(column -> {
-            return new TableCell<themHoKhauNhanKhauTableModel, String>() {
+            return new TableCell<NhanKhauTableModel, String>() {
                 @Override
                 protected void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
@@ -82,10 +99,10 @@ public class ThemHoKhauController implements Initializable {
                         setGraphic(null);
                     } else {
                         choiceBox = new ChoiceBox<>();
-                        choiceBox.getItems().addAll("Con", "Vợ", "Chồng", "Chủ Hộ");
+                        choiceBox.getItems().addAll("Con trai", "Con gái", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em");
                         choiceBox.getSelectionModel().select(item);
                         choiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                            themHoKhauNhanKhauTableModel nhanKhau = getTableView().getItems().get(getIndex());
+                            NhanKhauTableModel nhanKhau = getTableView().getItems().get(getIndex());
                             nhanKhau.setQuanHeVoiChuHo(newValue);
                         });
                         setGraphic(choiceBox);
@@ -107,11 +124,8 @@ public class ThemHoKhauController implements Initializable {
                 stage.setScene(nhanKhauScene);
                 stage.show();
                 stage.setOnHidden(e -> {
-                    System.out.println(sharedDataModel.getSelectedRows().size());
-                    memberTable.getItems().clear();
-                    memberTable.refresh();
-                    for (themHoKhauNhanKhauTableModel nk : sharedDataModel.getSelectedRows()) {
-                        memberTable.getItems().add(nk);
+                    for (NhanKhauTableModel nk : sharedDataModel.getSelectedRows()) {
+                        nhanKhauTable.getItems().add(nk);
                     }
                 });
             } catch (IOException e) {
@@ -119,43 +133,42 @@ public class ThemHoKhauController implements Initializable {
             }
         });
 
-        maChuHoTxt.textProperty().addListener((observable, oldValue, newValue) -> {
+
+        cccdChuHoTxt.textProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.isEmpty()|| newValue.isBlank()) {
-                hoTenChuHoLab.setText("");
-                ngaySinhChuHoLab.setText("");
-                cmndChuHoLab.setText("");
+                cccdChuHoTxt.setText("");
             } else {
                 //Tìm kiếm họ tên của mã chủ hộ mới
-                String findHoTenChuHoSql = "SELECT HoTen, NgaySinh, SoCCCD FROM nhan_khau, can_cuoc_cong_dan WHERE nhan_khau.MaNhanKhau = ? AND nhan_khau.MaNhanKhau = can_cuoc_cong_dan.MaNhanKhau;";
+                String findHoTenChuHoSql = "SELECT DISTINCT nhan_khau.ID, hoTen as HoTen, namSinh as NgaySinh, soCMT as SoCCCD FROM nhan_khau, chung_minh_thu WHERE chung_minh_thu.soCMT = ? AND nhan_khau.ID = chung_minh_thu.idNhanKhau;";
                 try {
                     PreparedStatement preparedStmtFindName = connection.prepareStatement(findHoTenChuHoSql);
-                    preparedStmtFindName.setString(1,maChuHoTxt.getText());
+                    preparedStmtFindName.setString(1,cccdChuHoTxt.getText());
                     ResultSet rs = preparedStmtFindName.executeQuery();
                     if(rs.next()) {
                         String hoTenChuHo = rs.getString("HoTen");
                         if(hoTenChuHo.equals("")) {
-                            hoTenChuHoLab.setText("");
+                            maChuHoTxt.setText("");
                         } else {
-                            hoTenChuHoLab.setText(hoTenChuHo);
+                            hoTenChuHoTxt.setText(hoTenChuHo);
                         }
                         String ngaySnhChuHo = rs.getString("NgaySinh");
                         if(hoTenChuHo.equals("")) {
-                            ngaySinhChuHoLab.setText("");
+                            ngaySinhChuHoTxt.setText("");
                         } else {
-                            ngaySinhChuHoLab.setText(ngaySnhChuHo);
+                            ngaySinhChuHoTxt.setText(ngaySnhChuHo);
                         }
-                        String soCCCD = rs.getString("SoCCCD");
-                        if(soCCCD.equals("")) {
-                            cmndChuHoLab.setText("");
+                        String maChuHo = rs.getString("ID");
+                        if(maChuHo.equals("")) {
+                            maChuHoTxt.setText("");
                         } else {
-                            cmndChuHoLab.setText(soCCCD);
+                            maChuHoTxt.setText(maChuHo);
                         }
-                        noticeLab.setText("");
+                        errorLab.setText("");
                     } else {
-                        hoTenChuHoLab.setText("");
-                        ngaySinhChuHoLab.setText("");
-                        cmndChuHoLab.setText("");
-                        noticeLab.setText("Không tìm thấy mã nhân khẩu tương ứng, vui lòng thử lại");
+                        hoTenChuHoTxt.setText("");
+                        ngaySinhChuHoTxt.setText("");
+                        maChuHoTxt.setText("");
+                        errorLab.setText("Không tìm thấy mã nhân khẩu tương ứng, vui lòng thử lại");
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -163,31 +176,27 @@ public class ThemHoKhauController implements Initializable {
             }
         });
     }
-    @FXML
-    public void chonChuHo(ActionEvent event) {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/chon-nhan-khau.fxml");
-
-    }
 
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
         String maHoKhau = maHoKhauTxt.getText();
-        String maChuHo = maChuHoTxt.getText();
+        String idChuHo = maChuHoTxt.getText();
         String maKhuVuc = maKhuVucTxt.getText();
         String diaChi = diaChiTxt.getText();
-        String hoTenChuHo = hoTenChuHoLab.getText();
-        int soThanhVien = memberTable.getItems().size();
+        String hoTenChuHo = hoTenChuHoTxt.getText();
+        int soThanhVien = nhanKhauTable.getItems().size();
         Date ngayTao = new Date(System.currentTimeMillis());
         if (maHoKhau.equals("") || diaChi.equals("") || maKhuVuc.equals("") ||
-                maChuHo.equals("")) {
-            noticeLab.setText("Vui lòng điền đủ thông tin cần thiết");
+                idChuHo.equals("")) {
+            errorLab.setText("Vui lòng điền đủ thông tin cần thiết");
         } else {
-            String insertQuery = "INSERT INTO ho_khau (MaHoKhau, NgayTao, MaChuHo, DiaChiHoKhau, SoThanhVien) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ho_khau (ngayLap, maKhuVuc, idChuHo, diaChi, maHoKhau)"  +
+                    "VALUES ( ?, ?, ?, ?,?)";
             try {
                 // Kiểm tra các mối quan hệ trong hộ khẩu mới.
                 int chuHoCount = 0;
                 boolean chuHoTrue = false;
-                for(themHoKhauNhanKhauTableModel nhanKhauMoi : memberTable.getItems()) {
+                for(NhanKhauTableModel nhanKhauMoi : nhanKhauTable.getItems()) {
                     if (nhanKhauMoi.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
                         if(nhanKhauMoi.getMaNhanKhau().equals(maChuHoTxt.getText())) {
                             chuHoTrue = true;
@@ -203,24 +212,16 @@ public class ThemHoKhauController implements Initializable {
                 }
                 connection = DBConnection.getConnection();
                 PreparedStatement prepareStmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-                prepareStmt.setString(1,maHoKhau);
-                prepareStmt.setDate(2, ngayTao);
-                prepareStmt.setString(3, maChuHo);
+                prepareStmt.setDate(1,ngayTao);
+                prepareStmt.setString(2, maKhuVuc);
+                prepareStmt.setString(3, idChuHo);
                 prepareStmt.setString(4, diaChi);
-                prepareStmt.setInt(5, soThanhVien);
+                prepareStmt.setString(5, maHoKhau);
                 prepareStmt.execute();
-                // Cập nhật thông tin nhân khẩu
-                String updateNhaKhauSql = "UPDATE nhan_khau SET MaHo = ? WHERE MaNhanKhau = ?";
-                PreparedStatement preparedStmtUpdate = connection.prepareStatement(updateNhaKhauSql);
-                for (themHoKhauNhanKhauTableModel nhanKhau :memberTable.getItems()) {
-                    preparedStmtUpdate.setString(1, maHoKhau);
-                    preparedStmtUpdate.setString(2, nhanKhau.getMaNhanKhau());
-                    preparedStmtUpdate.execute();
-                }
                 // Cập nhật quan hệ các thành viên chủ hộ mới
-                String updateQuanHeSql = "INSERT INTO thanh_vien_cua_ho (QuanHeVoiChuHo, MaNhanKhau, MaHoKhau) VALUES (?,?,?)";
+                String updateQuanHeSql = "INSERT INTO thanh_vien_cua_ho (quanHeVoiChuHo, IdNhanKhau, IdHoKhau) VALUES (?,?,(SELECT ID from ho_khau WHERE maHoKhau = ?))";
                 PreparedStatement preparedStmtUpdateQuanHeThanhVien = connection.prepareStatement(updateQuanHeSql);
-                for(themHoKhauNhanKhauTableModel nhanKhau : memberTable.getItems()) {
+                for(NhanKhauTableModel nhanKhau : nhanKhauTable.getItems()) {
                     if(nhanKhau.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
                         preparedStmtUpdateQuanHeThanhVien.setString(1,new String(""));
                     } else {
@@ -232,7 +233,7 @@ public class ThemHoKhauController implements Initializable {
 
                     // Cập nhật lịch sử thay đổi hộ khẩu
                     String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
-                    String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, MaHoKhau, MaNhanKhau, MaLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
+                    String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?,(SELECT ID from ho_khau WHERE maHoKhau = ?), ?, ?)";
                     PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
                     PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
 
@@ -259,19 +260,19 @@ public class ThemHoKhauController implements Initializable {
                     preparedStmtUpdateLSHK.setInt(6,lastId );
                     preparedStmtUpdateLSHK.execute();
                 }
-
-                memberTable.getItems().clear();
+                sharedDataModel=null;
+                nhanKhauTable.getItems().clear();
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml");
     }
 
     @FXML
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml");
+        Stage stage = (Stage) cancleBtn.getScene().getWindow();
+        stage.close();
     }
 }
