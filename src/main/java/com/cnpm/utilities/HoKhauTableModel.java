@@ -27,6 +27,7 @@ public class HoKhauTableModel extends HoKhau {
         this.hoTenChuHo = tenChuHo;
     }
 
+
     public String getHoTenChuHo() {
         return hoTenChuHo;
     }

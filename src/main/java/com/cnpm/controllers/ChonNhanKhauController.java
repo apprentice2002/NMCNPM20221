@@ -3,7 +3,6 @@ package com.cnpm.controllers;
 import com.cnpm.entities.NhanKhau;
 import com.cnpm.utilities.NhanKhauTableModel;
 import com.cnpm.utilities.SharedDataModel;
-import com.cnpm.utilities.themHoKhauNhanKhauTableModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

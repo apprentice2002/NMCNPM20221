@@ -247,7 +247,7 @@ public class TachHoKhauController implements Initializable {
                         setGraphic(null);
                     } else {
                         choiceBox = new ChoiceBox<>();
-                        choiceBox.getItems().addAll("Con trai", "Con gái", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em");
+                        choiceBox.getItems().addAll("Con", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em");
                         choiceBox.getSelectionModel().select(item);
                         choiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                             NhanKhauTableModel nhanKhau = getTableView().getItems().get(getIndex());

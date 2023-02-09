@@ -10,37 +10,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.ChuyenHoKhauController">
+<AnchorPane prefHeight="640.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.ChuyenHoKhauController">
    <children>
-      <Separator layoutY="50.0" prefHeight="2.0" prefWidth="710.0" />
+      <Separator layoutY="82.0" prefHeight="7.0" prefWidth="819.0" />
       <Label layoutX="14.0" layoutY="14.0" text="Chuyển hộ khẩu">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="15.0" layoutY="62.0" text="Nhập mã Hộ khẩu : " />
-      <TextField fx:id="nhapMaHoKhauTxt" layoutX="125.0" layoutY="58.0" prefHeight="26.0" prefWidth="160.0" />
-      <TableView fx:id="hoKhauTable" layoutX="15.0" layoutY="100.0" prefHeight="480.0" prefWidth="270.0">
+      <Label layoutX="15.0" layoutY="97.0" text="Chọn Hộ khẩu cần chuyển đi: " />
+      <TableView fx:id="hoKhauTable" layoutX="15.0" layoutY="127.0" prefHeight="486.0" prefWidth="336.0">
         <columns>
-          <TableColumn fx:id="maChuHoCol" prefWidth="90.0" text="Mã chủ hộ" />
-          <TableColumn fx:id="hoTenChuHoCol" prefWidth="90.0" text="Họ tên chủ hộ" />
-            <TableColumn fx:id="diaChiCol" prefWidth="90.0" text="Địa chỉ" />
+          <TableColumn fx:id="maHoKhauCol" prefWidth="90.0" text="Mã hộ khẩu" />
+          <TableColumn fx:id="hoTenChuHoCol" prefWidth="96.79999542236328" text="Họ tên chủ hộ" />
+            <TableColumn fx:id="diaChiCol" prefWidth="146.4000244140625" text="Địa chỉ" />
         </columns>
       </TableView>
-      <Separator layoutX="297.0" layoutY="49.0" orientation="VERTICAL" prefHeight="551.0" prefWidth="1.0" />
-      <Label layoutX="319.0" layoutY="65.0" text="Mã hộ khẩu :" />
-      <Label layoutX="319.0" layoutY="105.0" text="Tên chủ hộ :" />
-      <Label layoutX="319.0" layoutY="145.0" text="Mã khu vực :" />
-      <Label layoutX="319.0" layoutY="185.0" text="Địa chỉ hiện tại :" />
-      <Label layoutX="319.0" layoutY="225.0" text="Địa chỉ chuyển đến : " />
-      <Label layoutX="319.0" layoutY="265.0" text="Lý do chuyển đi :" />
-      <TextField fx:id="tenChuHoTxt" editable="false" layoutX="450.0" layoutY="105.0" prefHeight="26.0" prefWidth="240.0" />
-      <TextField fx:id="maKhuVucTxt" editable="false" layoutX="450.0" layoutY="145.0" prefHeight="26.0" prefWidth="240.0" />
-      <TextField fx:id="diaChiHienTaiTxt" editable="false" layoutX="450.0" layoutY="185.0" prefHeight="26.0" prefWidth="240.0" />
-      <TextField fx:id="maHoKhauTxt" editable="false" layoutX="450.0" layoutY="65.0" prefHeight="26.0" prefWidth="240.0" />
-      <Button fx:id="cancleBtn" layoutX="548.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancle" text="Hủy" />
-      <Button fx:id="submitBtn" layoutX="625.0" layoutY="540.0" mnemonicParsing="false" onAction="#submit" text="Xác nhận" />
-      <TextArea fx:id="lyDoChuyenDiTxt" layoutX="450.0" layoutY="265.0" prefHeight="225.0" prefWidth="240.0" />
-      <TextField fx:id="diaChiChuyenDenTxt" layoutX="450.0" layoutY="225.0" prefHeight="26.0" prefWidth="240.0" />
+      <Separator layoutX="372.0" layoutY="88.0" orientation="VERTICAL" prefHeight="551.0" prefWidth="0.0" />
+      <Label layoutX="413.0" layoutY="106.0" text="Mã hộ khẩu :" />
+      <Label layoutX="413.0" layoutY="146.0" text="Tên chủ hộ :" />
+      <Label layoutX="413.0" layoutY="187.0" text="Địa chỉ hiện tại :" />
+      <Label layoutX="413.0" layoutY="230.0" text="Địa chỉ chuyển đến : " />
+      <Label layoutX="410.0" layoutY="269.0" text="Lý do chuyển đi :" />
+      <TextField fx:id="tenChuHoTxt" editable="false" layoutX="544.0" layoutY="141.0" prefHeight="26.0" prefWidth="240.0" />
+      <TextField fx:id="diaChiHienTaiTxt" editable="false" layoutX="544.0" layoutY="183.0" prefHeight="26.0" prefWidth="240.0" />
+      <TextField fx:id="maHoKhauTxt" editable="false" layoutX="544.0" layoutY="101.0" prefHeight="26.0" prefWidth="240.0" />
+      <Button fx:id="cancleBtn" layoutX="544.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancle" text="Hủy" />
+      <Button fx:id="submitBtn" layoutX="719.0" layoutY="576.0" mnemonicParsing="false" onAction="#submit" text="Xác nhận" />
+      <TextArea fx:id="lyDoChuyenDiTxt" layoutX="544.0" layoutY="263.0" prefHeight="283.0" prefWidth="240.0" />
+      <TextField fx:id="diaChiChuyenDenTxt" layoutX="544.0" layoutY="223.0" prefHeight="26.0" prefWidth="240.0" />
    </children>
 </AnchorPane>
