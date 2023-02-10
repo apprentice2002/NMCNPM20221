@@ -1,6 +1,7 @@
 package com.cnpm.controllers;
 
 import com.cnpm.entities.HoKhau;
+import com.cnpm.utilities.HoKhauTableModel;
 import com.cnpm.utilities.Utilities;
 import com.cnpm.utilities.thayDoiNhanKhauTableModel;
 import javafx.collections.transformation.FilteredList;
@@ -13,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,15 +54,15 @@ public class LichSuThayDoiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String sqlQuery = "SELECT ho_khau.MaHoKhau, nhan_khau.HoTen, lich_su_thay_doi.NgayThayDoi," +
+        String sqlQuery = "SELECT ho_khau.ID, nhan_khau.hoTen, lich_su_thay_doi.NgayThayDoi," +
                 "                lich_su_thay_doi_ho_khau.ThemNhanKhau, lich_su_thay_doi_ho_khau.XoaNhanKhau, lich_su_thay_doi.GhiChu FROM " +
-                "                lich_su_thay_doi, lich_su_thay_doi_ho_khau, ho_khau, nhan_khau WHERE" +
-                "                ho_khau.MaHoKhau = nhan_khau.MaHo AND lich_su_thay_doi.MaLSTD = lich_su_thay_doi_ho_khau.MaLSTD AND" +
-                "               nhan_khau.MaNhanKhau = lich_su_thay_doi_ho_khau.MaNhanKhau";
+                "                lich_su_thay_doi, thanh_vien_cua_ho, lich_su_thay_doi_ho_khau, ho_khau, nhan_khau WHERE" +
+                "                ho_khau.ID = thanh_vien_cua_ho.idHoKhau and nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND lich_su_thay_doi.ID = lich_su_thay_doi_ho_khau.IdLSTD AND" +
+                "               nhan_khau.ID = lich_su_thay_doi_ho_khau.IdNhanKhau";
 
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
         ngayThayDoiCol.setCellValueFactory(new PropertyValueFactory<>("ngayThayDoi"));
-        tenChuHoCol.setCellValueFactory(new PropertyValueFactory<>("tenChuHo"));
+        tenChuHoCol.setCellValueFactory(new PropertyValueFactory<>("hoTenChuHo"));
         themNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("themNhanKhau"));
         xoaNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("xoaNhanKhau"));
         ghiChuCol.setCellValueFactory(new PropertyValueFactory<>("ghiChu"));
@@ -71,32 +73,32 @@ public class LichSuThayDoiController implements Initializable {
             ResultSet queryResult = statement.executeQuery(sqlQuery);
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
-                thayDoiTable.getItems().add(new thayDoiNhanKhauTableModel(
-                        queryResult.getString("MaHoKhau"),
-                        queryResult.getString("HoTen"),
+                thayDoiTable.getItems().add(new HoKhauTableModel(
+                        queryResult.getString("ID"),
+                        queryResult.getString("hoTen"),
                         queryResult.getDate("NgayThayDoi"),
-                        queryResult.getInt("ThemNhanKhau"),
-                        queryResult.getInt("XoaNhanKhau"),
+                        queryResult.getString("ThemNhanKhau"),
+                        queryResult.getString("XoaNhanKhau"),
                         queryResult.getString("GhiChu")));
             }
             thayDoiTable.setItems(thayDoiTable.getItems());
-            FilteredList<thayDoiNhanKhauTableModel> filteredData = new FilteredList<>(thayDoiTable.getItems(), b->true);
+            FilteredList<HoKhauTableModel> filteredData = new FilteredList<>(thayDoiTable.getItems(), b->true);
             findTxt.textProperty().addListener(((observable, oldValue, newValue)->{
-                filteredData.setPredicate(thayDoiNhanKhauTableModel->{
+                filteredData.setPredicate(HoKhauTableModel->{
                     if(newValue.isEmpty() || newValue.isBlank() || newValue == null) {
                         return true;
                     }
                     String searchKeyword = newValue.toLowerCase();
-                    if(thayDoiNhanKhauTableModel.getMaHoKhau().toLowerCase().indexOf(searchKeyword) > -1) {
+                    if(HoKhauTableModel.getMaHoKhau().toLowerCase().indexOf(searchKeyword) > -1) {
                         return true;
-                    } else if(thayDoiNhanKhauTableModel.getTenChuHo().toLowerCase().indexOf(searchKeyword) > -1) {
+                    } else if(HoKhauTableModel.getHoTenChuHo().toLowerCase().indexOf(searchKeyword) > -1) {
                         return true;
                     } else
                         return false;
                 });
             } ));
             // Sắp xếp thứ tự
-            SortedList<thayDoiNhanKhauTableModel> sortedData = new SortedList<>(filteredData);
+            SortedList<HoKhauTableModel> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(thayDoiTable.comparatorProperty());
             thayDoiTable.setItems(sortedData);
 
@@ -106,7 +108,8 @@ public class LichSuThayDoiController implements Initializable {
     }
     @FXML
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml");
+        Stage stage = (Stage) cancleBtn.getScene().getWindow();
+        stage.close();
     }
 
 }

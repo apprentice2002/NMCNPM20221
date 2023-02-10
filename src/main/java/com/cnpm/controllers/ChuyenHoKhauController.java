@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,7 +55,8 @@ public class ChuyenHoKhauController implements Initializable {
         hoTenChuHoCol.setCellValueFactory(new PropertyValueFactory<>("hoTenChuHo"));
         diaChiCol.setCellValueFactory(new PropertyValueFactory<>("diaChiHoKhau"));
 
-        String query = "SELECT ho_khau.maHoKhau, nhan_khau.hoTen, ho_khau.diaChi FROM ho_khau, nhan_khau, thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND thanh_vien_cua_ho.idHoKhau = ho_khau.ID and ho_khau.idChuHo = nhan_khau.ID;";
+        String query = "SELECT ho_khau.maHoKhau, nhan_khau.hoTen, ho_khau.diaChi FROM ho_khau, nhan_khau, thanh_vien_cua_ho " +
+                "WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND thanh_vien_cua_ho.idHoKhau = ho_khau.ID and ho_khau.idChuHo = nhan_khau.ID;";
         try {
             Statement preparedStmtFindName = connection.createStatement();
             ResultSet rs = preparedStmtFindName.executeQuery(query);
@@ -106,13 +108,13 @@ public class ChuyenHoKhauController implements Initializable {
             preparedStmtUpdateHoKhau.setString(5, maHoKhau);
             preparedStmtUpdateHoKhau.execute();
 
-            String updateNhanKhauSql = "UPDATE nhan_khau SET diaChi = ?, ngayChuyenDi = ?, lyDoChuyenDi = ?, nguoiThucHien = ?  WHERE ID = " +
-                    "(SELECT ID from nhan_khau, ho_khau,thanh_vien_cua_ho where nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau and thanh_vien_cua_ho.idHoKhau = ho_khau.ID and ho_khau.maHoKhau = ?)";
+            String updateNhanKhauSql = "UPDATE nhan_khau SET diaChiMoi = ?, ngayChuyenDi = ?, lyDoChuyenDi = ? WHERE ID = " +
+                    "(SELECT nhan_khau.ID from nhan_khau, ho_khau,thanh_vien_cua_ho where nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau and thanh_vien_cua_ho.idHoKhau = ho_khau.ID and ho_khau.maHoKhau = ?)";
             PreparedStatement preparedStatementUpdateNhanKhau = connection.prepareStatement(updateNhanKhauSql);
             preparedStatementUpdateNhanKhau.setString(1, diaChiChuyenDen);
             preparedStatementUpdateNhanKhau.setDate(2, ngayChuyenDi);
             preparedStatementUpdateNhanKhau.setString(3, lyDoChuyen);
-            preparedStatementUpdateNhanKhau.setString(4, nguoiThucHien);
+            preparedStatementUpdateNhanKhau.setString(4, maHoKhau);
             preparedStatementUpdateNhanKhau.execute();
 
         } catch (SQLException e) {
@@ -121,6 +123,7 @@ public class ChuyenHoKhauController implements Initializable {
     }
     @FXML
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml");
+        Stage stage = (Stage) cancleBtn.getScene().getWindow();
+        stage.close();
     }
 }

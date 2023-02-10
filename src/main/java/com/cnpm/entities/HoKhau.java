@@ -27,6 +27,10 @@ public class HoKhau {
         this.diaChiHoKhau = diaChiHoKhau;
     }
 
+    public HoKhau(String maHoKhau) {
+        this.maHoKhau = maHoKhau;
+    }
+
     public void setSoThanhVien(String soThanhVien) {
         this.soThanhVien = soThanhVien;
     }

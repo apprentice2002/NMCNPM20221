@@ -88,9 +88,24 @@ public class DoiChuHoController implements Initializable {
 
                 restartScene(nhanKhauTable.getScene());
                 restartScene(hoKhauTable.getScene());
-
-                Stage stage = (Stage) cancleBtn.getScene().getWindow();
-                stage.close();
+                // Refresh the table
+                String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau FROM nhan_khau, ho_khau WHERE nhan_khau.ID = IdChuHo";
+                Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                ObservableList<HoKhauTableModel> data = FXCollections.observableArrayList();
+                ResultSet queryResult = statement.executeQuery(hoKhauSql);
+                while (queryResult.next()) {
+                    data.add(new HoKhauTableModel(
+                            queryResult.getString("MaHoKhau"),
+                            queryResult.getString("TenChuHo"),
+                            queryResult.getString("DiaChiHoKhau")));
+                }
+                hoKhauTable.setItems(data);
+                hoTenMoiTxt.setText("");
+                hoTenOldTxt.setText("");
+                maChuHoOldTxt.setText("");
+                maChuHoNewTxt.setText("");
+                maHoKhauTxt.setText("");
+                errorLab.setText("");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -111,7 +126,7 @@ public class DoiChuHoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        quanHeVoiChuHoChoiceBox.getItems().addAll("Con", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em");
+        quanHeVoiChuHoChoiceBox.getItems().addAll("Con","Bố","Mẹ", "Vợ", "Chồng", "Anh","Chị","Em", "Chú", "Bác");
         quanHeVoiChuHoChoiceBox.setValue("");
         errorLab.setText("");
 

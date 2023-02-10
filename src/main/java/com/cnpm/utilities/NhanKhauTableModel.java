@@ -5,6 +5,7 @@ public class NhanKhauTableModel {
     private String hoTenNhanKhau;
     private String quanHeVoiChuHo;
 
+
     public String getHoTenNhanKhau() {
         return hoTenNhanKhau;
     }

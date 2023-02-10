@@ -247,7 +247,7 @@ public class TachHoKhauController implements Initializable {
                         setGraphic(null);
                     } else {
                         choiceBox = new ChoiceBox<>();
-                        choiceBox.getItems().addAll("Con", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em");
+                        choiceBox.getItems().addAll("Con", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em","Bố","Mẹ","Chú","Bác");
                         choiceBox.getSelectionModel().select(item);
                         choiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                             NhanKhauTableModel nhanKhau = getTableView().getItems().get(getIndex());
@@ -451,6 +451,9 @@ public class TachHoKhauController implements Initializable {
 
                             nhanKhauOldTable.getItems().clear();
                             nhanKhauNewTable.getItems().clear();
+
+                            Utilities.popNewWindow(event, "/com/cnpm/scenes/xoa-thanh-cong.fxml");
+                            restartScene(hoKhauTable.getScene());
                         } else {
                             throw new SQLException("Creating nhanKhau failed, no ID obtained.");
                         }
@@ -460,8 +463,6 @@ public class TachHoKhauController implements Initializable {
                 e.printStackTrace();
             }
             confirmationStage.close();
-            Utilities.popNewWindow(event, "/com/cnpm/scenes/xoa-thanh-cong.fxml");
-            restartScene(hoKhauTable.getScene());
         });
     }
 

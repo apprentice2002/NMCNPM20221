@@ -82,7 +82,7 @@
             <TableColumn fx:id="diaChiCol" prefWidth="94.39999999999998" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Địa chỉ" />
          </columns>
       </TableView>
-      <TableView  fx:id="nhanKhauTable" layoutX="327.0" layoutY="316.0" prefHeight="248.0" prefWidth="420.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+      <TableView fx:id="nhanKhauTable" layoutX="327.0" layoutY="316.0" prefHeight="248.0" prefWidth="420.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
          <columns>
             <TableColumn fx:id="maNhanKhauCol" prefWidth="90.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
             <TableColumn fx:id="hoTenNhanKhauCol" prefWidth="165.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
@@ -99,7 +99,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="quanHeVoiChuHoChoiceBox" layoutX="330.0" layoutY="250.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <ChoiceBox fx:id="quanHeVoiChuHoChoiceBox" layoutX="330.0" layoutY="250.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
       <Label layoutX="330.0" layoutY="230.0" prefHeight="19.0" prefWidth="155.0" style="-fx-text-fill: #00305b;" text="Quan hệ với chủ hộ cũ:" textAlignment="JUSTIFY">
          <font>
             <Font size="13.0" />
