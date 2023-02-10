@@ -65,15 +65,6 @@ public class HoKhauController implements Initializable {
     private void updateUI(List<HoKhauTableModel> filteredData) {
         table.setItems(FXCollections.observableArrayList(filteredData));
     }
-    private List<HoKhauTableModel> performFiltering(String option, String searchText) {
-        List<HoKhauTableModel> filteredData = new ArrayList<>();
-        for (HoKhauTableModel data : table.getItems()) {
-            if (data.getHoTenChuHo().equals(option) && data.getHoTenChuHo().contains(searchText)) {
-                filteredData.add(data);
-            }
-        }
-        return filteredData;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -88,7 +79,8 @@ public class HoKhauController implements Initializable {
         soThanhVienCol.setCellValueFactory(new PropertyValueFactory<>("soThanhVien"));
 
         optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm theo ID", "Tìm theo số thành viên");
-        optionChoiceBox.setValue("Lựa chọn tìm kiếm");
+        optionChoiceBox.getSelectionModel().selectFirst();
+
 
         // Thêm action cho choicebox
         optionChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {

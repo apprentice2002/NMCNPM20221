@@ -1,18 +1,12 @@
 package com.cnpm.controllers;
 
-import com.cnpm.entities.HoKhau;
 import com.cnpm.utilities.HoKhauTableModel;
-import com.cnpm.utilities.Utilities;
-import com.cnpm.utilities.thayDoiNhanKhauTableModel;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -51,6 +45,8 @@ public class LichSuThayDoiController implements Initializable {
     private TextField ghiChuTxt;
     @FXML
     private Button cancleBtn;
+    @FXML
+    private ChoiceBox<String> optionChoiceBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,6 +63,34 @@ public class LichSuThayDoiController implements Initializable {
         xoaNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("xoaNhanKhau"));
         ghiChuCol.setCellValueFactory(new PropertyValueFactory<>("ghiChu"));
 
+        optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm theo ID");
+        optionChoiceBox.getSelectionModel().selectFirst();
+
+        // Thêm action cho choicebox
+        optionChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            //Lọc theo TextField
+            FilteredList<HoKhauTableModel> filteredData = new FilteredList<>(thayDoiTable.getItems(), b->true);
+            findTxt.textProperty().addListener(((observable1, oldValue1, newValue1)->{
+                filteredData.setPredicate(hoKhau->{
+                    if(newValue1.isEmpty() || newValue1.isBlank() || newValue1 == null) {
+                        return true;
+                    }
+                    String searchKeyword = newValue1.toLowerCase();
+                    if(hoKhau.getMaHoKhau().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo ID" ) {
+                        return true;
+                    } else if(hoKhau.getHoTenChuHo().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo họ tên") {
+                        return true;
+                    } else
+                        return false;
+                });
+            } ));
+            // Sắp xếp thứ tự
+            SortedList<HoKhauTableModel> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(thayDoiTable.comparatorProperty());
+            thayDoiTable.setItems(sortedData);
+        });
+
+
         try {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
@@ -82,6 +106,7 @@ public class LichSuThayDoiController implements Initializable {
                         queryResult.getString("GhiChu")));
             }
             thayDoiTable.setItems(thayDoiTable.getItems());
+
             FilteredList<HoKhauTableModel> filteredData = new FilteredList<>(thayDoiTable.getItems(), b->true);
             findTxt.textProperty().addListener(((observable, oldValue, newValue)->{
                 filteredData.setPredicate(HoKhauTableModel->{

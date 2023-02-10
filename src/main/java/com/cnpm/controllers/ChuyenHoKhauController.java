@@ -48,6 +48,10 @@ public class ChuyenHoKhauController implements Initializable {
     private TableColumn hoTenChuHoCol;
     @FXML
     private TableColumn diaChiCol;
+    @FXML
+    private TextField maHoKhauTim;
+    @FXML
+    private ChoiceBox<String> optionChoiceBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,6 +75,33 @@ public class ChuyenHoKhauController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm theo ID");
+        optionChoiceBox.getSelectionModel().selectFirst();
+
+        // Thêm action cho choicebox
+        optionChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            //Lọc theo TextField
+            FilteredList<HoKhauTableModel> filteredData = new FilteredList<>(hoKhauTable.getItems(), b->true);
+            maHoKhauTim.textProperty().addListener(((observable1, oldValue1, newValue1)->{
+                filteredData.setPredicate(hoKhau->{
+                    if(newValue1.isEmpty() || newValue1.isBlank() || newValue1 == null) {
+                        return true;
+                    }
+                    String searchKeyword = newValue1.toLowerCase();
+                    if(hoKhau.getMaHoKhau().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo ID" ) {
+                        return true;
+                    } else if(hoKhau.getHoTenChuHo().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo họ tên") {
+                        return true;
+                    } else
+                        return false;
+                });
+            } ));
+            // Sắp xếp thứ tự
+            SortedList<HoKhauTableModel> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(hoKhauTable.comparatorProperty());
+            hoKhauTable.setItems(sortedData);
+        });
 
         hoKhauTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

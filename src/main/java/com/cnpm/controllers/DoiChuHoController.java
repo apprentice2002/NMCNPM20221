@@ -51,13 +51,18 @@ public class DoiChuHoController implements Initializable {
     private TableColumn<HoKhauTableModel, String> diaChiCol;
     @FXML
     private Label errorLab;
-
+    @FXML
+    public TextField maHoKhauTim;
+    @FXML
+    private ChoiceBox<String> optionChoiceBox;
     @FXML
     private TableColumn<NhanKhauTableModel, String> maNhanKhauCol;
     @FXML
     private TableColumn<NhanKhauTableModel, String> hoTenNhanKhauCol;
     @FXML
     private TableColumn<NhanKhauTableModel, String> quanHeVoiChuHoCol;
+
+    private ChoiceBox<String> choiceBox;
 
     public void submit(ActionEvent event) {
         if(maChuHoNewTxt.getText().equals("")||maChuHoOldTxt.getText().equals("")||
@@ -99,7 +104,20 @@ public class DoiChuHoController implements Initializable {
                             queryResult.getString("TenChuHo"),
                             queryResult.getString("DiaChiHoKhau")));
                 }
-                hoKhauTable.setItems(data);
+                // Cập nhật quan hệ các thành viên chủ hộ mới
+                String updateQuanHeSql = "UPDATE thanh_vien_cua_ho SET quanHeVoiChuHo = ?, IdHoKhau = ? WHERE IdNhanKhau = ?";
+                PreparedStatement preparedStmtUpdateQuanHeThanhVien = connection.prepareStatement(updateQuanHeSql);
+                for(NhanKhauTableModel nhanKhau : nhanKhauTable.getItems()) {
+                    if (nhanKhau.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
+                        preparedStmtUpdateQuanHeThanhVien.setString(1, new String(""));
+                    } else {
+                        preparedStmtUpdateQuanHeThanhVien.setString(1, nhanKhau.getQuanHeVoiChuHo());
+                    }
+                    preparedStmtUpdateQuanHeThanhVien.setString(2, maHoKhauTxt.getText());
+                    preparedStmtUpdateQuanHeThanhVien.setString(3, nhanKhau.getMaNhanKhau());
+                    preparedStmtUpdateQuanHeThanhVien.execute();
+                }
+                    hoKhauTable.setItems(data);
                 hoTenMoiTxt.setText("");
                 hoTenOldTxt.setText("");
                 maChuHoOldTxt.setText("");
@@ -157,6 +175,55 @@ public class DoiChuHoController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm theo ID");
+        optionChoiceBox.getSelectionModel().selectFirst();
+
+        // Thêm action cho choicebox
+        optionChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            //Lọc theo TextField
+            FilteredList<HoKhauTableModel> filteredData = new FilteredList<>(hoKhauTable.getItems(), b->true);
+            maHoKhauTim.textProperty().addListener(((observable1, oldValue1, newValue1)->{
+                filteredData.setPredicate(hoKhau->{
+                    if(newValue1.isEmpty() || newValue1.isBlank() || newValue1 == null) {
+                        return true;
+                    }
+                    String searchKeyword = newValue1.toLowerCase();
+                    if(hoKhau.getMaHoKhau().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo ID" ) {
+                        return true;
+                    } else if(hoKhau.getHoTenChuHo().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo họ tên") {
+                        return true;
+                    } else
+                        return false;
+                });
+            } ));
+            // Sắp xếp thứ tự
+            SortedList<HoKhauTableModel> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(hoKhauTable.comparatorProperty());
+            hoKhauTable.setItems(sortedData);
+        });
+
+
+        quanHeVoiChuHoCol.setCellFactory(column -> {
+            return new TableCell<NhanKhauTableModel, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        choiceBox = new ChoiceBox<>();
+                        choiceBox.getItems().addAll("Con", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em","Bố","Mẹ","Chú","Bác");
+                        choiceBox.getSelectionModel().select(item);
+                        choiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                            NhanKhauTableModel nhanKhau = getTableView().getItems().get(getIndex());
+                            nhanKhau.setQuanHeVoiChuHo(newValue);
+                        });
+                        setGraphic(choiceBox);
+                    }
+                }
+            };
+        });
 
         hoKhauTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

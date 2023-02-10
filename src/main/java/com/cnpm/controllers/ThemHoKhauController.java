@@ -66,21 +66,6 @@ public class ThemHoKhauController implements Initializable {
     private SharedDataModel sharedDataModel = new SharedDataModel();
 
     private ChoiceBox<String> choiceBox;
-    public void chonChuHo() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/cnpm/scenes/chon-chu-ho.fxml"));
-            ChonChuHoController controller = fxmlLoader.getController();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(fxmlLoader.load()));
-            stage.showAndWait();
-            NhanKhauTableModel selectedItem = controller.getSelectedItem();
-            // use the selected item here
-            System.out.println(selectedItem);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -73,5 +73,10 @@
             <TableColumn fx:id="quanHeVoiChuHoOldCol" prefWidth="81.59996032714844" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Quan hệ với chủ hộ" />
          </columns>
       </TableView>
+      <Label fx:id="errorLab" layoutX="305.0" layoutY="91.0" prefHeight="22.0" prefWidth="345.0" text="Lab" textAlignment="JUSTIFY" textFill="#ff0101">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

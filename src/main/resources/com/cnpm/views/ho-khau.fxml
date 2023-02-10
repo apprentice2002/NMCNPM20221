@@ -68,4 +68,9 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
+   <Label fx:id="errorLab" layoutX="342.0" layoutY="163.0" prefHeight="22.0" prefWidth="408.0" text="Lab" textAlignment="JUSTIFY" textFill="#ff0101">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
 </AnchorPane>
