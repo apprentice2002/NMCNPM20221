@@ -75,6 +75,6 @@ public class DangKyTamTruController implements Initializable {
     }
 
     private void getQuery() {
-        query = "INSERT INTO tam_tru (idNhanKhau, coQuanKhaiBao, noiTamTru, ngayBatDau, ngayKetThuc, lyDo) VALUES (?, ?, ?, ?, ?, ?)";
+        query = "INSERT INTO tam_tru (maNhanKhau, coQuanKhaiBao, noiTamTru, ngayBatDau, ngayKetThuc, lyDo) VALUES (?, ?, ?, ?, ?, ?)";
     }
 }
