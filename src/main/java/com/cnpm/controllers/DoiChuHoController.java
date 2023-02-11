@@ -94,8 +94,9 @@ public class DoiChuHoController implements Initializable {
                 restartScene(nhanKhauTable.getScene());
                 restartScene(hoKhauTable.getScene());
                 // Refresh the table
-                String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau FROM nhan_khau, ho_khau WHERE nhan_khau.ID = IdChuHo";
-                Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau FROM nhan_khau, ho_khau " +
+                        "WHERE nhan_khau.ID = ho_khau.idChuHo AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is NULL and nhan_khau.daXoa is NULL";
+                Statement statement = connection.createStatement();
                 ObservableList<HoKhauTableModel> data = FXCollections.observableArrayList();
                 ResultSet queryResult = statement.executeQuery(hoKhauSql);
                 while (queryResult.next()) {
@@ -159,7 +160,8 @@ public class DoiChuHoController implements Initializable {
         hoTenNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("hoTenNhanKhau"));
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
 
-        String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau FROM nhan_khau, ho_khau WHERE nhan_khau.ID = IdChuHo";
+        String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau FROM nhan_khau, ho_khau " +
+                "WHERE nhan_khau.ID = IdChuHo AND  ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is NULL and nhan_khau.daXoa is NULL";
 
         try {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
@@ -234,7 +236,8 @@ public class DoiChuHoController implements Initializable {
                         String maHoKhau = selectedRow.getMaHoKhau();
                         String nhanKhauSql = "SELECT nhan_khau.ID AS MaNhanKhau, nhan_khau.hoTen as HoTen, quanHeVoiChuHo as QuanHeVoiChuHo FROM nhan_khau, thanh_vien_cua_ho " +
                                 " WHERE thanh_vien_cua_ho.IdHoKhau = " + maHoKhau +
-                                " AND thanh_vien_cua_ho.IdNhanKhau = nhan_khau.ID AND thanh_vien_cua_ho.quanHeVoiChuHo !='' ";
+                                " AND thanh_vien_cua_ho.IdNhanKhau = nhan_khau.ID AND thanh_vien_cua_ho.quanHeVoiChuHo !='' " +
+                                "AND nhan_khau.daXoa is NULL ";
                         try {
                             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
                             Statement statement = connection.createStatement();
@@ -264,13 +267,14 @@ public class DoiChuHoController implements Initializable {
                                             queryResult.getString("QuanHeVoiChuHo")));
                                 }
                             }
-                            String chuHoIdSql = "SELECT nhan_khau.ID from nhan_khau, ho_khau where nhan_khau.ID = ho_khau.IdChuHo and nhan_khau.hoTen = "+ "'"+ hoTenOldTxt.getText()+ "'" +
+                            String chuHoIdSql = "SELECT nhan_khau.ID from nhan_khau, ho_khau where nhan_khau.ID = ho_khau.IdChuHo AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is NULL and nhan_khau.daXoa is NULL and nhan_khau.hoTen = "+ "'"+ hoTenOldTxt.getText()+ "'" +
                                     " and ho_khau.ID = " + maHoKhauTxt.getText();
                             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
                             ResultSet idQueryResult = stmt.executeQuery(chuHoIdSql);
                             idQueryResult.first();
                             maChuHoOldTxt.setText(idQueryResult.getString("ID"));
                             nhanKhauTable.setItems(nhanKhauTable.getItems());
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

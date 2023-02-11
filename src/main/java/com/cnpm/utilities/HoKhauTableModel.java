@@ -26,6 +26,8 @@ public class HoKhauTableModel extends HoKhau {
     public HoKhauTableModel(String maHoKhau, String ngayTao, String maChuHo, String diaChi, String soThanhVien) {
         super(maHoKhau, ngayTao, maChuHo, diaChi, soThanhVien);
     }
+
+
     public HoKhauTableModel(String maHoKhau, String hoTenChuHo, String diaChi, String soThanhVien) {
         super(maHoKhau,diaChi,soThanhVien);
         this.hoTenChuHo = hoTenChuHo;

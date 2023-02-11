@@ -34,12 +34,8 @@ public class ChonNhanKhauController implements Initializable {
     private TableColumn quanHeVoiChuHoCol;
     @FXML
     private Button addNhanKhauBtn;
-    @FXML
-    private Button deleteNhanKhauBtn;
-    @FXML
-    private Button deleteAllNhanKhauBtn;
-
     private SharedDataModel sharedDataModel = new SharedDataModel();
+
 
 
     @Override
@@ -49,7 +45,12 @@ public class ChonNhanKhauController implements Initializable {
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
 
         try {
-            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau EXCEPT SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau,thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.IdNhanKhau ";
+            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen " +
+                    "FROM nhan_khau,thanh_vien_cua_ho,ho_khau WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau " +
+                    "and thanh_vien_cua_ho.idHoKhau = ho_khau.ID and nhan_khau.daXoa is null and( ho_khau.daXoa is NULL or ho_khau.ngayChuyenDi " +
+                    "is null ) EXCEPT (SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau," +
+                    "thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND " +
+                    "thanh_vien_cua_ho.quanHeVoiChuHo is not null)";
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
             ResultSet queryResult = statement.executeQuery(nhanKhauSql);
@@ -70,26 +71,11 @@ public class ChonNhanKhauController implements Initializable {
         addNhanKhauBtn.setOnAction(event -> {
             ObservableList<NhanKhauTableModel> selectedRows = nhanKhauTable.getSelectionModel().getSelectedItems();
             for (NhanKhauTableModel selectedRow : selectedRows) {
-                if(sharedDataModel.getSelectedRows().contains(selectedRow)) break;
                 sharedDataModel.addSelectedRow(selectedRow);
             }
             nhanKhauTable.getSelectionModel().clearSelection();
         });
-
-        deleteNhanKhauBtn.setOnAction(event -> {
-            ObservableList<NhanKhauTableModel> selectedItems = nhanKhauTable.getSelectionModel().getSelectedItems();
-            for (int i = 0 ; i < sharedDataModel.getSelectedRows().size(); i++) {
-                if(sharedDataModel.getSelectedRows().get(i).getMaNhanKhau().equals(selectedItems.get(0).getMaNhanKhau()))
-                    sharedDataModel.getSelectedRows().remove(i);
-            }
-            nhanKhauTable.getSelectionModel().clearSelection();
-        });
-
-        deleteAllNhanKhauBtn.setOnAction(event -> {
-            sharedDataModel.removeAllRow();
-            nhanKhauTable.getSelectionModel().clearSelection();
-        });
-        }
+    }
 
     public void setSharedDataModel(SharedDataModel sharedDataModel) {
         this.sharedDataModel = sharedDataModel;

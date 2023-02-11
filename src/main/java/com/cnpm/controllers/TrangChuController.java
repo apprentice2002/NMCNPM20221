@@ -41,7 +41,10 @@ public class TrangChuController implements Initializable {
     }
 
     @FXML
-    public void dangKy(ActionEvent event) { changeDisplay(main_display, "/com/cnpm/views/dang-ky.fxml"); }
+    public void dangKy(ActionEvent event) {
+        Utilities.popNewWindow(event, "/com/cnpm/views/thong-ke.fxml");
+        changeDisplay(main_display, "/com/cnpm/views/dang-ky.fxml");
+    }
 
     @FXML
     public void phatThuong(ActionEvent event) {

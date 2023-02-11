@@ -24,9 +24,7 @@
             <TableColumn fx:id="quanHeVoiChuHoCol" prefWidth="150.0" text="Quan hệ với chủ hộ" />
         </columns>
       </TableView>
-      <Button fx:id="addNhanKhauBtn" layoutX="16.0" layoutY="163.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" text="Thêm" />
-      <Button fx:id="deleteNhanKhauBtn" layoutX="16.0" layoutY="223.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" text="Xóa" />
-      <Button fx:id="deleteAllNhanKhauBtn" layoutX="16.0" layoutY="283.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" text="Xóa hết" />
+      <Button fx:id="addNhanKhauBtn" layoutX="16.0" layoutY="287.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" text="Thêm" />
       <TextField fx:id="findByMaNhanKhauTxt" layoutX="15.0" layoutY="90.0" prefHeight="26.0" prefWidth="100.0" />
       <Label layoutX="15.0" layoutY="60.0" text="Nhập Mã Nhân Khẩu">
          <font>

@@ -1,11 +1,38 @@
 package com.cnpm.utilities;
 
+import com.cnpm.entities.NhanKhau;
+
 public class NhanKhauTableModel {
+    private String maHoKhau;
     private String maNhanKhau;
     private String hoTenNhanKhau;
     private String quanHeVoiChuHo;
+    private String gioiTinh;
+    private int tuoi;
 
+    public NhanKhauTableModel(String maNhanKhau, String hoTenNhanKhau, String gioiTinh , int tuoi, String maHoKhau) {
+        this.maNhanKhau = maNhanKhau;
+        this.hoTenNhanKhau = hoTenNhanKhau;
+        this.gioiTinh = gioiTinh;
+        this.tuoi = tuoi;
+        this.maHoKhau = maHoKhau;
+    }
 
+    public String getMaHoKhau() {
+        return maHoKhau;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public int getTuoi() {
+        return tuoi;
+    }
+    public boolean equals(NhanKhauTableModel nk) {
+        if(this.maNhanKhau.equals(nk.maNhanKhau)) return true;
+        return false;
+    }
     public String getHoTenNhanKhau() {
         return hoTenNhanKhau;
     }
@@ -15,6 +42,7 @@ public class NhanKhauTableModel {
     }
 
     public NhanKhauTableModel(String maNhanKhau , String hoTenNhanKhau , String quanHeVoiChuHo) {
+        super();
         this.maNhanKhau = maNhanKhau;
         this.hoTenNhanKhau = hoTenNhanKhau;
         this.quanHeVoiChuHo = quanHeVoiChuHo;

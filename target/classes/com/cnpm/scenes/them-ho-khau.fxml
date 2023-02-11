@@ -29,17 +29,17 @@
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Label layoutX="401.0" layoutY="228.0" text="Ngày sinh chủ hộ :">
+      <Label layoutX="401.0" layoutY="224.0" text="Ngày sinh chủ hộ :">
          <font>
             <Font size="13.0" />
          </font></Label>
       <TextField id="ma_ho_khau" fx:id="maKhuVucTxt" layoutX="526.0" layoutY="362.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: #00305b; -fx-background-color: #fefefe; -fx-border-radius: 12; -fx-background-radius: 12;" />
       <TextField id="ma_ho_khau" fx:id="diaChiTxt" layoutX="526.0" layoutY="410.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: #00305b; -fx-background-color: #fefefe; -fx-border-radius: 12; -fx-background-radius: 12;" />
-      <Label layoutX="400.0" layoutY="270.0" prefHeight="18.0" prefWidth="88.0" text="Mã chủ hộ :" textAlignment="JUSTIFY">
+      <Label layoutX="400.0" layoutY="131.0" prefHeight="18.0" prefWidth="88.0" text="Mã chủ hộ :" textAlignment="JUSTIFY">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <TextField id="dia_chi" fx:id="maChuHoTxt" layoutX="525.0" layoutY="266.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField id="dia_chi" fx:id="maChuHoTxt" layoutX="525.0" layoutY="127.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
       <TableView fx:id="nhanKhauTable" layoutX="14.0" layoutY="112.0" prefHeight="500.0" prefWidth="360.0" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #00305b;">
         <columns>
           <TableColumn fx:id="maNhanKhauCol" prefWidth="120.0" style="-fx-border-radius: 6; -fx-background-radius: 6;" text="Mã Nhân Khẩu" />
@@ -47,7 +47,7 @@
             <TableColumn fx:id="quanHeVoiChuHoCol" prefWidth="120.0" style="-fx-border-radius: 6; -fx-background-radius: 6;" text="Quan Hệ Với Chủ Hộ" />
         </columns>
       </TableView>
-      <Button fx:id="pickMemberBtn" layoutX="16.0" layoutY="64.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: #79a5cd; -fx-border-color: #305acd; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: #f5f5f5;" text="Chọn nhân khẩu" />
+      <Button fx:id="pickMemberBtn" layoutX="16.0" layoutY="64.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: #79a5cd; -fx-border-color: #305acd; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: #f5f5f5;" text="Thêm nhân khẩu" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="54.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="780.0" />
       <Label alignment="TOP_LEFT" layoutX="16.0" layoutY="14.0" prefHeight="39.0" prefWidth="165.0" style="-fx-text-fill: #f5f5f5;" text="Thêm hộ khẩu" textAlignment="CENTER">
          <font>
@@ -62,16 +62,18 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="400.0" layoutY="84.0" text="Điền số CCCD của chủ hộ :">
+      <Label layoutX="400.0" layoutY="84.0" text="Điền số thông tin của chủ hộ :">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label layoutX="401.0" layoutY="126.0" text="Số CMT/CCCD chủ hộ :" />
-      <TextField id="ma_ho_khau" fx:id="cccdChuHoTxt" layoutX="526.0" layoutY="121.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
-      <Label fx:id="errorLab" layoutX="401.0" layoutY="478.0" prefHeight="18.0" prefWidth="330.0" text="Label" textFill="#ff0c0c">
+      <Label fx:id="errorLab" layoutX="401.0" layoutY="478.0" text="Label" textFill="#ff1212">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <Button fx:id="deleteNhanKhauBtn" layoutX="182.0" layoutY="64.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #ff7575; -fx-border-color: #305acd; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: #ffffff;" text="Xóa nhân khẩu" />
+      <Button fx:id="deleteAllNhanKhauBtn" layoutX="299.0" layoutY="64.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="74.0" style="-fx-background-color: #ff7575; -fx-border-color: #305acd; -fx-background-radius: 15; -fx-border-radius: 15; -fx-text-fill: #ffffff;" text="Xóa hết" />
+      <Label layoutX="400.0" layoutY="274.0" text="Số CCCD của chủ hộ :" />
+      <TextField id="ma_ho_khau" fx:id="cccdChuHoTxt" editable="false" layoutX="525.0" layoutY="269.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
    </children>
 </AnchorPane>

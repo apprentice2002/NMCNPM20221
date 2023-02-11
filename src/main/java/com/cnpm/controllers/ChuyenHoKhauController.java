@@ -52,15 +52,19 @@ public class ChuyenHoKhauController implements Initializable {
     private TextField maHoKhauTim;
     @FXML
     private ChoiceBox<String> optionChoiceBox;
+    @FXML
+    private Label errorLab;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        errorLab.setText("");
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
         hoTenChuHoCol.setCellValueFactory(new PropertyValueFactory<>("hoTenChuHo"));
         diaChiCol.setCellValueFactory(new PropertyValueFactory<>("diaChiHoKhau"));
 
         String query = "SELECT ho_khau.maHoKhau, nhan_khau.hoTen, ho_khau.diaChi FROM ho_khau, nhan_khau, thanh_vien_cua_ho " +
-                "WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND thanh_vien_cua_ho.idHoKhau = ho_khau.ID and ho_khau.idChuHo = nhan_khau.ID;";
+                "WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND thanh_vien_cua_ho.idHoKhau = ho_khau.ID and " +
+                "ho_khau.idChuHo = nhan_khau.ID and ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is null and nhan_khau.daXoa is null;";
         try {
             Statement preparedStmtFindName = connection.createStatement();
             ResultSet rs = preparedStmtFindName.executeQuery(query);
@@ -123,6 +127,7 @@ public class ChuyenHoKhauController implements Initializable {
     }
     @FXML
     public void submit() {
+
         String diaChiChuyenDen = diaChiChuyenDenTxt.getText();
         String maHoKhau =  maHoKhauTxt.getText();
         Date ngayChuyenDi = new Date(System.currentTimeMillis());
@@ -130,6 +135,13 @@ public class ChuyenHoKhauController implements Initializable {
         String nguoiThucHien = UserSession.getUsername();
     // Cập nhật địa chỉ hộ khẩu
         try {
+            if(diaChiChuyenDenTxt.getText().isEmpty()||
+                    maHoKhauTxt.getText().isEmpty()||
+                    lyDoChuyenDiTxt.getText().isEmpty()||
+                    tenChuHoTxt.getText().isEmpty()||
+                    diaChiHienTaiTxt.getText().isEmpty()){
+                throw new Exception("Vui lòng nhập đầy đủ thông tin cần thiết !");
+            }
             String updateHoKhauSql = "UPDATE ho_khau SET diaChi = ?, ngayChuyenDi = ?, lyDoChuyen = ?, nguoiThucHien = ?  WHERE maHoKhau = ?";
             PreparedStatement preparedStmtUpdateHoKhau = connection.prepareStatement(updateHoKhauSql);
             preparedStmtUpdateHoKhau.setString(1, diaChiChuyenDen);
@@ -147,9 +159,11 @@ public class ChuyenHoKhauController implements Initializable {
             preparedStatementUpdateNhanKhau.setString(3, lyDoChuyen);
             preparedStatementUpdateNhanKhau.setString(4, maHoKhau);
             preparedStatementUpdateNhanKhau.execute();
-
+            errorLab.setText("");
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            errorLab.setText(e.getMessage());
         }
     }
     @FXML

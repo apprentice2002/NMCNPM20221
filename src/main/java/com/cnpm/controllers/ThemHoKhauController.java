@@ -2,6 +2,7 @@ package com.cnpm.controllers;
 
 import com.cnpm.entities.NhanKhau;
 import com.cnpm.utilities.*;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -66,6 +67,17 @@ public class ThemHoKhauController implements Initializable {
     private SharedDataModel sharedDataModel = new SharedDataModel();
 
     private ChoiceBox<String> choiceBox;
+    @FXML
+    private Button deleteNhanKhauBtn;
+    @FXML
+    private Button deleteAllNhanKhauBtn;
+
+    private boolean containsNhanKhau(ObservableList<NhanKhauTableModel> list, String name){
+        return list.stream().map(NhanKhauTableModel::getHoTenNhanKhau).filter(name::equals).findFirst().isPresent();
+    }
+    private void removeNhanKhau(NhanKhauTableModel selectedRow) {
+        sharedDataModel.getSelectedRows().removeIf(obj->obj.getHoTenNhanKhau().equals(selectedRow.getHoTenNhanKhau()));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -108,31 +120,43 @@ public class ThemHoKhauController implements Initializable {
                 stage.setTitle("Chọn Nhân khẩu");
                 stage.setScene(nhanKhauScene);
                 stage.show();
+                System.out.println(sharedDataModel.getSelectedRows().size());
                 stage.setOnHidden(e -> {
+                    nhanKhauTable.getItems().clear();
                     for (NhanKhauTableModel nk : sharedDataModel.getSelectedRows()) {
-                        nhanKhauTable.getItems().add(nk);
+                        if(!containsNhanKhau(nhanKhauTable.getItems(), nk.getHoTenNhanKhau())) {
+                            nhanKhauTable.getItems().add(nk);
+                        }
                     }
                 });
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+        deleteNhanKhauBtn.setOnAction(event -> {
+            NhanKhauTableModel selectedItem = nhanKhauTable.getSelectionModel().getSelectedItem();
+            removeNhanKhau(selectedItem);
+            nhanKhauTable.getItems().removeIf(obj->obj.getHoTenNhanKhau().equals(selectedItem.getHoTenNhanKhau()));
+        });
+        deleteAllNhanKhauBtn.setOnAction(event -> {
+            nhanKhauTable.getItems().clear();
+            sharedDataModel.removeAllRow();
+            nhanKhauTable.getSelectionModel().clearSelection();
+        });
 
-
-        cccdChuHoTxt.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.isEmpty()|| newValue.isBlank()) {
-                cccdChuHoTxt.setText("");
-            } else {
+        maChuHoTxt.textProperty().addListener((observable, oldValue, newValue) -> {
+            errorLab.setText("");
+            if(newValue.length()>=2) {
                 //Tìm kiếm họ tên của mã chủ hộ mới
-                String findHoTenChuHoSql = "SELECT DISTINCT nhan_khau.ID, hoTen as HoTen, namSinh as NgaySinh, soCMT as SoCCCD FROM nhan_khau, chung_minh_thu WHERE chung_minh_thu.soCMT = ? AND nhan_khau.ID = chung_minh_thu.idNhanKhau;";
+                String findHoTenChuHoSql = "SELECT DISTINCT nhan_khau.ID, hoTen as HoTen, namSinh as NgaySinh, soCMT as SoCCCD FROM nhan_khau, chung_minh_thu WHERE nhan_khau.ID = ? AND nhan_khau.ID = chung_minh_thu.idNhanKhau ;";
                 try {
                     PreparedStatement preparedStmtFindName = connection.prepareStatement(findHoTenChuHoSql);
-                    preparedStmtFindName.setString(1,cccdChuHoTxt.getText());
+                    preparedStmtFindName.setString(1,maChuHoTxt.getText());
                     ResultSet rs = preparedStmtFindName.executeQuery();
                     if(rs.next()) {
                         String hoTenChuHo = rs.getString("HoTen");
                         if(hoTenChuHo.equals("")) {
-                            maChuHoTxt.setText("");
+                            hoTenChuHoTxt.setText("");
                         } else {
                             hoTenChuHoTxt.setText(hoTenChuHo);
                         }
@@ -142,20 +166,23 @@ public class ThemHoKhauController implements Initializable {
                         } else {
                             ngaySinhChuHoTxt.setText(ngaySnhChuHo);
                         }
-                        String maChuHo = rs.getString("ID");
-                        if(maChuHo.equals("")) {
-                            maChuHoTxt.setText("");
+                        String cccd = rs.getString("SoCCCD");
+                        if(cccdChuHoTxt.equals("")) {
+                            cccdChuHoTxt.setText("");
                         } else {
-                            maChuHoTxt.setText(maChuHo);
+                            cccdChuHoTxt.setText(cccd);
                         }
                         errorLab.setText("");
                     } else {
                         hoTenChuHoTxt.setText("");
                         ngaySinhChuHoTxt.setText("");
-                        maChuHoTxt.setText("");
-                        errorLab.setText("Không tìm thấy mã nhân khẩu tương ứng, vui lòng thử lại");
+                        cccdChuHoTxt.setText("");
+                        errorLab.setText("Không tìm thấy mã nhân khẩu tương ứng,\n vui lòng thử lại");
                     }
-                } catch (SQLException e) {
+                } catch (NumberFormatException e) {
+                    errorLab.setText("Vui lòng chỉ nhập đúng dữ liệu !");
+                }
+                catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -169,12 +196,12 @@ public class ThemHoKhauController implements Initializable {
         String maKhuVuc = maKhuVucTxt.getText();
         String diaChi = diaChiTxt.getText();
         String hoTenChuHo = hoTenChuHoTxt.getText();
-        int soThanhVien = nhanKhauTable.getItems().size();
         Date ngayTao = new Date(System.currentTimeMillis());
         if (maHoKhau.equals("") || diaChi.equals("") || maKhuVuc.equals("") ||
                 idChuHo.equals("")) {
             errorLab.setText("Vui lòng điền đủ thông tin cần thiết");
         } else {
+            int idErrorCheck = Integer.parseInt(idChuHo);
             String insertQuery = "INSERT INTO ho_khau (ngayLap, maKhuVuc, idChuHo, diaChi, maHoKhau)"  +
                     "VALUES ( ?, ?, ?, ?,?)";
             try {
@@ -250,7 +277,7 @@ public class ThemHoKhauController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                errorLab.setText(e.getMessage());
             }
         }
     }
