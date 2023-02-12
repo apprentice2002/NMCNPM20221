@@ -342,6 +342,7 @@ CREATE TABLE users (
 
 INSERT INTO users (ID, userName, passwd) VALUES
 (1, 'admin', '1');
+(2, 'admin1', '2');
 
 --
 -- Chỉ mục cho các bảng đã đổ

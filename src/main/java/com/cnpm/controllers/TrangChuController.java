@@ -45,11 +45,25 @@ public class TrangChuController implements Initializable {
 
     @FXML
     public void phatThuong(ActionEvent event) {
-        changeDisplay(main_display, "/com/cnpm/views/phat-thuong.fxml");
+         if(UserSession.getUsername().equals("admin")){
+            changeDisplay(main_display, "/com/cnpm/views/phat_thuong1.fxml");
+         }
+         else if(UserSession.getUsername().equals("admin1")){
+             changeDisplay(main_display, "/com/cnpm/views/phat_thuong.fxml");
+
+         }
+
     }
+
     @FXML
     public void phatQua(ActionEvent event) {
-        changeDisplay(main_display, "/com/cnpm/views/phat-qua.fxml");
+        if(UserSession.getUsername().equals("admin")) {
+            changeDisplay(main_display, "/com/cnpm/views/phat_qua1.fxml");
+        }
+        else if(UserSession.getUsername().equals("admin1")){
+            changeDisplay(main_display, "/com/cnpm/views/phat-qua.fxml");
+
+        }
     }
     @FXML
     public void minhChung(ActionEvent event) {

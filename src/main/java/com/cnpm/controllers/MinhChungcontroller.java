@@ -43,6 +43,8 @@ public class MinhChungcontroller implements Initializable {
     @FXML
     private TableView<MinhChungTableModel> table;
     @FXML
+    private TableColumn<MinhChungTableModel, String> idMinhChungCol;
+    @FXML
     private TableColumn<MinhChungTableModel, String> hoTenCol;
     @FXML
     private TableColumn<MinhChungTableModel, String> thanhTichHocTapCol;
@@ -70,7 +72,7 @@ public class MinhChungcontroller implements Initializable {
 
     public void refresh(){table.getItems().clear();
         Connection connection = DBConnection.getConnection();
-        String sql = "SELECT nhan_khau.hoTen, thanhTichHocTap,truong, lop, ngayKhaiBao\n" +
+        String sql = "SELECT idMinhChung,nhan_khau.hoTen, thanhTichHocTap,truong, lop, ngayKhaiBao\n" +
                 "                FROM nhan_khau,minh_chung\n" +
                 "                WHERE minh_chung.ma_nhan_khau = nhan_khau.ID";
         try {
@@ -80,7 +82,8 @@ public class MinhChungcontroller implements Initializable {
             ResultSet queryResult = statement.executeQuery(sql);
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
-                listView.add(new MinhChungTableModel(queryResult.getString("hoTen"),
+                listView.add(new MinhChungTableModel(queryResult.getInt("idMinhChung"),
+                        queryResult.getString("hoTen"),
                         queryResult.getString("thanhTichHocTap"),
                         queryResult.getString("truong"),
                         queryResult.getString("lop"),
@@ -99,7 +102,7 @@ public class MinhChungcontroller implements Initializable {
 
 
 
-
+        idMinhChungCol.setCellValueFactory(new PropertyValueFactory<>("idMinhChung"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         truongCol.setCellValueFactory(new PropertyValueFactory<>("truong"));
         xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
@@ -179,19 +182,21 @@ public class MinhChungcontroller implements Initializable {
         yesButton.setOnAction(e2 -> {
             //Cập nhật CSDL khi xóa hộ khẩu
             String delteQSql = "DELETE FROM minh_chung WHERE idMinhChung = ?";
-            Connection connection = DBConnection.getConnection();
             try {
+                Connection connection = DBConnection.getConnection();
                 PreparedStatement preparedDeleteHKStmt = connection.prepareStatement(delteQSql);
                 for(MinhChungTableModel data: dataListRemove) {
+
                     int idMinhChung  = data.getIdMinhChung();
+                    System.out.println(idMinhChung);
                     preparedDeleteHKStmt.setInt(1,idMinhChung);
                     preparedDeleteHKStmt.execute();
+
                 }
                 // Nảy ra màn hình xóa dữ liệu thành công
                 Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-
+            } catch (Exception e) {
+                System.out.println(e);
             }
             refresh();
             confirmationStage.close();
@@ -203,6 +208,7 @@ public class MinhChungcontroller implements Initializable {
     @FXML
     public void themMinhChung(ActionEvent event) throws IOException {
         Utilities.popNewWindow(event, "/com/cnpm/scenes/them_minh_chung.fxml");
+        refresh();
     }
 
 }

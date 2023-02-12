@@ -41,6 +41,9 @@ public class PhatThuongController1 implements Initializable {
     @FXML
     private TableView<PhatThuongTableModel> table;
     @FXML
+    private TableColumn<PhatThuongTableModel, String> idPhatThuongCol;
+
+    @FXML
     private TableColumn<PhatThuongTableModel, String> hoTenCol;
     @FXML
     private TableColumn<PhatThuongTableModel, String> tenQuaCol;
@@ -66,18 +69,39 @@ public class PhatThuongController1 implements Initializable {
         }
         return filteredData;
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void refresh(){table.getItems().clear();
         Connection connection = DBConnection.getConnection();
-        String sql = "SELECT nhan_khau.hoTen, thanhTichHocTap, tenQua, tenDotPhat, giaTri, daDuyet\n" +
+        String sql = "SELECT idPhatThuong,nhan_khau.hoTen, thanhTichHocTap, tenQua, tenDotPhat, giaTri, daDuyet\n" +
                 "        FROM nhan_khau, phat_thuong,minh_chung, qua, dot_phat\n" +
                 "        WHERE phat_thuong.idMinhChung = minh_chung.idMinhChung\n" +
                 "        AND minh_chung.ma_nhan_khau = nhan_khau.ID\n" +
                 "        AND phat_thuong.idQua = qua.idQua\n" +
                 "        AND phat_thuong.idDotPhat = dot_phat.idDotPhat";
+        try {
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(sql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                listView.add(new PhatThuongTableModel( queryResult.getInt("idPhatThuong"),
+                        queryResult.getString("hoTen"),
+                        queryResult.getString("tenQua"),
+                        queryResult.getString("thanhTichHocTap"),
+                        queryResult.getString("tenDotPhat"),
+                        queryResult.getInt("giaTri"),
+                        queryResult.getInt("daDuyet")));
 
+            }
+            table.setItems(listView);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        idPhatThuongCol.setCellValueFactory(new PropertyValueFactory<>("idPhatThuong"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         tenQuaCol.setCellValueFactory(new PropertyValueFactory<>("tenQua"));
 
@@ -113,26 +137,8 @@ public class PhatThuongController1 implements Initializable {
             sortedData.comparatorProperty().bind(table.comparatorProperty());
             table.setItems(sortedData);
         });
+        refresh();
 
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new PhatThuongTableModel(queryResult.getString("hoTen"),
-                        queryResult.getString("tenQua"),
-                        queryResult.getString("thanhTichHocTap"),
-                        queryResult.getString("tenDotPhat"),
-                        queryResult.getInt("giaTri"),
-                        queryResult.getInt("daDuyet")));
-
-            }
-            table.setItems(listView);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     public void duyet(ActionEvent event) {
 
@@ -193,6 +199,7 @@ public class PhatThuongController1 implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+            refresh();
             confirmationStage.close();
         });
 
@@ -257,6 +264,7 @@ public class PhatThuongController1 implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+            refresh();
             confirmationStage.close();
         });
 

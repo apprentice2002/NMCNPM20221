@@ -13,7 +13,8 @@ public class PhatQua {
     private int ma_nhan_khau;
     private int daDuyet;
 
-    public PhatQua(int daDuyet) {
+    public PhatQua(int idPhatQua,int daDuyet) {
+        this.idPhatQua= idPhatQua;
         this.daDuyet = daDuyet;
     }
 

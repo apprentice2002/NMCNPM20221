@@ -45,6 +45,8 @@ public class PhatQuaController implements Initializable{
     @FXML
     private TableView<PhatQuaTableModel> table;
     @FXML
+    private TableColumn<PhatQuaTableModel, String> idPhatQuaCol;
+    @FXML
     private TableColumn<PhatQuaTableModel, String> hoTenCol;
     @FXML
     private TableColumn<PhatQuaTableModel, String> tenQuaCol;
@@ -70,17 +72,40 @@ public class PhatQuaController implements Initializable{
         }
         return filteredData;
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void refresh(){
+        table.getItems().clear();
         Connection connection = DBConnection.getConnection();
-        String sql ="SELECT nhan_khau.hoTen, (YEAR(CURDATE()) - YEAR(nhan_khau.namSinh)) as tuoi, tenQua, tenDotPhat, giaTri, daDuyet\n" +
+        String sql ="SELECT idPhatQua,nhan_khau.hoTen, (YEAR(CURDATE()) - YEAR(nhan_khau.namSinh)) as tuoi, tenQua, tenDotPhat, giaTri, daDuyet\n" +
                 "                FROM nhan_khau, phat_qua, qua, dot_phat\n" +
                 "                WHERE nhan_khau.ID = phat_qua.ma_nhan_khau\n" +
                 "\t\t\t          AND phat_qua.idQua = qua.idQua\n" +
                 "                AND phat_qua.idDotPhat = dot_phat.idDotPhat";
+        try {
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(sql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                listView.add(new PhatQuaTableModel(queryResult.getInt("idPhatQua"),
+                        queryResult.getString("hoTen"),
+                        queryResult.getString("tenQua"),
+                        queryResult.getInt("tuoi"),
+                        queryResult.getString("tenDotPhat"),
+                        queryResult.getInt("giaTri"),
+                        queryResult.getInt("daDuyet")));
 
+            }
+            table.setItems(listView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        idPhatQuaCol.setCellValueFactory(new PropertyValueFactory<>("idPhatQua"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         tenQuaCol.setCellValueFactory(new PropertyValueFactory<>("tenQua"));
         xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
@@ -115,30 +140,9 @@ public class PhatQuaController implements Initializable{
             sortedData.comparatorProperty().bind(table.comparatorProperty());
             table.setItems(sortedData);
         });
+        refresh();
 
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new PhatQuaTableModel(queryResult.getString("hoTen"),
-                        queryResult.getString("tenQua"),
-                        queryResult.getInt("tuoi"),
-                        queryResult.getString("tenDotPhat"),
-                        queryResult.getInt("giaTri"),
-                        queryResult.getInt("daDuyet")));
 
-            }
-            table.setItems(listView);
-            for(PhatQuaTableModel pq : table.getItems()) {
-                if(pq.getDaDuyet()==1) {
-                    pq.setDeleteBox(null);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
         public void xoaQua(ActionEvent event) {
 
@@ -196,6 +200,7 @@ public class PhatQuaController implements Initializable{
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                refresh();
                 confirmationStage.close();
             });
 
@@ -204,6 +209,7 @@ public class PhatQuaController implements Initializable{
 
     @FXML
     public void themQua(ActionEvent event) throws IOException {
+        refresh();
         Utilities.popNewWindow(event, "/com/cnpm/scenes/them_qua.fxml");
     }
 

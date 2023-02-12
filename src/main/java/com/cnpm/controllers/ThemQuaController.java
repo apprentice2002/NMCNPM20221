@@ -37,6 +37,8 @@ public class ThemQuaController implements Initializable {
     private TextField   them_ma_nhan_khau;
     @FXML
     private TextField  them_id_qua;
+    @FXML
+    private TextField  them_da_duyet;
 
     String query = null;
     Connection connection = null;
@@ -56,7 +58,8 @@ public class ThemQuaController implements Initializable {
         int  idDotPhat = Integer.parseInt(them_id_dot_phat_qua.getText());
         int  ma_nhan_khau=Integer.parseInt(them_ma_nhan_khau.getText());
         int  idQua = Integer.parseInt(them_id_qua.getText());
-        if (true ){
+        int  daDuyet = Integer.parseInt(them_da_duyet.getText());
+        if (false ){
             note.setText("Vui lòng điền đủ thông tin cần thiết");
     } else {
             getQuery();
@@ -67,6 +70,9 @@ public class ThemQuaController implements Initializable {
                 preparedStatement.setInt(2,  idDotPhat);
                 preparedStatement.setInt(3, ma_nhan_khau);
                 preparedStatement.setInt(4, idQua);
+                preparedStatement.setInt(5, daDuyet);
+
+
 
 
                 preparedStatement.execute();
@@ -80,7 +86,7 @@ public class ThemQuaController implements Initializable {
     }
     private void getQuery() {
         query = "INSERT INTO phat_qua (idPhatQua, idDotPhat, ma_nhan_khau, idQua, daDuyet)" +
-                " VALUES (?,?,?,?,0)";
+                " VALUES (?,?,?,?,?)";
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

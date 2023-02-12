@@ -18,12 +18,13 @@
         </Label>
         <TableView fx:id="table" layoutX="30.0" layoutY="208.0" prefHeight="400.0" prefWidth="720.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
             <columns>
+                <TableColumn fx:id="idMinhChungCol" prefWidth="60" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
                 <TableColumn fx:id="hoTenCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ Tên" />
                 <TableColumn fx:id="truongCol" prefWidth="120" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="thành tích học tập" />
                 <TableColumn fx:id="thanhTichHocTapCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="trường" />
                 <TableColumn fx:id="lopCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="lớp" />
                 <TableColumn fx:id="ngayKhaiBaoCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ngày khai báo" />
-                <TableColumn fx:id="xoaCol" prefWidth="120" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Xóa" />
+                <TableColumn fx:id="xoaCol" prefWidth="60" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Xóa" />
             </columns>
         </TableView>
         <TextField fx:id="keywordTextField" layoutX="30.0" layoutY="64.0" prefHeight="40.0" prefWidth="127.0" promptText="Tìm kiếm">

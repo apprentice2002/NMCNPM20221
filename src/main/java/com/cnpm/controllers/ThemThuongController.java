@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +38,10 @@ public class ThemThuongController implements Initializable {
     private TextField  them_id_qua;
     @FXML
     private TextField them_id_minh_chung;
+    @FXML
+    private TextField them_da_duyet;
+
+
 
     String query = null;
     Connection connection = null;
@@ -46,7 +51,8 @@ public class ThemThuongController implements Initializable {
 
     @FXML
     public void huy(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml",780,640);
+        Stage stage = (Stage) btn_cancel_them.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -56,7 +62,7 @@ public class ThemThuongController implements Initializable {
         int  idMinhChung=Integer.parseInt(them_id_minh_chung.getText());
         int  idQua = Integer.parseInt(them_id_qua.getText());
         int  daDuyet = Integer.parseInt(them_id_qua.getText());
-        if (true){
+        if (false){
             note.setText("Vui lòng điền đủ thông tin cần thiết");
     } else {
             getQuery();
@@ -72,11 +78,12 @@ public class ThemThuongController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", 780,640);
+            Stage stage = (Stage) btn_confirm_them.getScene().getWindow();
+            stage.close();
         }
     }
     private void getQuery() {
-        query = "INSERT INTO phat_thuong (idPhatThuong, idDotPhat, idQua, idMinhChung, daDuyet,) " +
+        query = "INSERT INTO phat_thuong (idPhatThuong, idDotPhat, idQua, idMinhChung, daDuyet) " +
                 " VALUES (?,?,?,?,?)";
     }
     @Override
