@@ -300,9 +300,8 @@ public class TachHoKhauController implements Initializable {
                         errorLab.setText("");
                     } else {
                         chuHoMoiTxt.setText("");
-                        errorLab.setText("Không tìm thấy mã nhân khẩu tương ứng, vui lòng thử lại");
+                        errorLab.setText("Không tìm thấy mã nhân khẩu tương ứng \n, vui lòng thử lại");
                     }
-
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -314,7 +313,6 @@ public class TachHoKhauController implements Initializable {
                 if (event.getButton().equals(MouseButton.PRIMARY)) {
                     // Get the selected item from the TableView
                     NhanKhauTableModel selectedItem = nhanKhauNewTable.getSelectionModel().getSelectedItem();
-                    System.out.println(selectedItem.getQuanHeVoiChuHo());
                     if(selectedItem.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
                         for(NhanKhauTableModel nk : nhanKhauNewTable.getItems()) {
                             if(nk.getQuanHeVoiChuHo().equals("Chủ Hộ") && !nk.equals(selectedItem)) {
