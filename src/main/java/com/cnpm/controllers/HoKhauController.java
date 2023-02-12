@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HoKhauController implements Initializable {
+public class  HoKhauController implements Initializable {
 
     @FXML
     private TextField thong_tin_tim_kiem;

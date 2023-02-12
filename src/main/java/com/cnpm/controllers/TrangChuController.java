@@ -47,6 +47,14 @@ public class TrangChuController implements Initializable {
     public void phatThuong(ActionEvent event) {
         changeDisplay(main_display, "/com/cnpm/views/phat-thuong.fxml");
     }
+    @FXML
+    public void phatQua(ActionEvent event) {
+        changeDisplay(main_display, "/com/cnpm/views/phat-qua.fxml");
+    }
+    @FXML
+    public void minhChung(ActionEvent event) {
+        changeDisplay(main_display, "/com/cnpm/views/minh_chung.fxml");
+    }
 
     @FXML
     public void thayDoi(ActionEvent event) {

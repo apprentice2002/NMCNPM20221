@@ -560,6 +560,90 @@ ALTER TABLE thanh_vien_cua_ho
 --
 ALTER TABLE tieu_su
   ADD CONSTRAINT tieu_su_ibfk_1 FOREIGN KEY (idNhanKhau) REFERENCES nhan_khau (ID);
+  -- --------------------------------------------------------
+
+  --
+  -- Cấu trúc bảng cho bảng minh_chung
+  --
+
+  CREATE TABLE minh_chung (
+    idMinhChung int NOT NULL PRIMARY KEY,
+    ma_nhan_khau int DEFAULT NULL,
+    truong varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+    lop varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+    thanhTichHocTap varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+    ngayKhaiBao date DEFAULT NULL,
+  CONSTRAINT lien_ket_1 FOREIGN KEY (ma_nhan_khau) REFERENCES nhan_khau(ID)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  INSERT INTO `minh_chung` VALUES (1,35,'chuVanAn','1B','HSG','2023-02-10'),
+                                  (2,36,'chuVanAn','2B','HSG','2023-02-10');
+   -- --------------------------------------------------------
+
+  --
+  -- Cấu trúc bảng cho bảng qua
+  --
+
+  CREATE TABLE qua (
+    idQua int NOT NULL  PRIMARY KEY,
+    tenQua varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+    moTa varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+    giaTri int(20) not null
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  INSERT INTO `qua` VALUES (1,'QuaHSG','Tien',100000),
+  (2,'QuaHSTT','Tien',50000),
+  (3,'QuaHSGH','Tien',150000),
+  (4,'QuaHSGT','Tien',300000),
+  (5,'QuaTreNho','VatPham',50000);
+  -- --------------------------------------------------------
+
+  --
+  -- Cấu trúc bảng cho bảng dot_phat
+  --
+
+  CREATE TABLE dot_phat (
+    idDotPhat int NOT NULL  PRIMARY KEY,
+    tenDotPhat varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+    thoiGianPhat date DEFAULT NULL,
+    ghiChu text COLLATE utf8_unicode_ci NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  INSERT INTO `dot_phat` VALUES (1,'PT thanh tich hoc tap 2023','2023-06-01','phatthuonghocsinh'),
+  (2,'PT trung thu 2023','2023-08-15','phatthuongtrenho'),
+  (3,'PT tet 2023','2023-12-28','phatthuongtrenho');
+   -- --------------------------------------------------------
+   --
+  -- Cấu trúc bảng cho bảng phat_thuong
+  --
+
+  CREATE TABLE phat_thuong (
+    idPhatThuong int NOT NULL  PRIMARY KEY,
+    idDotPhat int NOT NULL,
+    idQua int NOT NULL,
+    idMinhChung int NOT NULL ,
+    daDuyet  int NOT NULL,
+  CONSTRAINT lien_ket_200 FOREIGN KEY (idMinhChung) REFERENCES minh_chung(idMinhChung),
+  CONSTRAINT lien_ket_300 FOREIGN KEY (idDotPhat) REFERENCES dot_phat(idDotPhat),
+  CONSTRAINT lien_ket_400 FOREIGN KEY (idQua) REFERENCES qua(idQua)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  INSERT INTO `phat_thuong` VALUES (1,1,1,1,0),
+                                   (2,1,1,2,0);
+  -- --------------------------------------------------------
+   --
+  -- Cấu trúc bảng cho bảng phat_qua
+  --
+
+  CREATE TABLE phat_qua (
+    idPhatQua int(11) NOT NULL  PRIMARY KEY,
+    idDotPhat int(11) DEFAULT NULL,
+    idQua int(11) DEFAULT NULL,
+    ma_nhan_khau int(11) DEFAULT NULL ,
+    daDuyet  int(11) DEFAULT NULL,
+  CONSTRAINT lien_ket_500 FOREIGN KEY (ma_nhan_khau) REFERENCES nhan_khau(ID),
+  CONSTRAINT lien_ket_600 FOREIGN KEY (idDotPhat) REFERENCES dot_phat(idDotPhat),
+  CONSTRAINT lien_ket_700 FOREIGN KEY (idQua) REFERENCES qua(idQua)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  INSERT INTO `phat_qua` VALUES (1,2,5,35,0),
+                                 (2,2,5,36,0);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
