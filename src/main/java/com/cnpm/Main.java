@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/cnpm/scenes/dang-nhap.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 320);
-        stage.setTitle("Dang Nhap");
+        stage.setTitle("");
         stage.setScene(scene);
         stage.show();
     }

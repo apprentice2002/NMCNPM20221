@@ -31,18 +31,17 @@ public class NhanKhauController implements Initializable {
 
     String query = null;
     Connection connection = null;
-    PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatement1 = null;
     ResultSet resultSet = null;
     ObservableList<NhanKhau> NhanKhauList = FXCollections.observableArrayList();
-    NhanKhau nhanKhau = null;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     @FXML
     public void refresh() {
         NhanKhauList.clear();
         try {
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
+            preparedStatement1 = connection.prepareStatement(query);
+            resultSet = preparedStatement1.executeQuery();
             while (resultSet.next()) {
                 NhanKhauList.add(new NhanKhau(
                         resultSet.getInt("ID"),
@@ -79,7 +78,7 @@ public class NhanKhauController implements Initializable {
     }
 
     private void load() {
-        getQuery();
+        query = "SELECT ID, maNhanKhau, hoTen, ngaySinh, diaChiHienNay FROM nhan_khau";
         connection = DBConnection.getConnection();
 
         diaChiHienNayCol.setCellValueFactory(new PropertyValueFactory<>("dia_chi_hien_nay"));
@@ -135,13 +134,7 @@ public class NhanKhauController implements Initializable {
     }
 
     @FXML
-    public void lichSuThayDoi(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/lich-su-thay-doi.fxml");
-    }
-
-    @FXML
     public void xoaNhanKhau(ActionEvent event) {
-
         // Nảy ra màn hình liệu có tiếp tục muốn xóa
         // Tạo ra scene
         Button yesButton = new Button("Có");
@@ -178,15 +171,13 @@ public class NhanKhauController implements Initializable {
 
         yesButton.setOnAction(e2 -> {
             //Cập nhật CSDL khi xóa hộ khẩu
-            String delete_query = "DELETE FROM nhan_khau WHERE ID = ?";
-            Connection connection = DBConnection.getConnection();
+            String delete_query = "DELETE FROM nhan_khau WHERE hoTen=?";
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(delete_query);
                 for(NhanKhau nhanKhau: dataListRemove) {
-                    preparedStatement.setInt(1, nhanKhau.getID());
+                    PreparedStatement preparedStatement = connection.prepareStatement(delete_query);
+                    preparedStatement.setString(1, nhanKhau.getHo_ten());
+                    preparedStatement.execute();
                 }
-                // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -197,10 +188,6 @@ public class NhanKhauController implements Initializable {
 
     @FXML
     public void thayDoiNhanKhau(ActionEvent event) {
-        Utilities.changeScene(event, "/com/cnpm/scenes/thay-doi-nhan-khau.fxml");
-    }
-
-    private void getQuery() {
-        query = "SELECT ID, maNhanKhau, hoTen, ngaySinh, diaChiHienNay FROM nhan_khau";
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/thay-doi-nhan-khau.fxml");
     }
 }

@@ -95,6 +95,7 @@ public class ThemNhanKhauController implements Initializable {
                 preparedStatement.setString(15, noi_lam_viec);
                 preparedStatement.setString(16, tien_an);
                 preparedStatement.setString(17, so_dien_thoai);
+                preparedStatement.setInt(18, 0);
 
                 preparedStatement.execute();
             } catch (SQLException e) {
@@ -107,8 +108,8 @@ public class ThemNhanKhauController implements Initializable {
 
     private void getQuery() {
         query = "INSERT INTO nhan_khau (hoTen, biDanh, ngaySinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, " +
-                "noiThuongTru, diaChiHienNay, trinhDoChuyenMon, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, tienAn, soDienThoai) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "noiThuongTru, diaChiHienNay, trinhDoChuyenMon, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, tienAn, soDienThoai, daXoa) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override

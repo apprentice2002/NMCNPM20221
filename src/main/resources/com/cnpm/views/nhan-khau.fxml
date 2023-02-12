@@ -52,11 +52,6 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Button layoutX="572.0" layoutY="72.0" mnemonicParsing="false" onAction="#lichSuThayDoi" prefHeight="85.0" prefWidth="178.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Lịch sử thay đổi nhân khẩu">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
       <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
       <Button layoutX="185.0" layoutY="116.0" mnemonicParsing="false" onAction="#xoaNhanKhau" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa nhân khẩu">
          <font>
