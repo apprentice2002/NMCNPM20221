@@ -409,7 +409,8 @@ public class TachHoKhauController implements Initializable {
                                 "VALUES ( ?, ?, ?, ?,?)";
                         PreparedStatement preparedStmtInsert = connection.prepareStatement(newHoKhauSql,Statement.RETURN_GENERATED_KEYS);
                         if(diaChi.isEmpty() || maKhuVuc.isEmpty() || maChuHoMoi.isEmpty()|| maHoKhauMoi.isEmpty()) {
-                            System.out.println("Vui lòng nhập đầy đủ thông tin !");
+                            errorLab.setText("Vui lòng nhập đầy đủ thông tin !");
+                            throw new Exception("Vui lòng nhập đầy đủ thông tin !");
                         } else {
                             preparedStmtInsert.setDate(1, ngayTao);
                             preparedStmtInsert.setString(2, maKhuVuc);
@@ -417,11 +418,6 @@ public class TachHoKhauController implements Initializable {
                             preparedStmtInsert.setString(4, diaChi);
                             preparedStmtInsert.setString(5, maHoKhauMoi);
                         }
-                        int affectedRows = preparedStmtInsert.executeUpdate();
-                        if (affectedRows == 0) {
-                            throw new SQLException("Creating nhanKhau failed, no rows affected.");
-                        }
-
                         try (ResultSet generatedKeys = preparedStmtInsert.getGeneratedKeys()) {
                             if (generatedKeys.next()) {
                                 String maHoKhau = generatedKeys.getString(1);
@@ -488,7 +484,7 @@ public class TachHoKhauController implements Initializable {
                         }
                     }
                 } catch (Exception e) {
-                    errorLab.setText(e.getMessage());
+                    errorLab.setText("Mã hộ khẩu đã tồn tại !");
                 }
                 confirmationStage.close();
             });

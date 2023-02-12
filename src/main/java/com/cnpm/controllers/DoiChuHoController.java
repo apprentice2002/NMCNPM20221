@@ -65,6 +65,7 @@ public class DoiChuHoController implements Initializable {
     private ChoiceBox<String> choiceBox;
 
     public void submit(ActionEvent event) {
+
         if(maChuHoNewTxt.getText().equals("")||maChuHoOldTxt.getText().equals("")||
                 hoTenOldTxt.getText().equals("")||hoTenMoiTxt.getText().equals("")||
                 quanHeVoiChuHoChoiceBox.getValue().equals("")) {
@@ -76,6 +77,22 @@ public class DoiChuHoController implements Initializable {
 
             Connection connection = DBConnection.getConnection();
             try {
+                int chuHoCount = 0;
+                boolean chuHoTrue = false;
+                for(NhanKhauTableModel nhanKhauMoi : nhanKhauTable.getItems()) {
+                    if (nhanKhauMoi.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
+                        if(nhanKhauMoi.getMaNhanKhau().equals(maChuHoNewTxt.getText())) {
+                            chuHoTrue = true;
+                        }
+                        chuHoCount++;
+                    }
+                }
+                if (chuHoCount<1 || chuHoCount>1) {
+                    throw new Exception("Vui lòng chỉ chọn 1 chủ hộ !");
+                }
+                if(chuHoTrue == false) {
+                    throw new Exception("Vui lòng điền đúng mã chủ hộ mới!");
+                }
                 //Thay đổi id chủ hộ của hộ khẩu
                 PreparedStatement preparedStatement = connection.prepareStatement(submitSql);
                 preparedStatement.setString(1,maChuHoNewTxt.getText());
@@ -127,6 +144,8 @@ public class DoiChuHoController implements Initializable {
                 errorLab.setText("");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
+            } catch (Exception e) {
+                errorLab.setText(e.getMessage());
             }
         }
     }
