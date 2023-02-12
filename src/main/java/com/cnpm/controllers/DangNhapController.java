@@ -22,14 +22,16 @@ public class DangNhapController implements Initializable {
 
     @FXML
     private PasswordField password;
+    @FXML
+    private Label alert;
 
     @FXML
     public void dangNhap(ActionEvent event) {
         if (username.getText().isBlank() || password.getText().isBlank()) {
-            Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
+            alert.setText("Tên đăng nhập và mật khẩu không được để trống!!!");
         } else {
             Connection connection = DBConnection.getConnection();
-            String verify = "SELECT * FROM admin WHERE username='" + username.getText() + "' AND password='" + password.getText() + "'";
+            String verify = "SELECT * FROM users WHERE userName='" + username.getText() + "' AND passwd='" + password.getText() + "'";
 
             try {
                 Statement statement = connection.createStatement();
@@ -49,7 +51,7 @@ public class DangNhapController implements Initializable {
                     UserSession.setPrivileges(privileges);
                     Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml");
                 } else {
-                    Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
+                    alert.setText("Tên đăng nhập hoặc mật khẩu không chính xác!!!");
                 }
             } catch (Exception e) {
                 e.printStackTrace();

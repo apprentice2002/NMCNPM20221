@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="640.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="640.0" prefWidth="180.0">
+         <children>
+            <Button fx:id="trang_chu" mnemonicParsing="false" onAction="#trangChu" prefHeight="106.67" prefWidth="180.0" style="-fx-background-color: #00305b; -fx-text-fill: #f5f5f5; -fx-border-color: #79a5cd; -fx-background-radius: 0 30 30 0; -fx-border-radius: 0 30 30 0;" text="Trang Chủ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="nhan_khau" mnemonicParsing="false" onAction="#quanLyNhanKhau" prefHeight="106.67" prefWidth="180.0" style="-fx-background-color: #00305b; -fx-text-fill: #f5f5f5; -fx-border-color: #79a5cd; -fx-background-radius: 0 30 30 0; -fx-border-radius: 0 30 30 0;" text="Nhân Khẩu">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="ho_khau" mnemonicParsing="false" onAction="#quan_ly_ho_khau" prefHeight="106.67" prefWidth="180.0" style="-fx-background-color: #00305b; -fx-text-fill: #f5f5f5; -fx-border-color: #79a5cd; -fx-background-radius: 0 30 30 0; -fx-border-radius: 0 30 30 0;" text="Hộ Khẩu">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="thong_ke" mnemonicParsing="false" onAction="#thongKe" prefHeight="106.67" prefWidth="180.0" style="-fx-background-color: #00305b; -fx-text-fill: #f5f5f5; -fx-border-color: #79a5cd; -fx-background-radius: 0 30 30 0; -fx-border-radius: 0 30 30 0;" text="Thống Kê">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="phat_thuong" mnemonicParsing="false" onAction="#phatThuong" prefHeight="106.67" prefWidth="180.0" style="-fx-background-color: #00305b; -fx-text-fill: #f5f5f5; -fx-border-color: #79a5cd; -fx-background-radius: 0 30 30 0; -fx-border-radius: 0 30 30 0;" text="Phát Thưởng">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="phat_qua" mnemonicParsing="false" onAction="#phatQua" prefHeight="106.67" prefWidth="180.0" style="-fx-background-color: #00305b; -fx-text-fill: #f5f5f5; -fx-border-color: #79a5cd; -fx-background-radius: 0 30 30 0; -fx-border-radius: 0 30 30 0;" text="Phát Quà">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <BorderPane fx:id="main_display" layoutX="180.0" prefHeight="640.0" prefWidth="600.0" />
+   </children>
+</AnchorPane>

@@ -5,8 +5,11 @@ import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.*;
@@ -33,12 +36,14 @@ public class ThayDoiNhanKhauController implements Initializable {
     @FXML private TextField ton_giao;
     @FXML private TextField trinh_do_chuyen_mon;
     @FXML private TextField trinh_do_ngoai_ngu;
+    @FXML private ChoiceBox<String> da_xoa;
 
     String query_find = "", query_update = "";
     Connection connection = null;
     Statement statement = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
+    Stage stage = null;
     int id = 0;
 
     @FXML
@@ -100,6 +105,12 @@ public class ThayDoiNhanKhauController implements Initializable {
         } else {
             Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
         }
+    }
+
+    @FXML
+    public void huy(ActionEvent event) {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
