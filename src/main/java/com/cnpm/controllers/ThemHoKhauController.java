@@ -45,8 +45,7 @@ public class ThemHoKhauController implements Initializable {
     private TextField ngaySinhChuHoTxt;
     @FXML
     private TextField cccdChuHoTxt;
-    @FXML
-    private Button pickChuHoBtn;
+
     @FXML
     private Button cancleBtn;
     @FXML
@@ -80,6 +79,7 @@ public class ThemHoKhauController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
         maNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("maNhanKhau"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTenNhanKhau"));

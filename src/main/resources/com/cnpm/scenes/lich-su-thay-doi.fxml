@@ -20,7 +20,7 @@
       </Label>
       <TableView fx:id="thayDoiTable" layoutX="224.0" layoutY="82.0" prefHeight="540.0" prefWidth="540.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
         <columns>
-          <TableColumn fx:id="maHoKhauCol" prefWidth="90.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Mã hộ khẩu" />
+          <TableColumn fx:id="maHoKhauCol" prefWidth="90.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
             <TableColumn fx:id="tenChuHoCol" prefWidth="90.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Tên chủ hộ" />
             <TableColumn fx:id="ngayThayDoiCol" prefWidth="90.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Ngày thay đổi" />
             <TableColumn fx:id="themNhanKhauCol" prefWidth="90.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Thêm nhân khẩu" />

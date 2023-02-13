@@ -66,7 +66,11 @@ public class HoKhauController implements Initializable {
     public void refreshTable() {
         table.getItems().clear();
         Connection connection = DBConnection.getConnection();
-        String sql = "SELECT ho_khau.ID,nhan_khau.hoTen AS hoTenChuHo, diaChi, COUNT(thanh_vien_cua_ho.idHoKhau) AS soThanhVien FROM ho_khau, thanh_vien_cua_ho, nhan_khau WHERE ho_khau.ID = thanh_vien_cua_ho.idHoKhau AND nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is null and nhan_khau.daXoa is null GROUP BY ho_khau.ID";
+        String sql = "SELECT ho_khau.ID,nhan_khau.hoTen AS hoTenChuHo, diaChi, COUNT(thanh_vien_cua_ho.idHoKhau) " +
+                "AS soThanhVien FROM ho_khau, thanh_vien_cua_ho, nhan_khau " +
+                "WHERE ho_khau.ID = thanh_vien_cua_ho.idHoKhau AND nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau " +
+                "AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is null and nhan_khau.daXoa " +
+                "is null GROUP BY ho_khau.ID";
         try {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
@@ -210,5 +214,9 @@ public class HoKhauController implements Initializable {
         } else {
             errorLab.setText("Vui lòng chọn ít nhất 1 hộ khẩu cần xóa !");
         }
+    }
+
+    public void themThanhVien(ActionEvent event) {
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/them-thanh-vien.fxml");
     }
 }
