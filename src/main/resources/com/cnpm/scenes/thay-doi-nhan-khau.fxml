@@ -44,11 +44,10 @@
       <Label layoutX="305.0" layoutY="184.0" text="Trình độ chuyên môn" />
       <Label layoutX="305.0" layoutY="234.0" text="Trình độ ngoại ngữ" />
       <Label layoutX="305.0" layoutY="434.0" text="Tiền án" />
-      <Label layoutX="15.0" layoutY="34.0" text="Họ Tên (*)" />
-      <Label layoutX="256.0" layoutY="34.0" text="Ngày sinh (*)" />
-      <DatePicker fx:id="input_ngay_sinh" layoutX="333.0" layoutY="30.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="input_ho_ten" layoutX="80.0" layoutY="30.0" />
-      <JFXButton layoutX="509.0" layoutY="30.0" onAction="#timKiem" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Tìm kiếm" textFill="WHITE" />
+      <Label layoutX="15.0" layoutY="34.0" text="Mã nhân khẩu (*)" />
+
+      <TextField fx:id="input_ma_nhan_khau" layoutX="110.0" layoutY="30.0" />
+      <JFXButton layoutX="300" layoutY="30.0" onAction="#timKiem" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Tìm kiếm" textFill="WHITE" />
       <Label layoutX="305.0" layoutY="484.0" text="Đã xóa" />
       <ChoiceBox fx:id="da_xoa" layoutX="430.0" layoutY="480.0" prefWidth="150.0" />
       <JFXButton layoutX="345.0" layoutY="528.0" onAction="#huy" prefHeight="32.0" prefWidth="88.0" style="-fx-background-color: #00305b;" text="Hủy" textFill="WHITE" />
