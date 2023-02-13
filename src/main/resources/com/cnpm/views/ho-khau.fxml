@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="640.0" prefWidth="780.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.HoKhauController">
+   <Button fx:id="them_ho_khau" layoutX="341.0" layoutY="115.0" mnemonicParsing="false" onAction="#themHoKhau" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="+">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font></Button>
+    <Button fx:id="tach_ho_khau" layoutX="401.0" layoutY="119.0" mnemonicParsing="false" onAction="#tachHoKhau" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Tách hộ">
+      <font>
+         <Font size="13.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
+    <Button fx:id="chuyen_ho_khau" layoutX="401.0" layoutY="71.0" mnemonicParsing="false" onAction="#chuyenHoKhau" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Chuyển hộ khẩu">
+      <font>
+         <Font size="13.0" />
+      </font></Button>
+   <TableView fx:id="table" layoutX="30.0" layoutY="188.0" prefHeight="400.0" prefWidth="720.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+     <columns>
+       <TableColumn fx:id="maHoKhauCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Mã hộ khẩu" />
+         <TableColumn fx:id="hoTenChuHoCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên Chủ hộ" />
+       <TableColumn fx:id="diaChiCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Địa chỉ" />
+         <TableColumn fx:id="soThanhVienCol" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Số thành viên" />
+         <TableColumn prefWidth="117.5999755859375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Xóa" fx:id="xoaCol" />
+     </columns>
+   </TableView>
+   <TextField fx:id="keywordTextField" layoutX="30.0" layoutY="64.0" prefHeight="40.0" prefWidth="127.0" promptText="Tìm kiếm">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></TextField>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="54.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="780.0" />
+   <Label layoutX="15.0" layoutY="14.0" style="-fx-text-fill: #f5f5f5;" text="Quản lý hộ khẩu">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Label>
+   <Button fx:id="lich_su_thay_doi_ho_khau" layoutX="590.0" layoutY="72.0" mnemonicParsing="false" onAction="#lichSuThayDoi" prefHeight="85.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Lịch sử thay đổi hộ khẩu">
+      <font>
+         <Font size="13.0" />
+      </font>
+   </Button>
+   <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+   <Button layoutX="185.0" layoutY="116.0" mnemonicParsing="false" onAction="#xoaHoKhau" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa hộ khẩu" fx:id="xoa_ho_khau">
+      <font>
+         <Font size="13.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button fx:id="doi_chu_ho" layoutX="185.0" layoutY="64.0" mnemonicParsing="false" onAction="#doiChuHo" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đổi chủ hộ">
+      <font>
+         <Font size="13.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Label fx:id="errorLab" layoutX="342.0" layoutY="163.0" prefHeight="22.0" prefWidth="408.0" text="Lab" textAlignment="JUSTIFY" textFill="#ff0101">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
+</AnchorPane>

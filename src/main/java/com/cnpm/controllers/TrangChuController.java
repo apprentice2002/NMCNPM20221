@@ -15,7 +15,15 @@ import java.util.ResourceBundle;
 
 public class TrangChuController implements Initializable {
 
-    @FXML private StackPane main_display;
+    @FXML
+    private StackPane main_display;
+
+    @FXML
+    public void dangXuat(ActionEvent event) {
+        Utilities.changeScene(event, "/com/cnpm/scenes/dang-nhap.fxml");
+        UserSession.setUsername(null);
+        UserSession.setPrivileges(null);
+    }
 
     @FXML
     public void hoKhau(ActionEvent event) {
@@ -30,6 +38,22 @@ public class TrangChuController implements Initializable {
     @FXML
     public void trangChu(ActionEvent event) {
         changeDisplay(main_display, "/com/cnpm/views/mac-dinh.fxml");
+    }
+
+    @FXML
+    public void dangKy(ActionEvent event) {
+        Utilities.popNewWindow(event, "/com/cnpm/views/thong-ke.fxml");
+        changeDisplay(main_display, "/com/cnpm/views/dang-ky.fxml");
+    }
+
+    @FXML
+    public void phatThuong(ActionEvent event) {
+        changeDisplay(main_display, "/com/cnpm/views/phat-thuong.fxml");
+    }
+
+    @FXML
+    public void thayDoi(ActionEvent event) {
+        changeDisplay(main_display, "/com/cnpm/views/thay-doi.fxml");
     }
 
     @Override
