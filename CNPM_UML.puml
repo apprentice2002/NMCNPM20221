@@ -62,6 +62,24 @@ class com.cnpm.controllers.XoaMinhChung {
 - void getQuery()
 + void initialize(URL,ResourceBundle)
 }
+class com.cnpm.utilities.NhanKhauTableModel {
+- String maHoKhau
+- String maNhanKhau
+- String hoTenNhanKhau
+- String quanHeVoiChuHo
+- String gioiTinh
+- int tuoi
++ String getMaHoKhau()
++ String getGioiTinh()
++ int getTuoi()
++ boolean equals(NhanKhauTableModel)
++ String getHoTenNhanKhau()
++ String getMaNhanKhau()
++ String getQuanHeVoiChuHo()
++ void setHoTenNhanKhau(String)
++ void setMaNhanKhau(String)
++ void setQuanHeVoiChuHo(String)
+}
 class com.cnpm.controllers.ThemThuongController {
 - Button btn_cancel_them
 - Button btn_confirm_them
@@ -108,6 +126,14 @@ class com.cnpm.controllers.ThongKeNhanKhauController {
 + void initialize(URL,ResourceBundle)
 + void cancle(ActionEvent)
 }
+class com.cnpm.entities.NhanKhau {
+- int ID
+- String ma_nhan_khau
+- String ho_ten
+- String ngay_sinh
+- String dia_chi_hien_nay
+- CheckBox deleteBox
+}
 class com.cnpm.controllers.DangKyTamTruController {
 ~ String query
 ~ Connection connection
@@ -151,6 +177,12 @@ class com.cnpm.controllers.HoKhauController {
 + void chuyenHoKhau(ActionEvent)
 + void lichSuThayDoi(ActionEvent)
 + void xoaHoKhau(ActionEvent)
+}
+class com.cnpm.entities.QuaThuong {
+- String maPhanQua
+- String tenPhanQua
+- int tongPhanQua
+- int tongPhanQuaThanhTien
 }
 class com.cnpm.controllers.NhanKhauController {
 ~ String query
@@ -254,6 +286,25 @@ class com.cnpm.controllers.ThayDoiNhanKhauController {
 + void timKiem(ActionEvent)
 + void initialize(URL,ResourceBundle)
 }
+class com.cnpm.utilities.HoKhauTableModel {
+- String hoTenChuHo
+- CheckBox deleteBox
+- String themNhanKhau
+- Date ngayThayDoi
+- String xoaNhanKhau
+- String ghiChu
++ String getGhiChu()
++ Date getNgayThayDoi()
++ String getThemNhanKhau()
++ String getXoaNhanKhau()
++ String getHoTenChuHo()
++ String getMaHoKhau()
++ CheckBox getDeleteBox()
++ String getDiaChiHoKhau()
++ String getMaChuHo()
++ String getNgayTao()
++ String getSoThanhVien()
+}
 class com.cnpm.controllers.XoaThuongController {
 - Button btn_cancel_them
 - Button btn_confirm_them
@@ -301,6 +352,23 @@ class com.cnpm.controllers.MinhChungcontroller {
 + void xoaMinhChung(ActionEvent)
 + void themMinhChung(ActionEvent)
 }
+class com.cnpm.entities.HoKhau {
+- String maHoKhau
+- String ngayTao
+- String maChuHo
+- String diaChiHoKhau
+- String soThanhVien
++ void setSoThanhVien(String)
++ void setMaHoKhau(String)
++ String getMaHoKhau()
++ String getDiaChiHoKhau()
++ String getMaChuHo()
++ String getNgayTao()
++ String getSoThanhVien()
++ void setDiaChiHoKhau(String)
++ void setMaChuHo(String)
++ void setNgayTao(String)
+}
 class com.cnpm.controllers.DoiChuHoController {
 - Button cancleBtn
 - TextField maHoKhauTxt
@@ -325,6 +393,22 @@ class com.cnpm.controllers.DoiChuHoController {
 - void restartScene(Scene)
 + void cancle(ActionEvent)
 + void initialize(URL,ResourceBundle)
+}
+class com.cnpm.utilities.UserSession {
+- {static} String username
+- {static} Set<String> privileges
++ {static} String getUsername()
++ {static} Set<String> getPrivileges()
++ {static} void setUsername(String)
++ {static} void setPrivileges(Set<String>)
+}
+class com.cnpm.entities.TamVang {
+- int maNhanKhau
+- String maGiayTamVang
+- String diaChiTamTru
+- Date tuNgay
+- Date denNgay
+- String lyDo
 }
 class com.cnpm.controllers.ThemQuaController {
 - Button btn_cancel_them
@@ -355,6 +439,22 @@ class com.cnpm.controllers.MacDinhController {
 ~ void logout(ActionEvent)
 + void initialize(URL,ResourceBundle)
 - void getQuery()
+}
+class com.cnpm.utilities.SharedDataModel {
+- List<NhanKhauTableModel> selectedRows
++ void addSelectedRow(NhanKhauTableModel)
++ void removeSelectedRow(NhanKhauTableModel)
++ void removeAllRow()
++ List<NhanKhauTableModel> getSelectedRows()
+}
+class com.cnpm.utilities.PhatThuongTableModel {
+- String hoTen
+- CheckBox deleteBox
+- String tenQua
+- String thanhTichHocTap
+- String tenDotPhat
+- int giaTri
+~ PhatQua phatqua
 }
 class com.cnpm.controllers.PhatQuaController {
 - Button them_qua
@@ -422,6 +522,10 @@ class com.cnpm.controllers.LichSuThayDoiController {
 + void initialize(URL,ResourceBundle)
 + void cancle(ActionEvent)
 }
+class com.cnpm.utilities.MinhChungTableModel {
+- String hoTen
+- CheckBox deleteBox
+}
 class com.cnpm.controllers.ThemMinhChungController {
 - Button btn_cancel_them
 - Button btn_confirm_them
@@ -442,6 +546,17 @@ class com.cnpm.controllers.ThemMinhChungController {
 + void xacNhan(ActionEvent)
 - void getQuery()
 + void initialize(URL,ResourceBundle)
+}
+class com.cnpm.entities.PhatThuong {
+- int idPhatThuong
+- int idDotPhat
+- int idQua
+- int idMinhChung
+- int daDuyet
+}
+class com.cnpm.utilities.DBConnection {
++ {static} Connection connection
++ {static} Connection getConnection()
 }
 class com.cnpm.controllers.ThemHoKhauController {
 - TextField maHoKhauTxt
@@ -469,6 +584,24 @@ class com.cnpm.controllers.ThemHoKhauController {
 + void initialize(URL,ResourceBundle)
 + void xacNhan(ActionEvent)
 + void cancle(ActionEvent)
+}
+class com.cnpm.entities.QuaThuongHoKhau {
+- String maQuaThuong
+- String maHoKhau
+- int soPhanQua
+- int soPhanQuaThanhTien
+}
+class com.cnpm.entities.MinhChung {
+- int idMinhChung
+- int ma_nhan_khau
+- String truong
+- String lop
+- String thanhTichHocTap
+- Date ngayKhaiBao
+}
+class com.cnpm.utilities.Utilities {
++ {static} void changeScene(ActionEvent,String)
++ {static} void popNewWindow(ActionEvent,String)
 }
 class com.cnpm.controllers.TachHoKhauController {
 + Button moveToOld
@@ -510,6 +643,10 @@ class com.cnpm.controllers.TachHoKhauController {
 + void initialize(URL,ResourceBundle)
 + void cancle(ActionEvent)
 + void submit(ActionEvent)
+}
+class com.cnpm.Main {
++ void start(Stage)
++ {static} void main(String[])
 }
 class com.cnpm.controllers.XoaQuaController {
 - Button btn_cancel_them
@@ -558,6 +695,30 @@ class com.cnpm.controllers.TrangChuController {
 + void initialize(URL,ResourceBundle)
 + void changeDisplay(StackPane,String)
 }
+class com.cnpm.entities.PhatQua {
+- int idPhatQua
+- int idDotPhat
+- int idQua
+- int ma_nhan_khau
+- int daDuyet
+}
+class com.cnpm.entities.HocSinh {
+- String maHocSinh
+- String maHoKhau
+- String truong
+- String lop
+- String thanhTichHocTap
+- String maPhanQua
+- int soPhanQua
+}
+class com.cnpm.utilities.PhatQuaTableModel {
+- String hoTen
+- CheckBox deleteBox
+- String tenQua
+- int tuoi
+- String tenDotPhat
+- int giaTri
+}
 
 
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemNhanKhauController
@@ -572,20 +733,25 @@ javafx.fxml.Initializable <|.. com.cnpm.controllers.NhanKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.PhatThuongController1
 javafx.fxml.Initializable <|.. com.cnpm.controllers.PhatThuongController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThayDoiNhanKhauController
+com.cnpm.entities.HoKhau <|-- com.cnpm.utilities.HoKhauTableModel
 javafx.fxml.Initializable <|.. com.cnpm.controllers.XoaThuongController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ChonNhanKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.MinhChungcontroller
 javafx.fxml.Initializable <|.. com.cnpm.controllers.DoiChuHoController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemQuaController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.MacDinhController
+com.cnpm.entities.PhatThuong <|-- com.cnpm.utilities.PhatThuongTableModel
 javafx.fxml.Initializable <|.. com.cnpm.controllers.PhatQuaController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.DangKyTamVangController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.XinCapGiayController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.LichSuThayDoiController
+com.cnpm.entities.MinhChung <|-- com.cnpm.utilities.MinhChungTableModel
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemMinhChungController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemHoKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.TachHoKhauController
+javafx.application.Application <|-- com.cnpm.Main
 javafx.fxml.Initializable <|.. com.cnpm.controllers.XoaQuaController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ChuyenHoKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.TrangChuController
+com.cnpm.entities.PhatQua <|-- com.cnpm.utilities.PhatQuaTableModel
 @enduml
