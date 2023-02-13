@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SharedDataModel {
-    private List<themHoKhauNhanKhauTableModel> selectedRows = new ArrayList<>();
+    private List<NhanKhauTableModel> selectedRows = new ArrayList<>();
 
-    public void addSelectedRow(themHoKhauNhanKhauTableModel nk) {
+    public void addSelectedRow(NhanKhauTableModel nk) {
         selectedRows.add(nk);
     }
 
-    public void removeSelectedRow(themHoKhauNhanKhauTableModel nk) {
+    public void removeSelectedRow(NhanKhauTableModel nk) {
         selectedRows.remove(nk);
     }
 
     public void removeAllRow() {
         selectedRows.clear();
     }
-    public List<themHoKhauNhanKhauTableModel> getSelectedRows() {
+    public List<NhanKhauTableModel> getSelectedRows() {
         return selectedRows;
     }
 }

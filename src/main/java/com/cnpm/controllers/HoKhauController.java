@@ -1,6 +1,6 @@
 package com.cnpm.controllers;
 
-import com.cnpm.utilities.*;
+import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import com.cnpm.entities.HoKhau;
+import com.cnpm.utilities.DBConnection;
+import com.cnpm.utilities.HoKhauTableModel;
 import com.cnpm.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HoKhauController implements Initializable {
+public class  HoKhauController implements Initializable {
 
     @FXML
     private TextField thong_tin_tim_kiem;
@@ -53,7 +55,8 @@ public class HoKhauController implements Initializable {
 
     @FXML
     private Button findBtn;
-
+    @FXML
+    private Label errorLab;
     @FXML
     private TextField keywordTextField;
 
@@ -72,32 +75,41 @@ public class HoKhauController implements Initializable {
 
     ObservableList<HoKhauTableModel> listView = FXCollections.observableArrayList();
 
-    private void updateUI(List<HoKhauTableModel> filteredData) {
-        table.setItems(FXCollections.observableArrayList(filteredData));
-    }
-    private List<HoKhauTableModel> performFiltering(String option, String searchText) {
-        List<HoKhauTableModel> filteredData = new ArrayList<>();
-        for (HoKhauTableModel data : table.getItems()) {
-            if (data.getHoTenChuHo().equals(option) && data.getHoTenChuHo().contains(searchText)) {
-                filteredData.add(data);
+    public void refreshTable() {
+        table.getItems().clear();
+        Connection connection = DBConnection.getConnection();
+        String sql = "SELECT ho_khau.ID,nhan_khau.hoTen AS hoTenChuHo, diaChi, COUNT(thanh_vien_cua_ho.idHoKhau) AS soThanhVien FROM ho_khau, thanh_vien_cua_ho, nhan_khau WHERE ho_khau.ID = thanh_vien_cua_ho.idHoKhau AND nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is null and nhan_khau.daXoa is null GROUP BY ho_khau.ID";
+        try {
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(sql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                listView.add(new HoKhauTableModel(queryResult.getString("ID"),
+                        queryResult.getString("hoTenChuHo"),
+                        queryResult.getString("diaChi"),
+                        queryResult.getString("SoThanhVien")));
             }
+            table.setItems(listView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return filteredData;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        Connection connection = DBConnection.getConnection();
-        String sql = "SELECT ho_khau.ID,nhan_khau.hoTen AS hoTenChuHo, diaChi, COUNT(thanh_vien_cua_ho.idHoKhau) AS soThanhVien FROM ho_khau, thanh_vien_cua_ho, nhan_khau WHERE ho_khau.ID = thanh_vien_cua_ho.idHoKhau AND nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND nhan_khau.ID=ho_khau.idChuHo GROUP BY ho_khau.ID";
+        errorLab.setText("");
 
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
         hoTenChuHoCol.setCellValueFactory(new PropertyValueFactory<>("hoTenChuHo"));
+        xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
         diaChiCol.setCellValueFactory(new PropertyValueFactory<>("diaChiHoKhau"));
         soThanhVienCol.setCellValueFactory(new PropertyValueFactory<>("soThanhVien"));
 
         optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm theo ID", "Tìm theo số thành viên");
-        optionChoiceBox.setValue("Lựa chọn tìm kiếm");
+        optionChoiceBox.setValue("Chọn tìm kiếm theo ...");
+
 
         // Thêm action cho choicebox
         optionChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -115,9 +127,8 @@ public class HoKhauController implements Initializable {
                         return true;
                     } else if(hoKhau.getSoThanhVien().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo số thành viên") {
                         return true;
-                    } else {
+                    } else
                         return false;
-                    }
                 });
             } ));
             // Sắp xếp thứ tự
@@ -126,22 +137,7 @@ public class HoKhauController implements Initializable {
             table.setItems(sortedData);
         });
 
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new HoKhauTableModel(queryResult.getString("ID"),
-                        queryResult.getString("hoTenChuHo"),
-                        queryResult.getString("diaChi"),
-                        queryResult.getString("SoThanhVien")));
-            }
-            table.setItems(listView);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        refreshTable();
 
     }
     @FXML
@@ -162,70 +158,69 @@ public class HoKhauController implements Initializable {
     public void lichSuThayDoi(ActionEvent event) {
         Utilities.popNewWindow(event, "/com/cnpm/scenes/lich-su-thay-doi.fxml");
     }
-    private void restartScene(Scene scene) {
-        Stage stage = (Stage) scene.getWindow();
-        stage.hide();
-        stage.setScene(scene);
-        stage.show();
-    }
     public void xoaHoKhau(ActionEvent event) {
-
-        // Nảy ra màn hình liệu có tiếp tục muốn xóa
-        // Tạo ra scene
-        Button yesButton = new Button("Có");
-        yesButton.setPrefSize(100, 40);
-        yesButton.getStyleClass().add("yes-button");
-
-        Button noButton = new Button("Không");
-        noButton.setPrefSize(100, 40);
-        noButton.getStyleClass().add("no-button");
-
-        GridPane confirmationLayout = new GridPane();
-        confirmationLayout.setVgap(10);
-        confirmationLayout.setHgap(10);
-        confirmationLayout.setPadding(new Insets(20, 20, 20, 20));
-        confirmationLayout.add(new Label("Bạn có muốn tiếp tục xóa hộ khẩu này không ?"), 0, 0, 2, 1);
-        confirmationLayout.add(yesButton, 0, 1);
-        confirmationLayout.add(noButton, 1, 1);
-
-        Scene confirmationScene = new Scene(confirmationLayout, 300, 100);
-        Stage confirmationStage = new Stage();
-        confirmationStage.setScene(confirmationScene);
-        confirmationStage.show();
-        //Tìm kiếm những hộ khẩu được tích checkbox
-        ObservableList<HoKhauTableModel> dataListRemove = FXCollections.observableArrayList();
-        for (HoKhauTableModel hoKhau: table.getItems()) {
-            if(hoKhau.getDeleteBox().isSelected()) {
-                dataListRemove.add(hoKhau);
-            }
+        boolean canDelete = false;
+        for(HoKhauTableModel hk : table.getItems()) {
+            if(hk.getDeleteBox().isSelected()) canDelete = true;
         }
+        if(canDelete) {
+            // Nảy ra màn hình liệu có tiếp tục muốn xóa
+            // Tạo ra scene
+            Button yesButton = new Button("Có");
+            yesButton.setPrefSize(100, 40);
+            yesButton.getStyleClass().add("yes-button");
 
-        noButton.setOnAction(e1 -> {
-            confirmationStage.close();
-        });
+            Button noButton = new Button("Không");
+            noButton.setPrefSize(100, 40);
+            noButton.getStyleClass().add("no-button");
 
-        yesButton.setOnAction(e2 -> {
-            //Cập nhật CSDL khi xóa hộ khẩu
-            String delteHKSql = "DELETE FROM ho_khau WHERE ID = ?";
-            String delteQHSql = "DELETE FROM thanh_vien_cua_ho WHERE IdHoKhau = ?";
-            Connection connection = DBConnection.getConnection();
-            try {
-                PreparedStatement preparedDeleteHKStmt = connection.prepareStatement(delteHKSql);
-                PreparedStatement preparedDeleteQHStmt = connection.prepareStatement(delteQHSql);
-                for(HoKhauTableModel hoKhau: dataListRemove) {
-                    String idHoKhau  = hoKhau.getMaHoKhau();
-                    preparedDeleteQHStmt.setString(1,idHoKhau);
-                    preparedDeleteHKStmt.setString(1,idHoKhau);
-                    preparedDeleteQHStmt.execute();
-                    preparedDeleteHKStmt.execute();
+            GridPane confirmationLayout = new GridPane();
+            confirmationLayout.setVgap(10);
+            confirmationLayout.setHgap(10);
+            confirmationLayout.setPadding(new Insets(20, 20, 20, 20));
+            confirmationLayout.add(new Label("Bạn có muốn tiếp tục xóa hộ khẩu này không ?"), 0, 0, 2, 1);
+            confirmationLayout.add(yesButton, 0, 1);
+            confirmationLayout.add(noButton, 1, 1);
+
+            Scene confirmationScene = new Scene(confirmationLayout, 300, 100);
+            Stage confirmationStage = new Stage();
+            confirmationStage.setScene(confirmationScene);
+            confirmationStage.show();
+            //Tìm kiếm những hộ khẩu được tích checkbox
+            ObservableList<HoKhauTableModel> dataListRemove = FXCollections.observableArrayList();
+            for (HoKhauTableModel hoKhau: table.getItems()) {
+                if(hoKhau.getDeleteBox().isSelected()) {
+                    dataListRemove.add(hoKhau);
                 }
-                // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
             }
-            confirmationStage.close();
-            restartScene(table.getScene());
-        });
+
+            noButton.setOnAction(e1 -> {
+                confirmationStage.close();
+            });
+
+            yesButton.setOnAction(e2 -> {
+                //Cập nhật CSDL khi xóa hộ khẩu
+                String delteHKSql = "UPDATE ho_khau SET daXoa = 1 WHERE ID = ?";
+                String delteQHSql = "DELETE FROM thanh_vien_cua_ho WHERE IdHoKhau = ?";
+                Connection connection = DBConnection.getConnection();
+                try {
+                    PreparedStatement preparedDeleteHKStmt = connection.prepareStatement(delteHKSql);
+                    PreparedStatement preparedDeleteQHStmt = connection.prepareStatement(delteQHSql);
+                    for(HoKhauTableModel hoKhau: dataListRemove) {
+                        String idHoKhau  = hoKhau.getMaHoKhau();
+                        preparedDeleteQHStmt.setString(1,idHoKhau);
+                        preparedDeleteHKStmt.setString(1,idHoKhau);
+                        preparedDeleteQHStmt.execute();
+                        preparedDeleteHKStmt.execute();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                confirmationStage.close();
+                refreshTable();
+            });
+        } else {
+            errorLab.setText("Vui lòng chọn ít nhất 1 hộ khẩu cần xóa !");
+        }
     }
 }

@@ -60,7 +60,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="doi_chu_ho" layoutX="185.0" layoutY="64.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đổi chủ hộ">
+   <Button fx:id="doi_chu_ho" onAction="#doiChuHo" layoutX="185.0" layoutY="64.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đổi chủ hộ">
       <font>
          <Font size="13.0" />
       </font>
@@ -68,4 +68,9 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
+   <Label fx:id="errorLab" layoutX="342.0" layoutY="163.0" prefHeight="22.0" prefWidth="408.0" text="Lab" textAlignment="JUSTIFY" textFill="#ff0101">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
 </AnchorPane>

@@ -5,8 +5,11 @@ import com.cnpm.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.*;
@@ -33,12 +36,14 @@ public class ThayDoiNhanKhauController implements Initializable {
     @FXML private TextField ton_giao;
     @FXML private TextField trinh_do_chuyen_mon;
     @FXML private TextField trinh_do_ngoai_ngu;
+    @FXML private ChoiceBox<String> da_xoa;
 
     String query_find = "", query_update = "";
     Connection connection = null;
     Statement statement = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
+    Stage stage = null;
     int id = 0;
 
     @FXML
@@ -103,13 +108,19 @@ public class ThayDoiNhanKhauController implements Initializable {
     }
 
     @FXML
+    public void huy(ActionEvent event) {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     public void timKiem(ActionEvent event) {
         String input_ho_ten = this.input_ho_ten.getText();
         if (input_ho_ten.equals("") || this.input_ngay_sinh.getValue() == null) {
             Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
         } else {
             Date input_ngay_sinh = Date.valueOf(this.input_ngay_sinh.getValue());
-            query_find = "SELECT * FROM nhan_khau WHERE hoTen='" + input_ho_ten + "' AND ngaySinh='" + input_ngay_sinh + "'";
+            query_find = "SELECT * FROM nhan_khau WHERE hoTen='" + input_ho_ten + "' AND namSinh='" + input_ngay_sinh + "'";
             try {
                 connection = DBConnection.getConnection();
                 statement = connection.createStatement();
@@ -122,8 +133,8 @@ public class ThayDoiNhanKhauController implements Initializable {
                     id = resultSet.getInt("ID");
 
                     ho_ten.setText(resultSet.getString("hoTen"));
-                    bi_danh.setText(resultSet.getString("biDanh"));
-                    ngay_sinh.setValue(resultSet.getDate("ngaySinh").toLocalDate());
+                    bi_danh.setText(resultSet.getString("bietDanh"));
+                    ngay_sinh.setValue(resultSet.getDate("namSinh").toLocalDate());
                     gioi_tinh.setText(resultSet.getString("gioiTinh"));
                     noi_sinh.setText(resultSet.getString("noiSinh"));
                     nguyen_quan.setText(resultSet.getString("nguyenQuan"));

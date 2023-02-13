@@ -35,6 +35,11 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <Label fx:id="alert" layoutX="295.0" layoutY="200.0" textFill="#802623">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
       <Button layoutX="500.0" layoutY="245.0" mnemonicParsing="false" onAction="#dangNhap" text="Đăng nhập">
          <font>
             <Font size="15.0" />

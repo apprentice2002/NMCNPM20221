@@ -1,7 +1,5 @@
 package com.cnpm.entities;
 
-import java.util.List;
-
 public class HoKhau {
     private String maHoKhau;
     private String ngayTao;
@@ -25,6 +23,10 @@ public class HoKhau {
     public HoKhau(String maHoKhau, String diaChiHoKhau) {
         this.maHoKhau = maHoKhau;
         this.diaChiHoKhau = diaChiHoKhau;
+    }
+
+    public HoKhau(String maHoKhau) {
+        this.maHoKhau = maHoKhau;
     }
 
     public void setSoThanhVien(String soThanhVien) {

@@ -31,15 +31,4 @@ public class Utilities {
             e.printStackTrace();
         }
     }
-
-    public void alert(String message) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Utilities.class.getResource("/com/cnpm/scenes/alert.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(fxmlLoader.load()));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

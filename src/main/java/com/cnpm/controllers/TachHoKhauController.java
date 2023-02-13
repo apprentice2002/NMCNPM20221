@@ -83,6 +83,9 @@ public class TachHoKhauController implements Initializable {
     private TextField maHoKhauTxt;
     @FXML
     private Button cancleBtn;
+    @FXML
+    private Label errorLab;
+
 
     @FXML
     private ChoiceBox<String> optionChoiceBox;
@@ -91,23 +94,36 @@ public class TachHoKhauController implements Initializable {
 
     private SharedDataModel sharedDataModel = new SharedDataModel();
 
-
-    String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau FROM nhan_khau, ho_khau WHERE nhan_khau.ID = IdChuHo";
+    Boolean maHoKhauhasExisted;
+    String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau " +
+            "FROM nhan_khau, ho_khau " +
+            "WHERE nhan_khau.ID = IdChuHo AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is null and nhan_khau.daXoa is null";
     String nhanKhauSql;
     String submitSql;
 
     private ChoiceBox<String> choiceBox;
 
-    private void restartScene(Scene scene) {
-        Stage stage = (Stage) scene.getWindow();
-        stage.hide();
-        stage.setScene(scene);
-        stage.show();
+    private void refreshTable() {
+        try {
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(hoKhauSql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                hoKhauView.add(new HoKhauTableModel(
+                        queryResult.getString("MaHoKhau"),
+                        queryResult.getString("TenChuHo"),
+                        queryResult.getString("DiaChiHoKhau")));
+            }
+            hoKhauTable.setItems(hoKhauView);
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        errorLab.setText("");
         Connection connection = DBConnection.getConnection();
 
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
@@ -126,17 +142,7 @@ public class TachHoKhauController implements Initializable {
 
 
         try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(hoKhauSql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                hoKhauView.add(new HoKhauTableModel(
-                        queryResult.getString("MaHoKhau"),
-                        queryResult.getString("TenChuHo"),
-                        queryResult.getString("DiaChiHoKhau")));
-            }
-            hoKhauTable.setItems(hoKhauView);
+            refreshTable();
             optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm theo ID");
             optionChoiceBox.setValue("Lựa chọn tìm kiếm");
 
@@ -237,6 +243,26 @@ public class TachHoKhauController implements Initializable {
                 }
             }
         });
+        maHoKhauMoiTxt.textProperty().addListener((observable, oldValue, newValue) -> {
+            String value = maHoKhauMoiTxt.getText();
+            String checkQuery = "SELECT COUNT(*) FROM ho_khau WHERE maHoKhau = '" + value + "'";
+            try {
+                Statement stmt = connection.createStatement();
+                ResultSet result = stmt.executeQuery(checkQuery);
+                result.next();
+                if (result.getInt(1) > 0) {
+                    // value already exists in the database
+                    maHoKhauhasExisted = false;
+                } else {
+                    // value does not exist in the database
+                    maHoKhauhasExisted = false;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        });
+
 
         quanHeVoiChuHoNewCol.setCellFactory(column -> {
             return new TableCell<NhanKhauTableModel, String>() {
@@ -247,7 +273,7 @@ public class TachHoKhauController implements Initializable {
                         setGraphic(null);
                     } else {
                         choiceBox = new ChoiceBox<>();
-                        choiceBox.getItems().addAll("Con trai", "Con gái", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em");
+                        choiceBox.getItems().addAll("Con", "Vợ", "Chồng", "Chủ Hộ", "Anh","Chị","Em","Bố","Mẹ","Chú","Bác");
                         choiceBox.getSelectionModel().select(item);
                         choiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                             NhanKhauTableModel nhanKhau = getTableView().getItems().get(getIndex());
@@ -271,39 +297,35 @@ public class TachHoKhauController implements Initializable {
                     if(rs.next()) {
                         String hoTenChuHo = rs.getString("HoTen");
                         chuHoMoiTxt.setText(hoTenChuHo);
+                        errorLab.setText("");
                     } else {
                         chuHoMoiTxt.setText("");
-                        System.out.println("Không tìm thấy mã nhân khẩu tương ứng, vui lòng thử lại");
+                        errorLab.setText("Không tìm thấy mã nhân khẩu tương ứng \n, vui lòng thử lại");
                     }
-
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+        nhanKhauNewTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton().equals(MouseButton.PRIMARY)) {
+                    // Get the selected item from the TableView
+                    NhanKhauTableModel selectedItem = nhanKhauNewTable.getSelectionModel().getSelectedItem();
+                    if(selectedItem.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
+                        for(NhanKhauTableModel nk : nhanKhauNewTable.getItems()) {
+                            if(nk.getQuanHeVoiChuHo().equals("Chủ Hộ") && !nk.equals(selectedItem)) {
+                                nk.setQuanHeVoiChuHo("");
+                            }
+                        }
+                        maChuHoMoiTxt.setText(selectedItem.getMaNhanKhau());
+                        chuHoMoiTxt.setText(selectedItem.getHoTenNhanKhau());
+                    }
+                }
+            }
+        });
     }
-
-    public void chonChuHo(ActionEvent event) throws IOException  {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cnpm/scenes/chon-nhan-khau.fxml"));
-            Parent root = loader.load();
-            ChonNhanKhauController controller = loader.getController();
-            controller.setSharedDataModel(sharedDataModel);
-            Scene nhanKhauScene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Chọn Nhân khẩu");
-            stage.setScene(nhanKhauScene);
-            stage.show();
-            stage.setOnHidden(e -> {
-
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
 
     public void cancle(ActionEvent event) throws IOException {
         Stage stage = (Stage) cancleBtn.getScene().getWindow();
@@ -313,156 +335,168 @@ public class TachHoKhauController implements Initializable {
     public void submit(ActionEvent event) {
         List<NhanKhauTableModel> dataNhanKhauCu = nhanKhauNewTable.getItems();
         List<NhanKhauTableModel> dataNhanKhauMoi = nhanKhauOldTable.getItems();
+        try {
+            if(maChuHoMoiTxt.getText().isEmpty() || maHoKhauMoiTxt.getText().isEmpty() || maHoKhauTxt.getText().isEmpty() || diaChiTxt.getText().isEmpty()
+                || chuHoMoiTxt.getText().isEmpty() || chuHoCuTxt.getText().isEmpty() || maKhuVucTxt.getText().isEmpty()) {
+                throw new Exception("Vui lòng nhập đủ dữ liệu cần thiết !");
+            }
+            if(maHoKhauhasExisted) throw new Exception("Mã hộ khẩu đã tồn tại, vui lòng đặt mã hộ khẩu khác ");
+            int idCheckError = Integer.parseInt(maChuHoMoiTxt.getText());
+            if(idCheckError < 0) {
+                throw new NumberFormatException("Dữ liệu nhập không hợp lệ !");
+            }
+            // Nảy ra màn hình liệu có tiếp tục muốn xóa
+            // Tạo ra scene
+            Button yesButton = new Button("Có");
+            yesButton.setPrefSize(100, 40);
+            yesButton.getStyleClass().add("yes-button");
 
-        // Nảy ra màn hình liệu có tiếp tục muốn xóa
-        // Tạo ra scene
-        Button yesButton = new Button("Có");
-        yesButton.setPrefSize(100, 40);
-        yesButton.getStyleClass().add("yes-button");
+            Button noButton = new Button("Không");
+            noButton.setPrefSize(100, 40);
+            noButton.getStyleClass().add("no-button");
 
-        Button noButton = new Button("Không");
-        noButton.setPrefSize(100, 40);
-        noButton.getStyleClass().add("no-button");
+            GridPane confirmationLayout = new GridPane();
+            confirmationLayout.setVgap(10);
+            confirmationLayout.setHgap(10);
+            confirmationLayout.setPadding(new Insets(20, 20, 20, 20));
+            confirmationLayout.add(new Label("Bạn có muốn tiếp tục tách hộ khẩu này không ?"), 0, 0, 2, 1);
+            confirmationLayout.add(yesButton, 0, 1);
+            confirmationLayout.add(noButton, 1, 1);
 
-        GridPane confirmationLayout = new GridPane();
-        confirmationLayout.setVgap(10);
-        confirmationLayout.setHgap(10);
-        confirmationLayout.setPadding(new Insets(20, 20, 20, 20));
-        confirmationLayout.add(new Label("Bạn có muốn tiếp tục tách hộ khẩu này không ?"), 0, 0, 2, 1);
-        confirmationLayout.add(yesButton, 0, 1);
-        confirmationLayout.add(noButton, 1, 1);
+            Scene confirmationScene = new Scene(confirmationLayout, 300, 100);
+            Stage confirmationStage = new Stage();
+            confirmationStage.setScene(confirmationScene);
+            confirmationStage.show();
 
-        Scene confirmationScene = new Scene(confirmationLayout, 300, 100);
-        Stage confirmationStage = new Stage();
-        confirmationStage.setScene(confirmationScene);
-        confirmationStage.show();
+            noButton.setOnAction(e1 -> {
+                confirmationStage.close();
+            });
 
-        noButton.setOnAction(e1 -> {
-            confirmationStage.close();
-        });
-
-        yesButton.setOnAction(e2 -> {
-            //Cập nhật CSDL khi xóa hộ khẩu
-            try {
-                if(dataNhanKhauMoi == null) {
-                    System.out.println("Vui lòng chọn những nhân khẩu muốn tách hộ!");
-                } else {
-                    // Kiểm tra các mối quan hệ trong hộ khẩu mới.
-                    int chuHoCount = 0;
-                    boolean chuHoTrue = false;
-                    for(NhanKhauTableModel nhanKhauMoi : nhanKhauNewTable.getItems()) {
-                        if (nhanKhauMoi.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
-                            if(nhanKhauMoi.getMaNhanKhau().equals(maChuHoMoiTxt.getText())) {
-                                chuHoTrue = true;
-                            }
-                            chuHoCount++;
-                        }
-                    }
-                    if (chuHoCount<1 || chuHoCount>1) {
-                        throw new Exception("Vui lòng chỉ chọn 1 chủ hộ !");
-                    }
-                    if(chuHoTrue == false) {
-                        throw new Exception("Vui lòng điền đúng mã chủ hộ mới!");
-                    }
-                    // Kiểm tra các text liệu có để rỗng
-                    String maChuHoMoi = maChuHoMoiTxt.getText();
-                    String diaChi = diaChiTxt.getText();
-                    String maKhuVuc = maKhuVucTxt.getText();
-                    Date ngayTao = new Date(System.currentTimeMillis());
-                    String maHoKhauMoi = maHoKhauMoiTxt.getText();
-                    if(maChuHoMoi.isEmpty()|| diaChi.isEmpty() || maKhuVuc.isEmpty()||maHoKhauMoi.isEmpty()) {
-                        Utilities.popNewWindow(event,"/resources/com/cnpm/scenes/alert.fxml");
-                    }
-                    // Tạo hộ khẩu mới
-                    String newHoKhauSql = "INSERT INTO ho_khau (ngayLap, maKhuVuc, idChuHo, diaChi, maHoKhau) " +
-                            "VALUES ( ?, ?, ?, ?,?)";
-                    PreparedStatement preparedStmtInsert = connection.prepareStatement(newHoKhauSql,Statement.RETURN_GENERATED_KEYS);
-                    if(diaChi.isEmpty() || maKhuVuc.isEmpty() || maChuHoMoi.isEmpty()|| maHoKhauMoi.isEmpty()) {
-                        System.out.println("Vui lòng nhập đầy đủ thông tin !");
+            yesButton.setOnAction(e2 -> {
+                //Cập nhật CSDL khi xóa hộ khẩu
+                try {
+                    if(dataNhanKhauMoi == null) {
+                        errorLab.setText("Vui lòng chọn những nhân khẩu muốn tách hộ!");
                     } else {
-                        preparedStmtInsert.setDate(1, ngayTao);
-                        preparedStmtInsert.setString(2, maKhuVuc);
-                        preparedStmtInsert.setString(3, maChuHoMoi);
-                        preparedStmtInsert.setString(4, diaChi);
-                        preparedStmtInsert.setString(5, maHoKhauMoi);
-                    }
-                    int affectedRows = preparedStmtInsert.executeUpdate();
-                    if (affectedRows == 0) {
-                        throw new SQLException("Creating nhanKhau failed, no rows affected.");
-                    }
-
-                    try (ResultSet generatedKeys = preparedStmtInsert.getGeneratedKeys()) {
-                        if (generatedKeys.next()) {
-                            String maHoKhau = generatedKeys.getString(1);
-                            // Cập nhật hộ khẩu cũ
-                            submitSql = "UPDATE thanh_vien_cua_ho SET IdHoKhau = ? WHERE IdNhanKhau = ?";
-                            PreparedStatement preparedStmtUpdate = connection.prepareStatement(submitSql);
-                            // Cập nhật thàn viên hộ khẩu mới.
-                            for (NhanKhauTableModel nhanKhau : nhanKhauNewTable.getItems()) {
-                                preparedStmtUpdate.setString(1, maHoKhau);
-                                preparedStmtUpdate.setString(2, nhanKhau.getMaNhanKhau());
-                                preparedStmtUpdate.execute();
-                            }
-
-                            // Cập nhật quan hệ các thành viên chủ hộ mới
-                            String updateQuanHeSql = "UPDATE thanh_vien_cua_ho SET quanHeVoiChuHo = ?, IdHoKhau = ? WHERE IdNhanKhau = ?";
-                            PreparedStatement preparedStmtUpdateQuanHeThanhVien = connection.prepareStatement(updateQuanHeSql);
-                            for(NhanKhauTableModel nhanKhau : nhanKhauNewTable.getItems()) {
-                                if(nhanKhau.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
-                                    preparedStmtUpdateQuanHeThanhVien.setString(1,new String(""));
-                                } else {
-                                    preparedStmtUpdateQuanHeThanhVien.setString(1,nhanKhau.getQuanHeVoiChuHo());
+                        // Kiểm tra các mối quan hệ trong hộ khẩu mới.
+                        int chuHoCount = 0;
+                        boolean chuHoTrue = false;
+                        for(NhanKhauTableModel nhanKhauMoi : nhanKhauNewTable.getItems()) {
+                            if (nhanKhauMoi.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
+                                if(nhanKhauMoi.getMaNhanKhau().equals(maChuHoMoiTxt.getText())) {
+                                    chuHoTrue = true;
                                 }
-                                preparedStmtUpdateQuanHeThanhVien.setString(2,maHoKhau);
-                                preparedStmtUpdateQuanHeThanhVien.setString(3,nhanKhau.getMaNhanKhau());
-                                preparedStmtUpdateQuanHeThanhVien.execute();
+                                chuHoCount++;
+                            }
+                        }
+                        if (chuHoCount<1 || chuHoCount>1) {
+                            throw new Exception("Vui lòng chỉ chọn 1 chủ hộ !");
+                        }
+                        if(chuHoTrue == false) {
+                            throw new Exception("Vui lòng điền đúng mã chủ hộ mới!");
+                        }
+                        // Kiểm tra các text liệu có để rỗng
+                        String maChuHoMoi = maChuHoMoiTxt.getText();
+                        String diaChi = diaChiTxt.getText();
+                        String maKhuVuc = maKhuVucTxt.getText();
+                        Date ngayTao = new Date(System.currentTimeMillis());
+                        String maHoKhauMoi = maHoKhauMoiTxt.getText();
+                        if(maChuHoMoi.isEmpty()|| diaChi.isEmpty() || maKhuVuc.isEmpty()||maHoKhauMoi.isEmpty()) {
+                            Utilities.popNewWindow(event,"/resources/com/cnpm/scenes/alert.fxml");
+                        }
+                        // Tạo hộ khẩu mới
+                        String newHoKhauSql = "INSERT INTO ho_khau (ngayLap, maKhuVuc, idChuHo, diaChi, maHoKhau) " +
+                                "VALUES ( ?, ?, ?, ?,?)";
+                        PreparedStatement preparedStmtInsert = connection.prepareStatement(newHoKhauSql,Statement.RETURN_GENERATED_KEYS);
+                        if(diaChi.isEmpty() || maKhuVuc.isEmpty() || maChuHoMoi.isEmpty()|| maHoKhauMoi.isEmpty()) {
+                            System.out.println("Vui lòng nhập đầy đủ thông tin !");
+                        } else {
+                            preparedStmtInsert.setDate(1, ngayTao);
+                            preparedStmtInsert.setString(2, maKhuVuc);
+                            preparedStmtInsert.setString(3, maChuHoMoi);
+                            preparedStmtInsert.setString(4, diaChi);
+                            preparedStmtInsert.setString(5, maHoKhauMoi);
+                        }
+                        int affectedRows = preparedStmtInsert.executeUpdate();
+                        if (affectedRows == 0) {
+                            throw new SQLException("Creating nhanKhau failed, no rows affected.");
+                        }
 
-                                // Cập nhật lịch sử thay đổi hộ khẩu
-                                String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
-                                String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
-                                PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
-                                PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
+                        try (ResultSet generatedKeys = preparedStmtInsert.getGeneratedKeys()) {
+                            if (generatedKeys.next()) {
+                                String maHoKhau = generatedKeys.getString(1);
+                                // Cập nhật hộ khẩu cũ
+                                submitSql = "UPDATE thanh_vien_cua_ho SET IdHoKhau = ? WHERE IdNhanKhau = ?";
+                                PreparedStatement preparedStmtUpdate = connection.prepareStatement(submitSql);
+                                // Cập nhật thàn viên hộ khẩu mới.
+                                for (NhanKhauTableModel nhanKhau : nhanKhauNewTable.getItems()) {
+                                    preparedStmtUpdate.setString(1, maHoKhau);
+                                    preparedStmtUpdate.setString(2, nhanKhau.getMaNhanKhau());
+                                    preparedStmtUpdate.execute();
+                                }
+
+                                // Cập nhật quan hệ các thành viên chủ hộ mới
+                                String updateQuanHeSql = "UPDATE thanh_vien_cua_ho SET quanHeVoiChuHo = ?, IdHoKhau = ? WHERE IdNhanKhau = ?";
+                                PreparedStatement preparedStmtUpdateQuanHeThanhVien = connection.prepareStatement(updateQuanHeSql);
+                                for(NhanKhauTableModel nhanKhau : nhanKhauNewTable.getItems()) {
+                                    if(nhanKhau.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
+                                        preparedStmtUpdateQuanHeThanhVien.setString(1,new String(""));
+                                    } else {
+                                        preparedStmtUpdateQuanHeThanhVien.setString(1,nhanKhau.getQuanHeVoiChuHo());
+                                    }
+                                    preparedStmtUpdateQuanHeThanhVien.setString(2,maHoKhau);
+                                    preparedStmtUpdateQuanHeThanhVien.setString(3,nhanKhau.getMaNhanKhau());
+                                    preparedStmtUpdateQuanHeThanhVien.execute();
+
+                                    // Cập nhật lịch sử thay đổi hộ khẩu
+                                    String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
+                                    String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
+                                    PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
+                                    PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
 
 
-                                preparedStmtUpdateLS.setDate(1,ngayTao);
-                                preparedStmtUpdateLS.setString(2,"Tách hộ khẩu");
-                                preparedStmtUpdateLS.execute();
+                                    preparedStmtUpdateLS.setDate(1,ngayTao);
+                                    preparedStmtUpdateLS.setString(2,"Tách hộ khẩu");
+                                    preparedStmtUpdateLS.execute();
 
-                                String selectLastId = "SELECT LAST_INSERT_ID()";
-                                int lastId = 0;
-                                try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
-                                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                                        while (resultSet.next()) {
-                                            lastId = resultSet.getInt(1);
+                                    String selectLastId = "SELECT LAST_INSERT_ID()";
+                                    int lastId = 0;
+                                    try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
+                                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                                            while (resultSet.next()) {
+                                                lastId = resultSet.getInt(1);
+                                            }
                                         }
                                     }
+
+                                    preparedStmtUpdateLSHK.setString(1,"0");
+                                    preparedStmtUpdateLSHK.setString(2, "1");
+                                    preparedStmtUpdateLSHK.setString(3, "0");
+                                    preparedStmtUpdateLSHK.setString(4, maHoKhau);
+                                    preparedStmtUpdateLSHK.setString(5,nhanKhau.getMaNhanKhau() );
+                                    preparedStmtUpdateLSHK.setInt(6,lastId );
+                                    preparedStmtUpdateLSHK.execute();
+
                                 }
 
-                                preparedStmtUpdateLSHK.setString(1,"0");
-                                preparedStmtUpdateLSHK.setString(2, "1");
-                                preparedStmtUpdateLSHK.setString(3, "0");
-                                preparedStmtUpdateLSHK.setString(4, maHoKhau);
-                                preparedStmtUpdateLSHK.setString(5,nhanKhau.getMaNhanKhau() );
-                                preparedStmtUpdateLSHK.setInt(6,lastId );
-                                preparedStmtUpdateLSHK.execute();
-
+                                refreshTable();
+                                nhanKhauOldTable.getItems().clear();
+                                nhanKhauNewTable.getItems().clear();
+                            } else {
+                                throw new SQLException("Creating nhanKhau failed, no ID obtained.");
                             }
-
-
-                            nhanKhauOldTable.getItems().clear();
-                            nhanKhauNewTable.getItems().clear();
-                        } else {
-                            throw new SQLException("Creating nhanKhau failed, no ID obtained.");
                         }
                     }
+                } catch (Exception e) {
+                    errorLab.setText(e.getMessage());
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            confirmationStage.close();
-            Utilities.popNewWindow(event, "/com/cnpm/scenes/xoa-thanh-cong.fxml");
-            restartScene(hoKhauTable.getScene());
-        });
+                confirmationStage.close();
+            });
+        } catch (NumberFormatException e) {
+          errorLab.setText("Dữ liệu nhập không hợp lệ !");
+        } catch (Exception e) {
+            errorLab.setText(e.getMessage());
+        }
     }
 
 }
