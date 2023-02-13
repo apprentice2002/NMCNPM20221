@@ -78,8 +78,10 @@ public class ThemThanhVienController implements Initializable {
         hoKhauTable.getItems().clear();
         String hoKhauSql = "SELECT ho_khau.ID as MaHoKhau, nhan_khau.hoTen AS TenChuHo, diaChi as DiaChiHoKhau " +
                 "FROM nhan_khau, ho_khau " +
-                "WHERE nhan_khau.ID = IdChuHo AND ho_khau.daXoa is NULL and " +
-                "ho_khau.ngayChuyenDi is null and nhan_khau.daXoa is null";
+                "WHERE nhan_khau.ID = IdChuHo and " +
+                "ho_khau.ngayChuyenDi is null " +
+                "and nhan_khau.daXoa is null and " +
+                "ho_khau.daXoa is null";
         Connection connection = DBConnection.getConnection();
         try {
             connection = DBConnection.getConnection();
@@ -114,7 +116,7 @@ public class ThemThanhVienController implements Initializable {
         }
         if(maHoKhauTxt.getText().isEmpty() || nhanKhauTable.getItems().isEmpty()) {
             errorLab.setText("Vui lòng nhập đủ dữ liêu");
-        } else if (canUpdate) {
+        } else if (!canUpdate) {
             errorLab.setText("Nhập dữ liệu nhân khẩu sai, hãy kiểm tra lại !");
         } else {
             String maNhanKhau;

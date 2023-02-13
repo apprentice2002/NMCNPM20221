@@ -64,7 +64,7 @@ public class ThongKeNhanKhauController implements Initializable {
         String nhanKhauSql = "SELECT nhan_khau.ID,nhan_khau.hoTen,nhan_khau.gioiTinh, " +
                 "(YEAR(CURDATE()) - YEAR(nhan_khau.namSinh)) as tuoi, ho_khau.maHoKhau" +
                 " from nhan_khau, ho_khau, thanh_vien_cua_ho where ho_khau.ID = thanh_vien_cua_ho.idHoKhau " +
-                "and nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau and ho_khau.daXoa is NULL and " +
+                "and nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau and " +
                 "ho_khau.ngayChuyenDi is null and nhan_khau.daXoa is null";
         try {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL

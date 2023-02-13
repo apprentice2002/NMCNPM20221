@@ -77,7 +77,7 @@ public class PhatQuaController implements Initializable{
         Connection connection = DBConnection.getConnection();
         String sql ="SELECT nhan_khau.hoTen, (YEAR(CURDATE()) - YEAR(nhan_khau.namSinh)) as tuoi, tenQua, tenDotPhat, giaTri, daDuyet\n" +
                 "                FROM nhan_khau, phat_qua, qua, dot_phat\n" +
-                "                WHERE nhan_khau.ID = phat_qua.ma_nhan_khau\n" +
+                "                WHERE nhan_khau.ID = phat_qua.idNhanKhau\n" +
                 "\t\t\t          AND phat_qua.idQua = qua.idQua\n" +
                 "                AND phat_qua.idDotPhat = dot_phat.idDotPhat";
 
