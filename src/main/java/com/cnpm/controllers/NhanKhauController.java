@@ -78,7 +78,7 @@ public class NhanKhauController implements Initializable {
     }
 
     private void load() {
-        query = "SELECT ID, maNhanKhau, hoTen, namSinh, diaChiHienNay FROM nhan_khau";
+        query = "SELECT ID, maNhanKhau, hoTen, namSinh, diaChiHienNay FROM nhan_khau WHERE daXoa IS NULL OR daXoa='0'";
         connection = DBConnection.getConnection();
 
         diaChiHienNayCol.setCellValueFactory(new PropertyValueFactory<>("dia_chi_hien_nay"));
@@ -171,7 +171,7 @@ public class NhanKhauController implements Initializable {
 
         yesButton.setOnAction(e2 -> {
             //Cập nhật CSDL khi xóa hộ khẩu
-            String delete_query = "DELETE FROM nhan_khau WHERE hoTen=?";
+            String delete_query = "UPDATE nhan_khau SET daXoa=1 WHERE hoTen=?";
             try {
                 for(NhanKhau nhanKhau: dataListRemove) {
                     PreparedStatement preparedStatement = connection.prepareStatement(delete_query);

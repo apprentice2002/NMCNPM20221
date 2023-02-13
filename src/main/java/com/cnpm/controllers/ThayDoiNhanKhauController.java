@@ -120,7 +120,7 @@ public class ThayDoiNhanKhauController implements Initializable {
             Utilities.popNewWindow(event, "/com/cnpm/scenes/alert.fxml");
         } else {
             Date input_ngay_sinh = Date.valueOf(this.input_ngay_sinh.getValue());
-            query_find = "SELECT * FROM nhan_khau WHERE hoTen='" + input_ho_ten + "' AND ngaySinh='" + input_ngay_sinh + "'";
+            query_find = "SELECT * FROM nhan_khau WHERE hoTen='" + input_ho_ten + "' AND namSinh='" + input_ngay_sinh + "'";
             try {
                 connection = DBConnection.getConnection();
                 statement = connection.createStatement();
@@ -133,8 +133,8 @@ public class ThayDoiNhanKhauController implements Initializable {
                     id = resultSet.getInt("ID");
 
                     ho_ten.setText(resultSet.getString("hoTen"));
-                    bi_danh.setText(resultSet.getString("biDanh"));
-                    ngay_sinh.setValue(resultSet.getDate("ngaySinh").toLocalDate());
+                    bi_danh.setText(resultSet.getString("bietDanh"));
+                    ngay_sinh.setValue(resultSet.getDate("namSinh").toLocalDate());
                     gioi_tinh.setText(resultSet.getString("gioiTinh"));
                     noi_sinh.setText(resultSet.getString("noiSinh"));
                     nguyen_quan.setText(resultSet.getString("nguyenQuan"));

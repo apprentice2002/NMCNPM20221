@@ -107,7 +107,7 @@ public class ThemNhanKhauController implements Initializable {
     }
 
     private void getQuery() {
-        query = "INSERT INTO nhan_khau (hoTen, biDanh, ngaySinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, " +
+        query = "INSERT INTO nhan_khau (hoTen, bietDanh, namSinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, " +
                 "noiThuongTru, diaChiHienNay, trinhDoChuyenMon, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, tienAn, soDienThoai, daXoa) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
