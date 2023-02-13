@@ -23,7 +23,8 @@ public class HoKhauTableModel extends HoKhau {
     }
 
     public HoKhauTableModel(String maHoKhau, String tenChuHo, String diaChiHoKhau) {
-        super(maHoKhau,tenChuHo,diaChiHoKhau);
+        super(maHoKhau,diaChiHoKhau);
+        this.hoTenChuHo = tenChuHo;
     }
 
     public String getHoTenChuHo() {

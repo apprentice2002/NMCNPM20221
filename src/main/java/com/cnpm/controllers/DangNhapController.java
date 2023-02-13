@@ -49,7 +49,7 @@ public class DangNhapController implements Initializable {
                     }
                     UserSession.setUsername(user);
                     UserSession.setPrivileges(privileges);
-                    Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml" , 720 , 640);
+                    Utilities.changeScene(event, "/com/cnpm/scenes/trang-chu.fxml");
                 } else {
                     alert.setText("Tên đăng nhập hoặc mật khẩu không chính xác!!!");
                 }

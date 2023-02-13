@@ -1,6 +1,6 @@
 package com.cnpm.controllers;
 
-import com.cnpm.utilities.Utilities;
+import com.cnpm.utilities.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,8 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import com.cnpm.entities.HoKhau;
-import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.HoKhauTableModel;
 import com.cnpm.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -91,11 +89,10 @@ public class HoKhauController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Connection connection = DBConnection.getConnection();
-        String sql = "SELECT ho_khau.ID,nhan_khau.hoTen AS hoTenChuHo, diaChi, COUNT(thanh_vien_cua_ho.idHoKhau) AS soThanhVien FROM ho_khau, thanh_vien_cua_ho, nhan_khau WHERE ho_khau.ID = thanh_vien_cua_ho.idHoKhau AND nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau GROUP BY ho_khau.maHoKhau";
+        String sql = "SELECT ho_khau.ID,nhan_khau.hoTen AS hoTenChuHo, diaChi, COUNT(thanh_vien_cua_ho.idHoKhau) AS soThanhVien FROM ho_khau, thanh_vien_cua_ho, nhan_khau WHERE ho_khau.ID = thanh_vien_cua_ho.idHoKhau AND nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND nhan_khau.ID=ho_khau.idChuHo GROUP BY ho_khau.ID";
 
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
         hoTenChuHoCol.setCellValueFactory(new PropertyValueFactory<>("hoTenChuHo"));
-        xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
         diaChiCol.setCellValueFactory(new PropertyValueFactory<>("diaChiHoKhau"));
         soThanhVienCol.setCellValueFactory(new PropertyValueFactory<>("soThanhVien"));
 
@@ -118,8 +115,9 @@ public class HoKhauController implements Initializable {
                         return true;
                     } else if(hoKhau.getSoThanhVien().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo số thành viên") {
                         return true;
-                    } else
+                    } else {
                         return false;
+                    }
                 });
             } ));
             // Sắp xếp thứ tự
@@ -148,21 +146,28 @@ public class HoKhauController implements Initializable {
     }
     @FXML
     public void themHoKhau(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/them-ho-khau.fxml", 780, 640);
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/them-ho-khau.fxml");
+    }
+    public void doiChuHo(ActionEvent event) throws  IOException {
+        Utilities.popNewWindow(event,"/com/cnpm/scenes/doi-chu-ho.fxml");
     }
 
-
     public void tachHoKhau(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/tach-ho-khau.fxml", 780, 640);
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/tach-ho-khau.fxml");
     }
 
     public void chuyenHoKhau(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/chuyen-ho-khau.fxml", 780, 640);
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/chuyen-ho-khau.fxml");
     }
     public void lichSuThayDoi(ActionEvent event) {
-        Utilities.changeScene(event, "/com/cnpm/scenes/lich-su-thay-doi.fxml", 780, 640);
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/lich-su-thay-doi.fxml");
     }
-
+    private void restartScene(Scene scene) {
+        Stage stage = (Stage) scene.getWindow();
+        stage.hide();
+        stage.setScene(scene);
+        stage.show();
+    }
     public void xoaHoKhau(ActionEvent event) {
 
         // Nảy ra màn hình liệu có tiếp tục muốn xóa
@@ -187,10 +192,6 @@ public class HoKhauController implements Initializable {
         Stage confirmationStage = new Stage();
         confirmationStage.setScene(confirmationScene);
         confirmationStage.show();
-
-
-
-
         //Tìm kiếm những hộ khẩu được tích checkbox
         ObservableList<HoKhauTableModel> dataListRemove = FXCollections.observableArrayList();
         for (HoKhauTableModel hoKhau: table.getItems()) {
@@ -224,8 +225,7 @@ public class HoKhauController implements Initializable {
                 throw new RuntimeException(e);
             }
             confirmationStage.close();
+            restartScene(table.getScene());
         });
-
-
     }
 }

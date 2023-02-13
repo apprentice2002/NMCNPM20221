@@ -173,8 +173,13 @@ public class ThemHoKhauController implements Initializable {
                 }
             }
         });
+    }
+    @FXML
+    public void chonChuHo(ActionEvent event) {
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/chon-nhan-khau.fxml");
 
     }
+
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
         String maHoKhau = maHoKhauTxt.getText();
@@ -273,11 +278,12 @@ public class ThemHoKhauController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", 720, 600);
+        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml");
     }
 
     @FXML
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml", 720, 600);
+        Stage stage = (Stage) cancleBtn.getScene().getWindow();
+        stage.close();
     }
 }

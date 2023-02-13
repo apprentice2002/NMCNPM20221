@@ -90,7 +90,7 @@ public class ThemNhanKhauController implements Initializable {
 
     @FXML
     public void huy(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/scenes/trang_chu.fxml" , 780 , 640);
+        Utilities.changeScene(event, "/com/cnpm/scenes/trang_chu.fxml" );
     }
 
     @FXML
@@ -143,7 +143,7 @@ public class ThemNhanKhauController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml", 780 , 640);
+            Utilities.changeScene(event, "/com/cnpm/scenes/home.fxml");
         }
     }
 

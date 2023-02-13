@@ -16,10 +16,15 @@ public class HoKhau {
         this.diaChiHoKhau = diaChi;
         this.maChuHo = maChuHo;
     }
-    public HoKhau(String maHoKhau, String diaChiHoKhau, String soThanhVien) {
+    public HoKhau(String maHoKhau, String soThanhVien, String diaChiHoKhau) {
         this.maHoKhau = maHoKhau;
         this.diaChiHoKhau = diaChiHoKhau;
         this.soThanhVien = soThanhVien;
+    }
+
+    public HoKhau(String maHoKhau, String diaChiHoKhau) {
+        this.maHoKhau = maHoKhau;
+        this.diaChiHoKhau = diaChiHoKhau;
     }
 
     public void setSoThanhVien(String soThanhVien) {

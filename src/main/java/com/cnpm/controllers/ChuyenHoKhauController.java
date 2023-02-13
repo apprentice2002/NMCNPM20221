@@ -106,6 +106,6 @@ public class ChuyenHoKhauController implements Initializable {
     }
     @FXML
     public void cancle(ActionEvent event) throws IOException {
-        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml",  720,600);
+        Utilities.changeScene(event, "/com/cnpm/views/ho-khau.fxml");
     }
 }

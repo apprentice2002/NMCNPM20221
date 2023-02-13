@@ -35,7 +35,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="423.0" layoutY="245.0" mnemonicParsing="false" onAction="#dangNhap" text="Xác nhận">
+      <Button layoutX="500.0" layoutY="245.0" mnemonicParsing="false" onAction="#dangNhap" text="Đăng nhập">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="350.0" layoutY="245.0" mnemonicParsing="false" onAction="#dangNhap" text="Thoát">
          <font>
             <Font size="15.0" />
          </font>
