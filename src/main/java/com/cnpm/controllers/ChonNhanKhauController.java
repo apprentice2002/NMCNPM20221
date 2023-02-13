@@ -45,12 +45,11 @@ public class ChonNhanKhauController implements Initializable {
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
 
         try {
-            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen " +
-                    "FROM nhan_khau,thanh_vien_cua_ho,ho_khau WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau " +
-                    "and thanh_vien_cua_ho.idHoKhau = ho_khau.ID and nhan_khau.daXoa is null and( ho_khau.daXoa is NULL or ho_khau.ngayChuyenDi " +
-                    "is null ) EXCEPT (SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau," +
+            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM" +
+                    " nhan_khau WHERE nhan_khau.daXoa is null EXCEPT (SELECT DISTINCT " +
+                    "nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau," +
                     "thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND " +
-                    "thanh_vien_cua_ho.quanHeVoiChuHo is not null)";
+                    "thanh_vien_cua_ho.quanHeVoiChuHo is not null);";
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
             ResultSet queryResult = statement.executeQuery(nhanKhauSql);
