@@ -1,4 +1,6 @@
-package com.cnpm.utilities;
+package com.cnpm.entities;
+
+import com.cnpm.entities.NhanKhauTableModel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,27 +1,21 @@
 package com.cnpm.controllers;
 
-import com.cnpm.entities.NhanKhau;
-import com.cnpm.utilities.NhanKhauTableModel;
-import com.cnpm.utilities.SharedDataModel;
+import com.cnpm.entities.NhanKhauTableModel;
+import com.cnpm.entities.SharedDataModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.cnpm.utilities.DBConnection.connection;
-import static com.cnpm.utilities.DBConnection.getConnection;
 
 public class ChonNhanKhauController implements Initializable {
     @FXML

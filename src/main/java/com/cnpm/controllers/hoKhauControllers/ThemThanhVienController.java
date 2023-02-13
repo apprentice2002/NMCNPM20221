@@ -1,9 +1,10 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.hoKhauControllers;
 
+import com.cnpm.controllers.ChonNhanKhauController;
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.HoKhauTableModel;
-import com.cnpm.utilities.NhanKhauTableModel;
-import com.cnpm.utilities.SharedDataModel;
+import com.cnpm.entities.HoKhauTableModel;
+import com.cnpm.entities.NhanKhauTableModel;
+import com.cnpm.entities.SharedDataModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

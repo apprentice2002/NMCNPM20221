@@ -13,4 +13,6 @@ module com.cnpm {
     opens com.cnpm.utilities to javafx.fxml;
     exports com.cnpm.entities;
     opens com.cnpm.entities to javafx.fxml;
+    exports com.cnpm.controllers.hoKhauControllers;
+    opens com.cnpm.controllers.hoKhauControllers to javafx.fxml;
 }

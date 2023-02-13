@@ -1,4 +1,4 @@
-package com.cnpm.utilities;
+package com.cnpm.entities;
 
 import com.cnpm.entities.HoKhau;
 import javafx.scene.control.CheckBox;

@@ -1,6 +1,6 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.hoKhauControllers;
 
-import com.cnpm.utilities.HoKhauTableModel;
+import com.cnpm.entities.HoKhauTableModel;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;

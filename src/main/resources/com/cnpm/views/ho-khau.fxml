@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="780.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.HoKhauController">
+<AnchorPane prefHeight="640.0" prefWidth="780.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.hoKhauControllers.HoKhauController">
    <Button fx:id="them_ho_khau" layoutX="341.0" layoutY="115.0" mnemonicParsing="false" onAction="#themHoKhau" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="+">
       <font>
          <Font name="System Bold" size="18.0" />

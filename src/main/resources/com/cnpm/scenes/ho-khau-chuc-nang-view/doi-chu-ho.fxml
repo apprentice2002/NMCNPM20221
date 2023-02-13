@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.DoiChuHoController">
+<AnchorPane prefHeight="640.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.hoKhauControllers.DoiChuHoController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="54.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="782.0" />
       <Label layoutX="17.0" layoutY="17.0" style="-fx-text-fill: #f5f5f5;" text="Thay đổi chủ hộ">

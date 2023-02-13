@@ -1,6 +1,4 @@
-package com.cnpm.utilities;
-
-import com.cnpm.entities.NhanKhau;
+package com.cnpm.entities;
 
 public class NhanKhauTableModel {
     private String maHoKhau;

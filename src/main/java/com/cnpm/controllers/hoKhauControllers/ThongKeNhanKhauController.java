@@ -1,10 +1,7 @@
-package com.cnpm.controllers;
-
-import java.sql.PreparedStatement;
+package com.cnpm.controllers.hoKhauControllers;
 
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.HoKhauTableModel;
-import com.cnpm.utilities.NhanKhauTableModel;
+import com.cnpm.entities.NhanKhauTableModel;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
@@ -21,8 +18,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-
-import static com.cnpm.utilities.DBConnection.connection;
 
 public class ThongKeNhanKhauController implements Initializable {
     @FXML

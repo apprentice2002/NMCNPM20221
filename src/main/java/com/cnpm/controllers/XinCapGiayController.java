@@ -1,7 +1,5 @@
 package com.cnpm.controllers;
 
-import com.cnpm.utilities.NhanKhauTableModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,13 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
-
-import static com.cnpm.utilities.DBConnection.connection;
 
 public class XinCapGiayController implements Initializable {
     @FXML
