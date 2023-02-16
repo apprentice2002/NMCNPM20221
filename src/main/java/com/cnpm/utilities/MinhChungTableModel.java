@@ -12,8 +12,9 @@ public class MinhChungTableModel extends MinhChung {
     private String hoTen;
 
     private CheckBox deleteBox;
-    public MinhChungTableModel(String hoTen,String truong, String lop , String thanhTichHocTap, Date ngayKhaiBao ) {
+    public MinhChungTableModel(int idMinhChung,String hoTen,String truong, String lop , String thanhTichHocTap, Date ngayKhaiBao ) {
         super(truong,lop,thanhTichHocTap,ngayKhaiBao);
+        this.setIdMinhChung(idMinhChung);
         this.hoTen=hoTen;
         this.setThanhTichHocTap(thanhTichHocTap);
         this.setTruong(truong);

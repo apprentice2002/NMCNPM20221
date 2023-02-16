@@ -13,8 +13,9 @@ public class PhatThuong {
     private int idMinhChung;
     private int daDuyet;
 
-    public PhatThuong(int daDuyet) {
+    public PhatThuong(int idPhatThuong,int daDuyet) {
         this.daDuyet = daDuyet;
+        this.idPhatThuong=idPhatThuong;
     }
 
     public PhatThuong (int idPhatThuong, int idDotPhat, int idQua , int idMinhChung, int daDuyet) {

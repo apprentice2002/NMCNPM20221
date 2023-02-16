@@ -1,4 +1,4 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.PhatThuong;
 
 import com.cnpm.utilities.*;
 import javafx.collections.FXCollections;
@@ -22,12 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PhatThuongController implements Initializable {
+public class PhatThuongThuKyController implements Initializable {
 
 
 
     @FXML
     private Button them_thuong;
+    @FXML
+    private Button thong_ke_thuong;
 
 
     @FXML
@@ -45,6 +47,8 @@ public class PhatThuongController implements Initializable {
 
     @FXML
     private TableView<PhatThuongTableModel> table;
+    @FXML
+    private TableColumn<PhatThuongTableModel, String> idPhatThuongCol;
     @FXML
     private TableColumn<PhatThuongTableModel, String> hoTenCol;
     @FXML
@@ -71,19 +75,50 @@ public class PhatThuongController implements Initializable {
         }
         return filteredData;
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void refresh(){table.getItems().clear();
         Connection connection = DBConnection.getConnection();
-        String sql = "SELECT nhan_khau.hoTen, thanhTichHocTap, tenQua, tenDotPhat, giaTri, daDuyet\n" +
+        String sql = "SELECT idPhatThuong,nhan_khau.hoTen, thanhTichHocTap, tenQua, tenDotPhat, giaTri, daDuyet\n" +
                 "        FROM nhan_khau, phat_thuong,minh_chung, qua, dot_phat\n" +
                 "        WHERE phat_thuong.idMinhChung = minh_chung.idMinhChung\n" +
                 "        AND minh_chung.ma_nhan_khau = nhan_khau.ID\n" +
                 "        AND phat_thuong.idQua = qua.idQua\n" +
                 "        AND phat_thuong.idDotPhat = dot_phat.idDotPhat";
+        try {
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(sql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                listView.add(new PhatThuongTableModel( queryResult.getInt("idPhatThuong"),
+                        queryResult.getString("hoTen"),
+                        queryResult.getString("tenQua"),
+                        queryResult.getString("thanhTichHocTap"),
+                        queryResult.getString("tenDotPhat"),
+                        queryResult.getInt("giaTri"),
+                        queryResult.getInt("daDuyet")));
+
+            }
+            table.setItems(listView);
+            for(PhatThuongTableModel data :table.getItems()){
+                if (data.getDaDuyet() == 1) {
+
+                    data.setDeleteBox(null);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        idPhatThuongCol.setCellValueFactory(new PropertyValueFactory<>("idPhatThuong"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         tenQuaCol.setCellValueFactory(new PropertyValueFactory<>("tenQua"));
         thanhTichHocTapCol.setCellValueFactory(new PropertyValueFactory<>("thanhTichHocTap"));
@@ -119,31 +154,9 @@ public class PhatThuongController implements Initializable {
             sortedData.comparatorProperty().bind(table.comparatorProperty());
             table.setItems(sortedData);
         });
+        refresh();
 
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new PhatThuongTableModel(queryResult.getString("hoTen"),
-                        queryResult.getString("tenQua"),
-                        queryResult.getString("thanhTichHocTap"),
-                        queryResult.getString("tenDotPhat"),
-                        queryResult.getInt("giaTri"),
-                        queryResult.getInt("daDuyet")));
 
-            }
-            table.setItems(listView);
-            table.setItems(listView);
-            for(PhatThuongTableModel pt : table.getItems()) {
-                if(pt.getDaDuyet()==1) {
-                    pt.setDeleteBox(null);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     public void xoaThuong(ActionEvent event) {
 
@@ -176,7 +189,7 @@ public class PhatThuongController implements Initializable {
         //Tìm kiếm những hộ khẩu được tích checkbox
         ObservableList<PhatThuongTableModel> dataListRemove = FXCollections.observableArrayList();
         for (PhatThuongTableModel data: table.getItems()) {
-            if(data.getDeleteBox().isSelected()) {
+            if(data.getDeleteBox() != null && data.getDeleteBox().isSelected()) {
                 dataListRemove.add(data);
             }
         }
@@ -201,6 +214,7 @@ public class PhatThuongController implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+            refresh();
             confirmationStage.close();
         });
 
@@ -212,9 +226,15 @@ public class PhatThuongController implements Initializable {
 
 
     @FXML
-        public void themThuong(ActionEvent event) throws IOException {
-            Utilities.popNewWindow(event, "/com/cnpm/scenes/them_thuong.fxml");
-        }
-
+    public void themThuong(ActionEvent event) throws IOException {
+    refresh();
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/them_thuong.fxml");
     }
+    @FXML
+    public void thongKePhatThuong(ActionEvent event) throws IOException {
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_thuong.fxml");
+    }
+
+
+}
 

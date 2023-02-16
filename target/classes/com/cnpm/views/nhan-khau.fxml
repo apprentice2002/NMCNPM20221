@@ -16,22 +16,18 @@
           <Font name="System Bold" size="22.0" />
         </font>
     </Label>
+
    <Button fx:id="them_nhan_khau" layoutX="348.0" layoutY="122.0" mnemonicParsing="false" onAction="#themNhanKhau" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="+">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="chuyen_ho_khau" layoutX="419.0" layoutY="127.0" mnemonicParsing="false" onAction="#chuyenHoKhau" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Chuyển hộ khẩu">
+   <Button layoutX="600.0" layoutY="74.0" mnemonicParsing="false" onAction="#dangKyTamTru" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đăng ký tạm trú" fx:id="dang_ky_tam_tru">
       <font>
          <Font size="13.0" />
       </font>
    </Button>
-   <Button fx:id="tach_ho_khau" layoutX="419.0" layoutY="74.0" mnemonicParsing="false" onAction="#tachHoKhau" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Tách hộ khẩu">
-      <font>
-         <Font size="13.0" />
-      </font>
-   </Button>
-   <Button layoutX="600.0" layoutY="74.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Lịch sử thay đổi hộ khẩu" fx:id="xoa_ho_khau">
+   <Button layoutX="600.0" layoutY="134.0" mnemonicParsing="false" onAction="#dangKyTamVang" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đăng ký tạm vắng" fx:id="dang_ky_tam_vang">
       <font>
          <Font size="13.0" />
       </font>
@@ -46,7 +42,7 @@
       </columns>
    </TableView>
    <TextField fx:id="keywordTextField" layoutX="40.0" layoutY="74.0" prefHeight="40.0" prefWidth="127.0" promptText="Tìm kiếm" />
-   <Button layoutX="208.0" layoutY="76.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="90.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #00305b;" text="Tìm">
+   <Button layoutX="208.0" layoutY="76.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #00305b;" text="Tìm">
       <font>
          <Font size="13.0" />
       </font>

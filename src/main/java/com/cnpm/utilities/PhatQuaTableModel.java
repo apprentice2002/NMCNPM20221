@@ -15,8 +15,9 @@ public class PhatQuaTableModel extends PhatQua {
     private int tuoi;
     private String tenDotPhat;
     private int giaTri;
-    public PhatQuaTableModel(String hoTen, String tenQua, int tuoi, String tenDotPhat,int giaTri,int daDuyet) {
-        super(daDuyet);
+    public PhatQuaTableModel(int idPhatQua,String hoTen, String tenQua, int tuoi, String tenDotPhat,int giaTri,int daDuyet) {
+        super(idPhatQua,daDuyet);
+        this.setIdPhatQua( idPhatQua);
         this.hoTen = hoTen;
         this.tenQua = tenQua;
         this.tuoi = tuoi;
@@ -25,10 +26,7 @@ public class PhatQuaTableModel extends PhatQua {
         this.setDaDuyet(daDuyet);
         this.deleteBox = new CheckBox();
     }
-    public PhatQuaTableModel(int idQua){
-        super(idQua);
 
-    }
 
 }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.cnpm.controllers.PhatQua.ThongKePhatQuaConTroller"
+            prefHeight="400.0" prefWidth="600.0">
+    <TableView fx:id="table" layoutX="30.0" layoutY="208.0" prefHeight="400.0" prefWidth="720.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+        <columns>
+            <TableColumn fx:id="idHoKhauCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID hộ khẩu" />
+            <TableColumn fx:id="hoTenCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ Tên" />
+            <TableColumn fx:id="soPhanQuaCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="số phần quà" />
+            <TableColumn fx:id="tongGiaTri" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="tổng tiền nhận" />
+        </columns>
+    </TableView>
+    <Label fx:id="note1" layoutX="420" layoutY="75" prefHeight="60" prefWidth="100"/>
+    <TextField fx:id="keywordTextField" layoutX="30.0" layoutY="64.0" prefHeight="40.0" prefWidth="127.0" promptText="Tìm kiếm">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor></TextField>
+    <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+</AnchorPane>

@@ -22,7 +22,7 @@
       <TextArea fx:id="ly_do" layoutX="180.0" layoutY="340.0" prefHeight="55.0" prefWidth="149.0" />
       <DatePicker fx:id="ngay_bat_dau" layoutX="180.0" layoutY="240.0" prefHeight="25.0" prefWidth="149.0" />
       <DatePicker fx:id="ngay_ket_thuc" layoutX="180.0" layoutY="290.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label alignment="CENTER" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #79a5cd;" text="Label" textFill="WHITESMOKE">
+      <Label alignment="CENTER" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #79a5cd;" text="Đăng ký tạm trú" textFill="WHITESMOKE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

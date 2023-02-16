@@ -52,7 +52,15 @@
       </font>
    </Button>
    <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
-   <Button layoutX="185.0" layoutY="116.0" mnemonicParsing="false" onAction="#xoaHoKhau" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa hộ khẩu" fx:id="xoa_ho_khau">
+   <Button layoutX="185.0" layoutY="116.0" mnemonicParsing="false" onAction="#tachHoKhau" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa hộ khẩu" fx:id="xoa_ho_khau">
+      <font>
+         <Font size="13.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button fx:id="doi_chu_ho" layoutX="185.0" layoutY="64.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Đổi chủ hộ">
       <font>
          <Font size="13.0" />
       </font>
