@@ -7,7 +7,7 @@ public class DBConnection {
     public static Connection connection;
 
     public static Connection getConnection() {
-        String dbName = "csdl8";
+        String dbName = "csdl1";
         String dbUser = "root";
         String dbPassword = "";
         String url = "jdbc:mysql://localhost/" + dbName;

@@ -5,6 +5,7 @@ module com.cnpm {
     requires javafx.fxml;
     requires javafx.controls;
     requires lombok;
+    requires javafx.graphics;
 
 
     opens com.cnpm to javafx.fxml;
@@ -15,10 +16,15 @@ module com.cnpm {
     opens com.cnpm.utilities to javafx.fxml;
     exports com.cnpm.entities;
     opens com.cnpm.entities to javafx.fxml;
-    exports com.cnpm.controllers.PhatThuong;
-    opens com.cnpm.controllers.PhatThuong to javafx.fxml;
-    exports com.cnpm.controllers.PhatQua;
-    opens com.cnpm.controllers.PhatQua to javafx.fxml;
-    exports com.cnpm.controllers.MinhChung;
-    opens com.cnpm.controllers.MinhChung to javafx.fxml;
+
+    exports com.cnpm.controllers.phat_thuong;
+    opens com.cnpm.controllers.phat_thuong to javafx.fxml;
+
+    exports com.cnpm.controllers.ho_khau;
+    opens com.cnpm.controllers.ho_khau to javafx.fxml;
+
+    exports com.cnpm.controllers.phat_qua;
+    opens com.cnpm.controllers.phat_qua to javafx.fxml;
+    exports com.cnpm.controllers.minh_chung;
+    opens com.cnpm.controllers.minh_chung to javafx.fxml;
 }

@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="780.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.hoKhauControllers.ThemHoKhauController">
+<AnchorPane prefHeight="640.0" prefWidth="780.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.ho_khau.ThemHoKhauController">
    <children>
       <Button fx:id="submitBtn" layoutX="572.0" layoutY="560.0" mnemonicParsing="false" onAction="#xacNhan" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #79a5cd; -fx-border-color: #00305b; -fx-background-radius: 12; -fx-border-radius: 12; -fx-text-fill: #f5f5f5;" text="Gửi thông tin" />
       <Button fx:id="cancleBtn" layoutX="412.0" layoutY="560.0" mnemonicParsing="false" onAction="#cancle" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #79a5cd; -fx-border-color: #00305b; -fx-background-radius: 12; -fx-border-radius: 12; -fx-text-fill: f5f5f5;" text="Quay lại" />

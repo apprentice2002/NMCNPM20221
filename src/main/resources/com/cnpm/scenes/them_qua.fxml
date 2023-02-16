@@ -10,7 +10,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.cnpm.controllers.PhatQua.ThemQuaController"
+            fx:controller="com.cnpm.controllers.phat_qua.ThemQuaController"
             prefHeight="400.0" prefWidth="600.0">
     <Label layoutX="16.25" layoutY="7.35" text="Thêm quà">
         <font>
