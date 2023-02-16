@@ -1,4 +1,4 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.MinhChung;
 
 
 import com.cnpm.utilities.*;

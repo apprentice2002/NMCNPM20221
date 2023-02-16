@@ -1,4 +1,4 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.MinhChung;
 
 import com.cnpm.utilities.DBConnection;
 import com.cnpm.utilities.Utilities;
@@ -61,12 +61,12 @@ public class ThemMinhChungController implements Initializable {
 
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
-        int idMinhChung = Integer.parseInt(them_id_minh_chung.getText());
+//        int idMinhChung = Integer.parseInt(them_id_minh_chung.getText());
         int ma_nhan_khau = Integer.parseInt(them_ma_nhan_khau.getText());
         String truong = them_truong.getText();
         String lop = them_lop.getText();
         String thanhTichHocTap = them_thanh_tich_hoc_tap.getText();
-        Date ngayKhaiBao = Date.valueOf(them_ngay_khai_bao.getValue());
+        Date ngayKhaiBao =   new Date(System.currentTimeMillis());
         if (formatter.format(ngayKhaiBao).equals("") || lop.equals("") ||
                 truong.equals("") || thanhTichHocTap.equals("")) {
             note.setText("Vui lòng điền đủ thông tin cần thiết");
@@ -75,12 +75,12 @@ public class ThemMinhChungController implements Initializable {
             try {
                 connection = DBConnection.getConnection();
                 preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setInt(1, idMinhChung);
-                preparedStatement.setInt(2, ma_nhan_khau);
-                preparedStatement.setString(3, truong);
-                preparedStatement.setString(4, lop);
-                preparedStatement.setString(5, thanhTichHocTap);
-                preparedStatement.setDate(6, ngayKhaiBao);
+//                preparedStatement.setInt(1, idMinhChung);
+                preparedStatement.setInt(1, ma_nhan_khau);
+                preparedStatement.setString(2, truong);
+                preparedStatement.setString(3, lop);
+                preparedStatement.setString(4, thanhTichHocTap);
+                preparedStatement.setDate(5, ngayKhaiBao);
                 preparedStatement.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -92,8 +92,8 @@ public class ThemMinhChungController implements Initializable {
 
     }
     private void getQuery() {
-        query = "INSERT INTO minh_chung (idMinhChung, ma_nhan_khau, truong, lop, thanhTichHocTap,ngayKhaiBao)" +
-                " VALUES (?,?,?,?,?,?)";
+        query = "INSERT INTO minh_chung ( ma_nhan_khau, truong, lop, thanhTichHocTap,ngayKhaiBao)" +
+                " VALUES (?,?,?,?,?)";
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
