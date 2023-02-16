@@ -1,6 +1,5 @@
 package com.cnpm.controllers.hoKhauControllers;
 
-import com.cnpm.controllers.ChonNhanKhauController;
 import com.cnpm.entities.NhanKhauTableModel;
 import com.cnpm.entities.SharedDataModel;
 import com.cnpm.utilities.*;
@@ -226,6 +225,21 @@ public class ThemHoKhauController implements Initializable {
                 // Cập nhật quan hệ các thành viên chủ hộ mới
                 String updateQuanHeSql = "INSERT INTO thanh_vien_cua_ho (quanHeVoiChuHo, IdNhanKhau, IdHoKhau) VALUES (?,?,(SELECT ID from ho_khau WHERE maHoKhau = ?))";
                 PreparedStatement preparedStmtUpdateQuanHeThanhVien = connection.prepareStatement(updateQuanHeSql);
+                String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
+                PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
+                preparedStmtUpdateLS.setDate(1,ngayTao);
+                preparedStmtUpdateLS.setString(2,"Thêm hộ khẩu");
+                preparedStmtUpdateLS.execute();
+
+                String selectLastId = "SELECT LAST_INSERT_ID()";
+                int lastId = 0;
+                try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
+                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                        while (resultSet.next()) {
+                            lastId = resultSet.getInt(1);
+                        }
+                    }
+                }
                 for(NhanKhauTableModel nhanKhau : nhanKhauTable.getItems()) {
                     if(nhanKhau.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
                         preparedStmtUpdateQuanHeThanhVien.setString(1,new String(""));
@@ -237,25 +251,9 @@ public class ThemHoKhauController implements Initializable {
                     preparedStmtUpdateQuanHeThanhVien.execute();
 
                     // Cập nhật lịch sử thay đổi hộ khẩu
-                    String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
                     String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?,(SELECT ID from ho_khau WHERE maHoKhau = ?), ?, ?)";
                     PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
-                    PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
 
-
-                    preparedStmtUpdateLS.setDate(1,ngayTao);
-                    preparedStmtUpdateLS.setString(2,"Thêm hộ khẩu");
-                    preparedStmtUpdateLS.execute();
-
-                    String selectLastId = "SELECT LAST_INSERT_ID()";
-                    int lastId = 0;
-                    try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
-                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                            while (resultSet.next()) {
-                                lastId = resultSet.getInt(1);
-                            }
-                        }
-                    }
 
                     preparedStmtUpdateLSHK.setString(1,"0");
                     preparedStmtUpdateLSHK.setString(2, "1");

@@ -1,6 +1,5 @@
 package com.cnpm.controllers.hoKhauControllers;
 
-import com.cnpm.controllers.ChonNhanKhauController;
 import com.cnpm.utilities.DBConnection;
 import com.cnpm.entities.HoKhauTableModel;
 import com.cnpm.entities.NhanKhauTableModel;
@@ -115,27 +114,61 @@ public class ThemThanhVienController implements Initializable {
         }
         if(maHoKhauTxt.getText().isEmpty() || nhanKhauTable.getItems().isEmpty()) {
             errorLab.setText("Vui lòng nhập đủ dữ liêu");
-        } else if (canUpdate) {
+        } else if (!canUpdate) {
             errorLab.setText("Nhập dữ liệu nhân khẩu sai, hãy kiểm tra lại !");
         } else {
             String maNhanKhau;
             String hoTen;
             String quanHeVoiChuHo;
             String idHoKhau = maHoKhauTxt.getText();
-            String insertSQL = "INSERT INTO `thanh_vien_cua_ho` (`idNhanKhau`, `idHoKhau`, `quanHeVoiChuHo`) VALUES (?, ?, ?);";
-            for (NhanKhauTableModel nk : nhanKhauTable.getItems() ) {
-                maNhanKhau = nk.getMaNhanKhau();
-                hoTen = nk.getHoTenNhanKhau();
-                quanHeVoiChuHo = nk.getQuanHeVoiChuHo();
-                try {
-                    PreparedStatement preparedStmtFindName = connection.prepareStatement(insertSQL);
-                    preparedStmtFindName.setString(1,maNhanKhau);
-                    preparedStmtFindName.setString(2,idHoKhau);
-                    preparedStmtFindName.setString(3,quanHeVoiChuHo);
-                    preparedStmtFindName.execute();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
+            try {
+                String insertSQL = "INSERT INTO `thanh_vien_cua_ho` (`idNhanKhau`, `idHoKhau`, `quanHeVoiChuHo`) VALUES (?, ?, ?);";
+                String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
+                PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
+
+                Date ngayTao = new Date(System.currentTimeMillis());
+                preparedStmtUpdateLS.setDate(1,ngayTao);
+                preparedStmtUpdateLS.setString(2,"Thêm thành viên");
+                preparedStmtUpdateLS.execute();
+
+                String selectLastId = "SELECT LAST_INSERT_ID()";
+                int lastId = 0;
+                try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
+                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                        while (resultSet.next()) {
+                            lastId = resultSet.getInt(1);
+                        }
+                    }
                 }
+                for (NhanKhauTableModel nk : nhanKhauTable.getItems() ) {
+                    maNhanKhau = nk.getMaNhanKhau();
+                    hoTen = nk.getHoTenNhanKhau();
+                    quanHeVoiChuHo = nk.getQuanHeVoiChuHo();
+                    try {
+                        PreparedStatement preparedStmtFindName = connection.prepareStatement(insertSQL);
+                        preparedStmtFindName.setString(1,maNhanKhau);
+                        preparedStmtFindName.setString(2,idHoKhau);
+                        preparedStmtFindName.setString(3,quanHeVoiChuHo);
+                        // Cập nhật lịch sử thay đổi hộ khẩu
+                        String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
+
+
+
+                        preparedStmtUpdateLSHK.setString(1,"0");
+                        preparedStmtUpdateLSHK.setString(2, "1");
+                        preparedStmtUpdateLSHK.setString(3, "0");
+                        preparedStmtUpdateLSHK.setString(4, maHoKhauTxt.getText());
+                        preparedStmtUpdateLSHK.setString(5, maNhanKhau);
+                        preparedStmtUpdateLSHK.setInt(6,lastId );
+                        preparedStmtUpdateLSHK.execute();
+                        preparedStmtFindName.execute();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }catch (Exception e) {
+                System.out.println(e.getMessage());
             }
             refreshTable();
         }

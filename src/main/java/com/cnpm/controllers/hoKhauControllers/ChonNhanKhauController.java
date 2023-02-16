@@ -1,4 +1,4 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.hoKhauControllers;
 
 import com.cnpm.entities.NhanKhauTableModel;
 import com.cnpm.entities.SharedDataModel;

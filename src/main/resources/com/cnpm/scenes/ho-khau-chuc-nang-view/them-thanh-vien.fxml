@@ -20,18 +20,18 @@
       </Label>
       <TableView fx:id="hoKhauTable" layoutX="29.0" layoutY="152.0" prefHeight="450.0" prefWidth="270.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
          <columns>
-            <TableColumn fx:id="maHoKhauCol" prefWidth="75.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
+            <TableColumn fx:id="maHoKhauCol" prefWidth="75.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID Hộ Khẩu" />
             <TableColumn fx:id="hoTenChuHoCol" prefWidth="100.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên chủ hộ" />
             <TableColumn fx:id="diaChiCol" prefWidth="94.39999999999998" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Địa chỉ" />
          </columns>
       </TableView>
       <ChoiceBox fx:id="optionChoiceBox" layoutX="160.0" layoutY="78.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
-      <Label layoutX="25.0" layoutY="65.0" style="-fx-text-fill: #00305b;" text="Nhập mã Hộ Khẩu" />
-      <Label layoutX="29.0" layoutY="134.0" style="-fx-text-fill: #00305b;" text="Chọn mã Hộ Khẩu cần Tách" textAlignment="JUSTIFY" />
+      <Label layoutX="25.0" layoutY="65.0" style="-fx-text-fill: #00305b;" text="Tìm kiếm" />
+      <Label layoutX="29.0" layoutY="125.0" style="-fx-text-fill: #00305b;" text="Chọn mã Hộ Khẩu" textAlignment="JUSTIFY" />
       <TextField fx:id="maHoKhauTim" layoutX="25.0" layoutY="90.0" prefHeight="26.0" prefWidth="110.0" promptText="Tìm kiếm" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
       <TableView fx:id="nhanKhauTable" layoutX="357.0" layoutY="182.0" prefHeight="361.0" prefWidth="360.0" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #00305b;">
          <columns>
-            <TableColumn fx:id="maNhanKhauCol" prefWidth="120.0" style="-fx-border-radius: 6; -fx-background-radius: 6;" text="ID" />
+            <TableColumn fx:id="maNhanKhauCol" prefWidth="120.0" style="-fx-border-radius: 6; -fx-background-radius: 6;" text="ID Nhân Khẩu" />
             <TableColumn fx:id="hoTenCol" prefWidth="120.0" style="-fx-border-radius: 6; -fx-background-radius: 6;" text="Họ tên" />
             <TableColumn fx:id="quanHeVoiChuHoCol" prefWidth="120.0" style="-fx-border-radius: 6; -fx-background-radius: 6;" text="Quan Hệ Với Chủ Hộ" />
          </columns>

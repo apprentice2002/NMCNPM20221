@@ -103,6 +103,17 @@ public class TachHoKhauController implements Initializable {
     private ChoiceBox<String> choiceBox;
 
     private void refreshTable() {
+        maHoKhauTim.setText("");
+        maHoKhauMoiTxt.setText("");
+        maHoKhauTxt.setText("");
+        maChuHoMoiTxt.setText("");
+        chuHoCuTxt.setText("");
+        chuHoMoiTxt.setText("");
+        diaChiTxt.setText("");
+        maKhuVucTxt.setText("");
+        hoKhauTable.getItems().clear();
+        nhanKhauNewTable.getItems().clear();
+        hoKhauTable.getItems().clear();
         try {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
@@ -251,7 +262,7 @@ public class TachHoKhauController implements Initializable {
                 result.next();
                 if (result.getInt(1) > 0) {
                     // value already exists in the database
-                    maHoKhauhasExisted = false;
+                    maHoKhauhasExisted = true;
                 } else {
                     // value does not exist in the database
                     maHoKhauhasExisted = false;
@@ -408,8 +419,7 @@ public class TachHoKhauController implements Initializable {
                                 "VALUES ( ?, ?, ?, ?,?)";
                         PreparedStatement preparedStmtInsert = connection.prepareStatement(newHoKhauSql,Statement.RETURN_GENERATED_KEYS);
                         if(diaChi.isEmpty() || maKhuVuc.isEmpty() || maChuHoMoi.isEmpty()|| maHoKhauMoi.isEmpty()) {
-                            errorLab.setText("Vui lòng nhập đầy đủ thông tin !");
-                            throw new Exception("Vui lòng nhập đầy đủ thông tin !");
+                            System.out.println("Vui lòng nhập đầy đủ thông tin !");
                         } else {
                             preparedStmtInsert.setDate(1, ngayTao);
                             preparedStmtInsert.setString(2, maKhuVuc);
@@ -417,12 +427,33 @@ public class TachHoKhauController implements Initializable {
                             preparedStmtInsert.setString(4, diaChi);
                             preparedStmtInsert.setString(5, maHoKhauMoi);
                         }
+                        int affectedRows = preparedStmtInsert.executeUpdate();
+                        if (affectedRows == 0) {
+                            throw new SQLException("Creating nhanKhau failed, no rows affected.");
+                        }
+
                         try (ResultSet generatedKeys = preparedStmtInsert.getGeneratedKeys()) {
                             if (generatedKeys.next()) {
                                 String maHoKhau = generatedKeys.getString(1);
                                 // Cập nhật hộ khẩu cũ
                                 submitSql = "UPDATE thanh_vien_cua_ho SET IdHoKhau = ? WHERE IdNhanKhau = ?";
                                 PreparedStatement preparedStmtUpdate = connection.prepareStatement(submitSql);
+
+                                String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
+                                PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
+                                preparedStmtUpdateLS.setDate(1,ngayTao);
+                                preparedStmtUpdateLS.setString(2,"Tách hộ khẩu");
+                                preparedStmtUpdateLS.execute();
+
+                                String selectLastId = "SELECT LAST_INSERT_ID()";
+                                int lastId = 0;
+                                try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
+                                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                                        while (resultSet.next()) {
+                                            lastId = resultSet.getInt(1);
+                                        }
+                                    }
+                                }
                                 // Cập nhật thàn viên hộ khẩu mới.
                                 for (NhanKhauTableModel nhanKhau : nhanKhauNewTable.getItems()) {
                                     preparedStmtUpdate.setString(1, maHoKhau);
@@ -444,25 +475,17 @@ public class TachHoKhauController implements Initializable {
                                     preparedStmtUpdateQuanHeThanhVien.execute();
 
                                     // Cập nhật lịch sử thay đổi hộ khẩu
-                                    String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
                                     String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
                                     PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
-                                    PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
 
 
-                                    preparedStmtUpdateLS.setDate(1,ngayTao);
-                                    preparedStmtUpdateLS.setString(2,"Tách hộ khẩu");
-                                    preparedStmtUpdateLS.execute();
-
-                                    String selectLastId = "SELECT LAST_INSERT_ID()";
-                                    int lastId = 0;
-                                    try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
-                                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                                            while (resultSet.next()) {
-                                                lastId = resultSet.getInt(1);
-                                            }
-                                        }
-                                    }
+                                    preparedStmtUpdateLSHK.setString(1,"0");
+                                    preparedStmtUpdateLSHK.setString(2, "0");
+                                    preparedStmtUpdateLSHK.setString(3, "1");
+                                    preparedStmtUpdateLSHK.setString(4, maHoKhauTxt.getText());
+                                    preparedStmtUpdateLSHK.setString(5,nhanKhau.getMaNhanKhau() );
+                                    preparedStmtUpdateLSHK.setInt(6,lastId );
+                                    preparedStmtUpdateLSHK.execute();
 
                                     preparedStmtUpdateLSHK.setString(1,"0");
                                     preparedStmtUpdateLSHK.setString(2, "1");
@@ -471,19 +494,16 @@ public class TachHoKhauController implements Initializable {
                                     preparedStmtUpdateLSHK.setString(5,nhanKhau.getMaNhanKhau() );
                                     preparedStmtUpdateLSHK.setInt(6,lastId );
                                     preparedStmtUpdateLSHK.execute();
-
                                 }
 
                                 refreshTable();
-                                nhanKhauOldTable.getItems().clear();
-                                nhanKhauNewTable.getItems().clear();
                             } else {
                                 throw new SQLException("Creating nhanKhau failed, no ID obtained.");
                             }
                         }
                     }
                 } catch (Exception e) {
-                    errorLab.setText("Mã hộ khẩu đã tồn tại !");
+                    errorLab.setText(e.getMessage());
                 }
                 confirmationStage.close();
             });

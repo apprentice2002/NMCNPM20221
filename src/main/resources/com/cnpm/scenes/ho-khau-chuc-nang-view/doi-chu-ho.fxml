@@ -35,7 +35,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="23.0" layoutY="65.0" prefHeight="19.0" prefWidth="107.0" style="-fx-text-fill: #00305b;" text="Tìm mã hộ khẩu :" textAlignment="JUSTIFY">
+      <Label layoutX="23.0" layoutY="65.0" prefHeight="19.0" prefWidth="107.0" style="-fx-text-fill: #00305b;" text="Tìm kiếm :" textAlignment="JUSTIFY">
          <font>
             <Font size="13.0" />
          </font>
@@ -46,7 +46,7 @@
          </font>
       </Label>
       <TextField id="ma_ho_khau" fx:id="maHoKhauTxt" layoutX="558.0" layoutY="250.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
-      <Label layoutX="330.0" layoutY="107.0" prefHeight="19.0" prefWidth="122.0" style="-fx-text-fill: #00305b;" text="Mã chủ hộ hiện tại:" textAlignment="JUSTIFY">
+      <Label layoutX="330.0" layoutY="107.0" prefHeight="19.0" prefWidth="122.0" style="-fx-text-fill: #00305b;" text="ID chủ hộ hiện tại:" textAlignment="JUSTIFY">
          <font>
             <Font size="13.0" />
          </font>
@@ -58,7 +58,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="556.0" layoutY="107.0" prefHeight="19.0" prefWidth="107.0" style="-fx-text-fill: #00305b;" text="Mã chủ hộ mới :" textAlignment="JUSTIFY">
+      <Label layoutX="556.0" layoutY="107.0" prefHeight="19.0" prefWidth="107.0" style="-fx-text-fill: #00305b;" text="ID chủ hộ mới :" textAlignment="JUSTIFY">
          <font>
             <Font size="13.0" />
          </font>
@@ -100,7 +100,7 @@
          </font>
       </Label>
       <ChoiceBox fx:id="quanHeVoiChuHoChoiceBox" layoutX="330.0" layoutY="250.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
-      <Label layoutX="330.0" layoutY="230.0" prefHeight="19.0" prefWidth="155.0" style="-fx-text-fill: #00305b;" text="Quan hệ với chủ hộ cũ:" textAlignment="JUSTIFY">
+      <Label layoutX="330.0" layoutY="230.0" prefHeight="19.0" prefWidth="210.0" style="-fx-text-fill: #00305b;" text="Quan hệ của chủ hộ cũ:" textAlignment="JUSTIFY">
          <font>
             <Font size="13.0" />
          </font>
@@ -111,7 +111,7 @@
          </font>
       </Label>
       <ChoiceBox fx:id="optionChoiceBox" layoutX="23.0" layoutY="135.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
-      <Label layoutX="556.0" layoutY="230.0" prefHeight="19.0" prefWidth="107.0" style="-fx-text-fill: #00305b;" text="Mã hộ khẩu :" textAlignment="JUSTIFY">
+      <Label layoutX="556.0" layoutY="230.0" prefHeight="19.0" prefWidth="107.0" style="-fx-text-fill: #00305b;" text="ID hộ khẩu :" textAlignment="JUSTIFY">
          <font>
             <Font size="13.0" />
          </font>

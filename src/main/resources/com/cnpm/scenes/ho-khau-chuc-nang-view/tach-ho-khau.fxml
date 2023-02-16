@@ -15,7 +15,7 @@
    <children>
       <TableView fx:id="hoKhauTable" layoutX="18.0" layoutY="157.0" prefHeight="450.0" prefWidth="270.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
          <columns>
-            <TableColumn fx:id="maHoKhauCol" prefWidth="75.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
+            <TableColumn fx:id="maHoKhauCol" prefWidth="75.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID Hộ khẩu" />
             <TableColumn fx:id="hoTenChuHoCol" prefWidth="100.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên chủ hộ" />
             <TableColumn fx:id="diaChiCol" prefWidth="94.39999999999998" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Địa chỉ" />
          </columns>
@@ -31,12 +31,12 @@
       <Button fx:id="moveToOld" layoutX="602.0" layoutY="436.0" mnemonicParsing="false" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 30; -fx-border-color: #00305b; -fx-border-radius: 30;" text="&lt;&lt;" />
       <TableView fx:id="nhanKhauNewTable" layoutX="668.0" layoutY="270.0" prefHeight="308.0" prefWidth="270.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
          <columns>
-            <TableColumn fx:id="maNhanKhauNewCol" prefWidth="65.59995001554489" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
-            <TableColumn fx:id="hoTenNhanKhauNewCol" prefWidth="115.20001983642578" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
+            <TableColumn fx:id="maNhanKhauNewCol" prefWidth="87.20013427734375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID Nhân khẩu" />
+            <TableColumn fx:id="hoTenNhanKhauNewCol" prefWidth="94.39990234375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
             <TableColumn fx:id="quanHeVoiChuHoNewCol" prefWidth="87.99997558593748" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Quan hệ với chủ hộ" />
          </columns>
       </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="54.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="960.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="54.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="960.0" />
       <Label layoutX="15.0" layoutY="17.0" style="-fx-text-fill: #f5f5f5;" text="Tách hộ khẩu">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -68,8 +68,8 @@
       <TextField fx:id="maHoKhauMoiTxt" layoutX="789.0" layoutY="151.0" prefHeight="24.0" prefWidth="150.0" promptText="Nhập mã hộ mới" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
       <TableView fx:id="nhanKhauOldTable" layoutX="305.0" layoutY="270.0" prefHeight="308.0" prefWidth="270.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
          <columns>
-            <TableColumn fx:id="maNhanKhauOldCol" prefWidth="65.59995001554489" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
-            <TableColumn fx:id="hoTenNhanKhauOldCol" prefWidth="115.20001983642578" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
+            <TableColumn fx:id="maNhanKhauOldCol" prefWidth="88.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID Nhân khẩu" />
+            <TableColumn fx:id="hoTenNhanKhauOldCol" prefWidth="93.5999755859375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
             <TableColumn fx:id="quanHeVoiChuHoOldCol" prefWidth="81.59996032714844" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Quan hệ với chủ hộ" />
          </columns>
       </TableView>

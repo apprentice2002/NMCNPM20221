@@ -50,11 +50,14 @@ public class LichSuThayDoiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String sqlQuery = "SELECT ho_khau.ID, nhan_khau.hoTen, lich_su_thay_doi.NgayThayDoi," +
-                "                lich_su_thay_doi_ho_khau.ThemNhanKhau, lich_su_thay_doi_ho_khau.XoaNhanKhau, lich_su_thay_doi.GhiChu FROM " +
-                "                lich_su_thay_doi, thanh_vien_cua_ho, lich_su_thay_doi_ho_khau, ho_khau, nhan_khau WHERE" +
-                "                ho_khau.ID = thanh_vien_cua_ho.idHoKhau and nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND lich_su_thay_doi.ID = lich_su_thay_doi_ho_khau.IdLSTD AND" +
-                "               nhan_khau.ID = lich_su_thay_doi_ho_khau.IdNhanKhau";
+        thayDoiTable.getItems().clear();
+        String sqlQuery = "SELECT ho_khau.maHoKhau, nhan_khau.hoTen, lich_su_thay_doi.NgayThayDoi, " +
+                "SUM(lich_su_thay_doi_ho_khau.ThemNhanKhau) as ThemNhanKhau, " +
+                "SUM(lich_su_thay_doi_ho_khau.XoaNhanKhau) as XoaNhanKhau, lich_su_thay_doi.GhiChu " +
+                "FROM   lich_su_thay_doi, lich_su_thay_doi_ho_khau, ho_khau, nhan_khau WHERE        " +
+                "    ho_khau.ID = lich_su_thay_doi_ho_khau.idHoKhau AND " +
+                "lich_su_thay_doi.ID = lich_su_thay_doi_ho_khau.IdLSTD AND nhan_khau.ID = ho_khau.idChuHo " +
+                "GROUP BY lich_su_thay_doi_ho_khau.IdLSTD, lich_su_thay_doi_ho_khau.idHoKhau;";
 
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
         ngayThayDoiCol.setCellValueFactory(new PropertyValueFactory<>("ngayThayDoi"));
@@ -63,7 +66,7 @@ public class LichSuThayDoiController implements Initializable {
         xoaNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("xoaNhanKhau"));
         ghiChuCol.setCellValueFactory(new PropertyValueFactory<>("ghiChu"));
 
-        optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm theo ID");
+        optionChoiceBox.getItems().addAll("Tìm theo họ tên chủ hộ", "Tìm theo Mã hộ khẩu");
         optionChoiceBox.getSelectionModel().selectFirst();
 
         // Thêm action cho choicebox
@@ -76,9 +79,9 @@ public class LichSuThayDoiController implements Initializable {
                         return true;
                     }
                     String searchKeyword = newValue1.toLowerCase();
-                    if(hoKhau.getMaHoKhau().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo ID" ) {
+                    if(hoKhau.getMaHoKhau().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo Mã hộ khẩu" ) {
                         return true;
-                    } else if(hoKhau.getHoTenChuHo().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo họ tên") {
+                    } else if(hoKhau.getHoTenChuHo().toLowerCase().indexOf(searchKeyword) > -1 && optionChoiceBox.getSelectionModel().getSelectedItem() == "Tìm theo họ tên chủ hộ") {
                         return true;
                     } else
                         return false;
@@ -98,7 +101,7 @@ public class LichSuThayDoiController implements Initializable {
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
                 thayDoiTable.getItems().add(new HoKhauTableModel(
-                        queryResult.getString("ID"),
+                        queryResult.getString("maHoKhau"),
                         queryResult.getString("hoTen"),
                         queryResult.getDate("NgayThayDoi"),
                         queryResult.getString("ThemNhanKhau"),
