@@ -13,4 +13,8 @@ module com.cnpm {
     opens com.cnpm.utilities to javafx.fxml;
     exports com.cnpm.entities;
     opens com.cnpm.entities to javafx.fxml;
+    exports com.cnpm.controllers.PhatThuong;
+    opens com.cnpm.controllers.PhatThuong to javafx.fxml;
+    exports com.cnpm.controllers.PhatQua;
+    opens com.cnpm.controllers.PhatQua to javafx.fxml;
 }

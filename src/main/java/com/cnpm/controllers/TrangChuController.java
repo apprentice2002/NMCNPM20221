@@ -46,11 +46,10 @@ public class TrangChuController implements Initializable {
     @FXML
     public void phatThuong(ActionEvent event) {
          if(UserSession.getUsername().equals("admin")){
-            changeDisplay(main_display, "/com/cnpm/views/phat_thuong1.fxml");
+            changeDisplay(main_display, "/com/cnpm/views/phat_thuong_TT.fxml");
          }
          else if(UserSession.getUsername().equals("admin1")){
-             changeDisplay(main_display, "/com/cnpm/views/phat_thuong.fxml");
-
+             changeDisplay(main_display, "/com/cnpm/views/phat_thuong_thu_ky.fxml");
          }
 
     }
@@ -58,10 +57,10 @@ public class TrangChuController implements Initializable {
     @FXML
     public void phatQua(ActionEvent event) {
         if(UserSession.getUsername().equals("admin")) {
-            changeDisplay(main_display, "/com/cnpm/views/phat_qua1.fxml");
+            changeDisplay(main_display, "/com/cnpm/views/phat_qua_TT.fxml");
         }
         else if(UserSession.getUsername().equals("admin1")){
-            changeDisplay(main_display, "/com/cnpm/views/phat-qua.fxml");
+            changeDisplay(main_display, "/com/cnpm/views/phat-qua_thu_ky.fxml");
 
         }
     }

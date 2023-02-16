@@ -1,4 +1,4 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.PhatThuong;
 
 import com.cnpm.entities.PhatThuong;
 import com.cnpm.utilities.DBConnection;
@@ -57,7 +57,7 @@ public class ThemThuongController implements Initializable {
 
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
-        int   idPhatThuong = Integer.parseInt(them_id_phat_thuong.getText());
+//        int   idPhatThuong = Integer.parseInt(them_id_phat_thuong.getText());
         int  idDotPhat = Integer.parseInt(them_id_dot_phat.getText());
         int  idMinhChung=Integer.parseInt(them_id_minh_chung.getText());
         int  idQua = Integer.parseInt(them_id_qua.getText());
@@ -69,11 +69,11 @@ public class ThemThuongController implements Initializable {
             try {
                 connection = DBConnection.getConnection();
                 preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setInt(1, idPhatThuong);
-                preparedStatement.setInt(2,  idDotPhat);
-                preparedStatement.setInt(3, idQua);
-                preparedStatement.setInt(4, idMinhChung);
-                preparedStatement.setInt(5, daDuyet);
+//                preparedStatement.setInt(1, idPhatThuong);
+                preparedStatement.setInt(1,  idDotPhat);
+                preparedStatement.setInt(2, idQua);
+                preparedStatement.setInt(3, idMinhChung);
+                preparedStatement.setInt(4, 0);
                 preparedStatement.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -83,8 +83,8 @@ public class ThemThuongController implements Initializable {
         }
     }
     private void getQuery() {
-        query = "INSERT INTO phat_thuong (idPhatThuong, idDotPhat, idQua, idMinhChung, daDuyet) " +
-                " VALUES (?,?,?,?,?)";
+        query = "INSERT INTO phat_thuong ( idDotPhat, idQua, idMinhChung, daDuyet) " +
+                " VALUES (?,?,?,?)";
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

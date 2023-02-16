@@ -1,4 +1,4 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.PhatQua;
 
 import com.cnpm.entities.PhatQua;
 import com.cnpm.utilities.DBConnection;
@@ -54,11 +54,11 @@ public class ThemQuaController implements Initializable {
 
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
-         int   idPhatQua = Integer.parseInt(them_id_phat_qua.getText());
+//         int   idPhatQua = Integer.parseInt(them_id_phat_qua.getText());
         int  idDotPhat = Integer.parseInt(them_id_dot_phat_qua.getText());
-        int  ma_nhan_khau=Integer.parseInt(them_ma_nhan_khau.getText());
+        int  idNhanKhau=Integer.parseInt(them_ma_nhan_khau.getText());
         int  idQua = Integer.parseInt(them_id_qua.getText());
-        int  daDuyet = Integer.parseInt(them_da_duyet.getText());
+//        int  daDuyet = Integer.parseInt(them_da_duyet.getText());
         if (false ){
             note.setText("Vui lòng điền đủ thông tin cần thiết");
     } else {
@@ -66,15 +66,11 @@ public class ThemQuaController implements Initializable {
             try {
                 connection = DBConnection.getConnection();
                 preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setInt(1, idPhatQua);
-                preparedStatement.setInt(2,  idDotPhat);
-                preparedStatement.setInt(3, ma_nhan_khau);
-                preparedStatement.setInt(4, idQua);
-                preparedStatement.setInt(5, daDuyet);
-
-
-
-
+//                preparedStatement.setInt(1, idPhatQua);
+                preparedStatement.setInt(1,  idDotPhat);
+                preparedStatement.setInt(2, idNhanKhau);
+                preparedStatement.setInt(3, idQua);
+                preparedStatement.setInt(4, 0);
                 preparedStatement.execute();
 
             } catch (SQLException e) {
@@ -85,8 +81,8 @@ public class ThemQuaController implements Initializable {
         }
     }
     private void getQuery() {
-        query = "INSERT INTO phat_qua (idPhatQua, idDotPhat, ma_nhan_khau, idQua, daDuyet)" +
-                " VALUES (?,?,?,?,?)";
+        query = "INSERT INTO phat_qua (idDotPhat, idNhanKhau, idQua, daDuyet)" +
+                " VALUES (?,?,?,?)";
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

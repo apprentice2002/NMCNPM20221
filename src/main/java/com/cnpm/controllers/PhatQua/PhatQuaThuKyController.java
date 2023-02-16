@@ -1,6 +1,5 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.PhatQua;
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.MinhChungTableModel;
 import com.cnpm.utilities.PhatQuaTableModel;
 import com.cnpm.utilities.Utilities;
 import javafx.collections.FXCollections;
@@ -25,7 +24,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class PhatQuaController implements Initializable{
+public class PhatQuaThuKyController implements Initializable{
+    @FXML
+    private Button thong_ke_phat_qua;
     @FXML
     private Button them_qua;
 
@@ -62,7 +63,7 @@ public class PhatQuaController implements Initializable{
     ObservableList<PhatQuaTableModel> listView = FXCollections.observableArrayList();
 
     @FXML
-    private TableColumn<PhatQuaController, String> xoaCol;
+    private TableColumn<PhatQuaThuKyController, String> xoaCol;
     private List<PhatQuaTableModel> performFiltering(String option, String searchText) {
         List<PhatQuaTableModel> filteredData = new ArrayList<>();
         for (PhatQuaTableModel data : table.getItems()) {
@@ -77,7 +78,7 @@ public class PhatQuaController implements Initializable{
         Connection connection = DBConnection.getConnection();
         String sql ="SELECT idPhatQua,nhan_khau.hoTen, (YEAR(CURDATE()) - YEAR(nhan_khau.namSinh)) as tuoi, tenQua, tenDotPhat, giaTri, daDuyet\n" +
                 "                FROM nhan_khau, phat_qua, qua, dot_phat\n" +
-                "                WHERE nhan_khau.ID = phat_qua.ma_nhan_khau\n" +
+                "                WHERE nhan_khau.ID = phat_qua.idNhanKhau\n" +
                 "\t\t\t          AND phat_qua.idQua = qua.idQua\n" +
                 "                AND phat_qua.idDotPhat = dot_phat.idDotPhat";
         try {
@@ -96,6 +97,12 @@ public class PhatQuaController implements Initializable{
 
             }
             table.setItems(listView);
+            for(PhatQuaTableModel data :table.getItems()){
+                if (data.getDaDuyet() == 1) {
+
+                    data.setDeleteBox(null);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -175,7 +182,7 @@ public class PhatQuaController implements Initializable{
             //Tìm kiếm những hộ khẩu được tích checkbox
             ObservableList<PhatQuaTableModel> dataListRemove = FXCollections.observableArrayList();
             for (PhatQuaTableModel data: table.getItems()) {
-                if(data.getDeleteBox().isSelected()) {
+                if(data.getDeleteBox() != null &&data.getDeleteBox().isSelected()) {
                     dataListRemove.add(data);
                 }
             }
@@ -212,6 +219,11 @@ public class PhatQuaController implements Initializable{
         refresh();
         Utilities.popNewWindow(event, "/com/cnpm/scenes/them_qua.fxml");
     }
+    @FXML
+    public void thongKePhatQua(ActionEvent event) throws IOException {
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_phat_qua.fxml");
+    }
+
 
 
 

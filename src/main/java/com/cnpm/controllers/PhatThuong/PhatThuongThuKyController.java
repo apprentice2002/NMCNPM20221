@@ -1,9 +1,6 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.PhatThuong;
 
-import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.PhatThuongTableModel;
-import com.cnpm.utilities.UserSession;
-import com.cnpm.utilities.Utilities;
+import com.cnpm.utilities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -18,13 +15,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PhatThuongController1 implements Initializable {
+public class PhatThuongThuKyController implements Initializable {
+
+
+
+    @FXML
+    private Button them_thuong;
+    @FXML
+    private Button thong_ke_thuong;
+
+
     @FXML
     private TextField thong_tin_tim_kiem;
     @FXML
@@ -42,7 +49,6 @@ public class PhatThuongController1 implements Initializable {
     private TableView<PhatThuongTableModel> table;
     @FXML
     private TableColumn<PhatThuongTableModel, String> idPhatThuongCol;
-
     @FXML
     private TableColumn<PhatThuongTableModel, String> hoTenCol;
     @FXML
@@ -93,23 +99,34 @@ public class PhatThuongController1 implements Initializable {
 
             }
             table.setItems(listView);
+            for(PhatThuongTableModel data :table.getItems()){
+                if (data.getDaDuyet() == 1) {
+
+                    data.setDeleteBox(null);
+                }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
         idPhatThuongCol.setCellValueFactory(new PropertyValueFactory<>("idPhatThuong"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         tenQuaCol.setCellValueFactory(new PropertyValueFactory<>("tenQua"));
-
         thanhTichHocTapCol.setCellValueFactory(new PropertyValueFactory<>("thanhTichHocTap"));
         tenDotPhatCol.setCellValueFactory(new PropertyValueFactory<>("tenDotPhat"));
         giaTriCol.setCellValueFactory(new PropertyValueFactory<>("giaTri"));
         daDuyetCol.setCellValueFactory(new PropertyValueFactory<>("daDuyet"));
         xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
+
 
         optionChoiceBox.getItems().addAll("Tìm theo họ tên","Tìm theo thành tích học tập");
         optionChoiceBox.setValue("Lựa chọn tìm kiếm");
@@ -139,8 +156,9 @@ public class PhatThuongController1 implements Initializable {
         });
         refresh();
 
+
     }
-    public void duyet(ActionEvent event) {
+    public void xoaThuong(ActionEvent event) {
 
         // Nảy ra màn hình liệu có tiếp tục muốn xóa
         // Tạo ra scene
@@ -156,7 +174,7 @@ public class PhatThuongController1 implements Initializable {
         confirmationLayout.setVgap(10);
         confirmationLayout.setHgap(10);
         confirmationLayout.setPadding(new Insets(20, 20, 20, 20));
-        confirmationLayout.add(new Label("Bạn có muốn tiếp tục duyệt phần thưởng này không ?"), 0, 0, 2, 1);
+        confirmationLayout.add(new Label("Bạn có muốn tiếp tục xóa phần thưởng này không ?"), 0, 0, 2, 1);
         confirmationLayout.add(yesButton, 0, 1);
         confirmationLayout.add(noButton, 1, 1);
 
@@ -171,7 +189,7 @@ public class PhatThuongController1 implements Initializable {
         //Tìm kiếm những hộ khẩu được tích checkbox
         ObservableList<PhatThuongTableModel> dataListRemove = FXCollections.observableArrayList();
         for (PhatThuongTableModel data: table.getItems()) {
-            if(data.getDeleteBox().isSelected()) {
+            if(data.getDeleteBox() != null && data.getDeleteBox().isSelected()) {
                 dataListRemove.add(data);
             }
         }
@@ -182,10 +200,7 @@ public class PhatThuongController1 implements Initializable {
 
         yesButton.setOnAction(e2 -> {
             //Cập nhật CSDL khi xóa hộ khẩu
-            String delteQSql = " UPDATE phat_thuong\n" +
-                    "                    SET\n" +
-                    "                    daDuyet= 1\n" +
-                    "                    WHERE idPhatThuong=?";
+            String delteQSql = "DELETE FROM phat_thuong WHERE idPhatThuong = ?";
             Connection connection = DBConnection.getConnection();
             try {
                 PreparedStatement preparedDeleteHKStmt = connection.prepareStatement(delteQSql);
@@ -205,71 +220,21 @@ public class PhatThuongController1 implements Initializable {
 
 
     }
-    public void huyDuyet(ActionEvent event) {
-
-        // Nảy ra màn hình liệu có tiếp tục muốn xóa
-        // Tạo ra scene
-        Button yesButton = new Button("Có");
-        yesButton.setPrefSize(100, 40);
-        yesButton.getStyleClass().add("yes-button");
-
-        Button noButton = new Button("Không");
-        noButton.setPrefSize(100, 40);
-        noButton.getStyleClass().add("no-button");
-
-        GridPane confirmationLayout = new GridPane();
-        confirmationLayout.setVgap(10);
-        confirmationLayout.setHgap(10);
-        confirmationLayout.setPadding(new Insets(20, 20, 20, 20));
-        confirmationLayout.add(new Label("Bạn có muốn tiếp tục hủy duyệt phần thưởng này không ?"), 0, 0, 2, 1);
-        confirmationLayout.add(yesButton, 0, 1);
-        confirmationLayout.add(noButton, 1, 1);
-
-        Scene confirmationScene = new Scene(confirmationLayout, 300, 100);
-        Stage confirmationStage = new Stage();
-        confirmationStage.setScene(confirmationScene);
-        confirmationStage.show();
 
 
 
 
-        //Tìm kiếm những hộ khẩu được tích checkbox
-        ObservableList<PhatThuongTableModel> dataListRemove = FXCollections.observableArrayList();
-        for (PhatThuongTableModel data: table.getItems()) {
-            if(data.getDeleteBox().isSelected()) {
-                dataListRemove.add(data);
-            }
-        }
 
-        noButton.setOnAction(e1 -> {
-            confirmationStage.close();
-        });
-
-        yesButton.setOnAction(e2 -> {
-            //Cập nhật CSDL khi xóa hộ khẩu
-            String delteQSql = " UPDATE phat_thuong\n" +
-                    "                    SET\n" +
-                    "                    daDuyet= 0\n" +
-                    "                    WHERE idPhatThuong=?";
-            Connection connection = DBConnection.getConnection();
-            try {
-                PreparedStatement preparedDeleteHKStmt = connection.prepareStatement(delteQSql);
-                for(PhatThuongTableModel data: dataListRemove) {
-                    int idPhatThuong  = data.getIdPhatThuong();
-                    preparedDeleteHKStmt.setInt(1,idPhatThuong);
-                    preparedDeleteHKStmt.execute();
-                }
-                // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            refresh();
-            confirmationStage.close();
-        });
-
-
+    @FXML
+    public void themThuong(ActionEvent event) throws IOException {
+    refresh();
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/them_thuong.fxml");
+    }
+    @FXML
+    public void thongKePhatThuong(ActionEvent event) throws IOException {
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_thuong.fxml");
     }
 
 
 }
+

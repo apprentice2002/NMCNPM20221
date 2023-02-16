@@ -7,7 +7,7 @@ public class DBConnection {
     public static Connection connection;
 
     public static Connection getConnection() {
-        String dbName = "hokhau";
+        String dbName = "hokhau2";
         String dbUser = "root";
         String dbPassword = "123456";
         String url = "jdbc:mysql://localhost/" + dbName;

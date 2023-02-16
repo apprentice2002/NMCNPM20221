@@ -1,5 +1,6 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.PhatQua;
 
+import com.cnpm.controllers.PhatQua.PhatQuaThuKyController;
 import com.cnpm.utilities.DBConnection;
 import com.cnpm.utilities.PhatQuaTableModel;
 import com.cnpm.utilities.Utilities;
@@ -17,14 +18,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PhatQuaController1 implements Initializable{
-
+public class PhatQuaTTController implements Initializable{
+        @FXML
+        private Button thong_ke_phat_qua;
         @FXML
         private TextField thong_tin_tim_kiem;
         @FXML
@@ -58,7 +61,7 @@ public class PhatQuaController1 implements Initializable{
         ObservableList<PhatQuaTableModel> listView = FXCollections.observableArrayList();
 
         @FXML
-        private TableColumn<com.cnpm.controllers.PhatQuaController, String> xoaCol;
+        private TableColumn<PhatQuaThuKyController, String> xoaCol;
 
         private List<PhatQuaTableModel> performFiltering(String option, String searchText) {
             List<PhatQuaTableModel> filteredData = new ArrayList<>();
@@ -73,7 +76,7 @@ public class PhatQuaController1 implements Initializable{
         Connection connection = DBConnection.getConnection();
         String sql ="SELECT idPhatQua,nhan_khau.hoTen, (YEAR(CURDATE()) - YEAR(nhan_khau.namSinh)) as tuoi, tenQua, tenDotPhat, giaTri, daDuyet\n" +
                 "                FROM nhan_khau, phat_qua, qua, dot_phat\n" +
-                "                WHERE nhan_khau.ID = phat_qua.ma_nhan_khau\n" +
+                "                WHERE nhan_khau.ID = phat_qua.idNhanKhau\n" +
                 "\t\t\t          AND phat_qua.idQua = qua.idQua\n" +
                 "                AND phat_qua.idDotPhat = dot_phat.idDotPhat";
         try {
@@ -264,4 +267,10 @@ public class PhatQuaController1 implements Initializable{
         });
 
     }
+    @FXML
+    public void thongKePhatQua(ActionEvent event) throws IOException {
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_phat_qua.fxml");
     }
+
+
+}

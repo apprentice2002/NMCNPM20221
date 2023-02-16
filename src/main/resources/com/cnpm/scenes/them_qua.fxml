@@ -10,15 +10,15 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.cnpm.controllers.ThemQuaController"
+            fx:controller="com.cnpm.controllers.PhatQua.ThemQuaController"
             prefHeight="400.0" prefWidth="600.0">
     <Label layoutX="16.25" layoutY="7.35" text="Thêm quà">
         <font>
             <Font size="24.0" />
         </font>
     </Label>
-    <Label layoutX="16.0" layoutY="75.0" text="ID phát quà " />
-    <TextField fx:id="them_id_phat_qua" layoutX="125.63" layoutY="75.0" />
+<!--    <Label layoutX="16.0" layoutY="75.0" text="ID phát quà " />-->
+<!--    <TextField fx:id="them_id_phat_qua" layoutX="125.63" layoutY="75.0" />-->
 
     <Label layoutX="16.0" layoutY="121.39" text="ID đợt phát quà" />
     <TextField fx:id="them_id_dot_phat_qua" layoutX="125.63" layoutY="121.39" />
@@ -28,8 +28,8 @@
 
     <Label layoutX="16.0" layoutY="219.79" text="ID quà" />
     <TextField fx:id="them_id_qua" layoutX="125.63" layoutY="219.79" />
-    <Label layoutX="16.0" layoutY="268.45" text="Đã Duyệt" />
-    <TextField fx:id="them_da_duyet" layoutX="125.63" layoutY="268.45" />
+<!--    <Label layoutX="16.0" layoutY="268.45" text="Đã Duyệt" />-->
+<!--    <TextField fx:id="them_da_duyet" layoutX="125.63" layoutY="268.45" />-->
     <Label layoutX="16.0" layoutY="524.8" text="Note:" />
     <TextField fx:id="note" layoutX="74.73" layoutY="520.05" prefHeight="94.95" prefWidth="261.02"/>
 
