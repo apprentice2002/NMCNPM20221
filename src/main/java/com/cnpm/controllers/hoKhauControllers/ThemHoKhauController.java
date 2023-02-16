@@ -1,22 +1,10 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.hoKhauControllers;
 
-import com.cnpm.utilities.DBConnection;
-import com.cnpm.entities.NhanKhau;
-import com.cnpm.utilities.Utilities;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import com.cnpm.entities.NhanKhau;
+import com.cnpm.entities.NhanKhauTableModel;
+import com.cnpm.entities.SharedDataModel;
 import com.cnpm.utilities.*;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,18 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.ResourceBundle;
-import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.cnpm.utilities.DBConnection.connection;
@@ -244,6 +225,21 @@ public class ThemHoKhauController implements Initializable {
                 // Cập nhật quan hệ các thành viên chủ hộ mới
                 String updateQuanHeSql = "INSERT INTO thanh_vien_cua_ho (quanHeVoiChuHo, IdNhanKhau, IdHoKhau) VALUES (?,?,(SELECT ID from ho_khau WHERE maHoKhau = ?))";
                 PreparedStatement preparedStmtUpdateQuanHeThanhVien = connection.prepareStatement(updateQuanHeSql);
+                String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
+                PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
+                preparedStmtUpdateLS.setDate(1,ngayTao);
+                preparedStmtUpdateLS.setString(2,"Thêm hộ khẩu");
+                preparedStmtUpdateLS.execute();
+
+                String selectLastId = "SELECT LAST_INSERT_ID()";
+                int lastId = 0;
+                try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
+                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                        while (resultSet.next()) {
+                            lastId = resultSet.getInt(1);
+                        }
+                    }
+                }
                 for(NhanKhauTableModel nhanKhau : nhanKhauTable.getItems()) {
                     if(nhanKhau.getQuanHeVoiChuHo().equals("Chủ Hộ")) {
                         preparedStmtUpdateQuanHeThanhVien.setString(1,new String(""));
@@ -255,25 +251,9 @@ public class ThemHoKhauController implements Initializable {
                     preparedStmtUpdateQuanHeThanhVien.execute();
 
                     // Cập nhật lịch sử thay đổi hộ khẩu
-                    String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
                     String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?,(SELECT ID from ho_khau WHERE maHoKhau = ?), ?, ?)";
                     PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
-                    PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
 
-
-                    preparedStmtUpdateLS.setDate(1,ngayTao);
-                    preparedStmtUpdateLS.setString(2,"Thêm hộ khẩu");
-                    preparedStmtUpdateLS.execute();
-
-                    String selectLastId = "SELECT LAST_INSERT_ID()";
-                    int lastId = 0;
-                    try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
-                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                            while (resultSet.next()) {
-                                lastId = resultSet.getInt(1);
-                            }
-                        }
-                    }
 
                     preparedStmtUpdateLSHK.setString(1,"0");
                     preparedStmtUpdateLSHK.setString(2, "1");

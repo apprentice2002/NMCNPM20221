@@ -1,6 +1,4 @@
-package com.cnpm.utilities;
-
-import com.cnpm.entities.NhanKhau;
+package com.cnpm.entities;
 
 public class NhanKhauTableModel {
     private String maHoKhau;
@@ -42,7 +40,6 @@ public class NhanKhauTableModel {
     }
 
     public NhanKhauTableModel(String maNhanKhau , String hoTenNhanKhau , String quanHeVoiChuHo) {
-        super();
         this.maNhanKhau = maNhanKhau;
         this.hoTenNhanKhau = hoTenNhanKhau;
         this.quanHeVoiChuHo = quanHeVoiChuHo;

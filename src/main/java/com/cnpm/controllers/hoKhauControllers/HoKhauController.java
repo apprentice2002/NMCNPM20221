@@ -1,15 +1,8 @@
-package com.cnpm.controllers;
+package com.cnpm.controllers.hoKhauControllers;
 
-import com.cnpm.utilities.Utilities;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import com.cnpm.entities.HoKhau;
+import com.cnpm.entities.NhanKhauTableModel;
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.HoKhauTableModel;
+import com.cnpm.entities.HoKhauTableModel;
 import com.cnpm.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,33 +16,26 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
-public class  HoKhauController implements Initializable {
+import static com.cnpm.utilities.DBConnection.connection;
 
-    @FXML
-    private TextField thong_tin_tim_kiem;
-    @FXML
-    private ChoiceBox loc;
+public class HoKhauController implements Initializable {
     @FXML
     private Button them_ho_khau;
     @FXML
-    private Button chuyen_ho_khau;
-    @FXML
     private Button tach_ho_khau;
     @FXML
-    private Button doi_chu_ho;
+    private Button chuyen_ho_khau;
+
     @FXML
-    private Button lich_su_thay_doi_ho_khau;
+    private Button tim_kiem_ho_khau;
+
     @FXML
     private ChoiceBox<String> optionChoiceBox;
 
@@ -80,9 +66,9 @@ public class  HoKhauController implements Initializable {
         Connection connection = DBConnection.getConnection();
         String sql = "SELECT ho_khau.ID,nhan_khau.hoTen AS hoTenChuHo, diaChi, COUNT(thanh_vien_cua_ho.idHoKhau) " +
                 "AS soThanhVien FROM ho_khau, thanh_vien_cua_ho, nhan_khau " +
-                "WHERE ho_khau.ID = thanh_vien_cua_ho.idHoKhau AND nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau " +
-                "AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is null and nhan_khau.daXoa " +
-                "is null GROUP BY ho_khau.ID";
+                "WHERE ho_khau.idChuHo = nhan_khau.ID and thanh_vien_cua_ho.idHoKhau = ho_khau.ID " +
+                "AND ho_khau.daXoa is NULL and ho_khau.ngayChuyenDi is null " +
+                "GROUP BY thanh_vien_cua_ho.idHoKhau";
         try {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
@@ -146,21 +132,21 @@ public class  HoKhauController implements Initializable {
     }
     @FXML
     public void themHoKhau(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/them-ho-khau.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/them-ho-khau.fxml");
     }
     public void doiChuHo(ActionEvent event) throws  IOException {
-        Utilities.popNewWindow(event,"/com/cnpm/scenes/doi-chu-ho.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/doi-chu-ho.fxml");
     }
 
     public void tachHoKhau(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/tach-ho-khau.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/tach-ho-khau.fxml");
     }
 
     public void chuyenHoKhau(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/chuyen-ho-khau.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/chuyen-ho-khau.fxml");
     }
     public void lichSuThayDoi(ActionEvent event) {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/lich-su-thay-doi.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/lich-su-thay-doi.fxml");
     }
     public void xoaHoKhau(ActionEvent event) {
         boolean canDelete = false;
@@ -207,6 +193,8 @@ public class  HoKhauController implements Initializable {
                 String delteHKSql = "UPDATE ho_khau SET daXoa = 1 WHERE ID = ?";
                 String delteQHSql = "DELETE FROM thanh_vien_cua_ho WHERE IdHoKhau = ?";
                 Connection connection = DBConnection.getConnection();
+                Date ngayTao = new Date(System.currentTimeMillis());
+                ObservableList<NhanKhauTableModel> nhanKhauRemove = FXCollections.observableArrayList();
                 try {
                     PreparedStatement preparedDeleteHKStmt = connection.prepareStatement(delteHKSql);
                     PreparedStatement preparedDeleteQHStmt = connection.prepareStatement(delteQHSql);
@@ -214,14 +202,52 @@ public class  HoKhauController implements Initializable {
                         String idHoKhau  = hoKhau.getMaHoKhau();
                         preparedDeleteQHStmt.setString(1,idHoKhau);
                         preparedDeleteHKStmt.setString(1,idHoKhau);
-                        preparedDeleteQHStmt.execute();
-                        preparedDeleteHKStmt.execute();
+                        // Cập nhật lịch sử thay đổi hộ khẩu
+                        String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
+                        String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
+                        PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
+                        preparedStmtUpdateLS.setDate(1,ngayTao);
+                        preparedStmtUpdateLS.setString(2,"Xóa hộ khẩu");
+                        preparedStmtUpdateLS.execute();
+                        String selectLastId = "SELECT LAST_INSERT_ID()";
+                        int lastId = 0;
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
+                            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    lastId = resultSet.getInt(1);
+                                }
+                            }
+                        }
+                        String nhanKhauAddSql = "Select * from nhan_khau,thanh_vien_cua_ho where  thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID and thanh_vien_cua_ho.idHoKhau = ? and nhan_khau.daXoa is NULL";
+                        PreparedStatement  preparedAddNhanKhauStmt= connection.prepareStatement(nhanKhauAddSql);
+                        preparedAddNhanKhauStmt.setString(1,hoKhau.getMaHoKhau());
+                        ResultSet queryResult = preparedAddNhanKhauStmt.executeQuery();
+                        // Tìm các nhân khẩu có mã hộ khẩu xóa
+                        while (queryResult.next()) {
+                            nhanKhauRemove.add(new NhanKhauTableModel(
+                                    queryResult.getString("ID"),
+                                    queryResult.getString("hoTen"),
+                                    queryResult.getString("quanHeVoiChuHo")
+                            ));
+                        }
+                        for (NhanKhauTableModel nhanKhau : nhanKhauRemove) {
+                            preparedStmtUpdateLSHK.setString(1,"0");
+                            preparedStmtUpdateLSHK.setString(2, "0");
+                            preparedStmtUpdateLSHK.setString(3, "1");
+                            preparedStmtUpdateLSHK.setString(4, hoKhau.getMaHoKhau());
+                            preparedStmtUpdateLSHK.setString(5, nhanKhau.getMaNhanKhau());
+                            preparedStmtUpdateLSHK.setInt(6,lastId );
+                            preparedStmtUpdateLSHK.execute();
+                            preparedDeleteQHStmt.execute();
+                            preparedDeleteHKStmt.execute();
+                        }
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-                confirmationStage.close();
                 refreshTable();
+                confirmationStage.close();
             });
         } else {
             errorLab.setText("Vui lòng chọn ít nhất 1 hộ khẩu cần xóa !");
@@ -229,6 +255,6 @@ public class  HoKhauController implements Initializable {
     }
 
     public void themThanhVien(ActionEvent event) {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/them-thanh-vien.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/them-thanh-vien.fxml");
     }
 }
