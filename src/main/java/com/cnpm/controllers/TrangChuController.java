@@ -15,15 +15,7 @@ import java.util.ResourceBundle;
 
 public class TrangChuController implements Initializable {
 
-    @FXML
-    private StackPane main_display;
-
-    @FXML
-    public void dangXuat(ActionEvent event) {
-        Utilities.changeScene(event, "/com/cnpm/scenes/dang-nhap.fxml");
-        UserSession.setUsername(null);
-        UserSession.setPrivileges(null);
-    }
+    @FXML private StackPane main_display;
 
     @FXML
     public void hoKhau(ActionEvent event) {
@@ -41,16 +33,35 @@ public class TrangChuController implements Initializable {
     }
 
     @FXML
-    public void dangKy(ActionEvent event) { changeDisplay(main_display, "/com/cnpm/views/dang-ky.fxml"); }
+    public void phatThuong(ActionEvent event) {
+         if(UserSession.getUsername().equals("admin")){
+            changeDisplay(main_display, "/com/cnpm/views/phat_thuong_TT.fxml");
+         }
+         else if(UserSession.getUsername().equals("admin1")){
+             changeDisplay(main_display, "/com/cnpm/views/phat_thuong_thu_ky.fxml");
+         }
+
+    }
 
     @FXML
-    public void phatThuong(ActionEvent event) {
-        changeDisplay(main_display, "/com/cnpm/views/phat-thuong.fxml");
+    public void phatQua(ActionEvent event) {
+        if(UserSession.getUsername().equals("admin")) {
+            changeDisplay(main_display, "/com/cnpm/views/phat_qua_TT.fxml");
+        }
+        else if(UserSession.getUsername().equals("admin1")){
+            changeDisplay(main_display, "/com/cnpm/views/phat-qua_thu_ky.fxml");
+
+        }
+    }
+
+    @FXML
+    public void minhChung(ActionEvent event) {
+        changeDisplay(main_display, "/com/cnpm/views/minh_chung.fxml");
     }
 
     @FXML
     public void thayDoi(ActionEvent event) {
-        changeDisplay(main_display, "/com/cnpm/views/thay-doi.fxml");
+        changeDisplay(main_display, "/com/cnpm/views/thong-ke.fxml");
     }
 
     @Override

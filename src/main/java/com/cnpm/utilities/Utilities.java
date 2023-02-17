@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Utilities {
-    public static void changeScene(ActionEvent event, String fxmlFile) {
+    public static void changeScene(ActionEvent event, String fxmlFile ) {
         try {
             FXMLLoader loader = new FXMLLoader(Utilities.class.getResource(fxmlFile));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -24,17 +24,6 @@ public class Utilities {
     public static void popNewWindow(ActionEvent event, String fxmlFile) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Utilities.class.getResource(fxmlFile));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(fxmlLoader.load()));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void alert(String message) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Utilities.class.getResource("/com/cnpm/scenes/alert.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(fxmlLoader.load()));
             stage.show();

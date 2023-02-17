@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="640.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.phat_qua.PhatQuaTTController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="780.0" />
+        <Label layoutX="14.0" layoutY="14.0" style="-fx-text-fill: #f5f5f5;" text="Phát quà">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Label>
+        <TableView fx:id="table" layoutX="30.0" layoutY="208.0" prefHeight="400.0" prefWidth="720.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+            <columns>
+                <TableColumn fx:id="idPhatQuaCol" prefWidth="40" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
+                <TableColumn fx:id="hoTenCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ Tên" />
+                <TableColumn fx:id="tenQuaCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Tên Quà" />
+                <TableColumn fx:id="tuoiCol" prefWidth="60.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="tuổi" />
+                <TableColumn fx:id="tenDotPhatCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="tên đợt phát" />
+                <TableColumn fx:id="giaTriCol" prefWidth="80" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="giá trị" />
+                <TableColumn fx:id="daDuyetCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="đã duyệt" />
+                <TableColumn fx:id="xoaCol" prefWidth="60.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="chọn" />
+            </columns>
+        </TableView>
+        <TextField fx:id="keywordTextField" layoutX="30.0" layoutY="64.0" prefHeight="40.0" prefWidth="127.0" promptText="Tìm kiếm">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor></TextField>
+        <Button layoutX="205.0" layoutY="86.0" mnemonicParsing="false" onAction="#duyet" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #048218; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Duyệt" >
+            <font>
+                <Font size="20.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button layoutX="400.0" layoutY="86.0" mnemonicParsing="false" onAction="#huyDuyet" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #AF3434; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Hủy duyệt" >
+            <font>
+                <Font size="20.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button layoutX="595.0" layoutY="86.0" mnemonicParsing="false" onAction="#thongKePhatQua" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #00305B; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Thống kê" fx:id="thong_ke_thuong" >
+            <font>
+                <Font size="20.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+
+        <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+    </children>
+</AnchorPane>
