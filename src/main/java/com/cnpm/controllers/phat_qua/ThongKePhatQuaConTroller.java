@@ -1,7 +1,7 @@
 package com.cnpm.controllers.phat_qua;
 
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.ThongKePhatQuaTableModel;
+import com.cnpm.entities.ThongKePhatQuaTableModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -72,7 +72,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
                 "AND nk1.ID = tvh.idNhanKhau\n" +
                 "AND tvh.idHoKhau = hk.ID\n" +
                 "AND hk.idChuHo = nk2.ID\n" +
-                "AND dp.idDotPhat = 2\n" +
+                "AND dp.idDotPhat = ?\n" +
                 "GROUP BY hk.ID;";
         try {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL

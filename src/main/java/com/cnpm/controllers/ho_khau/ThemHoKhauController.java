@@ -1,14 +1,10 @@
 package com.cnpm.controllers.ho_khau;
 
-<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/ho_khau/ThemHoKhauController.java
+
 import com.cnpm.entities.NhanKhauTableModel;
 import com.cnpm.entities.SharedDataModel;
 import com.cnpm.utilities.*;
-========
-import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.NhanKhauTableModel;
-import com.cnpm.utilities.SharedDataModel;
->>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/ThemHoKhauController.java
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -109,7 +105,7 @@ public class ThemHoKhauController implements Initializable {
 
         pickMemberBtn.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cnpm/scenes/chon-nhan-khau.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/chon-nhan-khau.fxml"));
                 Parent root = loader.load();
                 ChonNhanKhauController controller = loader.getController();
                 controller.setSharedDataModel(sharedDataModel);

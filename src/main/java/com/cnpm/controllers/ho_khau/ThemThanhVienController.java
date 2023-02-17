@@ -249,7 +249,7 @@ public class ThemThanhVienController implements Initializable {
 
         pickMemberBtn.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cnpm/scenes/chon-nhan-khau.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/chon-nhan-khau.fxml"));
                 Parent root = loader.load();
                 ChonNhanKhauController controller = loader.getController();
                 controller.setSharedDataModel(sharedDataModel);

@@ -1,14 +1,9 @@
-<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/ho_khau/ThongKeNhanKhauController.java
+
 package com.cnpm.controllers.ho_khau;
 
 import com.cnpm.utilities.DBConnection;
 import com.cnpm.entities.NhanKhauTableModel;
-========
-package com.cnpm.controllers;
 
-import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.NhanKhauTableModel;
->>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/ThongKeNhanKhauController.java
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;

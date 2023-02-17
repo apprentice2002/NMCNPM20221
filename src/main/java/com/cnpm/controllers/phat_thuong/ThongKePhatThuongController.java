@@ -1,7 +1,7 @@
 package com.cnpm.controllers.phat_thuong;
 
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.ThongKePhatThuongTableModel;
+import com.cnpm.entities.ThongKePhatThuongTableModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

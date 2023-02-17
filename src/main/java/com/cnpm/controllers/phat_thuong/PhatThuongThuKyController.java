@@ -1,5 +1,6 @@
 package com.cnpm.controllers.phat_thuong;
 
+import com.cnpm.entities.PhatThuongTableModel;
 import com.cnpm.utilities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -210,7 +211,7 @@ public class PhatThuongThuKyController implements Initializable {
                     preparedDeleteHKStmt.execute();
                 }
                 // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
+                Utilities.popNewWindow(e2, "/com/cnpm/chuc-nang-view/thong-bao/xoa-thanh-cong.fxml");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -228,11 +229,11 @@ public class PhatThuongThuKyController implements Initializable {
     @FXML
     public void themThuong(ActionEvent event) throws IOException {
     refresh();
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/them_thuong.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/them_thuong.fxml");
     }
     @FXML
     public void thongKePhatThuong(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_thuong.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml");
     }
 
 

@@ -1,6 +1,7 @@
 package com.cnpm.controllers.minh_chung;
 
 
+import com.cnpm.entities.MinhChungTableModel;
 import com.cnpm.utilities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -82,12 +83,9 @@ public class MinhChungcontroller implements Initializable {
             ResultSet queryResult = statement.executeQuery(sql);
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
-<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/minh_chung/MinhChungcontroller.java
+
                 listView.add(new MinhChungTableModel(queryResult.getInt("idMinhChung"),
-========
-                listView.add(new MinhChungTableModel(
-                        queryResult.getInt("idMinhChung"),
->>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/MinhChungcontroller.java
+
                         queryResult.getString("hoTen"),
                         queryResult.getString("thanhTichHocTap"),
                         queryResult.getString("truong"),
@@ -199,7 +197,7 @@ public class MinhChungcontroller implements Initializable {
 
                 }
                 // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
+                Utilities.popNewWindow(e2, "/com/cnpm/chuc-nang-view/thong-bao/xoa-thanh-cong.fxml");
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -212,7 +210,7 @@ public class MinhChungcontroller implements Initializable {
 
     @FXML
     public void themMinhChung(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/them_minh_chung.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/minh-chung-chuc-nang-view/them_minh_chung.fxml");
         refresh();
     }
 

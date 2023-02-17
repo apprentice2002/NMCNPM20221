@@ -1,5 +1,5 @@
 @startuml
-class com.cnpm.controllers.ThemNhanKhauController {
+class com.cnpm.controllers.nhan_khau.ThemNhanKhauController {
 - TextField bi_danh
 - TextField dan_toc
 - TextField dia_chi_hien_nay
@@ -98,7 +98,7 @@ class com.cnpm.controllers.ThemThuongController {
 - void getQuery()
 + void initialize(URL,ResourceBundle)
 }
-class com.cnpm.controllers.DangNhapController {
+class com.cnpm.controllers.trang_chu.DangNhapController {
 - TextField username
 - PasswordField password
 - Label alert
@@ -134,7 +134,7 @@ class com.cnpm.entities.NhanKhau {
 - String dia_chi_hien_nay
 - CheckBox deleteBox
 }
-class com.cnpm.controllers.DangKyTamTruController {
+class com.cnpm.controllers.nhan_khau.DangKyTamTruController {
 ~ String query
 ~ Connection connection
 ~ PreparedStatement preparedStatement
@@ -184,7 +184,7 @@ class com.cnpm.entities.QuaThuong {
 - int tongPhanQua
 - int tongPhanQuaThanhTien
 }
-class com.cnpm.controllers.NhanKhauController {
+class com.cnpm.controllers.nhan_khau.NhanKhauController {
 ~ String query
 ~ Connection connection
 ~ PreparedStatement preparedStatement1
@@ -253,7 +253,7 @@ class com.cnpm.controllers.PhatThuongController {
 + void xoaThuong(ActionEvent)
 + void themThuong(ActionEvent)
 }
-class com.cnpm.controllers.ThayDoiNhanKhauController {
+class com.cnpm.controllers.nhan_khau.ThayDoiNhanKhauController {
 - TextField bi_danh
 - TextField dan_toc
 - TextField dia_chi_hien_nay
@@ -428,7 +428,7 @@ class com.cnpm.controllers.ThemQuaController {
 - void getQuery()
 + void initialize(URL,ResourceBundle)
 }
-class com.cnpm.controllers.MacDinhController {
+class com.cnpm.controllers.trang_chu.MacDinhController {
 ~ Connection connection
 ~ ResultSet resultSet1
 ~ String query1
@@ -447,7 +447,7 @@ class com.cnpm.utilities.SharedDataModel {
 + void removeAllRow()
 + List<NhanKhauTableModel> getSelectedRows()
 }
-class com.cnpm.utilities.PhatThuongTableModel {
+class com.cnpm.entities.PhatThuongTableModel {
 - String hoTen
 - CheckBox deleteBox
 - String tenQua
@@ -478,7 +478,7 @@ class com.cnpm.controllers.PhatQuaController {
 + void xoaQua(ActionEvent)
 + void themQua(ActionEvent)
 }
-class com.cnpm.controllers.DangKyTamVangController {
+class com.cnpm.controllers.nhan_khau.DangKyTamVangController {
 ~ String query
 ~ Connection connection
 ~ PreparedStatement preparedStatement
@@ -522,7 +522,7 @@ class com.cnpm.controllers.LichSuThayDoiController {
 + void initialize(URL,ResourceBundle)
 + void cancle(ActionEvent)
 }
-class com.cnpm.utilities.MinhChungTableModel {
+class com.cnpm.entities.MinhChungTableModel {
 - String hoTen
 - CheckBox deleteBox
 }
@@ -683,7 +683,7 @@ class com.cnpm.controllers.ChuyenHoKhauController {
 + void submit()
 + void cancle(ActionEvent)
 }
-class com.cnpm.controllers.TrangChuController {
+class com.cnpm.controllers.trang_chu.TrangChuController {
 - StackPane main_display
 + void hoKhau(ActionEvent)
 + void nhanKhau(ActionEvent)
@@ -711,7 +711,7 @@ class com.cnpm.entities.HocSinh {
 - String maPhanQua
 - int soPhanQua
 }
-class com.cnpm.utilities.PhatQuaTableModel {
+class com.cnpm.entities.PhatQuaTableModel {
 - String hoTen
 - CheckBox deleteBox
 - String tenQua
@@ -721,37 +721,37 @@ class com.cnpm.utilities.PhatQuaTableModel {
 }
 
 
-javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemNhanKhauController
+javafx.fxml.Initializable <|.. com.cnpm.controllers.nhan_khau.ThemNhanKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.PhatQuaController1
 javafx.fxml.Initializable <|.. com.cnpm.controllers.XoaMinhChung
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemThuongController
-javafx.fxml.Initializable <|.. com.cnpm.controllers.DangNhapController
+javafx.fxml.Initializable <|.. com.cnpm.controllers.trang_chu.DangNhapController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThongKeNhanKhauController
-javafx.fxml.Initializable <|.. com.cnpm.controllers.DangKyTamTruController
+javafx.fxml.Initializable <|.. com.cnpm.controllers.nhan_khau.DangKyTamTruController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.HoKhauController
-javafx.fxml.Initializable <|.. com.cnpm.controllers.NhanKhauController
+javafx.fxml.Initializable <|.. com.cnpm.controllers.nhan_khau.NhanKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.PhatThuongController1
 javafx.fxml.Initializable <|.. com.cnpm.controllers.PhatThuongController
-javafx.fxml.Initializable <|.. com.cnpm.controllers.ThayDoiNhanKhauController
+javafx.fxml.Initializable <|.. com.cnpm.controllers.nhan_khau.ThayDoiNhanKhauController
 com.cnpm.entities.HoKhau <|-- com.cnpm.utilities.HoKhauTableModel
 javafx.fxml.Initializable <|.. com.cnpm.controllers.XoaThuongController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ChonNhanKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.MinhChungcontroller
 javafx.fxml.Initializable <|.. com.cnpm.controllers.DoiChuHoController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemQuaController
-javafx.fxml.Initializable <|.. com.cnpm.controllers.MacDinhController
-com.cnpm.entities.PhatThuong <|-- com.cnpm.utilities.PhatThuongTableModel
+javafx.fxml.Initializable <|.. com.cnpm.controllers.trang_chu.MacDinhController
+com.cnpm.entities.PhatThuong <|-- com.cnpm.entities.PhatThuongTableModel
 javafx.fxml.Initializable <|.. com.cnpm.controllers.PhatQuaController
-javafx.fxml.Initializable <|.. com.cnpm.controllers.DangKyTamVangController
+javafx.fxml.Initializable <|.. com.cnpm.controllers.nhan_khau.DangKyTamVangController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.XinCapGiayController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.LichSuThayDoiController
-com.cnpm.entities.MinhChung <|-- com.cnpm.utilities.MinhChungTableModel
+com.cnpm.entities.MinhChung <|-- com.cnpm.entities.MinhChungTableModel
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemMinhChungController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ThemHoKhauController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.TachHoKhauController
 javafx.application.Application <|-- com.cnpm.Main
 javafx.fxml.Initializable <|.. com.cnpm.controllers.XoaQuaController
 javafx.fxml.Initializable <|.. com.cnpm.controllers.ChuyenHoKhauController
-javafx.fxml.Initializable <|.. com.cnpm.controllers.TrangChuController
-com.cnpm.entities.PhatQua <|-- com.cnpm.utilities.PhatQuaTableModel
+javafx.fxml.Initializable <|.. com.cnpm.controllers.trang_chu.TrangChuController
+com.cnpm.entities.PhatQua <|-- com.cnpm.entities.PhatQuaTableModel
 @enduml

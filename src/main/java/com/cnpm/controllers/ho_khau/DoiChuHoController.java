@@ -1,13 +1,9 @@
 package com.cnpm.controllers.ho_khau;
 
 import com.cnpm.utilities.DBConnection;
-<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/ho_khau/DoiChuHoController.java
 import com.cnpm.entities.HoKhauTableModel;
 import com.cnpm.entities.NhanKhauTableModel;
-========
-import com.cnpm.utilities.HoKhauTableModel;
-import com.cnpm.utilities.NhanKhauTableModel;
->>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/DoiChuHoController.java
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

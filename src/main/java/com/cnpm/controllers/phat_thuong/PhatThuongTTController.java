@@ -1,7 +1,7 @@
 package com.cnpm.controllers.phat_thuong;
 
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.PhatThuongTableModel;
+import com.cnpm.entities.PhatThuongTableModel;
 import com.cnpm.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -143,29 +143,6 @@ public class PhatThuongTTController implements Initializable {
         });
         refresh();
 
-<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/phat_thuong/PhatThuongTTController.java
-========
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new PhatThuongTableModel(queryResult.getInt("idMinhChung"),
-                        queryResult.getString("hoTen"),
-                        queryResult.getString("tenQua"),
-                        queryResult.getString("thanhTichHocTap"),
-                        queryResult.getString("tenDotPhat"),
-                        queryResult.getInt("giaTri"),
-                        queryResult.getInt("daDuyet")));
-
-            }
-            table.setItems(listView);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
->>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/PhatThuongController1.java
     }
     public void duyet(ActionEvent event) {
 
@@ -222,7 +199,7 @@ public class PhatThuongTTController implements Initializable {
                     preparedDeleteHKStmt.execute();
                 }
                 // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
+                Utilities.popNewWindow(e2, "/com/cnpm/chuc-nang-view/thong-bao/xoa-thanh-cong.fxml");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -287,7 +264,7 @@ public class PhatThuongTTController implements Initializable {
                     preparedDeleteHKStmt.execute();
                 }
                 // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
+                Utilities.popNewWindow(e2, "/com/cnpm/chuc-nang-view/thong-bao/xoa-thanh-cong.fxml");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -318,11 +295,11 @@ public class PhatThuongTTController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_phat_qua.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml");
     }
     @FXML
     public void thongKePhatThuong(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_thuong.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml");
     }
 
 

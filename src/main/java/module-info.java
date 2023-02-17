@@ -10,8 +10,9 @@ module com.cnpm {
 
     opens com.cnpm to javafx.fxml;
     exports com.cnpm;
-    exports com.cnpm.controllers;
-    opens com.cnpm.controllers to javafx.fxml;
+
+
+
     exports com.cnpm.utilities;
     opens com.cnpm.utilities to javafx.fxml;
     exports com.cnpm.entities;
@@ -27,4 +28,8 @@ module com.cnpm {
     opens com.cnpm.controllers.phat_qua to javafx.fxml;
     exports com.cnpm.controllers.minh_chung;
     opens com.cnpm.controllers.minh_chung to javafx.fxml;
+    exports com.cnpm.controllers.nhan_khau;
+    opens com.cnpm.controllers.nhan_khau to javafx.fxml;
+    opens com.cnpm.controllers.trang_chu to javafx.fxml;
+    exports com.cnpm.controllers.trang_chu;
 }

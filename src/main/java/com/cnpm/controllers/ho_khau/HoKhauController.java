@@ -130,21 +130,21 @@ public class HoKhauController implements Initializable {
     }
     @FXML
     public void themHoKhau(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/them-ho-khau.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-ho-khau.fxml");
     }
     public void doiChuHo(ActionEvent event) throws  IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/doi-chu-ho.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/doi-chu-ho.fxml");
     }
 
     public void tachHoKhau(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/tach-ho-khau.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/tach-ho-khau.fxml");
     }
 
     public void chuyenHoKhau(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/chuyen-ho-khau.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/chuyen-ho-khau.fxml");
     }
     public void lichSuThayDoi(ActionEvent event) {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/lich-su-thay-doi.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/lich-su-thay-doi.fxml");
     }
     public void xoaHoKhau(ActionEvent event) {
         boolean canDelete = false;
@@ -253,6 +253,6 @@ public class HoKhauController implements Initializable {
     }
 
     public void themThanhVien(ActionEvent event) {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/ho-khau-chuc-nang-view/them-thanh-vien.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-thanh-vien.fxml");
     }
 }

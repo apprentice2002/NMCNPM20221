@@ -1,11 +1,8 @@
-<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.java
-package com.cnpm.controllers.phat_qua;
-========
-package com.cnpm.controllers;
 
->>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/PhatQuaController.java
+package com.cnpm.controllers.phat_qua;
+
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.PhatQuaTableModel;
+import com.cnpm.entities.PhatQuaTableModel;
 import com.cnpm.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -154,23 +151,6 @@ public class PhatQuaThuKyController implements Initializable{
         });
         refresh();
 
-<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.java
-========
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new PhatQuaTableModel(queryResult.getInt("idMinhChung"),
-                        queryResult.getString("hoTen"),
-                        queryResult.getString("tenQua"),
-                        queryResult.getInt("tuoi"),
-                        queryResult.getString("tenDotPhat"),
-                        queryResult.getInt("giaTri"),
-                        queryResult.getInt("daDuyet")));
->>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/PhatQuaController.java
-
     }
         public void xoaQua(ActionEvent event) {
 
@@ -224,7 +204,7 @@ public class PhatQuaThuKyController implements Initializable{
                         preparedDeleteHKStmt.execute();
                     }
                     // Nảy ra màn hình xóa dữ liệu thành công
-                    Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
+                    Utilities.popNewWindow(e2, "/com/cnpm/chuc-nang-view/thong-bao/xoa-thanh-cong.fxml");
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -238,11 +218,11 @@ public class PhatQuaThuKyController implements Initializable{
     @FXML
     public void themQua(ActionEvent event) throws IOException {
         refresh();
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/them_qua.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/them_qua.fxml");
     }
     @FXML
     public void thongKePhatQua(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/scenes/thong_ke_phat_qua.fxml");
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml");
     }
 
 
