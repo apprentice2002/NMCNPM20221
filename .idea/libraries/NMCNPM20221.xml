@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="NMCNPM20221">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mysql-connector-j-8.0.32.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jfoenix-19.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
