@@ -7,11 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="NMCNPM20221" />
         <module name="CNPM" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="CNPM" target="19" />
+      <module name="NMCNPM20221" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>
