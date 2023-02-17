@@ -1,5 +1,6 @@
 package com.cnpm.controllers.minh_chung;
 
+import com.cnpm.entities.MinhChung;
 import com.cnpm.utilities.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import com.cnpm.entities.MinhChung;
 import javafx.stage.Stage;
 
 import java.io.IOException;

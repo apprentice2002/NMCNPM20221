@@ -140,6 +140,29 @@ public class PhatQuaTTController implements Initializable{
             });
             refresh();
 
+<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/phat_qua/PhatQuaTTController.java
+========
+            try {
+                //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+                Statement statement = connection.createStatement();
+                ResultSet queryResult = statement.executeQuery(sql);
+                // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+                while (queryResult.next()) {
+                    listView.add(new PhatQuaTableModel(queryResult.getInt("idMinhChung"),
+                            queryResult.getString("hoTen"),
+                            queryResult.getString("tenQua"),
+                            queryResult.getInt("tuoi"),
+                            queryResult.getString("tenDotPhat"),
+                            queryResult.getInt("giaTri"),
+                            queryResult.getInt("daDuyet")));
+
+                }
+                table.setItems(listView);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+>>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/PhatQuaController1.java
         }
 
         public void duyet(ActionEvent event) {

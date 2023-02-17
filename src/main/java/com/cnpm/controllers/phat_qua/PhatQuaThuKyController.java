@@ -1,4 +1,9 @@
+<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.java
 package com.cnpm.controllers.phat_qua;
+========
+package com.cnpm.controllers;
+
+>>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/PhatQuaController.java
 import com.cnpm.utilities.DBConnection;
 import com.cnpm.utilities.PhatQuaTableModel;
 import com.cnpm.utilities.Utilities;
@@ -8,10 +13,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -149,6 +154,22 @@ public class PhatQuaThuKyController implements Initializable{
         });
         refresh();
 
+<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.java
+========
+        try {
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(sql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                listView.add(new PhatQuaTableModel(queryResult.getInt("idMinhChung"),
+                        queryResult.getString("hoTen"),
+                        queryResult.getString("tenQua"),
+                        queryResult.getInt("tuoi"),
+                        queryResult.getString("tenDotPhat"),
+                        queryResult.getInt("giaTri"),
+                        queryResult.getInt("daDuyet")));
+>>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/PhatQuaController.java
 
     }
         public void xoaQua(ActionEvent event) {

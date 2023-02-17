@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="update view theo y sep Tung">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_21_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jfoenix_jfoenix_9_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_32.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/NMCNPM20221.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CNPM_UML.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NMCNPM20221.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csdl1.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jfoenix-19.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql-connector-j-8.0.32.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ChonNhanKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ChuyenHoKhauController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ChuyenHoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/DangKyTamTruController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/DangKyTamVangController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/DangNhapController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/DoiChuHoController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/DoiChuHoController$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/DoiChuHoController$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/DoiChuHoController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/HoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/LichSuThayDoiController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/MacDinhController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/MinhChungcontroller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/NhanKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/PhatQuaController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/PhatQuaController1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/PhatThuongController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/PhatThuongController1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/TachHoKhauController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/TachHoKhauController$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/TachHoKhauController$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/TachHoKhauController$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/TachHoKhauController$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/TachHoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThayDoiNhanKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThemHoKhauController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThemHoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThemMinhChungController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThemNhanKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThemQuaController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThemThuongController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ThongKeNhanKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/TrangChuController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/XinCapGiayController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/XoaMinhChung.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/XoaQuaController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/XoaThuongController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/HoKhau.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/HocSinh.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/MinhChung.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/NhanKhau.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatQua.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatThuong.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/QuaThuong.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/QuaThuongHoKhau.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/TamVang.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/alert.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/chon-nhan-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/chuyen-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/dang-ky-tam-tru.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/dang-ky-tam-vang.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/dang-nhap.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/doi-chu-ho.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/lich-su-thay-doi.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/tach-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/thay-doi-nhan-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/them-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/them_minh_chung.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/them_qua.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/them_thuong.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/trang-chu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/xoa-thanh-cong.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/xoa_minh_chung.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/xoa_qua.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/scenes/xoa_thuong.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/DBConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/HoKhauTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/MinhChungTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/NhanKhauTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/PhatQuaTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/PhatThuongTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/SharedDataModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/UserSession.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/Utilities.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/base-display.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/mac-dinh.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/minh_chung.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/nhan-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat-qua.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat-thuong.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat_qua1.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat_thuong1.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/thong-ke.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/xin-cap-giay.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/module-info.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quan_ly_nhan_khau.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ChonNhanKhauController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ChuyenHoKhauController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/DoiChuHoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/LichSuThayDoiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/MinhChungcontroller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/PhatQuaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/PhatQuaController1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/PhatThuongController1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/TachHoKhauController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ThemHoKhauController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ThemMinhChungController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ThemThuongController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ThongKeNhanKhauController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/XoaMinhChung.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/XoaQuaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/XoaThuongController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/utilities/HoKhauTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/utilities/NhanKhauTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/utilities/SharedDataModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/chuyen-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/doi-chu-ho.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/lich-su-thay-doi.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/tach-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/them-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/phat-qua.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/phat_qua1.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ChonNhanKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ChuyenHoKhauController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ChuyenHoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DoiChuHoController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DoiChuHoController$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DoiChuHoController$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DoiChuHoController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/HoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/LichSuThayDoiController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/MinhChungcontroller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatQuaController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatQuaController1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatThuongController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatThuongController1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TachHoKhauController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TachHoKhauController$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TachHoKhauController$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TachHoKhauController$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TachHoKhauController$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TachHoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemHoKhauController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemHoKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemMinhChungController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemThuongController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThongKeNhanKhauController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XoaMinhChung.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XoaQuaController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XoaThuongController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/chuyen-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/doi-chu-ho.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/lich-su-thay-doi.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/tach-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them-ho-khau.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/HoKhauTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/NhanKhauTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/SharedDataModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat-qua.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat-thuong.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat_qua1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/them-nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/them-nhan-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/NhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThayDoiNhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemNhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemQuaController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TrangChuController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XinCapGiayController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/minh_chung/MinhChungcontroller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/minh_chung/ThemMinhChungController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/PhatQuaTTController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/ThemQuaController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/PhatThuongTTController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/PhatThuongThuKyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/ThemThuongController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/HocSinh.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/MinhChung.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/NhanKhau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/PhatQua.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/PhatThuong.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/QuaThuong.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/QuaThuongHoKhau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/TamVang.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them-nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them-nhan-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/MinhChungTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/PhatQuaTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/PhatThuongTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/ThongKePhatQuaTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/ThongKePhatThuongTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/UserSession.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/Utilities.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="3a89577f-3b2e-47e2-9c78-129bd7219f3d" />
+        <option name="url" value="https://github.com/apprentice2002/NMCNPM20221.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2LpAkwpPNbOW1ISEtj4rs14rHfq" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/src/main/java/com&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/.idea/libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4091954&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-19.0.2" />
+      <option name="MAIN_CLASS_NAME" value="com.cnpm.Main" />
+      <module name="NMCNPM20221" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cnpm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="" />
+      <created>1676557799716</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676557799716</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update view theo y sep Tung" />
+    <option name="LAST_COMMIT_MESSAGE" value="update view theo y sep Tung" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

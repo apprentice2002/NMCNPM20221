@@ -1,10 +1,15 @@
 package com.cnpm.controllers.ho_khau;
 
+<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/ho_khau/ChuyenHoKhauController.java
 import com.cnpm.entities.HoKhauTableModel;
 import com.cnpm.entities.NhanKhauTableModel;
 import com.cnpm.utilities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+========
+import com.cnpm.utilities.HoKhauTableModel;
+import com.cnpm.utilities.UserSession;
+>>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/ChuyenHoKhauController.java
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;

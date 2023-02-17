@@ -1,7 +1,14 @@
+<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/ho_khau/ThongKeNhanKhauController.java
 package com.cnpm.controllers.ho_khau;
 
 import com.cnpm.utilities.DBConnection;
 import com.cnpm.entities.NhanKhauTableModel;
+========
+package com.cnpm.controllers;
+
+import com.cnpm.utilities.DBConnection;
+import com.cnpm.utilities.NhanKhauTableModel;
+>>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/ThongKeNhanKhauController.java
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
@@ -12,10 +19,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.sql.ResultSet;
-
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 

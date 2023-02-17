@@ -32,25 +32,25 @@
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor></TextField>
-        <Button layoutX="185.0" layoutY="116.0" mnemonicParsing="false" onAction="#duyet" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="duyệt" >
+        <Button layoutX="205.0" layoutY="86.0" mnemonicParsing="false" onAction="#duyet" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #048218; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Duyệt" >
             <font>
-                <Font size="13.0" />
+                <Font size="20.0" />
             </font>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button layoutX="400.0" layoutY="116.0" mnemonicParsing="false" onAction="#huyDuyet" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="hủy duyệt" >
+        <Button layoutX="400.0" layoutY="86.0" mnemonicParsing="false" onAction="#huyDuyet" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #AF3434; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Hủy duyệt" >
             <font>
-                <Font size="13.0" />
+                <Font size="20.0" />
             </font>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button layoutX="600.0" layoutY="116.0" mnemonicParsing="false" onAction="#thongKePhatThuong" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="thống kê" fx:id="thong_ke_thuong" >
+        <Button layoutX="595.0" layoutY="86.0" mnemonicParsing="false" onAction="#thongKePhatThuong" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #00305B; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Thống kê" fx:id="thong_ke_thuong" >
             <font>
-                <Font size="13.0" />
+                <Font size="20.0" />
             </font>
             <cursor>
                 <Cursor fx:constant="HAND" />

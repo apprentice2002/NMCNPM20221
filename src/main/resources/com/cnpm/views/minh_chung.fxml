@@ -31,19 +31,19 @@
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor></TextField>
-        <Button layoutX="185.0" layoutY="116.0" mnemonicParsing="false" onAction="#xoaMinhChung" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa Minh Chứng" fx:id="xoa_minh_chung">
+        <Button layoutX="530.0" layoutY="86.0" mnemonicParsing="false" onAction="#xoaMinhChung" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #AF3434; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa Minh Chứng" fx:id="xoa_minh_chung">
             <font>
-                <Font size="13.0" />
+                <Font size="18.0" />
             </font>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
         <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
-    </children>
-        <Button fx:id="them_minh_chung" layoutX="500" layoutY="90.0" mnemonicParsing="false" onAction="#themMinhChung" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="thêm minh chứng">
+        <Button fx:id="them_minh_chung" layoutX="250" layoutY="86.0" mnemonicParsing="false" onAction="#themMinhChung" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #048218; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Thêm minh chứng">
             <font>
-                <Font name="System Bold" size="18.0" />
+                <Font size="18.0" />
             </font>
         </Button>
+    </children>
 </AnchorPane>

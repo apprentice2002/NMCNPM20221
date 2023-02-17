@@ -150,7 +150,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
 
             if (resultSet.next()) {
                 int total = resultSet.getInt("tong");
-                note1.setText("Tổng tiền: " + total);
+                note1.setText("Tổng tiền: " + total + " VND");
             }
 
         } catch (SQLException e) {

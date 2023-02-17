@@ -35,27 +35,31 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></TextField>
-      <Button fx:id="them_qua" layoutX="630" layoutY="90.0" mnemonicParsing="false" onAction="#themQua" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="thêm quà">
+      <Button layoutX="205.0" layoutY="86.0" mnemonicParsing="false" onAction="#themQua" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #048218; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Thêm quà" >
          <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="185.0" layoutY="116.0" mnemonicParsing="false" onAction="#xoaQua" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa Quà" >
-         <font>
-            <Font size="13.0" />
+            <Font size="20.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="380.0" layoutY="116.0" mnemonicParsing="false" onAction="#thongKePhatQua" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #FAD4D4; -fx-text-fill: #00305b; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="thống kê" fx:id="thong_ke_phat_qua" >
+      <Button layoutX="400.0" layoutY="86.0" mnemonicParsing="false" onAction="#xoaQua" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #AF3434; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Xóa quà" >
          <font>
-            <Font size="13.0" />
+            <Font size="20.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-   <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+      <Button layoutX="595.0" layoutY="86.0" mnemonicParsing="false" onAction="#thongKePhatQua" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #00305B; -fx-text-fill: #ffffff; -fx-background-radius: 6; -fx-border-color: #00305b; -fx-border-radius: 6;" text="Thống kê" fx:id="thong_ke_thuong" >
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+
+      <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
    </children>
 </AnchorPane>

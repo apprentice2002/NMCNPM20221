@@ -82,7 +82,12 @@ public class MinhChungcontroller implements Initializable {
             ResultSet queryResult = statement.executeQuery(sql);
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
+<<<<<<<< HEAD:src/main/java/com/cnpm/controllers/minh_chung/MinhChungcontroller.java
                 listView.add(new MinhChungTableModel(queryResult.getInt("idMinhChung"),
+========
+                listView.add(new MinhChungTableModel(
+                        queryResult.getInt("idMinhChung"),
+>>>>>>>> 7de21dc9bb3426a7603313bd810d65cd4859d7bb:src/main/java/com/cnpm/controllers/MinhChungcontroller.java
                         queryResult.getString("hoTen"),
                         queryResult.getString("thanhTichHocTap"),
                         queryResult.getString("truong"),

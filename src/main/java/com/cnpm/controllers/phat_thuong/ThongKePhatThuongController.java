@@ -149,7 +149,7 @@ public class ThongKePhatThuongController implements Initializable {
 
             if (resultSet.next()) {
                 int total = resultSet.getInt(1);
-                note.setText("Tổng tiền: " + total);
+                note.setText("Tổng tiền: " + total + " VND");
             }
 
         } catch (SQLException e) {
