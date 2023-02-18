@@ -1,0 +1,595 @@
+@startuml
+
+class com.cnpm.controllers.trang_chu.MacDinhController {
+~ Connection connection
+~ ResultSet resultSet1
+~ String query1
+- Label hoKhauLab
+- Label nhanKhauLab
+- Label nhanKhauTamTruLab
+- Label nhanKhauTamVangLab
+~ void logout(ActionEvent)
++ void initialize(URL,ResourceBundle)
+- void getQuery()
+}
+class com.cnpm.controllers.trang_chu.DangNhapController {
+- TextField username
+- PasswordField password
+- Label alert
++ void dangNhap(ActionEvent)
++ void initialize(URL,ResourceBundle)
+}
+class com.cnpm.controllers.nhan_khau.NhanKhauController {
+~ String query
+~ Connection connection
+~ PreparedStatement preparedStatement1
+~ ResultSet resultSet
+~ ObservableList<NhanKhau> NhanKhauList
+~ SimpleDateFormat formatter
+- ChoiceBox<String> optionChoiceBox
+- TextField keywordTextField
+- TableColumn<NhanKhau,String> diaChiHienNayCol
+- TableColumn<NhanKhau,String> hoTenCol
+- TableColumn<NhanKhau,String> maNhanKhauCol
+- TableColumn<NhanKhau,String> ngaySinhCol
+- TableColumn<NhanKhau,Integer> idCol
+- TableColumn<NhanKhau,CheckBox> xoaCol
+- TableView<NhanKhau> table
++ void refresh()
++ void themNhanKhau(ActionEvent)
++ void initialize(URL,ResourceBundle)
+- void load()
+- void restartScene(Scene)
++ void dangKyTamVang(ActionEvent)
++ void dangKyTamTru(ActionEvent)
++ void xoaNhanKhau(ActionEvent)
++ void thayDoiNhanKhau(ActionEvent)
+}
+
+class com.cnpm.controllers.phat_qua.PhatQuaThuKyController {
+- Button thong_ke_phat_qua
+- Button them_qua
+- TextField thong_tin_tim_kiem
+- ChoiceBox loc
+- ChoiceBox<String> optionChoiceBox
+- Button findBtn
+- TextField keywordTextField
+- TableView<PhatQuaTableModel> table
+- TableColumn<PhatQuaTableModel,String> idPhatQuaCol
+- TableColumn<PhatQuaTableModel,String> hoTenCol
+- TableColumn<PhatQuaTableModel,String> tenQuaCol
+- TableColumn<PhatQuaTableModel,String> tuoiCol
+- TableColumn<PhatQuaTableModel,String> tenDotPhatCol
+- TableColumn<PhatQuaTableModel,String> giaTriCol
+- TableColumn<PhatQuaTableModel,String> daDuyetCol
+~ PhatQuaTableModel data
+~ ObservableList<PhatQuaTableModel> listView
+- TableColumn<PhatQuaThuKyController,String> xoaCol
+- List<PhatQuaTableModel> performFiltering(String,String)
++ void refresh()
++ void initialize(URL,ResourceBundle)
++ void xoaQua(ActionEvent)
++ void themQua(ActionEvent)
++ void thongKePhatQua(ActionEvent)
+}
+
+class com.cnpm.controllers.trang_chu.TrangChuController {
+- StackPane main_display
++ void hoKhau(ActionEvent)
++ void nhanKhau(ActionEvent)
++ void trangChu(ActionEvent)
++ void phatThuong(ActionEvent)
++ void phatQua(ActionEvent)
++ void minhChung(ActionEvent)
++ void thayDoi(ActionEvent)
++ void initialize(URL,ResourceBundle)
++ void changeDisplay(StackPane,String)
+}
+class com.cnpm.entities.MinhChung {
+- int idMinhChung
+- int ma_nhan_khau
+- String truong
+- String lop
+- String thanhTichHocTap
+- Date ngayKhaiBao
++ int getIdMinhChung()
++ void setIdMinhChung(int)
++ int getMa_nhan_khau()
++ void setMa_nhan_khau(int)
++ String getTruong()
++ void setTruong(String)
++ String getLop()
++ void setLop(String)
++ String getThanhTichHocTap()
++ void setThanhTichHocTap(String)
++ Date getNgayKhaiBao()
++ void setNgayKhaiBao(Date)
+}
+class com.cnpm.controllers.minh_chung.ThemMinhChungController {
+- Button btn_cancel_them
+- Button btn_confirm_them
+- TextField note
+- TextField them_id_minh_chung
+- TextField them_ma_nhan_khau
+- TextField them_truong
+- TextField them_lop
+- TextField them_thanh_tich_hoc_tap
+- DatePicker them_ngay_khai_bao
+~ String query
+~ Connection connection
+~ ResultSet resultSet
+~ MinhChung minhchung
+~ PreparedStatement preparedStatement
+~ SimpleDateFormat formatter
++ void huy(ActionEvent)
++ void xacNhan(ActionEvent)
+- void getQuery()
++ void initialize(URL,ResourceBundle)
+}
+class com.cnpm.controllers.nhan_khau.DangKyTamVangController {
+~ String query
+~ Connection connection
+~ PreparedStatement preparedStatement
+~ Stage stage
+- TextField co_quan_khai_bao
+- TextArea ly_do
+- TextField ma_nhan_khau
+- DatePicker ngay_bat_dau
+- DatePicker ngay_ket_thuc
+~ void huy(ActionEvent)
+~ void xacNhan(ActionEvent)
++ void initialize(URL,ResourceBundle)
+- void getQuery()
+}
+class com.cnpm.entities.ThongKePhatQuaTableModel {
+- int idHoKhau
+- String hoTen
+- int soPhanQua
+- int tongGiaTri
+}
+
+class com.cnpm.entities.PhatQua {
+- int idPhatQua
+- int idDotPhat
+- int idQua
+- int idNhanKhau
+- int daDuyet
++ int getIdPhatQua()
++ void setIdPhatQua(int)
++ int getIdDotPhat()
++ void setIdDotPhat(int)
++ int getIdQua()
++ void setIdQua(int)
++ int getIdNhanKhau()
++ void setIdNhanKhau(int)
++ int getDaDuyet()
++ void setDaDuyet(int)
+}
+
+class com.cnpm.Main {
++ void start(Stage)
++ {static} void main(String[])
+}
+class com.cnpm.entities.PhatThuongTableModel {
+- String hoTen
+- CheckBox deleteBox
+- String tenQua
+- String thanhTichHocTap
+- String tenDotPhat
+- int giaTri
+~ PhatQua phatqua
+}
+class com.cnpm.controllers.nhan_khau.ThemNhanKhauController {
+- TextField bi_danh
+- TextField dan_toc
+- TextField dia_chi_hien_nay
+- TextField gioi_tinh
+- TextField ho_ten
+- DatePicker ngay_sinh
+- TextField nghe_nghiep
+- TextField nguyen_quan
+- TextField noi_lam_viec
+- TextField noi_sinh
+- TextField noi_thuong_tru
+- TextField quoc_tich
+- TextField so_dien_thoai
+- TextField tien_an
+- TextField ton_giao
+- TextField trinh_do_chuyen_mon
+- TextField trinh_do_ngoai_ngu
+~ String query
+~ Connection connection
+~ PreparedStatement preparedStatement
+~ Stage stage
++ void huy(ActionEvent)
++ void xacNhan(ActionEvent)
+- void getQuery()
++ void initialize(URL,ResourceBundle)
+}
+class com.cnpm.controllers.nhan_khau.ThayDoiNhanKhauController {
+- TextField bi_danh
+- TextField dan_toc
+- TextField dia_chi_hien_nay
+- TextField gioi_tinh
+- TextField ho_ten
+- TextField input_ma_nhan_khau
+- DatePicker input_ngay_sinh
+- DatePicker ngay_sinh
+- TextField nghe_nghiep
+- TextField nguyen_quan
+- TextField noi_lam_viec
+- TextField noi_sinh
+- TextField noi_thuong_tru
+- TextField quoc_tich
+- TextField so_dien_thoai
+- TextField tien_an
+- TextField ton_giao
+- TextField trinh_do_chuyen_mon
+- TextField trinh_do_ngoai_ngu
+- ChoiceBox<String> da_xoa
+~ String query_find
+~ Connection connection
+~ Statement statement
+~ PreparedStatement preparedStatement
+~ ResultSet resultSet
+~ Stage stage
+~ int id
++ void capNhat(ActionEvent)
++ void huy(ActionEvent)
++ void timKiem(ActionEvent)
++ void initialize(URL,ResourceBundle)
+}
+class com.cnpm.entities.PhatQuaTableModel {
+- String hoTen
+- CheckBox deleteBox
+- String tenQua
+- int tuoi
+- String tenDotPhat
+- int giaTri
+}
+class com.cnpm.controllers.phat_qua.PhatQuaTTController {
+- Button thong_ke_phat_qua
+- TextField thong_tin_tim_kiem
+- ChoiceBox loc
+- ChoiceBox<String> optionChoiceBox
+- Button findBtn
+- TextField keywordTextField
+- TableView<PhatQuaTableModel> table
+- TableColumn<PhatQuaTableModel,String> idPhatQuaCol
+- TableColumn<PhatQuaTableModel,String> hoTenCol
+- TableColumn<PhatQuaTableModel,String> tenQuaCol
+- TableColumn<PhatQuaTableModel,String> tuoiCol
+- TableColumn<PhatQuaTableModel,String> tenDotPhatCol
+- TableColumn<PhatQuaTableModel,String> giaTriCol
+- TableColumn<PhatQuaTableModel,String> daDuyetCol
+~ PhatQuaTableModel data
+~ ObservableList<PhatQuaTableModel> listView
+- TableColumn<PhatQuaThuKyController,String> xoaCol
+- List<PhatQuaTableModel> performFiltering(String,String)
++ void refresh()
++ void initialize(URL,ResourceBundle)
++ void duyet(ActionEvent)
++ void huyDuyet(ActionEvent)
++ void thongKePhatQua(ActionEvent)
+}
+class com.cnpm.controllers.minh_chung.MinhChungcontroller {
+- Button them_minh_chung
+- TextField thong_tin_tim_kiem
+- ChoiceBox loc
+- ChoiceBox<String> optionChoiceBox
+- Button findBtn
+- TextField keywordTextField
+- TableView<MinhChungTableModel> table
+- TableColumn<MinhChungTableModel,String> idMinhChungCol
+- TableColumn<MinhChungTableModel,String> hoTenCol
+- TableColumn<MinhChungTableModel,String> thanhTichHocTapCol
+- TableColumn<MinhChungTableModel,String> truongCol
+- TableColumn<MinhChungTableModel,String> lopCol
+- TableColumn<MinhChungTableModel,String> ngayKhaiBaoCol
+~ MinhChungTableModel data
+~ ObservableList<MinhChungTableModel> listView
+- TableColumn<MinhChungTableModel,String> xoaCol
+- List<MinhChungTableModel> performFiltering(String,String)
++ void refresh()
++ void initialize(URL,ResourceBundle)
++ void xoaMinhChung(ActionEvent)
++ void themMinhChung(ActionEvent)
+}
+class com.cnpm.entities.SharedDataModel {
+- List<NhanKhauTableModel> selectedRows
++ void addSelectedRow(NhanKhauTableModel)
++ void removeSelectedRow(NhanKhauTableModel)
++ void removeAllRow()
++ List<NhanKhauTableModel> getSelectedRows()
+}
+class com.cnpm.controllers.phat_thuong.ThemThuongController {
+- Button btn_cancel_them
+- Button btn_confirm_them
+- TextField note
+- TextField them_id_phat_thuong
+- TextField them_id_dot_phat
+- TextField them_id_qua
+- TextField them_id_minh_chung
+- TextField them_da_duyet
+~ String query
+~ Connection connection
+~ ResultSet resultSet
+~ PhatThuong pt
+~ PreparedStatement preparedStatement
++ void huy(ActionEvent)
++ void xacNhan(ActionEvent)
+- void getQuery()
++ void initialize(URL,ResourceBundle)
+}
+
+class com.cnpm.controllers.nhan_khau.DangKyTamTruController {
+~ String query
+~ Connection connection
+~ PreparedStatement preparedStatement
+~ Stage stage
+- TextField co_quan_khai_bao
+- TextArea ly_do
+- TextField ma_nhan_khau
+- DatePicker ngay_bat_dau
+- DatePicker ngay_ket_thuc
+- TextField noi_tam_tru
+~ void huy(ActionEvent)
+~ void xacNhan(ActionEvent)
++ void initialize(URL,ResourceBundle)
+- void getQuery()
+}
+class com.cnpm.utilities.UserSession {
+- {static} String username
+- {static} Set<String> privileges
++ {static} String getUsername()
++ {static} Set<String> getPrivileges()
++ {static} void setUsername(String)
++ {static} void setPrivileges(Set<String>)
+}
+class com.cnpm.entities.HoKhau {
+- String maHoKhau
+- String ngayTao
+- String maChuHo
+- String diaChiHoKhau
+- String soThanhVien
++ void setSoThanhVien(String)
++ void setMaHoKhau(String)
++ String getMaHoKhau()
++ String getDiaChiHoKhau()
++ String getMaChuHo()
++ String getNgayTao()
++ String getSoThanhVien()
++ void setDiaChiHoKhau(String)
++ void setMaChuHo(String)
++ void setNgayTao(String)
+}
+class com.cnpm.entities.NhanKhauTableModel {
+- String maHoKhau
+- String maNhanKhau
+- String hoTenNhanKhau
+- String quanHeVoiChuHo
+- String gioiTinh
+- int tuoi
++ String getMaHoKhau()
++ String getGioiTinh()
++ int getTuoi()
++ boolean equals(NhanKhauTableModel)
++ String getHoTenNhanKhau()
++ String getMaNhanKhau()
++ String getQuanHeVoiChuHo()
++ void setHoTenNhanKhau(String)
++ void setMaNhanKhau(String)
++ void setQuanHeVoiChuHo(String)
+}
+
+class com.cnpm.entities.MinhChungTableModel {
+- String hoTen
+- CheckBox deleteBox
+}
+class com.cnpm.controllers.phat_thuong.PhatThuongTTController {
+- Button thong_ke_thuong
+- TextField note
+- TextField thong_tin_tim_kiem
+- ChoiceBox loc
+- ChoiceBox<String> optionChoiceBox
+- Button findBtn
+- TextField keywordTextField
+- TableView<PhatThuongTableModel> table
+- TableColumn<PhatThuongTableModel,String> idPhatThuongCol
+- TableColumn<PhatThuongTableModel,String> hoTenCol
+- TableColumn<PhatThuongTableModel,String> tenQuaCol
+- TableColumn<PhatThuongTableModel,String> thanhTichHocTapCol
+- TableColumn<PhatThuongTableModel,String> tenDotPhatCol
+- TableColumn<PhatThuongTableModel,String> giaTriCol
+- TableColumn<PhatThuongTableModel,String> daDuyetCol
+~ PhatThuongTableModel data
+~ ObservableList<PhatThuongTableModel> listView
+- TableColumn<PhatThuongTableModel,String> xoaCol
+- List<PhatThuongTableModel> performFiltering(String,String)
++ void refresh()
++ void initialize(URL,ResourceBundle)
++ void duyet(ActionEvent)
++ void huyDuyet(ActionEvent)
++ void thongke1(ActionEvent)
++ void thongKePhatThuong(ActionEvent)
+}
+class com.cnpm.utilities.DBConnection {
++ {static} Connection connection
++ {static} Connection getConnection()
+}
+class com.cnpm.entities.NhanKhau {
+- int ID
+- String ma_nhan_khau
+- String ho_ten
+- String ngay_sinh
+- String dia_chi_hien_nay
+- CheckBox deleteBox
++ int getID()
++ void setID(int)
++ String getMa_nhan_khau()
++ void setMa_nhan_khau(String)
++ String getHo_ten()
++ void setHo_ten(String)
++ String getNgay_sinh()
++ void setNgay_sinh(String)
++ String getDia_chi_hien_nay()
++ void setDia_chi_hien_nay(String)
++ CheckBox getDeleteBox()
++ void setDeleteBox(CheckBox)
+}
+class com.cnpm.entities.HoKhauTableModel {
+- String hoTenChuHo
+- CheckBox deleteBox
+- String themNhanKhau
+- Date ngayThayDoi
+- String xoaNhanKhau
+- String ghiChu
++ String getGhiChu()
++ Date getNgayThayDoi()
++ String getThemNhanKhau()
++ String getXoaNhanKhau()
++ String getHoTenChuHo()
++ String getMaHoKhau()
++ CheckBox getDeleteBox()
++ String getDiaChiHoKhau()
++ String getMaChuHo()
++ String getNgayTao()
++ String getSoThanhVien()
+}
+class com.cnpm.controllers.phat_qua.ThongKePhatQuaConTroller {
+- Button thong_ke_thuong
+- Label note1
+- TextField thong_tin_tim_kiem
+- ChoiceBox loc
+- ChoiceBox<String> optionChoiceBox
+- Button findBtn
+- TextField keywordTextField
+- TableView<ThongKePhatQuaTableModel> table
+- TableColumn<ThongKePhatQuaTableModel,String> idHoKhauCol
+- TableColumn<ThongKePhatQuaTableModel,String> hoTenCol
+- TableColumn<ThongKePhatQuaTableModel,String> soPhanQuaCol
+- TableColumn<ThongKePhatQuaTableModel,String> tongGiaTri
+~ ThongKePhatQuaTableModel data
+~ ObservableList<ThongKePhatQuaTableModel> listView
+- List<ThongKePhatQuaTableModel> performFiltering(String,String)
++ void refresh()
++ void initialize(URL,ResourceBundle)
++ void tongTien()
+}
+class com.cnpm.entities.PhatThuong {
+- int idPhatThuong
+- int idDotPhat
+- int idQua
+- int idMinhChung
+- int daDuyet
++ int getIdPhatThuong()
++ void setIdPhatThuong(int)
++ int getIdDotPhat()
++ void setIdDotPhat(int)
++ int getIdQua()
++ void setIdQua(int)
++ int getIdMinhChung()
++ void setIdMinhChung(int)
++ int getDaDuyet()
++ void setDaDuyet(int)
+}
+class com.cnpm.controllers.phat_qua.ThemQuaController {
+- Button btn_cancel_them
+- Button btn_confirm_them
+- TextField note
+- TextField them_id_phat_qua
+- TextField them_id_dot_phat_qua
+- TextField them_ma_nhan_khau
+- TextField them_id_qua
+- TextField them_da_duyet
+~ String query
+~ Connection connection
+~ ResultSet resultSet
+~ PhatQua phatqua
+~ PreparedStatement preparedStatement
++ void huy(ActionEvent)
++ void xacNhan(ActionEvent)
+- void getQuery()
++ void initialize(URL,ResourceBundle)
+}
+class com.cnpm.controllers.phat_thuong.ThongKePhatThuongController {
+- Label note
+- TextField thong_tin_tim_kiem
+- ChoiceBox loc
+- ChoiceBox<String> optionChoiceBox
+- Button findBtn
+- TextField keywordTextField
+- TableView<ThongKePhatThuongTableModel> table
+- TableColumn<ThongKePhatThuongTableModel,String> idHoKhau1Col
+- TableColumn<ThongKePhatThuongTableModel,String> hoTen1Col
+- TableColumn<ThongKePhatThuongTableModel,String> soPhanThuong1Col
+- TableColumn<ThongKePhatThuongTableModel,String> tongGiaTri1Col
+~ ThongKePhatThuongTableModel data
+~ ObservableList<ThongKePhatThuongTableModel> listView
+- List<ThongKePhatThuongTableModel> performFiltering(String,String)
++ void refresh()
++ void initialize(URL,ResourceBundle)
++ void thongKeTongTien()
+}
+class com.cnpm.controllers.phat_thuong.PhatThuongThuKyController {
+- Button them_thuong
+- Button thong_ke_thuong
+- TextField thong_tin_tim_kiem
+- ChoiceBox loc
+- ChoiceBox<String> optionChoiceBox
+- Button findBtn
+- TextField keywordTextField
+- TableView<PhatThuongTableModel> table
+- TableColumn<PhatThuongTableModel,String> idPhatThuongCol
+- TableColumn<PhatThuongTableModel,String> hoTenCol
+- TableColumn<PhatThuongTableModel,String> tenQuaCol
+- TableColumn<PhatThuongTableModel,String> thanhTichHocTapCol
+- TableColumn<PhatThuongTableModel,String> tenDotPhatCol
+- TableColumn<PhatThuongTableModel,String> giaTriCol
+- TableColumn<PhatThuongTableModel,String> daDuyetCol
+~ PhatThuongTableModel data
+~ ObservableList<PhatThuongTableModel> listView
+- TableColumn<PhatThuongTableModel,String> xoaCol
+- List<PhatThuongTableModel> performFiltering(String,String)
++ void refresh()
++ void initialize(URL,ResourceBundle)
++ void xoaThuong(ActionEvent)
++ void themThuong(ActionEvent)
++ void thongKePhatThuong(ActionEvent)
+}
+
+class com.cnpm.entities.ThongKePhatThuongTableModel {
+- int idHoKhau1
+- String hoTen1
+- int soPhanThuong1
+- int tongGiaTri1
+}
+class com.cnpm.utilities.Utilities {
++ {static} void changeScene(ActionEvent,String)
++ {static} void popNewWindow(ActionEvent,String)
+}
+class com.cnpm.entities.TamVang {
+- int maNhanKhau
+- String maGiayTamVang
+- String diaChiTamTru
+- Date tuNgay
+- Date denNgay
+- String lyDo
++ int getMaNhanKhau()
++ String getMaGiayTamVang()
++ String getDiaChiTamTru()
++ Date getTuNgay()
++ Date getDenNgay()
++ String getLyDo()
+}
+
+javafx.application.Application <|-- com.cnpm.Main
+com.cnpm.entities.PhatThuong <|-- com.cnpm.entities.PhatThuongTableModel
+
+com.cnpm.entities.PhatQua <|-- com.cnpm.entities.PhatQuaTableModel
+
+com.cnpm.entities.MinhChung <|-- com.cnpm.entities.MinhChungTableModel
+
+com.cnpm.entities.HoKhau <|-- com.cnpm.entities.HoKhauTableModel
+
+@enduml

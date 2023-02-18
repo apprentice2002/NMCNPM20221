@@ -23,7 +23,6 @@ public class ThayDoiNhanKhauController implements Initializable {
     @FXML private TextField gioi_tinh;
     @FXML private TextField ho_ten;
     @FXML private TextField input_ma_nhan_khau;
-    @FXML private DatePicker input_ngay_sinh;
     @FXML private DatePicker ngay_sinh;
     @FXML private TextField nghe_nghiep;
     @FXML private TextField nguyen_quan;

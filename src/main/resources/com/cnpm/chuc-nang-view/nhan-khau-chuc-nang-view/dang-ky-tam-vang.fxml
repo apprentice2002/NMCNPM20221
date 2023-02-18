@@ -9,6 +9,11 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.nhan_khau.DangKyTamVangController">
+   <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #79a5cd;" text="Thêm nhân khẩu" textFill="WHITESMOKE">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
    <children>
       <Label layoutX="50.0" layoutY="95.0" text="Cơ quan khai báo (*)" />
       <TextField fx:id="co_quan_khai_bao" layoutX="180.0" layoutY="90.0" />
