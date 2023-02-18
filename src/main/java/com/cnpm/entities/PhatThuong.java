@@ -11,14 +11,14 @@ public class PhatThuong {
     private int idDotPhat;
     private int idQua;
     private int idMinhChung;
-    private int daDuyet;
+    private String daDuyet;
 
-    public PhatThuong(int idPhatThuong,int daDuyet) {
+    public PhatThuong(int idPhatThuong,String daDuyet) {
         this.daDuyet = daDuyet;
         this.idPhatThuong=idPhatThuong;
     }
 
-    public PhatThuong (int idPhatThuong, int idDotPhat, int idQua , int idMinhChung, int daDuyet) {
+    public PhatThuong (int idPhatThuong, int idDotPhat, int idQua , int idMinhChung, String daDuyet) {
         this.idPhatThuong= idPhatThuong;
         this.idMinhChung = idMinhChung;
         this.idDotPhat = idDotPhat;

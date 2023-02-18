@@ -15,7 +15,7 @@ public class PhatQuaTableModel extends PhatQua {
     private int tuoi;
     private String tenDotPhat;
     private int giaTri;
-    public PhatQuaTableModel(int idPhatQua,String hoTen, String tenQua, int tuoi, String tenDotPhat,int giaTri,int daDuyet) {
+    public PhatQuaTableModel(int idPhatQua,String hoTen, String tenQua, int tuoi, String tenDotPhat,int giaTri,String daDuyet) {
         super(idPhatQua,daDuyet);
         this.setIdPhatQua( idPhatQua);
         this.hoTen = hoTen;

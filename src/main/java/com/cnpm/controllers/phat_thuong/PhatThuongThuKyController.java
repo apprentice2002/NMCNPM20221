@@ -88,21 +88,24 @@ public class PhatThuongThuKyController implements Initializable {
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
             ResultSet queryResult = statement.executeQuery(sql);
+            String trangThai;
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
+                if(queryResult.getInt("daDuyet") == 0) trangThai = "Đã duyệt";
+                else trangThai = "Chưa duyệt";
+
                 listView.add(new PhatThuongTableModel( queryResult.getInt("idPhatThuong"),
                         queryResult.getString("hoTen"),
                         queryResult.getString("tenQua"),
                         queryResult.getString("thanhTichHocTap"),
                         queryResult.getString("tenDotPhat"),
                         queryResult.getInt("giaTri"),
-                        queryResult.getInt("daDuyet")));
+                        trangThai));
 
             }
             table.setItems(listView);
             for(PhatThuongTableModel data :table.getItems()){
-                if (data.getDaDuyet() == 1) {
-
+                if (data.getDaDuyet().equals("Đã duyệt")) {
                     data.setDeleteBox(null);
                 }
             }
@@ -110,8 +113,6 @@ public class PhatThuongThuKyController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
     }
 

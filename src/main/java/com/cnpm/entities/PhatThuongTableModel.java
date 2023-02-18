@@ -18,7 +18,7 @@ public class PhatThuongTableModel extends PhatThuong {
     private int giaTri;
     PhatQua phatqua =null;
 
-    public PhatThuongTableModel(int idPhatThuong, String hoTen, String tenQua, String thanhTichHocTap, String tenDotPhat, int giaTri, int daDuyet) {
+    public PhatThuongTableModel(int idPhatThuong, String hoTen, String tenQua, String thanhTichHocTap, String tenDotPhat, int giaTri, String daDuyet) {
        super(idPhatThuong,daDuyet);
         this.setIdPhatThuong(idPhatThuong);
         this.tenQua = tenQua;
