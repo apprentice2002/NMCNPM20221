@@ -6,6 +6,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.*?>
 <AnchorPane prefHeight="640.0" prefWidth="780.0" style="-fx-background-color: #f5f5f5; -fx-border-radius: 12;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.MacDinhController">
    <children>
       <Button fx:id="logout_btn" layoutX="680.0" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 0 0 0 20; -fx-border-color: #00305b; -fx-border-radius: 0 0 0 20;" text="Đăng xuất">
@@ -13,14 +14,30 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="80.0" layoutY="174.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="80.0" />
+      <ImageView fitHeight="80" fitWidth="80.0" layoutX="80.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/tam_tru.png" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="180.0" layoutY="174.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="200.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="180.0" layoutY="277.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="520.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="400.0" layoutY="174.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="80.0" />
+      <ImageView fitHeight="80" fitWidth="80.0" layoutX="400.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/tam_vang.png" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="502.0" layoutY="174.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="200.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="80.0" layoutY="277.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="80.0" />
+      <ImageView fitHeight="80" fitWidth="80.0" layoutX="80.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/nhan_khau.png" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="180.0" layoutY="387.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="520.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#79a5cd" height="80.0" layoutX="80.0" layoutY="387.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" width="80.0" />
+      <ImageView fitHeight="80" fitWidth="80.0" layoutX="80.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/ho_khau.png" />
+         </image>
+      </ImageView>
       <Label layoutX="189.0" layoutY="181.0" style="-fx-text-fill: #f5f5f5;" text="Nhân khẩu tạm trú">
          <font>
             <Font name="System Bold" size="15.0" />
