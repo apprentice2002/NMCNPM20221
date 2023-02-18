@@ -4,43 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="sửa 0-1 thành đã duyệt/chưa duyệt">
+    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="update view theo y sep Tung">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/chuyen_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/lich_su.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/nhan_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/refresh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/tach_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/tam_tru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/tam_vang.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/them_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/them_nguoi_vao_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/them_nhan_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/xoa_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/image/xoa_nhan_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/chuyen_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/lich_su.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/nhan_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/refresh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/tach_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/tam_tru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/tam_vang.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/them_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/them_nguoi_vao_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/them_nhan_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/xoa_ho_khau.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/cnpm/image/xoa_nhan_khau.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csdl1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/csdl1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamTruController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamTruController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/PhatQuaTTController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/PhatQuaTTController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/PhatThuongTTController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/PhatThuongTTController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/PhatThuongThuKyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/PhatThuongThuKyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/HocSinh.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatQua.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatQua.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatQuaTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatQuaTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatThuong.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatThuong.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatThuongTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatThuongTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/QuaThuong.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/QuaThuongHoKhau.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quan_ly_nhan_khau.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/utilities/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/utilities/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/dang-ky-tam-vang.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/dang-ky-tam-vang.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/DangNhapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/DangNhapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/dang-nhap.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/dang-nhap.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/them_minh_chung.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/them_minh_chung.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/base-display.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/ho-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/ho-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/mac-dinh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/mac-dinh.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/nhan-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/phat-qua.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/phat_thuong1.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DangNhapController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DangNhapController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/dang-nhap.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/dang-nhap.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them_minh_chung.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them_minh_chung.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/ho-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cnpm/views/ho-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/mac-dinh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cnpm/views/mac-dinh.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cnpm/views/nhan-khau.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="UML Sequence" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -65,24 +85,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultPlantUmlFileTemplate" value="UML Sequence" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/src/main/java/com&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/.idea/libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4091954&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\scenes\chuc-nang-view" />
-      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\scenes\minh-chung" />
-      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\scenes\thong-bao" />
-      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\scenes\phat-thuong-chuc-nang-view" />
-      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\scenes\phat-qua-chuc-nang-view" />
+      <recent name="C:\Users\Nguyen Minh\IdeaProjects\NMCNPM20221\src\main\resources\com\cnpm" />
+      <recent name="C:\Users\Nguyen Minh\IdeaProjects\NMCNPM20221\src\main\resources\com\cnpm\views" />
     </key>
   </component>
   <component name="RunManager">
@@ -126,14 +149,6 @@
       <option name="presentableId" value="Default" />
       <updated>1676557799716</updated>
     </task>
-    <task id="LOCAL-00001" summary="sửa 0-1 thành đã duyệt/chưa duyệt">
-      <created>1676717691195</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1676717691195</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,15 +156,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ID_WIDTH">
-                <map>
-                  <entry key="Table.Default.Author.ColumnIdWidth" value="55" />
-                  <entry key="Table.Default.Date.ColumnIdWidth" value="58" />
-                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="54" />
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -157,8 +164,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update view theo y sep Tung" />
-    <MESSAGE value="sửa 0-1 thành đã duyệt/chưa duyệt" />
-    <option name="LAST_COMMIT_MESSAGE" value="sửa 0-1 thành đã duyệt/chưa duyệt" />
+    <option name="LAST_COMMIT_MESSAGE" value="update view theo y sep Tung" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

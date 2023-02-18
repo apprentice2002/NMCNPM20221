@@ -59,6 +59,10 @@ public class DangNhapController implements Initializable {
         }
     }
 
+    public void thoat(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

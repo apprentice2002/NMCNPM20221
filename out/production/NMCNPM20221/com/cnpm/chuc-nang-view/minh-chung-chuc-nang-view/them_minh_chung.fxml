@@ -22,10 +22,10 @@
 
     <Label layoutX="16.0" layoutY="268.45" text="lớp" />
     <TextField fx:id="them_lop" layoutX="125.63" layoutY="268.45" />
-    <Label layoutX="16.0" layoutY="121.39" text="thành tích học tập" />
-    <TextField fx:id="them_thanh_tich_hoc_tap" layoutX="125.63" layoutY="121.29" />
-    <Label layoutX="16.0" layoutY="315.92" text="Ngày khai bao" />
-    <DatePicker fx:id="them_ngay_khai_bao" layoutX="125.63" layoutY="315.92" prefWidth="149.0" />
+    <Label layoutX="16.0" layoutY="315.92" text="thành tích học tập" />
+    <TextField fx:id="them_thanh_tich_hoc_tap" layoutX="125.63" layoutY="315.92"  />
+    <Label layoutX="16.0" layoutY="121.39" text="Ngày khai bao" />
+    <DatePicker fx:id="them_ngay_khai_bao" layoutX="125.63" layoutY="121.29" prefWidth="149.0"/>
     <Label layoutX="300.0" layoutY="75.0" text="Note:" />
     <TextField fx:id="note" layoutX="300.0" layoutY="100.0" prefHeight="120.0" prefWidth="200.0" />
     <Button fx:id="btn_confirm_them" layoutX="300.0" layoutY="305.0" mnemonicParsing="false" onAction="#xacNhan" prefHeight="40" prefWidth="80" text="Xác nhận" />
