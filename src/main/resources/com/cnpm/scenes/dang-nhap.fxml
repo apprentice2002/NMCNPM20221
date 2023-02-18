@@ -1,53 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.DangNhapController">
    <children>
-      <TextField fx:id="username" layoutX="433.0" layoutY="98.0" />
-      <PasswordField fx:id="password" layoutX="433.0" layoutY="148.0" />
-      <Label alignment="CENTER" prefHeight="320.0" prefWidth="280.0" style="-fx-background-color: #00305b;" text="OOP 2.0" textFill="WHITESMOKE">
+      <TextField fx:id="username" layoutX="350.0" layoutY="90.0" prefHeight="40.0" prefWidth="260.0" promptText="Username" style="-fx-border-color: #02bed3;">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="password" layoutX="350.0" layoutY="150.0" prefHeight="40.0" prefWidth="260.0" promptText="********" style="-fx-border-color: #02bed3;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="300.0" layoutY="90.0" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #02bed3;" />
+      <Label layoutX="300.0" layoutY="150.0" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #02bed3;" />
+      <Label alignment="CENTER" prefHeight="320.0" prefWidth="280.0" style="-fx-background-color: #02bed3;" />
+      <Label layoutX="26.0" layoutY="63.0" text="Nhập môn Công nghệp phần mềm" textFill="#285479">
+         <font>
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <ImageView fitHeight="80" fitWidth="80.0" layoutX="0" layoutY="0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="84.0" fitWidth="189.0" layoutX="46.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LogoPOO2.0.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="178.0" fitWidth="122.0" layoutX="81.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/logo_bach_khoa.png" />
          </image>
       </ImageView>
-      <Label layoutX="320.0" layoutY="33.0" text="Đăng nhập">
+      <Label layoutX="320.0" layoutY="33.0" text="Đăng nhập" textFill="#3a7499">
          <font>
             <Font name="System Bold" size="20.0" />
-         </font></Label>
-      <Label layoutX="339.0" layoutY="100.0" text="Tài khoản">
+         </font>
+      </Label>
+      <Label layoutX="340.0" layoutY="150.0" />
+      <Label fx:id="alert" layoutX="295.0" layoutY="280.0" textFill="#802623">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="340.0" layoutY="150.0" text="Mật khẩu">
+      <Button layoutX="300.0" layoutY="216.0" mnemonicParsing="false" onAction="#dangNhap" prefHeight="40.0" prefWidth="310.0" style="-fx-background-color: #02bed3;" text="Đăng nhập" textFill="#f5f5f5">
          <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="alert" layoutX="295.0" layoutY="200.0" textFill="#802623">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Button layoutX="488.0" layoutY="245.0" mnemonicParsing="false" onAction="#dangNhap" text="Đăng nhập">
-         <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#thoat" text="Thoát">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-
+      <ImageView layoutX="308.0" layoutY="153.0">
+         <Image requestedHeight="35" requestedWidth="35" url="@../image/key.png" />
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="308.0" layoutY="93.0">
+         <Image requestedHeight="45" requestedWidth="45" url="@../image/user.png" />
+      </ImageView>
    </children>
 </AnchorPane>
