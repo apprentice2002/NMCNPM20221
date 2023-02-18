@@ -26,7 +26,8 @@ import java.util.ResourceBundle;
 public class ThongKePhatQuaConTroller implements Initializable {
     @FXML
     private Button thong_ke_thuong;
-
+    @FXML
+    private ChoiceBox<String> dotPhatChoiceBox;
     @FXML
     private Label note1;
     @FXML
@@ -66,34 +67,56 @@ public class ThongKePhatQuaConTroller implements Initializable {
         return filteredData;
     }
     public void refresh(){table.getItems().clear();
-        Connection connection = DBConnection.getConnection();
-        String sql ="SELECT DISTINCT hk.ID AS idHoKhau, nk2.hoTen AS hoTen, COUNT(nk1.ID) as soPhanQua, SUM(qua.giaTri) AS tongGiaTri\n" +
-                "FROM nhan_khau AS nk1, nhan_khau AS nk2 , ho_khau AS hk, dot_phat AS dp, phat_qua AS pq, thanh_vien_cua_ho tvh, qua\n" +
-                "WHERE dp.idDotPhat =  pq.idDotPhat\n" +
-                "AND qua.idQua = pq.idQua \n" +
-                "AND pq.idNhanKhau = nk1.ID\n" +
-                "AND nk1.ID = tvh.idNhanKhau\n" +
-                "AND tvh.idHoKhau = hk.ID\n" +
-                "AND hk.idChuHo = nk2.ID\n" +
-                "AND dp.idDotPhat = 2\n" +
-                "GROUP BY hk.ID;";
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new ThongKePhatQuaTableModel(queryResult.getInt("idHoKhau"),
-                        queryResult.getString("hoTen"),
-                        queryResult.getInt("soPhanQua"),
-                        queryResult.getInt("tongGiaTri")));
+        ObservableList<String> dotPhatList = FXCollections.observableArrayList();
+        try (Connection connection = DBConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT tenDotPhat FROM dot_phat")) {
 
+            while (resultSet.next()) {
+                dotPhatList.add(resultSet.getString("tenDotPhat"));
             }
-            table.setItems(listView);
 
-        } catch (Exception e) {
+            // Thêm danh sách đợt phát vào choicebox
+            dotPhatChoiceBox.setItems(dotPhatList);
+
+        } catch (SQLException e) {
+            // Xử lý ngoại lệ
             e.printStackTrace();
         }
+
+// Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
+        dotPhatChoiceBox.setOnAction(event -> {
+            String tenDotPhat = dotPhatChoiceBox.getValue();
+            Connection connection = DBConnection.getConnection();
+            String sql = "SELECT DISTINCT hk.ID AS idHoKhau, nk2.hoTen AS hoTen, COUNT(nk1.ID) as soPhanQua, SUM(qua.giaTri) AS tongGiaTri\n" +
+                    "FROM nhan_khau AS nk1, nhan_khau AS nk2 , ho_khau AS hk, dot_phat AS dp, phat_qua AS pq, thanh_vien_cua_ho tvh, qua\n" +
+                    "WHERE dp.idDotPhat =  pq.idDotPhat\n" +
+                    "AND qua.idQua = pq.idQua \n" +
+                    "AND pq.idNhanKhau = nk1.ID\n" +
+                    "AND nk1.ID = tvh.idNhanKhau\n" +
+                    "AND tvh.idHoKhau = hk.ID\n" +
+                    "AND hk.idChuHo = nk2.ID\n" +
+                    "AND dp.tenDotPhat = '" +tenDotPhat+ "'\n" +
+                    "AND pq.daDuyet = 1\n" +
+                    "GROUP BY hk.ID;";
+            try {
+                //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+                Statement statement = connection.createStatement();
+                ResultSet queryResult = statement.executeQuery(sql);
+                // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+                while (queryResult.next()) {
+                    listView.add(new ThongKePhatQuaTableModel(queryResult.getInt("idHoKhau"),
+                            queryResult.getString("hoTen"),
+                            queryResult.getInt("soPhanQua"),
+                            queryResult.getInt("tongGiaTri")));
+
+                }
+                table.setItems(listView);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
