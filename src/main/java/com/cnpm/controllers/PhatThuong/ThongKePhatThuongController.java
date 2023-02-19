@@ -65,7 +65,7 @@ public class ThongKePhatThuongController implements Initializable {
         }
         return filteredData;
     }
-    public void refresh()throws  SQLException {table.getItems().clear();
+    public void refresh()throws  SQLException {
         //ChoiceBox<Integer> dotPhatChoiceBox = new ChoiceBox<>();
 
 // Lấy danh sách các đợt phát từ cơ sở dữ liệu và thêm vào choicebox
@@ -81,6 +81,7 @@ public class ThongKePhatThuongController implements Initializable {
             // Thêm danh sách đợt phát vào choicebox
             dotPhatChoiceBox.setItems(dotPhatList);
 
+
         } catch (SQLException e) {
             // Xử lý ngoại lệ
             e.printStackTrace();
@@ -88,6 +89,7 @@ public class ThongKePhatThuongController implements Initializable {
 
 // Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
         dotPhatChoiceBox.setOnAction(event -> {
+            table.getItems().clear();
             String tenDotPhat = dotPhatChoiceBox.getValue();
         Connection connection = DBConnection.getConnection();
         String sql ="SELECT DISTINCT hk.ID AS idHoKhau1, nk2.hoTen AS hoTen1, COUNT(nk1.ID) as soPhanThuong1, SUM(qua.giaTri) AS tongGiaTri1 \n" +
@@ -116,10 +118,35 @@ public class ThongKePhatThuongController implements Initializable {
             }
             table.setItems(listView);
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    });
+            try{
+                 connection = DBConnection.getConnection();
+                Statement statement = connection.createStatement();
+
+                // Execute the query to get the data from both tables
+                ResultSet resultSet = statement.executeQuery("SELECT SUM(qua.giaTri)\n" +
+                        "  FROM qua\n" +
+                        "  INNER JOIN phat_thuong ON qua.idQua=phat_thuong.idQua\n" +
+                        "  INNER JOIN dot_phat ON phat_thuong.idDotPhat=dot_phat.idDotPhat\n" +
+                        "  WHERE "+
+                        " dot_phat.tenDotPhat = '" + tenDotPhat + "'\n" +
+                        " AND phat_thuong.daDuyet=1;"
+                );
+
+                if (resultSet.next()) {
+                    int total = resultSet.getInt(1);
+                    note.setText("Tổng tiền: " + total);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+        });
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -155,11 +182,7 @@ public class ThongKePhatThuongController implements Initializable {
             sortedData.comparatorProperty().bind(table.comparatorProperty());
             table.setItems(sortedData);
         });
-        try {
-            thongKeTongTien();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
 
         try {
             refresh();
@@ -168,52 +191,52 @@ public class ThongKePhatThuongController implements Initializable {
         }
 
     }
-    public void thongKeTongTien() throws  SQLException {
-        ObservableList<String> dotPhatList = FXCollections.observableArrayList();
-        try (Connection connection = DBConnection.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT tenDotPhat FROM dot_phat")) {
-
-            while (resultSet.next()) {
-                dotPhatList.add(resultSet.getString("tenDotPhat"));
-            }
-
-            // Thêm danh sách đợt phát vào choicebox
-            dotPhatChoiceBox.setItems(dotPhatList);
-
-        } catch (SQLException e) {
-            // Xử lý ngoại lệ
-            e.printStackTrace();
-        }
-
-// Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
-        dotPhatChoiceBox.setOnAction(event -> {
-            String tenDotPhat = dotPhatChoiceBox.getValue();
-
-            try {
-                Connection connection = DBConnection.getConnection();
-                Statement statement = connection.createStatement();
-
-                // Execute the query to get the data from both tables
-                ResultSet resultSet = statement.executeQuery("SELECT SUM(qua.giaTri)\n" +
-                        "  FROM qua\n" +
-                        "  INNER JOIN phat_thuong ON qua.idQua=phat_thuong.idQua\n" +
-                        "  INNER JOIN dot_phat ON phat_thuong.idDotPhat=dot_phat.idDotPhat\n" +
-                        "  WHERE "+
-                        " dot_phat.tenDotPhat = '" + tenDotPhat + "'\n" +
-                        " AND phat_thuong.daDuyet=1;"
-                );
-
-                if (resultSet.next()) {
-                    int total = resultSet.getInt(1);
-                    note.setText("Tổng tiền: " + total);
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
-
-    }
+//    public void thongKeTongTien() throws  SQLException {
+//        ObservableList<String> dotPhatList = FXCollections.observableArrayList();
+//        try (Connection connection = DBConnection.getConnection();
+//             Statement statement = connection.createStatement();
+//             ResultSet resultSet = statement.executeQuery("SELECT tenDotPhat FROM dot_phat")) {
+//
+//            while (resultSet.next()) {
+//                dotPhatList.add(resultSet.getString("tenDotPhat"));
+//            }
+//
+//            // Thêm danh sách đợt phát vào choicebox
+//            dotPhatChoiceBox.setItems(dotPhatList);
+//
+//        } catch (SQLException e) {
+//            // Xử lý ngoại lệ
+//            e.printStackTrace();
+//        }
+//
+//// Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
+//        dotPhatChoiceBox.setOnAction(event -> {
+//            String tenDotPhat = dotPhatChoiceBox.getValue();
+//
+//            try {
+//                Connection connection = DBConnection.getConnection();
+//                Statement statement = connection.createStatement();
+//
+//                // Execute the query to get the data from both tables
+//                ResultSet resultSet = statement.executeQuery("SELECT SUM(qua.giaTri)\n" +
+//                        "  FROM qua\n" +
+//                        "  INNER JOIN phat_thuong ON qua.idQua=phat_thuong.idQua\n" +
+//                        "  INNER JOIN dot_phat ON phat_thuong.idDotPhat=dot_phat.idDotPhat\n" +
+//                        "  WHERE "+
+//                        " dot_phat.tenDotPhat = '" + tenDotPhat + "'\n" +
+//                        " AND phat_thuong.daDuyet=1;"
+//                );
+//
+//                if (resultSet.next()) {
+//                    int total = resultSet.getInt(1);
+//                    note.setText("Tổng tiền: " + total);
+//                }
+//
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//
+//    }
 }
 

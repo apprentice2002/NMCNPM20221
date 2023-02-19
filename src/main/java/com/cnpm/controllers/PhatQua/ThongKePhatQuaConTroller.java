@@ -66,7 +66,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
         }
         return filteredData;
     }
-    public void refresh(){table.getItems().clear();
+    public void refresh()throws  SQLException {
         ObservableList<String> dotPhatList = FXCollections.observableArrayList();
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
@@ -86,6 +86,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
 
 // Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
         dotPhatChoiceBox.setOnAction(event -> {
+            table.getItems().clear();
             String tenDotPhat = dotPhatChoiceBox.getValue();
             Connection connection = DBConnection.getConnection();
             String sql = "SELECT DISTINCT hk.ID AS idHoKhau, nk2.hoTen AS hoTen, COUNT(nk1.ID) as soPhanQua, SUM(qua.giaTri) AS tongGiaTri\n" +
@@ -116,7 +117,28 @@ public class ThongKePhatQuaConTroller implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
+            try {
+                 connection = DBConnection.getConnection();
+                Statement statement = connection.createStatement();
+
+                // Execute the query to get the data from both tables
+                ResultSet resultSet = statement.executeQuery("SELECT SUM(qua.giaTri) AS tong\n" +
+                        "  FROM qua\n" +
+                        "  INNER JOIN phat_qua ON qua.idQua=phat_qua.idQua\n" +
+                        "  INNER JOIN dot_phat ON phat_qua.idDotPhat=dot_phat.idDotPhat\n" +
+                        "  WHERE "+
+                        " dot_phat.tenDotPhat = '" + tenDotPhat + "'\n" +
+                        " AND phat_qua.daDuyet=1;");
+                if (resultSet.next()) {
+                    int total = resultSet.getInt("tong");
+                    note1.setText("Tổng tiền: " + total);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+    });
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -152,41 +174,38 @@ public class ThongKePhatQuaConTroller implements Initializable {
             sortedData.comparatorProperty().bind(table.comparatorProperty());
             table.setItems(sortedData);
         });
+
         try {
-            tongTien();
+            refresh();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        refresh();
 
     }
 
-    public void tongTien() throws SQLException {
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            Connection connection = DBConnection.getConnection();
-            statement = connection.createStatement();
-
-            // Execute the query to get the data from both tables
-            resultSet = statement.executeQuery("SELECT SUM(qua.giaTri) as tong\n" +
-                    "  FROM qua\n" +
-                    "  INNER JOIN phat_qua ON qua.idQua=phat_qua.idQua\n" +
-                    "  WHERE phat_qua.daDuyet=1;");
-
-            if (resultSet.next()) {
-                int total = resultSet.getInt("tong");
-                note1.setText("Tổng tiền: " + total);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
+//    public void tongTien() throws SQLException {
+//        try {
+//            Connection connection = DBConnection.getConnection();
+//            Statement statement = connection.createStatement();
+//
+//            // Execute the query to get the data from both tables
+//            ResultSet resultSet = statement.executeQuery("SELECT SUM(qua.giaTri)\n" +
+//                    "  FROM qua\n" +
+//                    "  INNER JOIN phat_qua ON qua.idQua=phat_qua.idQua\n" +
+//                    "  INNER JOIN dot_phat ON phat_qua.idDotPhat=dot_phat.idDotPhat\n" +
+//                    "  WHERE "+
+//                    " dot_phat.tenDotPhat = '" + tenDotPhat + "'\n" +
+//                    " AND phat_qua.daDuyet=1;");
+//            if (resultSet.next()) {
+//                int total = resultSet.getInt("tong");
+//                note1.setText("Tổng tiền: " + total);
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//
+//
 }
