@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -35,16 +35,16 @@
    <TextField fx:id="bi_danh" layoutX="110.0" layoutY="130.0" />
    <TextField fx:id="gioi_tinh" layoutX="110.0" layoutY="230.0" />
    <DatePicker fx:id="ngay_sinh" layoutX="110.0" layoutY="180.0" prefHeight="25.0" prefWidth="149.0" />
-   <JFXButton layoutX="350.0" layoutY="480.0" onAction="#xacNhan" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Xác nhận" textFill="WHITE" />
-   <JFXButton layoutX="450.0" layoutY="480.0" onAction="#huy" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Hủy" textFill="WHITE" />
+   <Button layoutX="350.0" layoutY="480.0" onAction="#xacNhan" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Xác nhận" textFill="WHITE" />
+   <Button layoutX="450.0" layoutY="480.0" onAction="#huy" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Hủy" textFill="WHITE" />
    <TextField fx:id="noi_thuong_tru" layoutX="430.0" layoutY="80.0" />
    <TextField fx:id="dia_chi_hien_nay" layoutX="430.0" layoutY="130.0" />
    <TextField fx:id="trinh_do_chuyen_mon" layoutX="430.0" layoutY="180.0" />
    <TextField fx:id="trinh_do_ngoai_ngu" layoutX="430.0" layoutY="230.0" />
-   <TextField fx:id="tien_an" layoutX="430.0" layoutY="430.0" />
+   <TextField fx:id="tien_an" layoutX="430.0" layoutY="380.0" />
    <Label layoutX="305.0" layoutY="84.0" text="Nơi thường trú" />
    <Label layoutX="305.0" layoutY="134.0" text="Địa chỉ hiện nay (*)" />
    <Label layoutX="305.0" layoutY="184.0" text="Trình độ chuyên môn" />
    <Label layoutX="305.0" layoutY="234.0" text="Trình độ ngoại ngữ" />
-   <Label layoutX="305.0" layoutY="434.0" text="Tiền án" />
+   <Label layoutX="305.0" layoutY="384.0" text="Tiền án" />
 </AnchorPane>

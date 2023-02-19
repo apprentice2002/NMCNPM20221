@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class ThayDoiNhanKhauController implements Initializable {
 
+    @FXML private Label errorLab;
     @FXML private TextField bi_danh;
     @FXML private TextField dan_toc;
     @FXML private TextField dia_chi_hien_nay;
@@ -35,7 +37,7 @@ public class ThayDoiNhanKhauController implements Initializable {
     @FXML private TextField ton_giao;
     @FXML private TextField trinh_do_chuyen_mon;
     @FXML private TextField trinh_do_ngoai_ngu;
-    @FXML private ChoiceBox<String> da_xoa;
+
 
     String query_find = "", query_update = "";
     Connection connection = null;
@@ -66,7 +68,7 @@ public class ThayDoiNhanKhauController implements Initializable {
             String quoc_tich = this.quoc_tich.getText();
             if (ho_ten.equals("") || this.ngay_sinh.getValue() == null || nguyen_quan.equals("") || quoc_tich.equals("") ||
                     gioi_tinh.equals("") || dia_chi_hien_nay.equals("")) {
-                Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/alert.fxml");
+                errorLab.setText("Chưa nhập đủ thông tin (*)");
             } else {
                 Date ngay_sinh = Date.valueOf(this.ngay_sinh.getValue());
                 query_update = "UPDATE nhan_khau SET hoTen=?, bietDanh=?, namSinh=?, gioiTinh=?, noiSinh=?, nguyenQuan=?, " +
@@ -102,7 +104,7 @@ public class ThayDoiNhanKhauController implements Initializable {
                 }
             }
         } else {
-            Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/alert.fxml");
+            errorLab.setText("Vui lòng tìm ID trước");
         }
     }
 
@@ -114,20 +116,19 @@ public class ThayDoiNhanKhauController implements Initializable {
 
     @FXML
     public void timKiem(ActionEvent event) {
-        int id_nhan_khau = Integer.parseInt(this.input_ma_nhan_khau.getText());
-        if (id_nhan_khau == 0 ) {
-            Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/alert.fxml");
+        if (this.input_ma_nhan_khau.getText().equals("") ) {
+            errorLab.setText("Chưa nhập ID !");
         } else {
-            query_find = "SELECT * FROM nhan_khau WHERE ID='" + id_nhan_khau + "'";
+            int id_nhan_khau = Integer.parseInt(this.input_ma_nhan_khau.getText());
+            query_find = "SELECT * FROM nhan_khau WHERE daXoa is NULL AND ID='" + id_nhan_khau + "'";
             try {
                 connection = DBConnection.getConnection();
                 statement = connection.createStatement();
                 resultSet = statement.executeQuery(query_find);
                 System.out.println(resultSet);
-                if (resultSet == null || resultSet.equals("")) {
-                    Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/alert.fxml");
-                }
-                while (resultSet.next()) {
+
+                if (resultSet.next()) {
+                    errorLab.setText("");
                     id = resultSet.getInt("ID");
 
                     ho_ten.setText(resultSet.getString("hoTen"));
@@ -148,6 +149,13 @@ public class ThayDoiNhanKhauController implements Initializable {
                     so_dien_thoai.setText(resultSet.getString("soDienThoai"));
                     tien_an.setText(resultSet.getString("tienAn"));
                 }
+                else{
+                    errorLab.setText("Nhân khẩu không tồn tại!");
+                }
+
+                connection.close();
+                statement.close();
+                resultSet.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -156,6 +164,6 @@ public class ThayDoiNhanKhauController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        errorLab.setText("");
     }
 }
