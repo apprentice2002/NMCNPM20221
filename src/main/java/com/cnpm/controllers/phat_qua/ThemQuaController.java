@@ -51,14 +51,15 @@ public class ThemQuaController implements Initializable {
 
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
-//         int   idPhatQua = Integer.parseInt(them_id_phat_qua.getText());
-        int  idDotPhat = Integer.parseInt(them_id_dot_phat_qua.getText());
-        int  idNhanKhau=Integer.parseInt(them_ma_nhan_khau.getText());
-        int  idQua = Integer.parseInt(them_id_qua.getText());
-//        int  daDuyet = Integer.parseInt(them_da_duyet.getText());
-        if (false ){
+
+
+        if (them_id_dot_phat_qua.getText().equals("") || them_ma_nhan_khau.getText().equals("")
+                || them_id_qua.getText().equals("") ){
             note.setText("Vui lòng điền đủ thông tin cần thiết");
-    } else {
+        } else {
+            int idDotPhat = Integer.parseInt(them_id_dot_phat_qua.getText());
+            int idNhanKhau=Integer.parseInt(them_ma_nhan_khau.getText());
+            int idQua = Integer.parseInt(them_id_qua.getText());
             getQuery();
             try {
                 connection = DBConnection.getConnection();

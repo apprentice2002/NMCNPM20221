@@ -26,9 +26,6 @@ public class ThemMinhChungController implements Initializable {
 
     @FXML
     private TextField note;
-    @FXML
-
-    private TextField them_id_minh_chung;
 
     @FXML
     private TextField them_ma_nhan_khau;
@@ -42,8 +39,6 @@ public class ThemMinhChungController implements Initializable {
     @FXML
     private TextField them_thanh_tich_hoc_tap;
 
-    @FXML
-    private DatePicker them_ngay_khai_bao;
     String query = null;
     Connection connection = null;
     ResultSet resultSet = null;
@@ -59,21 +54,19 @@ public class ThemMinhChungController implements Initializable {
 
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
-//        int idMinhChung = Integer.parseInt(them_id_minh_chung.getText());
-        int ma_nhan_khau = Integer.parseInt(them_ma_nhan_khau.getText());
         String truong = them_truong.getText();
         String lop = them_lop.getText();
         String thanhTichHocTap = them_thanh_tich_hoc_tap.getText();
         Date ngayKhaiBao =   new Date(System.currentTimeMillis());
         if (formatter.format(ngayKhaiBao).equals("") || lop.equals("") ||
-                truong.equals("") || thanhTichHocTap.equals("")) {
+                truong.equals("") || thanhTichHocTap.equals("") || them_ma_nhan_khau.getText().equals("")) {
             note.setText("Vui lòng điền đủ thông tin cần thiết");
         } else {
+            int ma_nhan_khau = Integer.parseInt(them_ma_nhan_khau.getText());
             getQuery();
             try {
                 connection = DBConnection.getConnection();
                 preparedStatement = connection.prepareStatement(query);
-//                preparedStatement.setInt(1, idMinhChung);
                 preparedStatement.setInt(1, ma_nhan_khau);
                 preparedStatement.setString(2, truong);
                 preparedStatement.setString(3, lop);

@@ -82,7 +82,7 @@ public class ThongKeNhanKhauController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        errorLab.setText("");
         maNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("maNhanKhau"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTenNhanKhau"));
         tuoiCol.setCellValueFactory(new PropertyValueFactory<>("tuoi"));

@@ -27,8 +27,7 @@ public class ThemThuongController implements Initializable {
 
     @FXML
     private TextField  note;
-    @FXML
-    private TextField them_id_phat_thuong;
+
     @FXML
     private TextField them_id_dot_phat;
 
@@ -36,10 +35,6 @@ public class ThemThuongController implements Initializable {
     private TextField  them_id_qua;
     @FXML
     private TextField them_id_minh_chung;
-    @FXML
-    private TextField them_da_duyet;
-
-
 
     String query = null;
     Connection connection = null;
@@ -55,19 +50,17 @@ public class ThemThuongController implements Initializable {
 
     @FXML
     public void xacNhan(ActionEvent event) throws IOException {
-//        int   idPhatThuong = Integer.parseInt(them_id_phat_thuong.getText());
-        int  idDotPhat = Integer.parseInt(them_id_dot_phat.getText());
-        int  idMinhChung=Integer.parseInt(them_id_minh_chung.getText());
-        int  idQua = Integer.parseInt(them_id_qua.getText());
-        int  daDuyet = Integer.parseInt(them_id_qua.getText());
-        if (false){
+        if (them_id_dot_phat.getText().equals("")|| them_id_minh_chung.getText().equals("")
+            || them_id_qua.getText().equals("") ){
             note.setText("Vui lòng điền đủ thông tin cần thiết");
     } else {
+            int  idDotPhat = Integer.parseInt(them_id_dot_phat.getText());
+            int  idMinhChung=Integer.parseInt(them_id_minh_chung.getText());
+            int  idQua = Integer.parseInt(them_id_qua.getText());
             getQuery();
             try {
                 connection = DBConnection.getConnection();
                 preparedStatement = connection.prepareStatement(query);
-//                preparedStatement.setInt(1, idPhatThuong);
                 preparedStatement.setInt(1,  idDotPhat);
                 preparedStatement.setInt(2, idQua);
                 preparedStatement.setInt(3, idMinhChung);

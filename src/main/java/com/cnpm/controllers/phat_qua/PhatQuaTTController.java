@@ -85,7 +85,7 @@ public class PhatQuaTTController implements Initializable{
             String trangThai;
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
-                if(queryResult.getInt("daDuyet") == 0) trangThai = "Đã duyệt";
+                if(queryResult.getInt("daDuyet") == 1) trangThai = "Đã duyệt";
                 else trangThai = "Chưa duyệt";
                 listView.add(new PhatQuaTableModel(queryResult.getInt("idPhatQua"),
                         queryResult.getString("hoTen"),
