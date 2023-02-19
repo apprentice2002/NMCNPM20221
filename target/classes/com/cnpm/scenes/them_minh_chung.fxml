@@ -1,45 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.cnpm.controllers.MinhChung.ThemMinhChungController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.MinhChung.ThemMinhChungController">
     <Label layoutX="16.25" layoutY="7.35" text="Thêm minh chứng">
         <font>
             <Font size="24.0" />
         </font>
     </Label>
-<!--    <Label layoutX="16.0" layoutY="75.0" text="ID minh chứng " />-->
-<!--    <TextField fx:id="them_id_minh_chung" layoutX="125.63" layoutY="75.0" />-->
+    <Label layoutX="16.0" layoutY="125.0" text="ID nhân khẩu" />
+    <TextField fx:id="them_ma_nhan_khau" layoutX="127.0" layoutY="120.0" prefHeight="26.0" prefWidth="180.0" />
 
+    <Label layoutX="15.0" layoutY="316.0" text="Trường" />
+    <TextField fx:id="them_truong" layoutX="125.0" layoutY="312.0" prefHeight="26.0" prefWidth="180.0" />
 
-    <Label layoutX="16.0" layoutY="171.13" text="ID nhân khẩu" />
-    <TextField fx:id="them_ma_nhan_khau" layoutX="125.63" layoutY="171.13" />
+    <Label layoutX="14.0" layoutY="362.0" prefHeight="18.0" prefWidth="37.0" text="Lớp" />
+    <TextField fx:id="them_lop" layoutX="125.0" layoutY="358.0" prefHeight="26.0" prefWidth="180.0" />
+    <Label layoutX="14.0" layoutY="267.0" text="Thành tích học tập" />
+    <TextField fx:id="them_thanh_tich_hoc_tap" layoutX="125.0" layoutY="262.0" prefHeight="26.0" prefWidth="180.0" />
+    <Label layoutX="336.0" layoutY="125.0" text="Note:" />
+    <TextField fx:id="note" layoutX="387.0" layoutY="121.0" prefHeight="94.95" prefWidth="261.02" />
+    <Button fx:id="btn_confirm_them" layoutX="387.0" layoutY="351.0" mnemonicParsing="false" onAction="#xacNhan" prefHeight="40" prefWidth="80" text="Xác nhận" />
 
-    <Label layoutX="16.0" layoutY="219.79" text="trường" />
-    <TextField fx:id="them_truong" layoutX="125.63" layoutY="219.79" />
+    <Button fx:id="btn_cancel_them" layoutX="569.0" layoutY="351.0" mnemonicParsing="false" onAction="#huy" prefHeight="40" prefWidth="80" text="Hủy" />
 
-    <Label layoutX="16.0" layoutY="268.45" text="lớp" />
-    <TextField fx:id="them_lop" layoutX="125.63" layoutY="268.45" />
-    <Label layoutX="16.0" layoutY="121.39" text="thành tích học tập" />
-    <TextField fx:id="them_thanh_tich_hoc_tap" layoutX="125.63" layoutY="121.29" />
-    <Label layoutX="16.0" layoutY="315.92" text="Họ Ten" />
-    <Label fx:id="hoTenLabel" layoutX="125.63" layoutY="315.92" prefWidth="149.0"/>
-    <Label layoutX="16.0" layoutY="362.21" text="Năm sinh" />
-    <Label fx:id="namSinhLabel" layoutX="125.63" layoutY="362.21" />
-    <Label layoutX="16.0" layoutY="524.8" text="Note:" />
-    <TextField fx:id="note" layoutX="74.73" layoutY="520.05" prefHeight="94.95" prefWidth="261.02"/>
-    <Button fx:id="btn_confirm_them" layoutX="426.0" layoutY="537.0" mnemonicParsing="false" onAction="#xacNhan" text="Xác nhận" prefHeight="40" prefWidth="80"/>
-
-    <Button fx:id="btn_cancel_them" layoutX="591.0" layoutY="537.0" mnemonicParsing="false" onAction="#huy" text="Hủy" prefHeight="40" prefWidth="80"/>
-
-
-
+    <Label layoutX="16.0" layoutY="171.0" prefHeight="18.0" prefWidth="50.0" text="Họ tên" />
+    <Label fx:id="hoTenLabel" layoutX="127.0" layoutY="171.0" prefHeight="18.0" prefWidth="180.0" />
+    <Label layoutX="16.0" layoutY="218.0" text="Năm sinh" />
+    <Label fx:id="namSinhLabel" layoutX="127.0" layoutY="218.0" prefHeight="18.0" prefWidth="180.0" />
 </AnchorPane>

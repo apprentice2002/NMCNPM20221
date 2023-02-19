@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.cnpm.controllers.PhatQua.ThemQuaController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.PhatQua.ThemQuaController">
     <Label layoutX="16.25" layoutY="7.35" text="Thêm quà">
         <font>
             <Font size="24.0" />
@@ -31,10 +24,10 @@
 <!--    <Label layoutX="16.0" layoutY="268.45" text="Đã Duyệt" />-->
 <!--    <TextField fx:id="them_da_duyet" layoutX="125.63" layoutY="268.45" />-->
     <Label layoutX="16.0" layoutY="524.8" text="Note:" />
-    <TextField fx:id="note" layoutX="74.73" layoutY="520.05" prefHeight="94.95" prefWidth="261.02"/>
+    <TextField fx:id="note" layoutX="80.0" layoutY="525.0" prefHeight="94.95" prefWidth="261.02" />
 
-    <Button fx:id="btn_confirm_them" layoutX="426.0" layoutY="537.0" mnemonicParsing="false" onAction="#xacNhan" text="Xác nhận" prefHeight="40" prefWidth="80"/>
+    <Button fx:id="btn_confirm_them" layoutX="426.0" layoutY="537.0" mnemonicParsing="false" onAction="#xacNhan" prefHeight="40" prefWidth="80" text="Xác nhận" />
 
-    <Button fx:id="btn_cancel_them" layoutX="591.0" layoutY="537.0" mnemonicParsing="false" onAction="#huy" text="Hủy" prefHeight="40" prefWidth="80"/>
+    <Button fx:id="btn_cancel_them" layoutX="591.0" layoutY="537.0" mnemonicParsing="false" onAction="#huy" prefHeight="40" prefWidth="80" text="Hủy" />
 
 </AnchorPane>
