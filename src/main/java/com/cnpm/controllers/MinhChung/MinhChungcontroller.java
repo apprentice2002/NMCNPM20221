@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.cnpm.utilities.Utilities.popNewWindow;
+
+
 public class MinhChungcontroller implements Initializable {
     @FXML
     private Button them_minh_chung;
@@ -194,7 +197,7 @@ public class MinhChungcontroller implements Initializable {
 
                 }
                 // Nảy ra màn hình xóa dữ liệu thành công
-                Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
+               // Utilities.popNewWindow(e2,"/com/cnpm/scenes/xoa-thanh-cong.fxml");
             } catch (Exception e) {
                 System.out.println(e);
             }
