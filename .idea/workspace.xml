@@ -4,12 +4,125 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="up">
+    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="upp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/chon-nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/chuyen-ho-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/doi-chu-ho.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/lich-su-thay-doi.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/tach-ho-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-ho-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-thanh-vien.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/minh-chung-chuc-nang-view/them_minh_chung.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/dang-ky-tam-tru.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/dang-ky-tam-vang.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/danh-sach-tam-tru.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/danh-sach-tam-vang.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/them_qua.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/them_thuong.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/thong-bao/alert.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/thong-bao/xoa-thanh-cong.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/trang-chu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ChonNhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ChuyenHoKhauController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ChuyenHoKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/DoiChuHoController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/DoiChuHoController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/DoiChuHoController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/DoiChuHoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/HoKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/LichSuThayDoiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/TachHoKhauController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/TachHoKhauController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/TachHoKhauController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/TachHoKhauController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/TachHoKhauController$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/TachHoKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemHoKhauController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemHoKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemThanhVienController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemThanhVienController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemThanhVienController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThongKeNhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/minh_chung/MinhChungcontroller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/minh_chung/ThemMinhChungController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamTruController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamVangController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DanhSachTamTruController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DanhSachTamVangController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/NhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/ThemNhanKhauController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/PhatQuaTTController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/ThemQuaController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/PhatThuongTTController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/PhatThuongThuKyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/ThemThuongController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/trang_chu/DangNhapController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/trang_chu/MacDinhController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/trang_chu/TrangChuController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/HoKhau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/HoKhauTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/MinhChung.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/MinhChungTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/NhanKhau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/NhanKhauTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatQua.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatQuaTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatThuong.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/PhatThuongTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/SharedDataModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/TamTru.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/TamVang.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/ThongKePhatQuaTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/ThongKePhatThuongTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/LogoPOO2.0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/chuyen_ho_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/ho_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/key.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/lich_su.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/logo_bach_khoa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/nhan_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/tach_ho_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/tam_tru.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/tam_vang.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/them_ho_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/them_nguoi_vao_ho_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/them_nhan_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/xoa_ho_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/image/xoa_nhan_khau.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/UserSession.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/utilities/Utilities.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/ho-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/mac-dinh.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/minh_chung.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat-qua_thu_ky.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat_qua_TT.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat_thuong_TT.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/phat_thuong_thu_ky.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/thong-ke.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/minh-chung-chuc-nang-view/them_minh_chung.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/minh-chung-chuc-nang-view/them_minh_chung.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/them_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/them_qua.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/them_minh_chung.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +253,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676825076278</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="upp">
+      <created>1676830000514</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676830000514</updated>
+    </task>
+    <task id="LOCAL-00008" summary="upp">
+      <created>1676830009487</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676830009487</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,7 +285,8 @@
     <MESSAGE value="update view theo y sep Tung" />
     <MESSAGE value="merge from Quan 19/02" />
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="upp" />
+    <option name="LAST_COMMIT_MESSAGE" value="upp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

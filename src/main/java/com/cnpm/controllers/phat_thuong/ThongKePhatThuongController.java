@@ -1,9 +1,8 @@
-package com.cnpm.controllers.PhatThuong;
+package com.cnpm.controllers.phat_thuong;
 
+import com.cnpm.entities.ThongKePhatThuongTableModel;
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.ThongKePhatQuaTableModel;
-import com.cnpm.utilities.ThongKePhatThuongTableModel;
-import com.cnpm.utilities.Utilities;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -68,7 +67,7 @@ public class ThongKePhatThuongController implements Initializable {
     public void refresh()throws  SQLException {
         //ChoiceBox<Integer> dotPhatChoiceBox = new ChoiceBox<>();
 
-// Lấy danh sách các đợt phát từ cơ sở dữ liệu và thêm vào choicebox
+        // Lấy danh sách các đợt phát từ cơ sở dữ liệu và thêm vào choicebox
         ObservableList<String> dotPhatList = FXCollections.observableArrayList();
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
@@ -87,43 +86,43 @@ public class ThongKePhatThuongController implements Initializable {
             e.printStackTrace();
         }
 
-// Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
+        // Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
         dotPhatChoiceBox.setOnAction(event -> {
             table.getItems().clear();
             String tenDotPhat = dotPhatChoiceBox.getValue();
-        Connection connection = DBConnection.getConnection();
-        String sql ="SELECT DISTINCT hk.ID AS idHoKhau1, nk2.hoTen AS hoTen1, COUNT(nk1.ID) as soPhanThuong1, SUM(qua.giaTri) AS tongGiaTri1 \n" +
-                "FROM nhan_khau AS nk1, nhan_khau AS nk2 , ho_khau AS hk, dot_phat AS dp, phat_thuong AS pt, thanh_vien_cua_ho tvh, qua, minh_chung AS mc\n" +
-                "WHERE dp.idDotPhat =  pt.idDotPhat\n" +
-                "AND qua.idQua = pt.idQua \n" +
-                "AND pt.idMinhChung = mc.idMinhChung\n" +
-                "AND mc.ma_nhan_khau = nk1.ID\n" +
-                "AND nk1.ID = tvh.idNhanKhau\n" +
-                "AND tvh.idHoKhau = hk.ID\n" +
-                "AND hk.idChuHo = nk2.ID\n" +
-                "AND dp.tenDotPhat = '" +tenDotPhat+ "'\n" +
-                "AND pt.daDuyet = 1\n" +
-                "GROUP BY hk.ID;";
-        try {
-            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(sql);
-            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
-            while (queryResult.next()) {
-                listView.add(new ThongKePhatThuongTableModel(queryResult.getInt("idHoKhau1"),
-                        queryResult.getString("hoTen1"),
-                        queryResult.getInt("soPhanThuong1"),
-                        queryResult.getInt("tongGiaTri1")));
+            Connection connection = DBConnection.getConnection();
+            String sql ="SELECT DISTINCT hk.ID AS idHoKhau1, nk2.hoTen AS hoTen1, COUNT(nk1.ID) as soPhanThuong1, SUM(qua.giaTri) AS tongGiaTri1 \n" +
+                    "FROM nhan_khau AS nk1, nhan_khau AS nk2 , ho_khau AS hk, dot_phat AS dp, phat_thuong AS pt, thanh_vien_cua_ho tvh, qua, minh_chung AS mc\n" +
+                    "WHERE dp.idDotPhat =  pt.idDotPhat\n" +
+                    "AND qua.idQua = pt.idQua \n" +
+                    "AND pt.idMinhChung = mc.idMinhChung\n" +
+                    "AND mc.ma_nhan_khau = nk1.ID\n" +
+                    "AND nk1.ID = tvh.idNhanKhau\n" +
+                    "AND tvh.idHoKhau = hk.ID\n" +
+                    "AND hk.idChuHo = nk2.ID\n" +
+                    "AND dp.tenDotPhat = '" +tenDotPhat+ "'\n" +
+                    "AND pt.daDuyet = 1\n" +
+                    "GROUP BY hk.ID;";
+            try {
+                //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+                Statement statement = connection.createStatement();
+                ResultSet queryResult = statement.executeQuery(sql);
+                // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+                while (queryResult.next()) {
+                    listView.add(new ThongKePhatThuongTableModel(queryResult.getInt("idHoKhau1"),
+                            queryResult.getString("hoTen1"),
+                            queryResult.getInt("soPhanThuong1"),
+                            queryResult.getInt("tongGiaTri1")));
 
+                }
+                table.setItems(listView);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            table.setItems(listView);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
             try{
-                 connection = DBConnection.getConnection();
+                connection = DBConnection.getConnection();
                 Statement statement = connection.createStatement();
 
                 // Execute the query to get the data from both tables
@@ -239,4 +238,3 @@ public class ThongKePhatThuongController implements Initializable {
 //
 //    }
 }
-

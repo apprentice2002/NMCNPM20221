@@ -1,8 +1,8 @@
-package com.cnpm.controllers.PhatQua;
+package com.cnpm.controllers.phat_qua;
 
+import com.cnpm.entities.ThongKePhatQuaTableModel;
 import com.cnpm.utilities.DBConnection;
-import com.cnpm.utilities.ThongKePhatQuaTableModel;
-import com.cnpm.utilities.Utilities;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -118,7 +118,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
                 e.printStackTrace();
             }
             try {
-                 connection = DBConnection.getConnection();
+                connection = DBConnection.getConnection();
                 Statement statement = connection.createStatement();
 
                 // Execute the query to get the data from both tables
@@ -138,7 +138,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
                 e.printStackTrace();
             }
 
-    });
+        });
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

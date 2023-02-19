@@ -4,12 +4,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.phat_qua.ThemQuaController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.phat_qua.ThemQuaController">
     <Label layoutX="16.25" layoutY="7.35" text="Thêm quà">
         <font>
             <Font size="24.0" />
         </font>
     </Label>
+
     <Label layoutX="16.0" layoutY="121.39" text="ID đợt phát quà" />
     <TextField fx:id="them_id_dot_phat_qua" layoutX="125.63" layoutY="121.39" />
 
@@ -18,12 +19,12 @@
 
     <Label layoutX="16.0" layoutY="219.79" text="ID quà" />
     <TextField fx:id="them_id_qua" layoutX="125.63" layoutY="219.79" />
-    
-    <Label layoutX="292.0" layoutY="121.0" text="Note:" />
-    <TextField fx:id="note" layoutX="331.0" layoutY="121.0" prefHeight="94.95" prefWidth="200" />
 
-    <Button fx:id="btn_confirm_them" layoutX="331.0" layoutY="256.0" mnemonicParsing="false" onAction="#xacNhan" prefHeight="40" prefWidth="80" text="Xác nhận" />
+    <Label layoutX="16.0" layoutY="524.8" text="Note:" />
+    <TextField fx:id="note" layoutX="80.0" layoutY="525.0" prefHeight="94.95" prefWidth="261.02" />
 
-    <Button fx:id="btn_cancel_them" layoutX="451.0" layoutY="256.0" mnemonicParsing="false" onAction="#huy" prefHeight="40" prefWidth="80" text="Hủy" />
+    <Button fx:id="btn_confirm_them" layoutX="426.0" layoutY="537.0" mnemonicParsing="false" onAction="#xacNhan" prefHeight="40" prefWidth="80" text="Xác nhận" />
+
+    <Button fx:id="btn_cancel_them" layoutX="591.0" layoutY="537.0" mnemonicParsing="false" onAction="#huy" prefHeight="40" prefWidth="80" text="Hủy" />
 
 </AnchorPane>
