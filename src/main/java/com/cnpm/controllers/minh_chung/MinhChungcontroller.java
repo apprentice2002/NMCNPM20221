@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.cnpm.utilities.Utilities.popNewWindow;
+
+
 public class MinhChungcontroller implements Initializable {
     @FXML
     private Button them_minh_chung;
@@ -83,9 +86,7 @@ public class MinhChungcontroller implements Initializable {
             ResultSet queryResult = statement.executeQuery(sql);
             // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
             while (queryResult.next()) {
-
                 listView.add(new MinhChungTableModel(queryResult.getInt("idMinhChung"),
-
                         queryResult.getString("hoTen"),
                         queryResult.getString("thanhTichHocTap"),
                         queryResult.getString("truong"),
