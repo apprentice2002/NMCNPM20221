@@ -25,7 +25,7 @@ public class DangKyTamVangController implements Initializable {
     PreparedStatement preparedStatement = null;
     Stage stage = null;
 
-    @FXML private TextField co_quan_khai_bao;
+    @FXML private TextField noi_tam_tru;
     @FXML private TextArea ly_do;
     @FXML private TextField ma_nhan_khau;
     @FXML private DatePicker ngay_bat_dau;
@@ -39,11 +39,11 @@ public class DangKyTamVangController implements Initializable {
 
     @FXML
     void xacNhan(ActionEvent event) {
-        String co_quan_khai_bao = this.co_quan_khai_bao.getText();
+        String noi_tam_tru = this.noi_tam_tru.getText();
         String ma_nhan_khau = this.ma_nhan_khau.getText();
         String ly_do = this.ly_do.getText();
 
-        if (ma_nhan_khau.equals("") || co_quan_khai_bao.equals("") || this.ngay_bat_dau == null || this.ngay_ket_thuc == null || ly_do.equals("")) {
+        if (ma_nhan_khau.equals("") || noi_tam_tru.equals("") || this.ngay_bat_dau.getValue() == null || this.ngay_ket_thuc.getValue() == null || ly_do.equals("")) {
             Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/alert.fxml");
         } else {
             Date ngay_bat_dau = Date.valueOf(this.ngay_bat_dau.getValue());
@@ -53,10 +53,11 @@ public class DangKyTamVangController implements Initializable {
                 connection = DBConnection.getConnection();
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, ma_nhan_khau);
-                preparedStatement.setString(2, co_quan_khai_bao);
-                preparedStatement.setDate(3, ngay_bat_dau);
-                preparedStatement.setDate(4, ngay_ket_thuc);
-                preparedStatement.setString(5, ly_do);
+                preparedStatement.setString(2, "");
+                preparedStatement.setString(3, noi_tam_tru);
+                preparedStatement.setDate(4, ngay_bat_dau);
+                preparedStatement.setDate(5, ngay_ket_thuc);
+                preparedStatement.setString(6, ly_do);
                 preparedStatement.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -72,6 +73,6 @@ public class DangKyTamVangController implements Initializable {
     }
 
     private void getQuery() {
-        query = "INSERT INTO tam_tru (maNhanKhau, coQuanKhaiBao, ngayBatDau, ngayKetThuc, lyDo) VALUES (?, ?, ?, ?, ?)";
+        query = "INSERT INTO tam_vang (idNhanKhau, maGiayTamVang, noiTamTru, tuNgay, denNgay, lyDo) VALUES (?, ?, ?, ?, ?, ?)";
     }
 }

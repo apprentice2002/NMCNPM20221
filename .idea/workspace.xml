@@ -6,11 +6,41 @@
   <component name="ChangeListManager">
     <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/ho-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/ho-khau.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamTruController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamTruController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamVangController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/DangKyTamVangController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/NhanKhauController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/NhanKhauController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/ThemNhanKhauController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/nhan_khau/ThemNhanKhauController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/TamVang.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/entities/TamVang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/views/nhan-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/TamTru.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/entities/TamTru.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/TamVang.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/DangKyTamTruController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/DangKyTamTruController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/DangKyTamVangController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/DangKyTamVangController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/NhanKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/NhanKhauController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThemNhanKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThemNhanKhauController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/entities/TamVang.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/dang-ky-tam-tru.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/dang-ky-tam-vang.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/trang-chu-chuc-nang-view/dang-nhap.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan-khau-chuc-nang-view/dang-ky-tam-tru.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan-khau-chuc-nang-view/dang-ky-tam-vang.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan-khau-chuc-nang-view/danh-sach-tam-tru.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan-khau-chuc-nang-view/danh-sach-tam-vang.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan-khau-chuc-nang-view/them-nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan-khau.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan_khau/DangKyTamTruController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan_khau/DangKyTamVangController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan_khau/DanhSachTamTruController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/DanhSachTamTruController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan_khau/DanhSachTamVangController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/DanhSachTamVangController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan_khau/NhanKhauController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan_khau/ThayDoiNhanKhauController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/nhan_khau/ThemNhanKhauController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/nhan-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/nhan-khau.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +74,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau" />
+  </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\java\com\cnpm\controllers\nhan_khau" />
+      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\nhan-khau-chuc-nang-view" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\chuc-nang-view" />
       <recent name="C:\Users\Nguyen Minh\IdeaProjects\NMCNPM20221\src\main\resources\com\cnpm" />
       <recent name="C:\Users\Nguyen Minh\IdeaProjects\NMCNPM20221\src\main\resources\com\cnpm\views" />
     </key>
@@ -98,7 +136,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676798176262</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="up">
+      <created>1676823629368</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676823629368</updated>
+    </task>
+    <task id="LOCAL-00003" summary="up">
+      <created>1676823640821</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676823640821</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

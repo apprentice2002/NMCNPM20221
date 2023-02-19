@@ -31,7 +31,6 @@ public class ThemNhanKhauController implements Initializable {
     @FXML private TextField noi_sinh;
     @FXML private TextField noi_thuong_tru;
     @FXML private TextField quoc_tich;
-    @FXML private TextField so_dien_thoai;
     @FXML private TextField tien_an;
     @FXML private TextField ton_giao;
     @FXML private TextField trinh_do_chuyen_mon;
@@ -55,7 +54,6 @@ public class ThemNhanKhauController implements Initializable {
         String trinh_do_chuyen_mon = this.trinh_do_chuyen_mon.getText();
         String trinh_do_ngoai_ngu = this.trinh_do_ngoai_ngu.getText();
         String tien_an = this.tien_an.getText();
-        String so_dien_thoai = this.so_dien_thoai.getText();
         String ho_ten = this.ho_ten.getText();
         String bi_danh = this.bi_danh.getText();
         String gioi_tinh = this.gioi_tinh.getText();
@@ -92,8 +90,6 @@ public class ThemNhanKhauController implements Initializable {
                 preparedStatement.setString(14, nghe_nghiep);
                 preparedStatement.setString(15, noi_lam_viec);
                 preparedStatement.setString(16, tien_an);
-                preparedStatement.setString(17, so_dien_thoai);
-
 
                 preparedStatement.execute();
             } catch (SQLException e) {
@@ -101,13 +97,15 @@ public class ThemNhanKhauController implements Initializable {
             }
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
+
+            Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/thanh-cong.fxml");
         }
     }
 
     private void getQuery() {
         query = "INSERT INTO nhan_khau (hoTen, bietDanh, namSinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, " +
-                "noiThuongTru, diaChiHienNay, trinhDoChuyenMon, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, tienAn, soDienThoai) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "noiThuongTru, diaChiHienNay, trinhDoChuyenMon, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, tienAn) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override

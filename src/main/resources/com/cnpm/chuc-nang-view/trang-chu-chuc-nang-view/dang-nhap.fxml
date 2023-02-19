@@ -24,7 +24,7 @@
       <Label layoutX="297.0" layoutY="115.0" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #02bed3;" />
       <Label layoutX="297.0" layoutY="175.0" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #02bed3;" />
       <Label alignment="CENTER" prefHeight="383.0" prefWidth="280.0" style="-fx-background-color: #02bed3;" />
-      <Label layoutX="26.0" layoutY="63.0" text="Nhập môn Công nghệp phần mềm" textFill="#285479">
+      <Label layoutX="26.0" layoutY="63.0" text="Nhập môn Công nghệ phần mềm" textFill="#285479">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

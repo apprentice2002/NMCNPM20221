@@ -190,4 +190,14 @@ public class NhanKhauController implements Initializable {
     public void thayDoiNhanKhau(ActionEvent event) {
         Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/thay-doi-nhan-khau.fxml");
     }
+
+    @FXML
+    public void danhSachTamTru(ActionEvent event) {
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/danh-sach-tam-tru.fxml");
+    }
+
+    @FXML
+    public void danhSachTamVang(ActionEvent event) {
+        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/danh-sach-tam-vang.fxml");
+    }
 }
