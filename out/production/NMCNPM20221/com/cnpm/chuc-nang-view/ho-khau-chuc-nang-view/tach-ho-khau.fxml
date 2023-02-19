@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.ho_khau.TachHoKhauController">
+   <children>
+      <TableView fx:id="hoKhauTable" layoutX="18.0" layoutY="157.0" prefHeight="450.0" prefWidth="270.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+         <columns>
+            <TableColumn fx:id="maHoKhauCol" prefWidth="75.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID Hộ khẩu" />
+            <TableColumn fx:id="hoTenChuHoCol" prefWidth="100.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên chủ hộ" />
+            <TableColumn fx:id="diaChiCol" prefWidth="94.39999999999998" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Địa chỉ" />
+         </columns>
+      </TableView>
+      <ChoiceBox fx:id="optionChoiceBox" layoutX="149.0" layoutY="83.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+      <Label fx:id="hoTenChuHoCu" layoutX="423.0" layoutY="157.0" prefHeight="18.0" prefWidth="149.0" style="-fx-text-fill: #00305b;" />
+      <Label fx:id="hoTenChuHoMoi" layoutX="490.0" layoutY="405.0" prefHeight="18.0" prefWidth="118.0" style="-fx-text-fill: #00305b;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Button fx:id="moveToNew" layoutX="602.0" layoutY="384.0" mnemonicParsing="false" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 30; -fx-border-color: #00305b; -fx-border-radius: 30;" text="&gt;&gt;" />
+      <Button fx:id="moveToOld" layoutX="602.0" layoutY="436.0" mnemonicParsing="false" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 30; -fx-border-color: #00305b; -fx-border-radius: 30;" text="&lt;&lt;" />
+      <TableView fx:id="nhanKhauNewTable" layoutX="668.0" layoutY="270.0" prefHeight="308.0" prefWidth="270.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+         <columns>
+            <TableColumn fx:id="maNhanKhauNewCol" prefWidth="87.20013427734375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID Nhân khẩu" />
+            <TableColumn fx:id="hoTenNhanKhauNewCol" prefWidth="94.39990234375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
+            <TableColumn fx:id="quanHeVoiChuHoNewCol" prefWidth="87.99997558593748" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Quan hệ với chủ hộ" />
+         </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00305b" height="54.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="960.0" />
+      <Label layoutX="15.0" layoutY="17.0" style="-fx-text-fill: #f5f5f5;" text="Tách hộ khẩu">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="871.0" layoutY="593.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 30; -fx-border-color: #00305b; -fx-border-radius: 30;" text="Xác nhận" />
+      <Label layoutX="14.0" layoutY="70.0" style="-fx-text-fill: #00305b;" text="Tìm Hộ Khẩu" />
+      <Label layoutX="18.0" layoutY="139.0" style="-fx-text-fill: #00305b;" text="Chọn mã Hộ Khẩu cần Tách" textAlignment="JUSTIFY" />
+      <Label layoutX="295.0" layoutY="238.0" prefHeight="18.0" prefWidth="157.0" style="-fx-text-fill: #00305b;" text="Chọn người sang hộ mới">
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </Label>
+      <TextField fx:id="maHoKhauTim" layoutX="14.0" layoutY="95.0" prefHeight="26.0" prefWidth="110.0" promptText="Tìm kiếm" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Button fx:id="cancleBtn" layoutX="682.0" layoutY="593.0" mnemonicParsing="false" onAction="#cancle" style="-fx-background-color: #79a5cd; -fx-text-fill: #f5f5f5; -fx-background-radius: 30; -fx-border-color: #00305b; -fx-border-radius: 30;" text="Hủy" />
+      <Label layoutX="305.0" layoutY="192.0" style="-fx-text-fill: #00305b;" text="Chủ hộ hiện tại :" />
+      <Label layoutX="668.0" layoutY="229.0" style="-fx-text-fill: #00305b;" text="Chủ hộ mới :" />
+      <TextField fx:id="chuHoCuTxt" editable="false" layoutX="422.0" layoutY="187.0" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField fx:id="chuHoMoiTxt" editable="false" layoutX="789.0" layoutY="224.0" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField fx:id="maKhuVucTxt" layoutX="785.0" layoutY="116.0" prefHeight="24.0" prefWidth="150.0" promptText="Nhập mã khu vực hộ mới" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TextField fx:id="diaChiTxt" layoutX="785.0" layoutY="80.0" prefHeight="24.0" prefWidth="150.0" promptText="Nhập địa chỉ hộ mới" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label layoutX="668.0" layoutY="121.0" style="-fx-text-fill: #00305b;" text="Mã khu vực :" />
+      <Label layoutX="668.0" layoutY="85.0" style="-fx-text-fill: #00305b;" text="Địa chỉ :" />
+      <TextField fx:id="maHoKhauTxt" editable="false" layoutX="422.0" layoutY="151.0" prefHeight="24.0" prefWidth="150.0" style="-fx-background-color: #EBEBE4; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label layoutX="305.0" layoutY="156.0" style="-fx-text-fill: #00305b;" text="ID hộ khẩu hiện tại:" />
+      <Label layoutX="668.0" layoutY="192.0" style="-fx-text-fill: #00305b;" text="ID chủ hộ mới :" />
+      <TextField fx:id="maChuHoMoiTxt" layoutX="789.0" layoutY="187.0" prefHeight="24.0" prefWidth="150.0" promptText="Nhập mã chủ hộ mới" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <Label fx:id="maHoKhauMoi" layoutX="668.0" layoutY="156.0" style="-fx-text-fill: #00305b;" text="Mã hộ khẩu mới :" />
+      <TextField fx:id="maHoKhauMoiTxt" layoutX="789.0" layoutY="151.0" prefHeight="24.0" prefWidth="150.0" promptText="Nhập mã hộ mới" style="-fx-background-color: #fefefe; -fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-radius: 12;" />
+      <TableView fx:id="nhanKhauOldTable" layoutX="305.0" layoutY="270.0" prefHeight="308.0" prefWidth="270.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
+         <columns>
+            <TableColumn fx:id="maNhanKhauOldCol" prefWidth="88.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID Nhân khẩu" />
+            <TableColumn fx:id="hoTenNhanKhauOldCol" prefWidth="93.5999755859375" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ tên" />
+            <TableColumn fx:id="quanHeVoiChuHoOldCol" prefWidth="81.59996032714844" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Quan hệ với chủ hộ" />
+         </columns>
+      </TableView>
+      <Label fx:id="errorLab" layoutX="305.0" layoutY="91.0" prefHeight="22.0" prefWidth="345.0" text="Lab" textAlignment="JUSTIFY" textFill="#ff0101">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
