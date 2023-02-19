@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cnpm.controllers.nhan_khau.ThemNhanKhauController">
+   <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #79a5cd;" text="Thêm nhân khẩu" textFill="WHITESMOKE">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+   <Label layoutX="15.0" layoutY="84.0" text="Họ Tên (*)" />
+   <TextField fx:id="ho_ten" layoutX="110.0" layoutY="80.0" />
+   <Label layoutX="15.0" layoutY="184.0" text="Ngày sinh (*)" />
+   <Label layoutX="15.0" layoutY="284.0" text="Nơi sinh " />
+   <TextField fx:id="noi_sinh" layoutX="110.0" layoutY="280.0" />
+   <Label layoutX="15.0" layoutY="334.0" text="Nguyên quán (*)" />
+   <TextField fx:id="nguyen_quan" layoutX="110.0" layoutY="330.0" />
+   <Label layoutX="15.0" layoutY="384.0" text="Dân tộc" />
+   <TextField fx:id="dan_toc" layoutX="110.0" layoutY="380.0" />
+   <Label layoutX="15.0" layoutY="434.0" text="Quốc tịch (*)" />
+   <TextField fx:id="quoc_tich" layoutX="110.0" layoutY="430.0" />
+   <Label layoutX="305.0" layoutY="284.0" text="Nghề nghiệp" />
+   <TextField fx:id="nghe_nghiep" layoutX="430.0" layoutY="280.0" />
+   <Label layoutX="305.0" layoutY="334.0" text="Nơi làm việc" />
+   <TextField fx:id="noi_lam_viec" layoutX="430.0" layoutY="330.0" />
+   <Label layoutX="15.0" layoutY="484.0" text="Tôn giáo" />
+   <TextField fx:id="ton_giao" layoutX="110.0" layoutY="480.0" />
+   <Label layoutX="15.0" layoutY="134.0" text="Bí danh" />
+   <Label layoutX="15.0" layoutY="234.0" text="Giới tính (*)" />
+   <TextField fx:id="bi_danh" layoutX="110.0" layoutY="130.0" />
+   <TextField fx:id="gioi_tinh" layoutX="110.0" layoutY="230.0" />
+   <DatePicker fx:id="ngay_sinh" layoutX="110.0" layoutY="180.0" prefHeight="25.0" prefWidth="149.0" />
+   <JFXButton layoutX="350.0" layoutY="480.0" onAction="#xacNhan" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Xác nhận" textFill="WHITE" />
+   <JFXButton layoutX="450.0" layoutY="480.0" onAction="#huy" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #00305b;" text="Hủy" textFill="WHITE" />
+   <TextField fx:id="noi_thuong_tru" layoutX="430.0" layoutY="80.0" />
+   <TextField fx:id="dia_chi_hien_nay" layoutX="430.0" layoutY="130.0" />
+   <TextField fx:id="trinh_do_chuyen_mon" layoutX="430.0" layoutY="180.0" />
+   <TextField fx:id="trinh_do_ngoai_ngu" layoutX="430.0" layoutY="230.0" />
+   <TextField fx:id="tien_an" layoutX="430.0" layoutY="430.0" />
+   <Label layoutX="305.0" layoutY="84.0" text="Nơi thường trú" />
+   <Label layoutX="305.0" layoutY="134.0" text="Địa chỉ hiện nay (*)" />
+   <Label layoutX="305.0" layoutY="184.0" text="Trình độ chuyên môn" />
+   <Label layoutX="305.0" layoutY="234.0" text="Trình độ ngoại ngữ" />
+   <Label layoutX="305.0" layoutY="434.0" text="Tiền án" />
+</AnchorPane>
