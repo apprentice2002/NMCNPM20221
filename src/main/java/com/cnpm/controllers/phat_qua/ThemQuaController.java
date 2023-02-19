@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -24,9 +25,7 @@ public class ThemQuaController implements Initializable {
 
 
     @FXML
-    private TextField note;
-    @FXML
-    private TextField  them_id_phat_qua;
+    private Label errorLabel;
     @FXML
     private TextField  them_id_dot_phat_qua;
 
@@ -34,8 +33,7 @@ public class ThemQuaController implements Initializable {
     private TextField   them_ma_nhan_khau;
     @FXML
     private TextField  them_id_qua;
-    @FXML
-    private TextField  them_da_duyet;
+
 
     String query = null;
     Connection connection = null;
@@ -55,8 +53,9 @@ public class ThemQuaController implements Initializable {
 
         if (them_id_dot_phat_qua.getText().equals("") || them_ma_nhan_khau.getText().equals("")
                 || them_id_qua.getText().equals("") ){
-            note.setText("Vui lòng điền đủ thông tin cần thiết");
+            errorLabel.setText("Vui lòng điền đủ thông tin cần thiết");
         } else {
+            errorLabel.setText("");
             int idDotPhat = Integer.parseInt(them_id_dot_phat_qua.getText());
             int idNhanKhau=Integer.parseInt(them_ma_nhan_khau.getText());
             int idQua = Integer.parseInt(them_id_qua.getText());
@@ -64,7 +63,6 @@ public class ThemQuaController implements Initializable {
             try {
                 connection = DBConnection.getConnection();
                 preparedStatement = connection.prepareStatement(query);
-//                preparedStatement.setInt(1, idPhatQua);
                 preparedStatement.setInt(1,  idDotPhat);
                 preparedStatement.setInt(2, idNhanKhau);
                 preparedStatement.setInt(3, idQua);
@@ -84,6 +82,7 @@ public class ThemQuaController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        errorLabel.setText("");
     }
 
 }

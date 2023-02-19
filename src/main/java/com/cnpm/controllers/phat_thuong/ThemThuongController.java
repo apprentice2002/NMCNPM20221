@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -26,7 +27,7 @@ public class ThemThuongController implements Initializable {
 
 
     @FXML
-    private TextField  note;
+    private Label errorLabel;
 
     @FXML
     private TextField them_id_dot_phat;
@@ -52,11 +53,12 @@ public class ThemThuongController implements Initializable {
     public void xacNhan(ActionEvent event) throws IOException {
         if (them_id_dot_phat.getText().equals("")|| them_id_minh_chung.getText().equals("")
             || them_id_qua.getText().equals("") ){
-            note.setText("Vui lòng điền đủ thông tin cần thiết");
+            errorLabel.setText("Vui lòng điền đủ thông tin cần thiết");
     } else {
-            int  idDotPhat = Integer.parseInt(them_id_dot_phat.getText());
-            int  idMinhChung=Integer.parseInt(them_id_minh_chung.getText());
-            int  idQua = Integer.parseInt(them_id_qua.getText());
+            errorLabel.setText("");
+            int idDotPhat = Integer.parseInt(them_id_dot_phat.getText());
+            int idMinhChung=Integer.parseInt(them_id_minh_chung.getText());
+            int idQua = Integer.parseInt(them_id_qua.getText());
             getQuery();
             try {
                 connection = DBConnection.getConnection();
@@ -79,6 +81,7 @@ public class ThemThuongController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        errorLabel.setText("");
     }
 
 }

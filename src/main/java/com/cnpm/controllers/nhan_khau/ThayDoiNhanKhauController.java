@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ThayDoiNhanKhauController implements Initializable {
@@ -151,6 +152,23 @@ public class ThayDoiNhanKhauController implements Initializable {
                 }
                 else{
                     errorLab.setText("Nhân khẩu không tồn tại!");
+                    ho_ten.setText("");
+                    bi_danh.setText("");
+                    ngay_sinh.setValue(null);
+                    gioi_tinh.setText("");
+                    noi_sinh.setText("");
+                    nguyen_quan.setText("");
+                    dan_toc.setText("");
+                    quoc_tich.setText("");
+                    ton_giao.setText("");
+                    noi_thuong_tru.setText("");
+                    dia_chi_hien_nay.setText("");
+                    trinh_do_chuyen_mon.setText("");
+                    trinh_do_ngoai_ngu.setText("");
+                    nghe_nghiep.setText("");
+                    noi_lam_viec.setText("");
+                    so_dien_thoai.setText("");
+                    tien_an.setText("");
                 }
 
                 connection.close();
