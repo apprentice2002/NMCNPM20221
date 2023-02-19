@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="update view theo y sep Tung">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/dang-nhap.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/dang-nhap.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/ho-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/ho-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/thong_ke_phat_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/thong_ke_phat_qua.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/thong_ke_thuong.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/scenes/thong_ke_thuong.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,24 +49,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_directory_selection": "C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/src/main/java/com",
-    "last_opened_file_path": "C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/.idea/libraries",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4091954",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "project.propCompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/src/main/java/com&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nguyen Minh/IdeaProjects/NMCNPM20221/.idea/libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4091954&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nguyen Minh\IdeaProjects\NMCNPM20221\src\main\resources\com\cnpm" />
