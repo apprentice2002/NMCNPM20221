@@ -57,10 +57,6 @@ public class NhanKhauController implements Initializable {
         }
     }
 
-    @FXML
-    public void themNhanKhau(ActionEvent event) throws IOException {
-        Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml");
-    }
 
     @FXML private ChoiceBox<String> optionChoiceBox;
     @FXML private TextField keywordTextField;
@@ -116,12 +112,7 @@ public class NhanKhauController implements Initializable {
         refresh();
     }
 
-    private void restartScene(Scene scene) {
-        Stage stage = (Stage) scene.getWindow();
-        stage.hide();
-        stage.setScene(scene);
-        stage.show();
-    }
+
 
     @FXML
     public void dangKyTamVang(ActionEvent event) throws IOException {
@@ -177,13 +168,14 @@ public class NhanKhauController implements Initializable {
                     PreparedStatement preparedStatement = connection.prepareStatement(delete_query);
                     preparedStatement.setString(1, nhanKhau.getHo_ten());
                     preparedStatement.execute();
+                    refresh();
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             confirmationStage.close();
-            restartScene(table.getScene());
         });
+
     }
 
     @FXML
