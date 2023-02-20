@@ -98,7 +98,7 @@ public class ThemNhanKhauController implements Initializable {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
 
-            Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/thanh-cong.fxml");
+            Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/xoa-thanh-cong.fxml");
         }
     }
 

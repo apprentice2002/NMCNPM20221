@@ -91,7 +91,6 @@ public class HoKhauController implements Initializable {
 
         maHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("maHoKhau"));
         hoTenChuHoCol.setCellValueFactory(new PropertyValueFactory<>("hoTenChuHo"));
-        xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
         diaChiCol.setCellValueFactory(new PropertyValueFactory<>("diaChiHoKhau"));
         soThanhVienCol.setCellValueFactory(new PropertyValueFactory<>("soThanhVien"));
 
@@ -146,111 +145,7 @@ public class HoKhauController implements Initializable {
     public void lichSuThayDoi(ActionEvent event) {
         Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/lich-su-thay-doi.fxml");
     }
-    public void xoaHoKhau(ActionEvent event) {
-        boolean canDelete = false;
-        for(HoKhauTableModel hk : table.getItems()) {
-            if(hk.getDeleteBox().isSelected()) canDelete = true;
-        }
-        if(canDelete) {
-            // Nảy ra màn hình liệu có tiếp tục muốn xóa
-            // Tạo ra scene
-            Button yesButton = new Button("Có");
-            yesButton.setPrefSize(100, 40);
-            yesButton.getStyleClass().add("yes-button");
 
-            Button noButton = new Button("Không");
-            noButton.setPrefSize(100, 40);
-            noButton.getStyleClass().add("no-button");
-
-            GridPane confirmationLayout = new GridPane();
-            confirmationLayout.setVgap(10);
-            confirmationLayout.setHgap(10);
-            confirmationLayout.setPadding(new Insets(20, 20, 20, 20));
-            confirmationLayout.add(new Label("Bạn có muốn tiếp tục xóa hộ khẩu này không ?"), 0, 0, 2, 1);
-            confirmationLayout.add(yesButton, 0, 1);
-            confirmationLayout.add(noButton, 1, 1);
-
-            Scene confirmationScene = new Scene(confirmationLayout, 300, 100);
-            Stage confirmationStage = new Stage();
-            confirmationStage.setScene(confirmationScene);
-            confirmationStage.show();
-            //Tìm kiếm những hộ khẩu được tích checkbox
-            ObservableList<HoKhauTableModel> dataListRemove = FXCollections.observableArrayList();
-            for (HoKhauTableModel hoKhau: table.getItems()) {
-                if(hoKhau.getDeleteBox().isSelected()) {
-                    dataListRemove.add(hoKhau);
-                }
-            }
-
-            noButton.setOnAction(e1 -> {
-                confirmationStage.close();
-            });
-
-            yesButton.setOnAction(e2 -> {
-                //Cập nhật CSDL khi xóa hộ khẩu
-                String delteHKSql = "UPDATE ho_khau SET daXoa = 1 WHERE ID = ?";
-                String delteQHSql = "DELETE FROM thanh_vien_cua_ho WHERE IdHoKhau = ?";
-                Connection connection = DBConnection.getConnection();
-                Date ngayTao = new Date(System.currentTimeMillis());
-                ObservableList<NhanKhauTableModel> nhanKhauRemove = FXCollections.observableArrayList();
-                try {
-                    PreparedStatement preparedDeleteHKStmt = connection.prepareStatement(delteHKSql);
-                    PreparedStatement preparedDeleteQHStmt = connection.prepareStatement(delteQHSql);
-                    for(HoKhauTableModel hoKhau: dataListRemove) {
-                        String idHoKhau  = hoKhau.getMaHoKhau();
-                        preparedDeleteQHStmt.setString(1,idHoKhau);
-                        preparedDeleteHKStmt.setString(1,idHoKhau);
-                        // Cập nhật lịch sử thay đổi hộ khẩu
-                        String updateLSTDSql = "INSERT INTO lich_su_thay_doi (NgayThayDoi, GhiChu) VALUES (?, ?)";
-                        String updateLSTDHKSql = "INSERT INTO lich_su_thay_doi_ho_khau (ThayDoiChuHo, ThemNhanKhau, XoaNhanKhau, IdHoKhau, IdNhanKhau, IdLSTD) VALUES  (?, ?, ?, ?, ?, ?)";
-                        PreparedStatement preparedStmtUpdateLSHK = connection.prepareStatement(updateLSTDHKSql);
-                        PreparedStatement preparedStmtUpdateLS = connection.prepareStatement(updateLSTDSql);
-                        preparedStmtUpdateLS.setDate(1,ngayTao);
-                        preparedStmtUpdateLS.setString(2,"Xóa hộ khẩu");
-                        preparedStmtUpdateLS.execute();
-                        String selectLastId = "SELECT LAST_INSERT_ID()";
-                        int lastId = 0;
-                        try (PreparedStatement preparedStatement = connection.prepareStatement(selectLastId)) {
-                            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                                while (resultSet.next()) {
-                                    lastId = resultSet.getInt(1);
-                                }
-                            }
-                        }
-                        String nhanKhauAddSql = "Select * from nhan_khau,thanh_vien_cua_ho where  thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID and thanh_vien_cua_ho.idHoKhau = ? and nhan_khau.daXoa is NULL";
-                        PreparedStatement  preparedAddNhanKhauStmt= connection.prepareStatement(nhanKhauAddSql);
-                        preparedAddNhanKhauStmt.setString(1,hoKhau.getMaHoKhau());
-                        ResultSet queryResult = preparedAddNhanKhauStmt.executeQuery();
-                        // Tìm các nhân khẩu có mã hộ khẩu xóa
-                        while (queryResult.next()) {
-                            nhanKhauRemove.add(new NhanKhauTableModel(
-                                    queryResult.getString("ID"),
-                                    queryResult.getString("hoTen"),
-                                    queryResult.getString("quanHeVoiChuHo")
-                            ));
-                        }
-                        for (NhanKhauTableModel nhanKhau : nhanKhauRemove) {
-                            preparedStmtUpdateLSHK.setString(1,"0");
-                            preparedStmtUpdateLSHK.setString(2, "0");
-                            preparedStmtUpdateLSHK.setString(3, "1");
-                            preparedStmtUpdateLSHK.setString(4, hoKhau.getMaHoKhau());
-                            preparedStmtUpdateLSHK.setString(5, nhanKhau.getMaNhanKhau());
-                            preparedStmtUpdateLSHK.setInt(6,lastId );
-                            preparedStmtUpdateLSHK.execute();
-                            preparedDeleteQHStmt.execute();
-                            preparedDeleteHKStmt.execute();
-                        }
-                    }
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-                refreshTable();
-                confirmationStage.close();
-            });
-        } else {
-            errorLab.setText("Vui lòng chọn ít nhất 1 hộ khẩu cần xóa !");
-        }
-    }
 
     public void themThanhVien(ActionEvent event) {
         Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-thanh-vien.fxml");

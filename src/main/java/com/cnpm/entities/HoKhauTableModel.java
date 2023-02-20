@@ -8,7 +8,6 @@ import java.sql.Date;
 public class HoKhauTableModel extends HoKhau {
 
     private String hoTenChuHo;
-    private CheckBox deleteBox;
     private String themNhanKhau;
     private Date ngayThayDoi;
     private String xoaNhanKhau;
@@ -34,7 +33,6 @@ public class HoKhauTableModel extends HoKhau {
         this.setMaHoKhau(maHoKhau);
         this.setSoThanhVien(soThanhVien);
         this.setDiaChiHoKhau(diaChi);
-        this.deleteBox = new CheckBox();
     }
 
     public HoKhauTableModel(String maHoKhau, String tenChuHo, String diaChiHoKhau) {
@@ -67,9 +65,6 @@ public class HoKhauTableModel extends HoKhau {
         return super.getMaHoKhau();
     }
 
-    public CheckBox getDeleteBox() {
-        return deleteBox;
-    }
 
     @Override
     public String getDiaChiHoKhau() {

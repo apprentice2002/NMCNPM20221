@@ -74,12 +74,12 @@ public class ThemHoKhauController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
         maNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("maNhanKhau"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTenNhanKhau"));
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
-
         errorLab.setText("");
+
+        insertTable();
 
         quanHeVoiChuHoCol.setCellFactory(column -> {
             return new TableCell<NhanKhauTableModel, String>() {
@@ -104,28 +104,7 @@ public class ThemHoKhauController implements Initializable {
 
 
         pickMemberBtn.setOnAction(event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/chon-nhan-khau.fxml"));
-                Parent root = loader.load();
-                ChonNhanKhauController controller = loader.getController();
-                controller.setSharedDataModel(sharedDataModel);
-                Scene nhanKhauScene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setTitle("Chọn Nhân khẩu");
-                stage.setScene(nhanKhauScene);
-                stage.show();
-                System.out.println(sharedDataModel.getSelectedRows().size());
-                stage.setOnHidden(e -> {
-                    nhanKhauTable.getItems().clear();
-                    for (NhanKhauTableModel nk : sharedDataModel.getSelectedRows()) {
-                        if(!containsNhanKhau(nhanKhauTable.getItems(), nk.getHoTenNhanKhau())) {
-                            nhanKhauTable.getItems().add(nk);
-                        }
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                Utilities.popNewWindow(event,"/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml");
         });
         deleteNhanKhauBtn.setOnAction(event -> {
             NhanKhauTableModel selectedItem = nhanKhauTable.getSelectionModel().getSelectedItem();
@@ -181,6 +160,37 @@ public class ThemHoKhauController implements Initializable {
                 }
             }
         });
+    }
+
+    @FXML
+    public void refresh(ActionEvent event){
+        nhanKhauTable.getItems().clear();
+        insertTable();
+    }
+
+    public void insertTable(){
+        try {
+            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM" +
+                    " nhan_khau WHERE nhan_khau.daXoa is null EXCEPT (SELECT DISTINCT " +
+                    "nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau," +
+                    "thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND " +
+                    "thanh_vien_cua_ho.quanHeVoiChuHo is not null);";
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(nhanKhauSql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                NhanKhauTableModel nhanKhau = new NhanKhauTableModel(queryResult.getString("MaNhanKhau"),
+                        queryResult.getString("hoTen"),"");
+                nhanKhauTable.getItems().add(nhanKhau);
+            }
+            maNhanKhauCol.setSortType(TableColumn.SortType.ASCENDING);
+            nhanKhauTable.getSortOrder().clear();
+            nhanKhauTable.getSortOrder().add(maNhanKhauCol);
+            nhanKhauTable.sort();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
