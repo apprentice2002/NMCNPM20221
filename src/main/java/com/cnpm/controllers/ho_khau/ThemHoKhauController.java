@@ -62,12 +62,7 @@ public class ThemHoKhauController implements Initializable {
     private ChoiceBox<String> choiceBox;
     @FXML
     private Button deleteNhanKhauBtn;
-    @FXML
-    private Button deleteAllNhanKhauBtn;
 
-    private boolean containsNhanKhau(ObservableList<NhanKhauTableModel> list, String name){
-        return list.stream().map(NhanKhauTableModel::getHoTenNhanKhau).filter(name::equals).findFirst().isPresent();
-    }
     private void removeNhanKhau(NhanKhauTableModel selectedRow) {
         sharedDataModel.getSelectedRows().removeIf(obj->obj.getHoTenNhanKhau().equals(selectedRow.getHoTenNhanKhau()));
     }
@@ -102,26 +97,35 @@ public class ThemHoKhauController implements Initializable {
             };
         });
 
-
         pickMemberBtn.setOnAction(event -> {
                 Utilities.popNewWindow(event,"/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml");
         });
+
         deleteNhanKhauBtn.setOnAction(event -> {
             NhanKhauTableModel selectedItem = nhanKhauTable.getSelectionModel().getSelectedItem();
+            int ma_nhan_khau = Integer.parseInt(selectedItem.getMaNhanKhau());
+
+            String delteNKSql = "DELETE FROM nhan_khau WHERE ID = ?";
+            Connection connection = DBConnection.getConnection();
+
+            try{
+                PreparedStatement preparedDelete = connection.prepareStatement(delteNKSql);
+                preparedDelete.setInt(1,ma_nhan_khau);
+                preparedDelete.execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             removeNhanKhau(selectedItem);
             nhanKhauTable.getItems().removeIf(obj->obj.getHoTenNhanKhau().equals(selectedItem.getHoTenNhanKhau()));
         });
-        deleteAllNhanKhauBtn.setOnAction(event -> {
-            nhanKhauTable.getItems().clear();
-            sharedDataModel.removeAllRow();
-            nhanKhauTable.getSelectionModel().clearSelection();
-        });
+
 
         maChuHoTxt.textProperty().addListener((observable, oldValue, newValue) -> {
             errorLab.setText("");
             if(newValue.length()>=2) {
                 //Tìm kiếm họ tên của mã chủ hộ mới
-                String findHoTenChuHoSql = "SELECT DISTINCT nhan_khau.ID, hoTen as HoTen, namSinh as NgaySinh, soCMT as SoCCCD FROM nhan_khau, chung_minh_thu WHERE nhan_khau.ID = ? AND nhan_khau.ID = chung_minh_thu.idNhanKhau ;";
+                String findHoTenChuHoSql = "SELECT DISTINCT nhan_khau.ID, hoTen as HoTen, namSinh  as NgaySinh , diaChiHienNay FROM nhan_khau WHERE nhan_khau.ID = ?  ;";
                 try {
                     PreparedStatement preparedStmtFindName = connection.prepareStatement(findHoTenChuHoSql);
                     preparedStmtFindName.setString(1,maChuHoTxt.getText());
@@ -139,7 +143,7 @@ public class ThemHoKhauController implements Initializable {
                         } else {
                             ngaySinhChuHoTxt.setText(ngaySnhChuHo);
                         }
-                        String cccd = rs.getString("SoCCCD");
+                        String cccd = rs.getString("diaChiHienNay");
                         if(cccdChuHoTxt.equals("")) {
                             cccdChuHoTxt.setText("");
                         } else {
@@ -170,11 +174,15 @@ public class ThemHoKhauController implements Initializable {
 
     public void insertTable(){
         try {
-            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM" +
-                    " nhan_khau WHERE nhan_khau.daXoa is null EXCEPT (SELECT DISTINCT " +
-                    "nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM nhan_khau," +
-                    "thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau AND " +
-                    "thanh_vien_cua_ho.quanHeVoiChuHo is not null);";
+            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM\n" +
+                    "                                    nhan_khau WHERE nhan_khau.daXoa is null\n" +
+                    "                                    EXCEPT \n" +
+                    "                                    (SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen\n" +
+                    "                                    FROM nhan_khau, thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau\n" +
+                    "                                    AND thanh_vien_cua_ho.quanHeVoiChuHo is not null)\n" +
+                    "                                    UNION\n" +
+                    "                                    (SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen\n" +
+                    "                                            FROM nhan_khau, tam_tru WHERE nhan_khau.ID = tam_tru.idNhanKhau);";
             //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
             Statement statement = connection.createStatement();
             ResultSet queryResult = statement.executeQuery(nhanKhauSql);
