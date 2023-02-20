@@ -44,13 +44,13 @@ public class ThongKePhatThuongController implements Initializable {
     @FXML
     private TableView<ThongKePhatThuongTableModel> table;
     @FXML
-    private TableColumn<ThongKePhatThuongTableModel, String> idHoKhau1Col;
+    private TableColumn<ThongKePhatThuongTableModel, String> idHoKhauCol;
     @FXML
-    private TableColumn<ThongKePhatThuongTableModel, String> hoTen1Col;
+    private TableColumn<ThongKePhatThuongTableModel, String> hoTenCol;
     @FXML
-    private TableColumn<ThongKePhatThuongTableModel, String> soPhanThuong1Col;
+    private TableColumn<ThongKePhatThuongTableModel, String> soPhanThuongCol;
     @FXML
-    private TableColumn<ThongKePhatThuongTableModel, String> tongGiaTri1Col;
+    private TableColumn<ThongKePhatThuongTableModel, String> tongGiaTri;
     ThongKePhatThuongTableModel data = null;
     ObservableList<ThongKePhatThuongTableModel> listView = FXCollections.observableArrayList();
 
@@ -67,7 +67,7 @@ public class ThongKePhatThuongController implements Initializable {
     public void refresh()throws  SQLException {
         //ChoiceBox<Integer> dotPhatChoiceBox = new ChoiceBox<>();
 
-        // Lấy danh sách các đợt phát từ cơ sở dữ liệu và thêm vào choicebox
+// Lấy danh sách các đợt phát từ cơ sở dữ liệu và thêm vào choicebox
         ObservableList<String> dotPhatList = FXCollections.observableArrayList();
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
@@ -86,7 +86,7 @@ public class ThongKePhatThuongController implements Initializable {
             e.printStackTrace();
         }
 
-        // Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
+// Sử dụng choicebox để thực hiện truy vấn cơ sở dữ liệu
         dotPhatChoiceBox.setOnAction(event -> {
             table.getItems().clear();
             String tenDotPhat = dotPhatChoiceBox.getValue();
@@ -137,7 +137,7 @@ public class ThongKePhatThuongController implements Initializable {
 
                 if (resultSet.next()) {
                     int total = resultSet.getInt(1);
-                    note.setText("Tổng tiền: " + total);
+                    note.setText("Tổng tiền: " + total +  " VND");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -150,11 +150,11 @@ public class ThongKePhatThuongController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        idHoKhau1Col.setCellValueFactory(new PropertyValueFactory<>("idHoKhau1"));
-        hoTen1Col.setCellValueFactory(new PropertyValueFactory<>("hoTen1"));
-        soPhanThuong1Col.setCellValueFactory(new PropertyValueFactory<>("soPhanThuong1"));
-        tongGiaTri1Col.setCellValueFactory(new PropertyValueFactory<>("tongGiaTri1"));
-
+        idHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("idHoKhau1"));
+        hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen1"));
+        soPhanThuongCol.setCellValueFactory(new PropertyValueFactory<>("soPhanThuong1"));
+        tongGiaTri.setCellValueFactory(new PropertyValueFactory<>("tongGiaTri1"));
+        dotPhatChoiceBox.setValue("Chọn đợt phát thưởng");
         optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm id Hộ Khẩu");
         optionChoiceBox.setValue("Lựa chọn tìm kiếm");
 

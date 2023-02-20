@@ -4,150 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="merge ++">
+    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="merge +++1.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/minh_chung/ThemMinhChungController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/minh_chung/ThemMinhChungController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau/ThayDoiNhanKhauController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThemQuaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThemQuaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThemThuongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThemThuongController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/minh-chung-chuc-nang-view/them_minh_chung.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/minh-chung-chuc-nang-view/them_minh_chung.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/them_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/them_qua.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/them_thuong.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/them_thuong.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ChonNhanKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DangKyTamTruController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DangKyTamVangController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DangNhapController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/DoiChuHoController$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/MacDinhController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/MinhChung/MinhChungcontroller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/MinhChung/ThemMinhChungController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/NhanKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatQua/PhatQuaTTController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatQua/PhatQuaThuKyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatQua/ThemQuaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatQua/ThongKePhatQuaConTroller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatQuaController1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatThuong/PhatThuongTTController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatThuong/PhatThuongThuKyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatThuong/ThemThuongController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatThuong/ThongKePhatThuongController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/PhatThuongController1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TachHoKhauController$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThayDoiNhanKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemNhanKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemQuaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ThemThuongController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/TrangChuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XinCapGiayController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XoaMinhChung.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XoaQuaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/XoaThuongController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ChonNhanKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ChuyenHoKhauController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ChuyenHoKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/DoiChuHoController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/DoiChuHoController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/DoiChuHoController$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/DoiChuHoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/HoKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/LichSuThayDoiController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/TachHoKhauController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/TachHoKhauController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/TachHoKhauController$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/TachHoKhauController$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/TachHoKhauController$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/TachHoKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ThemHoKhauController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ThemHoKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ThemThanhVienController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ThemThanhVienController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ThemThanhVienController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/ho_khau/ThongKeNhanKhauController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/minh_chung/MinhChungcontroller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/minh_chung/ThemMinhChungController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/PhatQuaTTController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/PhatQuaThuKyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/ThemQuaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/PhatThuongTTController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/PhatThuongThuKyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/ThemThuongController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/HoKhau.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/HoKhauTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/HocSinh.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/MinhChung.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/NhanKhau.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/NhanKhauTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/PhatQua.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/PhatThuong.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/QuaThuong.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/QuaThuongHoKhau.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/SharedDataModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/entities/TamVang.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/LogoPOO2.0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/chuyen_ho_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/exit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/ho_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/key.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/lich_su.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/logo_bach_khoa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/nhan_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/refresh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/tach_ho_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/tam_tru.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/tam_vang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/them_ho_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/them_nguoi_vao_ho_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/them_nhan_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/xoa_ho_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/image/xoa_nhan_khau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/alert.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/chon-nhan-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/dang-ky-tam-tru.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/dang-ky-tam-vang.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/dang-nhap.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/ho-khau-chuc-nang-view/chuyen-ho-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/ho-khau-chuc-nang-view/doi-chu-ho.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/ho-khau-chuc-nang-view/lich-su-thay-doi.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/ho-khau-chuc-nang-view/tach-ho-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/ho-khau-chuc-nang-view/them-ho-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/ho-khau-chuc-nang-view/them-thanh-vien.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/home.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/thay-doi-nhan-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them-nhan-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them_minh_chung.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them_qua.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/them_thuong.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/thong_ke_phat_qua.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/thong_ke_thuong.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/trang-chu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/xoa-thanh-cong.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/xoa_minh_chung.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/xoa_qua.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/scenes/xoa_thuong.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/DBConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/MinhChungTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/PhatQuaTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/PhatThuongTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/ThongKePhatQuaTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/ThongKePhatThuongTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/UserSession.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/utilities/Utilities.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/base-display.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/ho-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/mac-dinh.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/minh_chung.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/nhan-khau.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat-qua_thu_ky.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat_qua_TT.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat_thuong1.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat_thuong_TT.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/phat_thuong_thu_ky.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/thong-ke.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cnpm/views/xin-cap-giay.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +162,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676832605833</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="merge +++1.1">
+      <created>1676836739468</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676836739468</updated>
+    </task>
+    <task id="LOCAL-00011" summary="merge +++1.1">
+      <created>1676836754393</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676836754393</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -319,7 +196,8 @@
     <MESSAGE value="up" />
     <MESSAGE value="upp" />
     <MESSAGE value="merge ++" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge ++" />
+    <MESSAGE value="merge +++1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge +++1.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

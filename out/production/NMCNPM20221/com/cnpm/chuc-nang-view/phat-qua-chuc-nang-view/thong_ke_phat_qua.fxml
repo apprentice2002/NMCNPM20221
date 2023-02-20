@@ -7,26 +7,28 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.cnpm.controllers.phat_qua.ThongKePhatQuaConTroller"
-            prefHeight="400.0" prefWidth="780.0">
+            prefHeight="400.0" prefWidth="600.0">
     <TableView fx:id="table" layoutX="30.0" layoutY="208.0" prefHeight="400.0" prefWidth="720.0" style="-fx-border-color: #00305b; -fx-border-radius: 12; -fx-background-color: #fefefe; -fx-background-radius: 12;">
         <columns>
             <TableColumn fx:id="idHoKhauCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID hộ khẩu" />
-            <TableColumn fx:id="hoTenCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ Tên" />
-            <TableColumn fx:id="soPhanQuaCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="số phần quà" />
-            <TableColumn fx:id="tongGiaTri" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="tổng tiền nhận" />
+            <TableColumn fx:id="hoTenCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ Tên Chủ Hộ" />
+            <TableColumn fx:id="soPhanQuaCol" prefWidth="180" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Số phần quà" />
+            <TableColumn fx:id="tongGiaTri" prefWidth="177.20001220703125" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Tổng tiền nhận" />
         </columns>
     </TableView>
-    <Label fx:id="note1" layoutX="300" layoutY="75">
+    <Label fx:id="note" layoutX="337.0" layoutY="116.0" prefHeight="60" prefWidth="380.0">
         <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="System Bold" size="20.0" />
         </font>
     </Label>
-    <TextField fx:id="keywordTextField" layoutX="30.0" layoutY="64.0" prefHeight="40.0" prefWidth="127.0" promptText="Tìm kiếm">
+    <TextField fx:id="keywordTextField" layoutX="30.0" layoutY="64.0" prefHeight="40.0" prefWidth="190.0" promptText="Tìm kiếm">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor></TextField>
-    <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
-    <ChoiceBox fx:id="dotPhatChoiceBox" layoutX="300" layoutY="116.0" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+    <ChoiceBox fx:id="optionChoiceBox" layoutX="30.0" layoutY="116.0" prefHeight="40.0" prefWidth="190.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+    <ChoiceBox fx:id="dotPhatChoiceBox" layoutX="337.0" layoutY="64.0" prefHeight="40.0" prefWidth="190.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #00305b;" />
+
 </AnchorPane>

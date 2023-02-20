@@ -3,6 +3,7 @@ package com.cnpm.controllers.phat_qua;
 import com.cnpm.entities.ThongKePhatQuaTableModel;
 import com.cnpm.utilities.DBConnection;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -29,7 +30,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
     @FXML
     private ChoiceBox<String> dotPhatChoiceBox;
     @FXML
-    private Label note1;
+    private Label note;
     @FXML
     private TextField thong_tin_tim_kiem;
     @FXML
@@ -131,7 +132,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
                         " AND phat_qua.daDuyet=1;");
                 if (resultSet.next()) {
                     int total = resultSet.getInt("tong");
-                    note1.setText("Tổng tiền: " + total);
+                    note.setText("Tổng tiền: " + total + " VND");
                 }
 
             } catch (SQLException e) {
@@ -150,6 +151,7 @@ public class ThongKePhatQuaConTroller implements Initializable {
 
         optionChoiceBox.getItems().addAll("Tìm theo họ tên", "Tìm id Hộ Khẩu");
         optionChoiceBox.setValue("Lựa chọn tìm kiếm");
+        dotPhatChoiceBox.setValue("Chọn đợt phát quà ");
 
         // Thêm action cho choicebox
         optionChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -183,29 +185,5 @@ public class ThongKePhatQuaConTroller implements Initializable {
 
     }
 
-//    public void tongTien() throws SQLException {
-//        try {
-//            Connection connection = DBConnection.getConnection();
-//            Statement statement = connection.createStatement();
-//
-//            // Execute the query to get the data from both tables
-//            ResultSet resultSet = statement.executeQuery("SELECT SUM(qua.giaTri)\n" +
-//                    "  FROM qua\n" +
-//                    "  INNER JOIN phat_qua ON qua.idQua=phat_qua.idQua\n" +
-//                    "  INNER JOIN dot_phat ON phat_qua.idDotPhat=dot_phat.idDotPhat\n" +
-//                    "  WHERE "+
-//                    " dot_phat.tenDotPhat = '" + tenDotPhat + "'\n" +
-//                    " AND phat_qua.daDuyet=1;");
-//            if (resultSet.next()) {
-//                int total = resultSet.getInt("tong");
-//                note1.setText("Tổng tiền: " + total);
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//
-//
+
 }

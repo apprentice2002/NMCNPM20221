@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2023 at 03:58 PM
+-- Generation Time: Feb 20, 2023 at 03:19 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -102,8 +102,8 @@ CREATE TABLE `dot_phat` (
 
 INSERT INTO `dot_phat` (`idDotPhat`, `tenDotPhat`, `thoiGianPhat`, `ghiChu`) VALUES
 (1, 'PT thanh tich hoc tap 2023', '2023-06-01', 'phatthuonghocsinh'),
-(2, 'PT trung thu 2023', '2023-08-15', 'phatthuongtrenho'),
-(3, 'PT tet 2023', '2023-12-28', 'phatthuongtrenho');
+(2, 'PQ trung thu 2023', '2023-08-15', 'phatquatrenho'),
+(3, 'PQ tet 2023', '2023-12-28', 'phatquatrenho');
 
 -- --------------------------------------------------------
 
@@ -377,7 +377,8 @@ CREATE TABLE `phat_qua` (
 
 INSERT INTO `phat_qua` (`idPhatQua`, `idDotPhat`, `idQua`, `idNhanKhau`, `daDuyet`) VALUES
 (1, 2, 5, 35, 1),
-(2, 1, 1, 37, 1);
+(2, 2, 1, 37, 1),
+(3, 3, 5, 35, 0);
 
 -- --------------------------------------------------------
 
@@ -457,6 +458,13 @@ CREATE TABLE `tam_vang` (
   `denNgay` date DEFAULT NULL,
   `lyDo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tam_vang`
+--
+
+INSERT INTO `tam_vang` (`ID`, `idNhanKhau`, `maGiayTamVang`, `noiTamtru`, `tuNgay`, `denNgay`, `lyDo`) VALUES
+(3, 26, '', '12', '2023-02-02', '2023-02-24', 'ưdqưqd');
 
 -- --------------------------------------------------------
 
@@ -739,13 +747,13 @@ ALTER TABLE `nhan_khau`
 -- AUTO_INCREMENT for table `phat_qua`
 --
 ALTER TABLE `phat_qua`
-  MODIFY `idPhatQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idPhatQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `phat_thuong`
 --
 ALTER TABLE `phat_thuong`
-  MODIFY `idPhatThuong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idPhatThuong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tam_tru`
@@ -757,7 +765,7 @@ ALTER TABLE `tam_tru`
 -- AUTO_INCREMENT for table `tam_vang`
 --
 ALTER TABLE `tam_vang`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
