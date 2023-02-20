@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2023 at 03:19 AM
+-- Generation Time: Feb 20, 2023 at 07:48 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `csdl4`
+-- Database: `csdl1`
 --
 
 -- --------------------------------------------------------
@@ -291,9 +291,7 @@ CREATE TABLE `minh_chung` (
 
 INSERT INTO `minh_chung` (`idMinhChung`, `ma_nhan_khau`, `truong`, `lop`, `thanhTichHocTap`, `ngayKhaiBao`) VALUES
 (1, 35, 'chuVanAn', '1B', 'HSG', '2023-02-10'),
-(2, 36, 'chuVanAn', '2B', 'HSG', '2023-02-10'),
-(3, 34, 'chu', '4b', 'HSG', '2023-02-08'),
-(5, 32, 'CHU', '7B', 'HSG', '2023-02-23');
+(2, 36, 'chuVanAn', '2B', 'HSG', '2023-02-10');
 
 -- --------------------------------------------------------
 
@@ -323,7 +321,7 @@ CREATE TABLE `nhan_khau` (
   `ngheNghiep` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `noiLamViec` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tienAn` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `soDienThoai` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `soDienThoai` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayChuyenDen` date DEFAULT NULL,
   `lyDoChuyenDen` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayChuyenDi` date DEFAULT NULL,
@@ -377,8 +375,8 @@ CREATE TABLE `phat_qua` (
 
 INSERT INTO `phat_qua` (`idPhatQua`, `idDotPhat`, `idQua`, `idNhanKhau`, `daDuyet`) VALUES
 (1, 2, 5, 35, 1),
-(2, 2, 1, 37, 1),
-(3, 3, 5, 35, 0);
+(4, 3, 5, 36, 1),
+(5, 3, 5, 35, 0);
 
 -- --------------------------------------------------------
 
@@ -747,7 +745,7 @@ ALTER TABLE `nhan_khau`
 -- AUTO_INCREMENT for table `phat_qua`
 --
 ALTER TABLE `phat_qua`
-  MODIFY `idPhatQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idPhatQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `phat_thuong`
@@ -839,37 +837,10 @@ ALTER TABLE `phat_qua`
   ADD CONSTRAINT `lien_ket_700` FOREIGN KEY (`idQua`) REFERENCES `qua` (`idQua`);
 
 --
--- Constraints for table `phat_thuong`
---
-ALTER TABLE `phat_thuong`
-  ADD CONSTRAINT `lien_ket_200` FOREIGN KEY (`idMinhChung`) REFERENCES `minh_chung` (`idMinhChung`),
-  ADD CONSTRAINT `lien_ket_300` FOREIGN KEY (`idDotPhat`) REFERENCES `dot_phat` (`idDotPhat`),
-  ADD CONSTRAINT `lien_ket_400` FOREIGN KEY (`idQua`) REFERENCES `qua` (`idQua`);
-
---
 -- Constraints for table `tam_tru`
 --
 ALTER TABLE `tam_tru`
   ADD CONSTRAINT `tam_tru_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
-
---
--- Constraints for table `tam_vang`
---
-ALTER TABLE `tam_vang`
-  ADD CONSTRAINT `tam_vang_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
-
---
--- Constraints for table `thanh_vien_cua_ho`
---
-ALTER TABLE `thanh_vien_cua_ho`
-  ADD CONSTRAINT `thanh_vien_cua_ho_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`),
-  ADD CONSTRAINT `thanh_vien_cua_ho_ibfk_2` FOREIGN KEY (`idHoKhau`) REFERENCES `ho_khau` (`ID`);
-
---
--- Constraints for table `tieu_su`
---
-ALTER TABLE `tieu_su`
-  ADD CONSTRAINT `tieu_su_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

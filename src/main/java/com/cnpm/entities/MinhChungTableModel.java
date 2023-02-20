@@ -10,12 +10,14 @@ import java.sql.Date;
 @Setter
 public class MinhChungTableModel extends MinhChung {
     private String hoTen;
+    private int tuoi;
 
     private CheckBox deleteBox;
-    public MinhChungTableModel(int idMinhChung,String hoTen,String truong, String lop , String thanhTichHocTap, Date ngayKhaiBao ) {
+    public MinhChungTableModel(int idMinhChung,String hoTen,int tuoi,String truong, String lop , String thanhTichHocTap, Date ngayKhaiBao ) {
         super(truong,lop,thanhTichHocTap,ngayKhaiBao);
         this.setIdMinhChung(idMinhChung);
         this.hoTen=hoTen;
+        this.tuoi=tuoi;
         this.setThanhTichHocTap(thanhTichHocTap);
         this.setTruong(truong);
         this.setLop(lop);

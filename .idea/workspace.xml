@@ -6,11 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="fix hk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ho_khau/ChonNhanKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ho_khau/ChonNhanKhauController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ho_khau/ThemHoKhauController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ho_khau/ThemHoKhauController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ho_khau/ThemThanhVienController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/ho_khau/ThemThanhVienController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-ho-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-ho-khau.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-thanh-vien.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-thanh-vien.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csdl1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/csdl1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-ho-khau.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-ho-khau.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-thanh-vien.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/them-thanh-vien.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ChonNhanKhauController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ChonNhanKhauController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemHoKhauController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemHoKhauController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemHoKhauController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemHoKhauController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemThanhVienController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/controllers/ho_khau/ThemThanhVienController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/minh_chung/MinhChungcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/minh_chung/MinhChungcontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/entities/MinhChung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/entities/MinhChung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/entities/MinhChungTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/entities/MinhChungTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/utilities/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/utilities/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/minh_chung.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/views/minh_chung.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676893819794</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix hk">
+      <created>1676910652591</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1676910652591</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
