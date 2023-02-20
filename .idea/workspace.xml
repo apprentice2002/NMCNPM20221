@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="merge +++1.1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NMCNPM20221/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_qua/ThongKePhatQuaConTroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/phat_thuong/ThongKePhatThuongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-qua-chuc-nang-view/thong_ke_phat_qua.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cnpm/chuc-nang-view/phat-thuong-chuc-nang-view/thong_ke_thuong.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="3a89577f-3b2e-47e2-9c78-129bd7219f3d" />
+        <option name="url" value="https://github.com/apprentice2002/NMCNPM20221.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2LpAkwpPNbOW1ISEtj4rs14rHfq" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/cnpm/controllers/nhan_khau" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\java\com\cnpm\controllers\nhan_khau" />
+      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\nhan-khau-chuc-nang-view" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tungd\Downloads\NMCNPM20221\src\main\resources\com\cnpm\chuc-nang-view" />
+      <recent name="C:\Users\Nguyen Minh\IdeaProjects\NMCNPM20221\src\main\resources\com\cnpm" />
+      <recent name="C:\Users\Nguyen Minh\IdeaProjects\NMCNPM20221\src\main\resources\com\cnpm\views" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-19.0.2" />
+      <option name="MAIN_CLASS_NAME" value="com.cnpm.Main" />
+      <module name="NMCNPM20221" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cnpm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02f62894-3ede-4f8d-851d-36296b769166" name="Changes" comment="" />
+      <created>1676557799716</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676557799716</updated>
+    </task>
+    <task id="LOCAL-00001" summary="up">
+      <created>1676798176262</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676798176262</updated>
+    </task>
+    <task id="LOCAL-00002" summary="up">
+      <created>1676823629368</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676823629368</updated>
+    </task>
+    <task id="LOCAL-00003" summary="up">
+      <created>1676823640821</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676823640821</updated>
+    </task>
+    <task id="LOCAL-00004" summary="merge from Quan 19/02">
+      <created>1676825043543</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676825043543</updated>
+    </task>
+    <task id="LOCAL-00005" summary="merge from Quan 19/02">
+      <created>1676825057560</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676825057560</updated>
+    </task>
+    <task id="LOCAL-00006" summary="up">
+      <created>1676825076278</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676825076278</updated>
+    </task>
+    <task id="LOCAL-00007" summary="upp">
+      <created>1676830000514</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676830000514</updated>
+    </task>
+    <task id="LOCAL-00008" summary="upp">
+      <created>1676830009487</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676830009487</updated>
+    </task>
+    <task id="LOCAL-00009" summary="merge ++">
+      <created>1676832605833</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676832605833</updated>
+    </task>
+    <task id="LOCAL-00010" summary="merge +++1.1">
+      <created>1676836739468</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676836739468</updated>
+    </task>
+    <task id="LOCAL-00011" summary="merge +++1.1">
+      <created>1676836754393</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676836754393</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update view theo y sep Tung" />
+    <MESSAGE value="merge from Quan 19/02" />
+    <MESSAGE value="up" />
+    <MESSAGE value="upp" />
+    <MESSAGE value="merge ++" />
+    <MESSAGE value="merge +++1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge +++1.1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
