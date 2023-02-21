@@ -12,18 +12,18 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DangKyTamVangController implements Initializable {
 
-    String query = null;
+    String query = null, query1 = null;
     Connection connection = null;
-    PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatement = null, preparedStatement1 = null;
+    ResultSet resultSet = null;
     Stage stage = null;
+    ArrayList<Integer> list = new ArrayList<>();
 
     @FXML private TextField noi_tam_tru;
     @FXML private TextArea ly_do;
@@ -51,14 +51,25 @@ public class DangKyTamVangController implements Initializable {
             getQuery();
             try {
                 connection = DBConnection.getConnection();
-                preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, ma_nhan_khau);
-                preparedStatement.setString(2, "");
-                preparedStatement.setString(3, noi_tam_tru);
-                preparedStatement.setDate(4, ngay_bat_dau);
-                preparedStatement.setDate(5, ngay_ket_thuc);
-                preparedStatement.setString(6, ly_do);
-                preparedStatement.execute();
+                preparedStatement1 = connection.prepareStatement(query1);
+                resultSet = preparedStatement1.executeQuery();
+                while (resultSet.next()) {
+                    list.add(resultSet.getInt("ID"));
+                }
+                if (!list.contains(Integer.parseInt(ma_nhan_khau))) {
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.close();
+                    Utilities.popNewWindow(event, "/com/cnpm/chuc-nang-view/thong-bao/alert.fxml");
+                } else {
+                    preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setInt(1, Integer.parseInt(ma_nhan_khau));
+                    preparedStatement.setString(2, "");
+                    preparedStatement.setString(3, noi_tam_tru);
+                    preparedStatement.setDate(4, ngay_bat_dau);
+                    preparedStatement.setDate(5, ngay_ket_thuc);
+                    preparedStatement.setString(6, ly_do);
+                    preparedStatement.execute();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -74,5 +85,6 @@ public class DangKyTamVangController implements Initializable {
 
     private void getQuery() {
         query = "INSERT INTO tam_vang (idNhanKhau, maGiayTamVang, noiTamTru, tuNgay, denNgay, lyDo) VALUES (?, ?, ?, ?, ?, ?)";
+        query1 = "SELECT ID FROM nhan_khau";
     }
 }
