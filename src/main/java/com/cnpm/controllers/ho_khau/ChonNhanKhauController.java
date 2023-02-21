@@ -32,8 +32,6 @@ public class ChonNhanKhauController implements Initializable {
     private Button addNhanKhauBtn;
     private SharedDataModel sharedDataModel = new SharedDataModel();
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         maNhanKhauCol.setCellValueFactory(new PropertyValueFactory<>("maNhanKhau"));
@@ -72,7 +70,4 @@ public class ChonNhanKhauController implements Initializable {
         });
     }
 
-    public void setSharedDataModel(SharedDataModel sharedDataModel) {
-        this.sharedDataModel = sharedDataModel;
-    }
 }

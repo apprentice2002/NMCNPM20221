@@ -4,6 +4,7 @@ import com.cnpm.utilities.DBConnection;
 import com.cnpm.entities.HoKhauTableModel;
 import com.cnpm.entities.NhanKhauTableModel;
 import com.cnpm.entities.SharedDataModel;
+import com.cnpm.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -65,11 +66,7 @@ public class ThemThanhVienController implements Initializable {
     private ChoiceBox<String> choiceBox;
     @FXML
     private Button deleteNhanKhauBtn;
-    @FXML
-    private Button deleteAllNhanKhauBtn;
-    private boolean containsNhanKhau(ObservableList<NhanKhauTableModel> list, String name){
-        return list.stream().map(NhanKhauTableModel::getHoTenNhanKhau).filter(name::equals).findFirst().isPresent();
-    }
+
     private void removeNhanKhau(NhanKhauTableModel selectedRow) {
         sharedDataModel.getSelectedRows().removeIf(obj->obj.getHoTenNhanKhau().equals(selectedRow.getHoTenNhanKhau()));
     }
@@ -103,6 +100,41 @@ public class ThemThanhVienController implements Initializable {
     }
 
 
+    @FXML
+    public void refresh(ActionEvent event){
+        nhanKhauTable.getItems().clear();
+        insertNkTable();
+    }
+
+    public void insertNkTable(){
+        try {
+            String nhanKhauSql = "SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen FROM\n" +
+                    "nhan_khau WHERE nhan_khau.daXoa is null\n" +
+                    "EXCEPT \n" +
+                    "(SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen\n" +
+                    "FROM nhan_khau, thanh_vien_cua_ho WHERE nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau\n" +
+                    "AND thanh_vien_cua_ho.quanHeVoiChuHo is not null)\n" +
+                    "UNION\n" +
+                    "(SELECT DISTINCT nhan_khau.ID as MaNhanKhau, nhan_khau.hoTen\n" +
+                    "FROM nhan_khau, tam_tru WHERE nhan_khau.ID = tam_tru.idNhanKhau);";
+            //Thực hiện các câu lệnh kết nối DB và truy vấn SQL
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(nhanKhauSql);
+            // Thêm các dữ liệu từ DB vào khung nhìn và thiết lập dữ liệu vào bảng
+            while (queryResult.next()) {
+                NhanKhauTableModel nhanKhau = new NhanKhauTableModel(queryResult.getString("MaNhanKhau"),
+                        queryResult.getString("hoTen"),"");
+                nhanKhauTable.getItems().add(nhanKhau);
+            }
+            maNhanKhauCol.setSortType(TableColumn.SortType.ASCENDING);
+            nhanKhauTable.getSortOrder().clear();
+            nhanKhauTable.getSortOrder().add(maNhanKhauCol);
+            nhanKhauTable.sort();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void cancle(ActionEvent event) throws IOException {
         Stage stage = (Stage) cancleBtn.getScene().getWindow();
@@ -187,6 +219,7 @@ public class ThemThanhVienController implements Initializable {
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTenNhanKhau"));
         quanHeVoiChuHoCol.setCellValueFactory(new PropertyValueFactory<>("quanHeVoiChuHo"));
 
+        insertNkTable();
         errorLab.setText("");
 
         quanHeVoiChuHoCol.setCellFactory(column -> {
@@ -248,38 +281,27 @@ public class ThemThanhVienController implements Initializable {
         });
 
         pickMemberBtn.setOnAction(event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cnpm/chuc-nang-view/ho-khau-chuc-nang-view/chon-nhan-khau.fxml"));
-                Parent root = loader.load();
-                ChonNhanKhauController controller = loader.getController();
-                controller.setSharedDataModel(sharedDataModel);
-                Scene nhanKhauScene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setTitle("Chọn Nhân khẩu");
-                stage.setScene(nhanKhauScene);
-                stage.show();
-                System.out.println(sharedDataModel.getSelectedRows().size());
-                stage.setOnHidden(e -> {
-                    nhanKhauTable.getItems().clear();
-                    for (NhanKhauTableModel nk : sharedDataModel.getSelectedRows()) {
-                        if(!containsNhanKhau(nhanKhauTable.getItems(), nk.getHoTenNhanKhau())) {
-                            nhanKhauTable.getItems().add(nk);
-                        }
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Utilities.popNewWindow(event,"/com/cnpm/chuc-nang-view/nhan-khau-chuc-nang-view/them-nhan-khau.fxml");
         });
         deleteNhanKhauBtn.setOnAction(event -> {
             NhanKhauTableModel selectedItem = nhanKhauTable.getSelectionModel().getSelectedItem();
+            int ma_nhan_khau = Integer.parseInt(selectedItem.getMaNhanKhau());
+
+            String delteNKSql = "DELETE FROM nhan_khau WHERE ID = ?";
+            Connection connection = DBConnection.getConnection();
+
+            try{
+                PreparedStatement preparedDelete = connection.prepareStatement(delteNKSql);
+                preparedDelete.setInt(1,ma_nhan_khau);
+                preparedDelete.execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             removeNhanKhau(selectedItem);
             nhanKhauTable.getItems().removeIf(obj->obj.getHoTenNhanKhau().equals(selectedItem.getHoTenNhanKhau()));
+
         });
-        deleteAllNhanKhauBtn.setOnAction(event -> {
-            nhanKhauTable.getItems().clear();
-            sharedDataModel.removeAllRow();
-            nhanKhauTable.getSelectionModel().clearSelection();
-        });
+
     }
 }

@@ -20,9 +20,10 @@
             <columns>
                 <TableColumn fx:id="idMinhChungCol" prefWidth="60" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ID" />
                 <TableColumn fx:id="hoTenCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Họ Tên" />
-                <TableColumn fx:id="truongCol" prefWidth="120" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="thành tích học tập" />
-                <TableColumn fx:id="thanhTichHocTapCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="trường" />
-                <TableColumn fx:id="lopCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="lớp" />
+                <TableColumn fx:id="tuoiCol" prefWidth="60" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Tuổi" />
+                <TableColumn fx:id="thanhTichHocTapCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="thành tích học tập" />
+                <TableColumn fx:id="lopCol" prefWidth="60" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="lớp" />
+                <TableColumn fx:id="truongCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="trường" />
                 <TableColumn fx:id="ngayKhaiBaoCol" prefWidth="120.0" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="ngày khai báo" />
                 <TableColumn fx:id="xoaCol" prefWidth="60" style="-fx-border-radius: 12; -fx-background-radius: 12;" text="Xóa" />
             </columns>

@@ -51,6 +51,9 @@ public class MinhChungcontroller implements Initializable {
     @FXML
     private TableColumn<MinhChungTableModel, String> hoTenCol;
     @FXML
+    private TableColumn<MinhChungTableModel, String> tuoiCol;
+
+    @FXML
     private TableColumn<MinhChungTableModel, String> thanhTichHocTapCol;
     @FXML
     private TableColumn<MinhChungTableModel, String> truongCol;
@@ -76,7 +79,7 @@ public class MinhChungcontroller implements Initializable {
 
     public void refresh(){table.getItems().clear();
         Connection connection = DBConnection.getConnection();
-        String sql = "SELECT idMinhChung,nhan_khau.hoTen, thanhTichHocTap,truong, lop, ngayKhaiBao\n" +
+        String sql = "SELECT idMinhChung,nhan_khau.hoTen,(YEAR(CURDATE()) - YEAR(nhan_khau.namSinh)) as tuoi, thanhTichHocTap,truong, lop, ngayKhaiBao\n" +
                 "                FROM nhan_khau,minh_chung\n" +
                 "                WHERE minh_chung.ma_nhan_khau = nhan_khau.ID";
         try {
@@ -88,9 +91,10 @@ public class MinhChungcontroller implements Initializable {
             while (queryResult.next()) {
                 listView.add(new MinhChungTableModel(queryResult.getInt("idMinhChung"),
                         queryResult.getString("hoTen"),
-                        queryResult.getString("thanhTichHocTap"),
+                        queryResult.getInt("tuoi"),
                         queryResult.getString("truong"),
                         queryResult.getString("lop"),
+                        queryResult.getString("thanhTichHocTap"),
                         queryResult.getDate("ngayKhaiBao")));
 
             }
@@ -104,15 +108,14 @@ public class MinhChungcontroller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-
         idMinhChungCol.setCellValueFactory(new PropertyValueFactory<>("idMinhChung"));
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
-        truongCol.setCellValueFactory(new PropertyValueFactory<>("truong"));
-        xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
+        tuoiCol.setCellValueFactory(new PropertyValueFactory<>("tuoi"));
         thanhTichHocTapCol.setCellValueFactory(new PropertyValueFactory<>("thanhTichHocTap"));
+        truongCol.setCellValueFactory(new PropertyValueFactory<>("truong"));
         lopCol.setCellValueFactory(new PropertyValueFactory<>("lop"));
         ngayKhaiBaoCol.setCellValueFactory(new PropertyValueFactory<>("ngayKhaiBao"));
+        xoaCol.setCellValueFactory(new PropertyValueFactory<>("deleteBox"));
 
         optionChoiceBox.getItems().addAll("Tìm theo họ tên","Tìm theo thành tích học tập");
         optionChoiceBox.setValue("Lựa chọn tìm kiếm");
